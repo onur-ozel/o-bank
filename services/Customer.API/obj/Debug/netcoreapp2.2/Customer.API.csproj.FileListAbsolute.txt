@@ -1,0 +1,14 @@
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\bin\Debug\netcoreapp2.2\Customer.API.deps.json
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\bin\Debug\netcoreapp2.2\Customer.API.runtimeconfig.json
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\bin\Debug\netcoreapp2.2\Customer.API.runtimeconfig.dev.json
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\bin\Debug\netcoreapp2.2\Customer.API.dll
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\bin\Debug\netcoreapp2.2\Customer.API.pdb
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.csprojAssemblyReference.cache
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.csproj.CoreCompileInputs.cache
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.RazorAssemblyInfo.cache
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.RazorAssemblyInfo.cs
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.AssemblyInfoInputs.cache
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.AssemblyInfo.cs
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.RazorTargetAssemblyInfo.cache
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.dll
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.pdb
