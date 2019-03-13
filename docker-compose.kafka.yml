@@ -1,10 +1,10 @@
 version: '3.4'
-networks:
-  obank-network:
-    ipam:
-      driver: default
-      config:
-        - subnet: 10.20.30.0/16
+# networks:
+#   obank-network:
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 10.20.30.0/16
 
 services:
   #Kafka
@@ -52,34 +52,3 @@ services:
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
-  #Customer
-  customer.data:
-    image: microsoft/mssql-server-linux:2017-latest
-    environment:
-      - MSSQL_SA_PASSWORD=Strong_Passw0rd
-      - ACCEPT_EULA=Y
-      - MSSQL_PID=Developer
-    ports:
-      - '5011:1433'
-    networks:
-      obank-network:
-        ipv4_address: 10.20.30.11
-  customer.api:
-    build:
-      context: services/Customer.API/.
-      dockerfile: Dockerfile
-    ports:
-      - '5101:80'
-    depends_on:
-      - customer.data
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
-    networks:
-      obank-network:
-        ipv4_address: 10.20.30.101
-
-
-
-
-
-  

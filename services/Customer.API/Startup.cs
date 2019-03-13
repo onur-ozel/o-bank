@@ -23,6 +23,7 @@ namespace Customer.API {
         public void ConfigureServices (IServiceCollection services) {
             services.AddCustomMVC (Configuration)
                     .AddCustomDbContext (Configuration);
+                    
 
         }
 
