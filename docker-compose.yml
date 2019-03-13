@@ -14,7 +14,7 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_PID=Developer
     ports:
-      - '5001:1433'
+      - '5011:1433'
     networks:
       obank-network:
         ipv4_address: 10.20.30.11
@@ -23,6 +23,11 @@ services:
       context: services/Customer.API/.
       dockerfile: Dockerfile
     ports:
-      - '5002:80'
+      - '5101:80'
+    depends_on:
+      - customer.data
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
+    networks:
+      obank-network:
+        ipv4_address: 10.20.30.101
