@@ -14,13 +14,13 @@ namespace Customer.API.Controllers {
     [ApiController]
     public class CorporateCustomerController : ControllerBase {
         private readonly CustomerContext _customerContext;
-        // private readonly CatalogSettings _settings;
-        // private readonly ICatalogIntegrationEventService _catalogIntegrationEventService;
+        private readonly ICustomerEventBusService _customerEventBusService;
 
-        // public RetailCustomerController (CustomerContext context, IOptionsSnapshot<CatalogSettings> settings, ICatalogIntegrationEventService catalogIntegrationEventService) {
-        public CorporateCustomerController (CustomerContext context) {
+        public CorporateCustomerController(CustomerContext context, ICustomerEventBusService customerEventBusService)
+        {
             _customerContext = context ??
-                throw new ArgumentNullException (nameof (context));
+                throw new ArgumentNullException(nameof(context));
+            _customerEventBusService = customerEventBusService;
             // _catalogIntegrationEventService = catalogIntegrationEventService ??
             //     throw new ArgumentNullException (nameof (catalogIntegrationEventService));
             // _settings = settings.Value;
