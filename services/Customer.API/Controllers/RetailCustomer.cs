@@ -30,6 +30,12 @@ namespace Customer.API.Controllers {
         }
 
         /// GET api/v1/[controller]/items[?pageSize=3&pageIndex=10]
+        /// <summary>
+        /// Gets retail customers.
+        /// </summary>
+        /// <param name="pageSize">Count of max item size in page.</param>
+        /// <param name="pageIndex">Current page index.</param>
+        /// <returns>Retail customer list.</returns>
         [HttpGet]
         [Route ("items")]
         [ProducesResponseType (typeof (PaginatedItemsViewModel<RetailCustomerItem>), (int) HttpStatusCode.OK)]
@@ -51,6 +57,11 @@ namespace Customer.API.Controllers {
         }
 
         // GET api/v1/[controller]/items/{id}
+        /// <summary>
+        /// Gets retail customer by unique customer id.
+        /// </summary>
+        /// <param name="id">Retail customer unique id.</param>
+        /// <returns>Retail customer.</returns>
         [HttpGet]
         [Route ("items/{id}")]
         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
@@ -71,6 +82,11 @@ namespace Customer.API.Controllers {
         }
 
         //POST api/v1/[controller]/items
+        /// <summary>
+        /// Adds new retail customer.
+        /// </summary>
+        /// <param name="customer">Retail customer object.</param>
+        /// <returns>Added retail customer id.</returns>
         [HttpPost]
         [Route ("items")]
         [ProducesResponseType ((int) HttpStatusCode.Created)]
@@ -85,6 +101,11 @@ namespace Customer.API.Controllers {
         }
 
         //PUT api/v1/[controller]/items
+        /// <summary>
+        /// Updates retail customer
+        /// </summary>
+        /// <param name="customerToUpdate">Retail customer object.</param>
+        /// <returns>Updated retail customer id.</returns>
         [HttpPut]
         [Route ("items")]
         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
@@ -104,6 +125,11 @@ namespace Customer.API.Controllers {
         }
 
         // DELETE api/v1/items/{id}
+        /// <summary>
+        /// Deletes retail customer.
+        /// </summary>
+        /// <param name="id">Retail customer unique id.</param>
+        /// <returns>Action result.</returns>
         [HttpDelete]
         [Route ("items/{id}")]
         [ProducesResponseType ((int) HttpStatusCode.NoContent)]
