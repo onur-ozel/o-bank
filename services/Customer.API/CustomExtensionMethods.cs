@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Customer.API {
     public static class CustomExtensionMethods {
@@ -41,7 +42,7 @@ namespace Customer.API {
 
         public static IServiceCollection AddSwagger (this IServiceCollection services) {
             services.AddSwaggerGen (options => {
-                options.SwaggerDoc ("v1", new Swashbuckle.AspNetCore.Swagger.Info {
+                options.SwaggerDoc ("v1", new Info {
                     Title = "o-bank - Customer HTTP API",
                     Version = "v1",
                     Description = "The Cutomer Microservice HTTP API. This is a Data-Driven/CRUD microservice is implemented in .NET Core Web API",
@@ -53,10 +54,14 @@ namespace Customer.API {
                         Url = "https://github.com/onur-ozel"
                     }
                 });
+                
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
 
             return services;
-
         }
     }
 }
