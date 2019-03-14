@@ -64,5 +64,15 @@ namespace Customer.API {
 
             return services;
         }
+        
+        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<ICustomerEventBusService, CustomerKafkaEventBusService>(sp =>
+            {
+                return new CustomerKafkaEventBusService();
+            });
+
+            return services;
+        }
     }
 }
