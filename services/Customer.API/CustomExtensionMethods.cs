@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Reflection;
 using Customer.API.Infrastructure.Contexts;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +46,7 @@ namespace Customer.API {
                 options.SwaggerDoc ("v1", new Info {
                     Title = "o-bank - Customer HTTP API",
                     Version = "v1",
-                    Description = "The Cutomer Microservice HTTP API. This is a Data-Driven/CRUD microservice is implemented in .NET Core Web API",
+                    Description = "The Cutomer Microservice HTTP API.\nThis is a Data-Driven/CRUD microservice is implemented in .NET Core Web API",
                     TermsOfService = "Terms Of Service",
                     Contact = new Contact
                     {
