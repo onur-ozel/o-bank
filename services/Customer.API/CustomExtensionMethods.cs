@@ -39,19 +39,24 @@ namespace Customer.API {
             return services;
         }
 
-        // public static IServiceCollection AddSwagger (this IServiceCollection services) {
-        //     services.AddSwaggerGen (options => {
-        //         options.DescribeAllEnumsAsStrings ();
-        //         options.SwaggerDoc ("v1", new Swashbuckle.AspNetCore.Swagger.Info {
-        //             Title = "eShopOnContainers - Catalog HTTP API",
-        //                 Version = "v1",
-        //                 Description = "The Catalog Microservice HTTP API. This is a Data-Driven/CRUD microservice sample",
-        //                 TermsOfService = "Terms Of Service"
-        //         });
-        //     });
+        public static IServiceCollection AddSwagger (this IServiceCollection services) {
+            services.AddSwaggerGen (options => {
+                options.SwaggerDoc ("v1", new Swashbuckle.AspNetCore.Swagger.Info {
+                    Title = "o-bank - Customer HTTP API",
+                    Version = "v1",
+                    Description = "The Cutomer Microservice HTTP API. This is a Data-Driven/CRUD microservice is implemented in .NET Core Web API",
+                    TermsOfService = "Terms Of Service",
+                    Contact = new Contact
+                    {
+                        Name = "Onur ÖZEL",
+                        Email = "onurozel41@gmail.com",
+                        Url = "https://github.com/onur-ozel"
+                    }
+                });
+            });
 
-        //     return services;
+            return services;
 
-        // }
+        }
     }
 }
