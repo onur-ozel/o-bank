@@ -30,11 +30,11 @@ namespace Customer.API.Controllers {
 
         // GET api/v1/[controller]/items[?pageSize=3&pageIndex=10]
         /// <summary>
-        /// Gets retail customers.
+        /// Gets corporate customers.
         /// </summary>
         /// <param name="pageSize">Count of max item size in page.</param>
         /// <param name="pageIndex">Current page index.</param>
-        /// <returns>Retail customer list.</returns>
+        /// <returns>Corporate customer list.</returns>
         [HttpGet]
         [Route ("items")]
         [ProducesResponseType (typeof (PaginatedItemsViewModel<CorporateCustomerItem>), (int) HttpStatusCode.OK)]
@@ -57,10 +57,10 @@ namespace Customer.API.Controllers {
 
         // GET api/v1/[controller]/items/{id}
         /// <summary>
-        /// Gets retail customer by unique customer id.
+        /// Gets corporate customer by unique customer id.
         /// </summary>
-        /// <param name="id">Retail customer unique id.</param>
-        /// <returns>Retail customer.</returns>
+        /// <param name="id">Corporate customer unique id.</param>
+        /// <returns>Corporate customer.</returns>
         [HttpGet]
         [Route ("items/{id}")]
         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
@@ -82,10 +82,10 @@ namespace Customer.API.Controllers {
 
         //POST api/v1/[controller]/items
         /// <summary>
-        /// Adds new retail customer.
+        /// Adds new corporate customer.
         /// </summary>
-        /// <param name="customer">Retail customer object.</param>
-        /// <returns>Added retail customer id.</returns>
+        /// <param name="customer">Corporate customer object.</param>
+        /// <returns>Added corporate customer id.</returns>
         [Route ("items")]
         [HttpPost]
         [ProducesResponseType ((int) HttpStatusCode.Created)]
@@ -99,10 +99,10 @@ namespace Customer.API.Controllers {
 
         //PUT api/v1/[controller]/items
         /// <summary>
-        /// Updates retail customer
+        /// Updates corporate customer
         /// </summary>
-        /// <param name="customerToUpdate">Retail customer object.</param>
-        /// <returns>Updated retail customer id.</returns>
+        /// <param name="customerToUpdate">Corporate customer object.</param>
+        /// <returns>Updated corporate customer id.</returns>
         [Route ("items")]
         [HttpPut]
         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
@@ -123,9 +123,9 @@ namespace Customer.API.Controllers {
 
         // DELETE api/v1/items/{id}
         /// <summary>
-        /// Deletes retail customer.
+        /// Deletes corporate customer.
         /// </summary>
-        /// <param name="id">Retail customer unique id.</param>
+        /// <param name="id">Corporate customer unique id.</param>
         /// <returns>Action result.</returns>
         [Route ("items/{id}")]
         [HttpDelete]
