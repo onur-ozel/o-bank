@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Customer.API</name>
+    </assembly>
+    <members>
+        <member name="M:Customer.API.Controllers.CorporateCustomerController.ItemsAsync(System.Int32,System.Int32)">
+            <summary>
+            Gets corporate customers.
+            </summary>
+            <param name="pageSize">Count of max item size in page.</param>
+            <param name="pageIndex">Current page index.</param>
+            <returns>Corporate customer list.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.CorporateCustomerController.ItemByIdAsync(System.String)">
+            <summary>
+            Gets corporate customer by unique customer id.
+            </summary>
+            <param name="id">Corporate customer unique id.</param>
+            <returns>Corporate customer.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.CorporateCustomerController.CreateItemAsync(Customer.API.Models.CorporateCustomerItem)">
+            <summary>
+            Adds new corporate customer.
+            </summary>
+            <param name="customer">Corporate customer object.</param>
+            <returns>Added corporate customer id.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.CorporateCustomerController.UpdateItemAsync(Customer.API.Models.CorporateCustomerItem)">
+            <summary>
+            Updates corporate customer
+            </summary>
+            <param name="customerToUpdate">Corporate customer object.</param>
+            <returns>Updated corporate customer id.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.CorporateCustomerController.DeleteItemAsync(System.String)">
+            <summary>
+            Deletes corporate customer.
+            </summary>
+            <param name="id">Corporate customer unique id.</param>
+            <returns>Action result.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.RetailCustomerController.ItemsAsync(System.Int32,System.Int32)">
+            GET api/v1/[controller]/items[?pageSize=3 pageIndex=10]
+            <summary>
+            Gets retail customers.
+            </summary>
+            <param name="pageSize">Count of max item size in page.</param>
+            <param name="pageIndex">Current page index.</param>
+            <returns>Retail customer list.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.RetailCustomerController.ItemByIdAsync(System.String)">
+            <summary>
+            Gets retail customer by unique customer id.
+            </summary>
+            <param name="id">Retail customer unique id.</param>
+            <returns>Retail customer.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.RetailCustomerController.CreateItemAsync(Customer.API.Models.RetailCustomerItem)">
+            <summary>
+            Adds new retail customer.
+            </summary>
+            <param name="customer">Retail customer object.</param>
+            <returns>Added retail customer id.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.RetailCustomerController.UpdateItemAsync(Customer.API.Models.RetailCustomerItem)">
+            <summary>
+            Updates retail customer
+            </summary>
+            <param name="customerToUpdate">Retail customer object.</param>
+            <returns>Updated retail customer id.</returns>
+        </member>
+        <member name="M:Customer.API.Controllers.RetailCustomerController.DeleteItemAsync(System.String)">
+            <summary>
+            Deletes retail customer.
+            </summary>
+            <param name="id">Retail customer unique id.</param>
+            <returns>Action result.</returns>
+        </member>
+    </members>
+</doc>

@@ -12,20 +12,34 @@ namespace Customer.API.Infrastructure.EntityConfigurations {
                 builder.Property (ci => ci.Id)
                     .IsRequired ();
 
-                builder.Property (ci => ci.No)
+                builder.Property (ci => ci.CustomerNo)
                     .ValueGeneratedOnAdd ()
-                    .HasDefaultValueSql ("NEXT VALUE FOR CustomerNumbers");
-
-                builder.Property (ci => ci.FirstName)
-                    .IsRequired (true)
-                    .HasMaxLength (150);
-
-                builder.Property (ci => ci.LastName)
-                    .IsRequired (true)
-                    .HasMaxLength (150);
+                    .HasDefaultValueSql ("NEXT VALUE FOR CustomerNoSequence");
 
                 builder.Property (ci => ci.NationalId)
-                    .IsRequired (true);
+                    .HasMaxLength (11);
+
+                builder.Property (ci => ci.FirstName)
+                    .HasMaxLength (100);
+
+                builder.Property (ci => ci.LastName)
+                    .HasMaxLength (100);
+
+                builder.Property (ci => ci.Nationality)
+                    .HasMaxLength (2);
+
+                builder.Property (ci => ci.BirthDate);
+
+                builder.Property (ci => ci.Email)
+                    .HasMaxLength (100);
+
+                builder.Property (ci => ci.Gender)
+                    .HasMaxLength (1);
+
+                builder.Property (ci => ci.CreatedDate);
+
+                builder.Property (ci => ci.CreatedUser)
+                    .HasMaxLength (15);
             }
         }
 }

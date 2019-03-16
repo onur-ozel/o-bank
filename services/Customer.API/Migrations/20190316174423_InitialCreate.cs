@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Customer.API.Migrations
 {
@@ -6,8 +7,8 @@ namespace Customer.API.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateSequence(
-                name: "CustomerNumbers",
+            migrationBuilder.CreateSequence<decimal>(
+                name: "CustomerNoSequence",
                 startValue: 100000L);
 
             migrationBuilder.CreateTable(
@@ -15,7 +16,7 @@ namespace Customer.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    No = table.Column<long>(nullable: false, defaultValueSql: "NEXT VALUE FOR CustomerNumbers"),
+                    CustomerNo = table.Column<decimal>(nullable: false, defaultValueSql: "NEXT VALUE FOR CustomerNumbers"),
                     Name = table.Column<string>(maxLength: 150, nullable: false),
                     TaxId = table.Column<decimal>(nullable: false)
                 },
@@ -29,10 +30,16 @@ namespace Customer.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    No = table.Column<long>(nullable: false, defaultValueSql: "NEXT VALUE FOR CustomerNumbers"),
-                    FirstName = table.Column<string>(maxLength: 150, nullable: false),
-                    LastName = table.Column<string>(maxLength: 150, nullable: false),
-                    NationalId = table.Column<decimal>(nullable: false)
+                    CustomerNo = table.Column<decimal>(nullable: false, defaultValueSql: "NEXT VALUE FOR CustomerNoSequence"),
+                    NationalId = table.Column<decimal>(maxLength: 11, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 100, nullable: true),
+                    LastName = table.Column<string>(maxLength: 100, nullable: true),
+                    Nationality = table.Column<string>(maxLength: 2, nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(maxLength: 100, nullable: true),
+                    Gender = table.Column<string>(maxLength: 1, nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    CreatedUser = table.Column<string>(maxLength: 15, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,7 +56,7 @@ namespace Customer.API.Migrations
                 name: "RetailCustomer");
 
             migrationBuilder.DropSequence(
-                name: "CustomerNumbers");
+                name: "CustomerNoSequence");
         }
     }
 }

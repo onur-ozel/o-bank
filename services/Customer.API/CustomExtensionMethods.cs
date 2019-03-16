@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBus;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -45,31 +46,28 @@ namespace Customer.API {
             services.AddSwaggerGen (options => {
                 options.SwaggerDoc ("v1", new Info {
                     Title = "o-bank - Customer HTTP API",
-                    Version = "v1",
-                    Description = "The Customer Microservice HTTP API.\nThis is a Data-Driven/CRUD microservice is implemented in .NET Core Web API",
-                    TermsOfService = "Terms Of Service",
-                    Contact = new Contact
-                    {
-                        Name = "Onur ÖZEL",
-                        Email = "onurozel41@gmail.com",
-                        Url = "https://github.com/onur-ozel"
-                    }
+                        Version = "v1",
+                        Description = "The Customer Microservice HTTP API.\nThis is a Data-Driven/CRUD microservice is implemented in .NET Core Web API",
+                        TermsOfService = "Terms Of Service",
+                        Contact = new Contact {
+                            Name = "Onur ÖZEL",
+                                Email = "onurozel41@gmail.com",
+                                Url = "https://github.com/onur-ozel"
+                        }
                 });
-                
+
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                options.IncludeXmlComments(xmlPath);
+                var xmlPath = Path.Combine (AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments (xmlPath);
             });
 
             return services;
         }
-        
-        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddSingleton<ICustomerEventBusService, CustomerKafkaEventBusService>(sp =>
-            {
-                return new CustomerKafkaEventBusService();
+
+        public static IServiceCollection AddEventBus (this IServiceCollection services, IConfiguration configuration) {
+            services.AddSingleton<ICustomerEventBusService, CustomerKafkaEventBusService> (sp => {
+                return new CustomerKafkaEventBusService ();
             });
 
             return services;

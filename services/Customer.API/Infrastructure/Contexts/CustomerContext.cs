@@ -12,7 +12,7 @@ namespace Customer.API.Infrastructure.Contexts {
         public DbSet<RetailCustomerItem> RetailCustomerItems { get; set; }
 
         protected override void OnModelCreating (ModelBuilder builder) {
-            builder.HasSequence<long> ("CustomerNumbers")
+            builder.HasSequence<decimal> ("CustomerNoSequence")
                 .StartsAt (100000)
                 .IncrementsBy (1);
 

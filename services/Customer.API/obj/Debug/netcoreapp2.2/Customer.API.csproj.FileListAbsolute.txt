@@ -12,3 +12,5 @@ C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp
 C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.RazorTargetAssemblyInfo.cache
 C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.dll
 C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.pdb
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\bin\Debug\netcoreapp2.2\Customer.API.xml
+C:\Users\Onur\Desktop\Projects\o-bank\services\Customer.API\obj\Debug\netcoreapp2.2\Customer.API.xml

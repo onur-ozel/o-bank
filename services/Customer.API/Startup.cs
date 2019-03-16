@@ -22,35 +22,28 @@ namespace Customer.API {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices (IServiceCollection services) {
             services.AddCustomMVC (Configuration)
-                    .AddCustomDbContext (Configuration)
-                    .AddEventBus(Configuration)
-                    .AddSwagger();
-
+                .AddEventBus (Configuration)
+                .AddCustomDbContext (Configuration)
+                .AddSwagger ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
-            
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
+            if (env.IsDevelopment ()) {
+                app.UseDeveloperExceptionPage ();
+            } else {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseHsts ();
             }
-            
-            app.UseSwagger()
-               .UseSwaggerUI(c =>
-               {
-                   c.SwaggerEndpoint("/swagger/v1/swagger.json", "Customer.API V1");
-               });
-            
+
+            app.UseSwagger ()
+                .UseSwaggerUI (c => {
+                    c.SwaggerEndpoint ("/swagger/v1/swagger.json", "Customer.API V1");
+                });
+
             app.UseCors ("CorsPolicy");
             app.UseMvc ();
-
         }
     }
 }

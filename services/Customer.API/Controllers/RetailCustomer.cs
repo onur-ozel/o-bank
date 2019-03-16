@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBus;
 using Customer.API.Infrastructure.ViewModels;
 using Customer.API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -15,21 +16,18 @@ namespace Customer.API.Controllers {
     public class RetailCustomerController : ControllerBase {
 
         private CustomerContext _customerContext;
-        // private readonly CatalogSettings _settings;
-        // private readonly ICatalogIntegrationEventService _catalogIntegrationEventService;
+        private readonly ICustomerEventBusService _customerEventBusService;
 
-        // public RetailCustomerController (CustomerContext context, IOptionsSnapshot<CatalogSettings> settings, ICatalogIntegrationEventService catalogIntegrationEventService) {
-        public RetailCustomerController (CustomerContext context) {
+        public RetailCustomerController (CustomerContext context, ICustomerEventBusService customerEventBusService) {
             _customerContext = context ??
                 throw new ArgumentNullException (nameof (context));
-            // _catalogIntegrationEventService = catalogIntegrationEventService ??
-            //     throw new ArgumentNullException (nameof (catalogIntegrationEventService));
-            // _settings = settings.Value;
+            _customerEventBusService = customerEventBusService ??
+                throw new ArgumentNullException (nameof (context));
 
-            // context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        /// GET api/v1/[controller]/items[?pageSize=3&pageIndex=10]
+        /// GET api/v1/[controller]/items[?pageSize=3 pageIndex=10]
         /// <summary>
         /// Gets retail customers.
         /// </summary>
@@ -42,11 +40,12 @@ namespace Customer.API.Controllers {
         [ProducesResponseType (typeof (IEnumerable<RetailCustomerItem>), (int) HttpStatusCode.OK)]
         [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
         public async Task<IActionResult> ItemsAsync ([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0) {
+            throw new Exception("TYS");
             var totalItems = await _customerContext.RetailCustomerItems
                 .LongCountAsync ();
 
             var itemsOnPage = await _customerContext.RetailCustomerItems
-                .OrderBy (c => c.No)
+                .OrderBy (c => c.CustomerNo)
                 .Skip (pageSize * pageIndex)
                 .Take (pageSize)
                 .ToListAsync ();
@@ -91,10 +90,12 @@ namespace Customer.API.Controllers {
         [Route ("items")]
         [ProducesResponseType ((int) HttpStatusCode.Created)]
         public async Task<ActionResult> CreateItemAsync ([FromBody] RetailCustomerItem customer) {
+            customer.CustomerNo = null;
+            customer.Id = null;
+
+
             _customerContext.RetailCustomerItems.Add (customer);
 
-            //TODO Handle Errors and validate object
-            //FIXME When No is not empty, exception throws
             await _customerContext.SaveChangesAsync ();
 
             return CreatedAtAction (nameof (ItemByIdAsync), new { id = customer.Id }, null);

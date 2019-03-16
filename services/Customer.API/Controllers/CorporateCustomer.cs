@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBus;
 using Customer.API.Infrastructure.ViewModels;
 using Customer.API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -16,14 +17,11 @@ namespace Customer.API.Controllers {
         private readonly CustomerContext _customerContext;
         private readonly ICustomerEventBusService _customerEventBusService;
 
-        public CorporateCustomerController(CustomerContext context, ICustomerEventBusService customerEventBusService)
-        {
+        public CorporateCustomerController (CustomerContext context, ICustomerEventBusService customerEventBusService) {
             _customerContext = context ??
-                throw new ArgumentNullException(nameof(context));
-            _customerEventBusService = customerEventBusService;
-            // _catalogIntegrationEventService = catalogIntegrationEventService ??
-            //     throw new ArgumentNullException (nameof (catalogIntegrationEventService));
-            // _settings = settings.Value;
+                throw new ArgumentNullException (nameof (context));
+            _customerEventBusService = customerEventBusService ??
+                throw new ArgumentNullException (nameof (context));
 
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
@@ -45,7 +43,7 @@ namespace Customer.API.Controllers {
                 .LongCountAsync ();
 
             var itemsOnPage = await _customerContext.CorporateCustomerItems
-                .OrderBy (c => c.No)
+                .OrderBy (c => c.CustomerNo)
                 .Skip (pageSize * pageIndex)
                 .Take (pageSize)
                 .ToListAsync ();

@@ -1,0 +1,5004 @@
+{
+  "CorporateCustomers": [
+    {
+      "Name": "Lannett Co Inc",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 5189622914,
+      "WebSite": "acquirethisname.com",
+      "Email": "casquez0@sina.com.cn",
+      "CreatedDate": "2018-11-10T00:50:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Manning & Napier, Inc.",
+      "Industry": "Investment Managers",
+      "Sector": "Finance",
+      "TaxId": 3516080550,
+      "WebSite": "cbc.ca",
+      "Email": "gmatthias1@ow.ly",
+      "CreatedDate": "2018-05-16T18:18:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Donaldson Company, Inc.",
+      "Industry": "Pollution Control Equipment",
+      "Sector": "Capital Goods",
+      "TaxId": 1862335282,
+      "WebSite": "pbs.org",
+      "Email": "tbyrne2@noaa.gov",
+      "CreatedDate": "2019-02-06T23:40:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Banc of California, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4818793550,
+      "WebSite": "artisteer.com",
+      "Email": "lskones3@wikia.com",
+      "CreatedDate": "2018-11-22T13:15:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gabelli Utility Trust (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4282944185,
+      "WebSite": "google.co.uk",
+      "Email": "bmccaughren4@msu.edu",
+      "CreatedDate": "2018-05-25T20:17:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "TearLab Corporation",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 9517657659,
+      "WebSite": "merriam-webster.com",
+      "Email": "mdibiaggi5@squidoo.com",
+      "CreatedDate": "2018-07-14T11:13:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VelocityShares Daily 2x VIX Medium-Term ETN",
+      "Industry": "Investment Bankers/Brokers/Service",
+      "Sector": "Finance",
+      "TaxId": 6584380385,
+      "WebSite": "newsvine.com",
+      "Email": "trooper6@edublogs.org",
+      "CreatedDate": "2018-09-03T06:48:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Total US Market AlphaDEX ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 5436588771,
+      "WebSite": "aboutads.info",
+      "Email": "jmasedon7@nbcnews.com",
+      "CreatedDate": "2019-03-05T03:14:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ServiceSource International, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 2089953094,
+      "WebSite": "tiny.cc",
+      "Email": "rpensom8@cdc.gov",
+      "CreatedDate": "2018-08-17T15:15:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Lyon William Homes",
+      "Industry": "Homebuilding",
+      "Sector": "Capital Goods",
+      "TaxId": 7744536883,
+      "WebSite": "pcworld.com",
+      "Email": "kexter9@infoseek.co.jp",
+      "CreatedDate": "2018-05-23T17:12:22Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "The Long-Term Care ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9504521665,
+      "WebSite": "ycombinator.com",
+      "Email": "bpenhalewicka@businessinsider.com",
+      "CreatedDate": "2018-12-25T23:12:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Stanley Furniture Company, Inc.",
+      "Industry": "Home Furnishings",
+      "Sector": "Consumer Durables",
+      "TaxId": 4960404141,
+      "WebSite": "squidoo.com",
+      "Email": "kmattssonb@utexas.edu",
+      "CreatedDate": "2019-01-15T23:40:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eagle Pharmaceuticals, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 3382937283,
+      "WebSite": "dot.gov",
+      "Email": "fmizenc@ftc.gov",
+      "CreatedDate": "2019-01-17T10:37:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Hawaiian Holdings, Inc.",
+      "Industry": "Air Freight/Delivery Services",
+      "Sector": "Transportation",
+      "TaxId": 4996591710,
+      "WebSite": "cisco.com",
+      "Email": "noxerd@vistaprint.com",
+      "CreatedDate": "2018-11-06T17:01:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "1st Constitution Bancorp (NJ)",
+      "Industry": "Savings Institutions",
+      "Sector": "Finance",
+      "TaxId": 7415301232,
+      "WebSite": "wp.com",
+      "Email": "lmoringe@nih.gov",
+      "CreatedDate": "2018-05-12T05:27:22Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Marcus & Millichap, Inc.",
+      "Industry": "Real Estate",
+      "Sector": "Finance",
+      "TaxId": 4132133879,
+      "WebSite": "edublogs.org",
+      "Email": "bfeedomef@sbwire.com",
+      "CreatedDate": "2018-12-25T00:23:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Park-Ohio Holdings Corp.",
+      "Industry": "Industrial Specialties",
+      "Sector": "Capital Goods",
+      "TaxId": 5460464318,
+      "WebSite": "japanpost.jp",
+      "Email": "cgodmang@blogger.com",
+      "CreatedDate": "2018-10-11T22:25:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Bright Scholar Education Holdings Limited",
+      "Industry": "Other Consumer Services",
+      "Sector": "Consumer Services",
+      "TaxId": 2473458233,
+      "WebSite": "home.pl",
+      "Email": "cfalksh@bbb.org",
+      "CreatedDate": "2018-10-14T13:25:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Amplify Snack Brands, inc.",
+      "Industry": "Packaged Foods",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 2284281570,
+      "WebSite": "ca.gov",
+      "Email": "cbenningtoni@seattletimes.com",
+      "CreatedDate": "2018-10-04T21:07:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Yulong Eco-Materials Limited",
+      "Industry": "Building Materials",
+      "Sector": "Capital Goods",
+      "TaxId": 1963033757,
+      "WebSite": "soup.io",
+      "Email": "jlingfootj@cornell.edu",
+      "CreatedDate": "2018-03-21T17:57:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "AAON, Inc.",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Capital Goods",
+      "TaxId": 1905421124,
+      "WebSite": "t-online.de",
+      "Email": "fcrownek@auda.org.au",
+      "CreatedDate": "2018-08-24T10:04:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Assembly Biosciences, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 1410544622,
+      "WebSite": "nih.gov",
+      "Email": "btongel@nbcnews.com",
+      "CreatedDate": "2019-02-10T14:36:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ConAgra Brands, Inc.",
+      "Industry": "Packaged Foods",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 4015105929,
+      "WebSite": "census.gov",
+      "Email": "ssperskim@posterous.com",
+      "CreatedDate": "2018-05-18T16:37:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Citizens, Inc.",
+      "Industry": "Life Insurance",
+      "Sector": "Finance",
+      "TaxId": 4801444173,
+      "WebSite": "github.com",
+      "Email": "tminern@state.tx.us",
+      "CreatedDate": "2018-04-26T12:39:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust NASDAQ ABA Community Bank Index Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8019215127,
+      "WebSite": "addthis.com",
+      "Email": "myitzowitzo@360.cn",
+      "CreatedDate": "2019-03-10T15:59:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Delek US Holdings, Inc.",
+      "Industry": "Integrated oil Companies",
+      "Sector": "Energy",
+      "TaxId": 2630744490,
+      "WebSite": "blinklist.com",
+      "Email": "khaslegravep@yelp.com",
+      "CreatedDate": "2019-01-22T02:35:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Agree Realty Corporation",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 4842792642,
+      "WebSite": "nytimes.com",
+      "Email": "lgilderoyq@linkedin.com",
+      "CreatedDate": "2018-04-11T09:18:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nelnet, Inc.",
+      "Industry": "Finance: Consumer Services",
+      "Sector": "Finance",
+      "TaxId": 9012470317,
+      "WebSite": "ovh.net",
+      "Email": "kyeldonr@umich.edu",
+      "CreatedDate": "2018-07-16T15:06:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CSRA Inc.",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 3443788644,
+      "WebSite": "github.io",
+      "Email": "bkirvells@devhub.com",
+      "CreatedDate": "2018-12-02T21:20:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Salem Media Group, Inc.",
+      "Industry": "Broadcasting",
+      "Sector": "Consumer Services",
+      "TaxId": 3202609208,
+      "WebSite": "discuz.net",
+      "Email": "gtaplint@soundcloud.com",
+      "CreatedDate": "2018-08-06T23:41:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "U.S. Auto Parts Network, Inc.",
+      "Industry": "Other Specialty Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 1822472300,
+      "WebSite": "cocolog-nifty.com",
+      "Email": "bducastelu@toplist.cz",
+      "CreatedDate": "2018-12-19T14:43:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Spark Energy, Inc.",
+      "Industry": "Power Generation",
+      "Sector": "Public Utilities",
+      "TaxId": 3043511195,
+      "WebSite": "google.com.au",
+      "Email": "disaqv@youku.com",
+      "CreatedDate": "2018-06-24T19:25:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Zix Corporation",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 8847139316,
+      "WebSite": "paginegialle.it",
+      "Email": "wstrongitharmw@theglobeandmail.com",
+      "CreatedDate": "2018-08-12T06:06:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Monotype Imaging Holdings Inc.",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 6090182604,
+      "WebSite": "indiatimes.com",
+      "Email": "tburnallx@state.gov",
+      "CreatedDate": "2018-12-27T23:27:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Crown Holdings, Inc.",
+      "Industry": "Containers/Packaging",
+      "Sector": "Consumer Durables",
+      "TaxId": 9981658314,
+      "WebSite": "yelp.com",
+      "Email": "esignorety@tripadvisor.com",
+      "CreatedDate": "2018-10-07T12:15:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Anadarko Petroleum Corporation",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 3136782654,
+      "WebSite": "tmall.com",
+      "Email": "bribouz@arizona.edu",
+      "CreatedDate": "2018-03-28T02:19:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Nasdaq Bank ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3525474812,
+      "WebSite": "shutterfly.com",
+      "Email": "rjonczyk10@ezinearticles.com",
+      "CreatedDate": "2018-08-23T10:48:03Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Aspen Insurance Holdings Limited",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2506121522,
+      "WebSite": "typepad.com",
+      "Email": "ewerrilow11@feedburner.com",
+      "CreatedDate": "2019-01-17T08:16:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Westport Fuel Systems Inc",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Energy",
+      "TaxId": 8422797842,
+      "WebSite": "a8.net",
+      "Email": "sborgnet12@merriam-webster.com",
+      "CreatedDate": "2018-05-09T19:08:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gap, Inc. (The)",
+      "Industry": "Clothing/Shoe/Accessory Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 9940689304,
+      "WebSite": "woothemes.com",
+      "Email": "epinckstone13@cnbc.com",
+      "CreatedDate": "2018-07-18T12:41:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PRA Group, Inc.",
+      "Industry": "Finance: Consumer Services",
+      "Sector": "Finance",
+      "TaxId": 8383467003,
+      "WebSite": "admin.ch",
+      "Email": "lduddell14@samsung.com",
+      "CreatedDate": "2018-08-28T13:49:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Grupo Aeroportuario del Sureste, S.A. de C.V.",
+      "Industry": "Aerospace",
+      "Sector": "Transportation",
+      "TaxId": 9770737644,
+      "WebSite": "hexun.com",
+      "Email": "bmclafferty15@tamu.edu",
+      "CreatedDate": "2018-03-17T02:15:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "RadNet, Inc.",
+      "Industry": "Medical Specialities",
+      "Sector": "Health Care",
+      "TaxId": 9918631272,
+      "WebSite": "ca.gov",
+      "Email": "ogrendon16@google.com.au",
+      "CreatedDate": "2018-09-28T07:14:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Turkish Investment Fund, Inc. (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4084999058,
+      "WebSite": "ftc.gov",
+      "Email": "rmosedall17@flavors.me",
+      "CreatedDate": "2019-02-26T12:29:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Lindblad Expeditions Holdings Inc. ",
+      "Industry": "Transportation Services",
+      "Sector": "Consumer Services",
+      "TaxId": 9266164643,
+      "WebSite": "privacy.gov.au",
+      "Email": "lwiggin18@who.int",
+      "CreatedDate": "2018-08-01T17:20:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "WhiteHorse Finance, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4509561103,
+      "WebSite": "yolasite.com",
+      "Email": "kchadband19@networkadvertising.org",
+      "CreatedDate": "2018-05-16T05:24:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Aehr Test Systems",
+      "Industry": "Electrical Products",
+      "Sector": "Capital Goods",
+      "TaxId": 1816001084,
+      "WebSite": "slate.com",
+      "Email": "bbendell1a@uiuc.edu",
+      "CreatedDate": "2018-12-05T03:01:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Sunrun Inc.",
+      "Industry": "Industrial Specialties",
+      "Sector": "Capital Goods",
+      "TaxId": 8366274471,
+      "WebSite": "w3.org",
+      "Email": "mdanbye1b@g.co",
+      "CreatedDate": "2018-10-30T11:32:45Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Sonus Networks, Inc.",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 9397767887,
+      "WebSite": "shinystat.com",
+      "Email": "bnipper1c@miitbeian.gov.cn",
+      "CreatedDate": "2018-04-26T21:46:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Seagate Technology PLC",
+      "Industry": "Electronic Components",
+      "Sector": "Technology",
+      "TaxId": 2183594360,
+      "WebSite": "dell.com",
+      "Email": "egribbon1d@cafepress.com",
+      "CreatedDate": "2019-02-22T07:26:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Weyerhaeuser Company",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 1018945912,
+      "WebSite": "npr.org",
+      "Email": "gsked1e@state.tx.us",
+      "CreatedDate": "2018-08-31T11:51:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BancFirst Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 6263350141,
+      "WebSite": "uol.com.br",
+      "Email": "cmacarthur1f@jalbum.net",
+      "CreatedDate": "2018-07-21T23:35:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Wells Fargo & Company",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6734997685,
+      "WebSite": "vkontakte.ru",
+      "Email": "gcancott1g@go.com",
+      "CreatedDate": "2018-12-30T06:44:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Redhill Biopharma Ltd.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 8300671844,
+      "WebSite": "ucla.edu",
+      "Email": "mcrunden1h@ow.ly",
+      "CreatedDate": "2018-12-05T10:35:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Sphere 3D Corp.",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 3023612008,
+      "WebSite": "dyndns.org",
+      "Email": "jdavie1i@acquirethisname.com",
+      "CreatedDate": "2018-12-15T11:36:14Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Invesco Senior Income Trust",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3416049715,
+      "WebSite": "dagondesign.com",
+      "Email": "sayllett1j@flavors.me",
+      "CreatedDate": "2019-02-16T04:25:01Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "The Carlyle Group L.P.",
+      "Industry": "Investment Managers",
+      "Sector": "Finance",
+      "TaxId": 6320606313,
+      "WebSite": "google.com",
+      "Email": "amacveigh1k@ucoz.com",
+      "CreatedDate": "2018-09-18T06:51:31Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Blackrock MuniHoldings California Quality Fund,  Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1388626723,
+      "WebSite": "state.gov",
+      "Email": "nfort1l@telegraph.co.uk",
+      "CreatedDate": "2018-03-24T06:23:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "USD Partners LP",
+      "Industry": "Railroads",
+      "Sector": "Transportation",
+      "TaxId": 3277231977,
+      "WebSite": "weibo.com",
+      "Email": "hrickson1m@illinois.edu",
+      "CreatedDate": "2018-03-26T01:15:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Green Dot Corporation",
+      "Industry": "Finance: Consumer Services",
+      "Sector": "Finance",
+      "TaxId": 8512020195,
+      "WebSite": "newyorker.com",
+      "Email": "sholby1n@thetimes.co.uk",
+      "CreatedDate": "2018-05-09T04:31:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Radian Group Inc.",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 8528346610,
+      "WebSite": "slashdot.org",
+      "Email": "awillcox1o@oaic.gov.au",
+      "CreatedDate": "2019-03-07T09:48:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BWX Technologies, Inc.",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Energy",
+      "TaxId": 4092417529,
+      "WebSite": "weather.com",
+      "Email": "mhenrie1p@dropbox.com",
+      "CreatedDate": "2018-09-08T12:41:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Odyssey Marine Exploration, Inc.",
+      "Industry": "Marine Transportation",
+      "Sector": "Consumer Services",
+      "TaxId": 1585359095,
+      "WebSite": "gov.uk",
+      "Email": "smontrose1q@twitter.com",
+      "CreatedDate": "2018-09-30T12:53:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Open Text Corporation",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 4775632483,
+      "WebSite": "utexas.edu",
+      "Email": "hwestby1r@simplemachines.org",
+      "CreatedDate": "2019-02-14T03:22:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eaton Vance High Income 2021 Target Term Trust",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1958886952,
+      "WebSite": "people.com.cn",
+      "Email": "vstredwick1s@guardian.co.uk",
+      "CreatedDate": "2018-11-23T01:36:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Zynerba Pharmaceuticals, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 8673196965,
+      "WebSite": "hostgator.com",
+      "Email": "estreeten1t@eventbrite.com",
+      "CreatedDate": "2018-05-21T05:28:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "China Auto Logistics Inc.",
+      "Industry": "Motor Vehicles",
+      "Sector": "Consumer Services",
+      "TaxId": 6743891539,
+      "WebSite": "nyu.edu",
+      "Email": "ndabner1u@google.fr",
+      "CreatedDate": "2018-07-26T09:54:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "iShares S&P/Citigroup 1-3 Year International Treasury Bond Fun",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 5713933328,
+      "WebSite": "archive.org",
+      "Email": "rdavydenko1v@sakura.ne.jp",
+      "CreatedDate": "2019-02-04T18:24:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Red Rock Resorts, Inc.",
+      "Industry": "Hotels/Resorts",
+      "Sector": "Consumer Services",
+      "TaxId": 4904802093,
+      "WebSite": "slate.com",
+      "Email": "dklaves1w@irs.gov",
+      "CreatedDate": "2019-02-03T00:55:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Royal Bank Scotland plc (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9085677183,
+      "WebSite": "newyorker.com",
+      "Email": "sinchcomb1x@earthlink.net",
+      "CreatedDate": "2018-04-16T12:43:00Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "MedEquities Realty Trust, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 2087458989,
+      "WebSite": "hp.com",
+      "Email": "hmitkov1y@hugedomains.com",
+      "CreatedDate": "2018-07-18T13:01:50Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Oasis Petroleum Inc.",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 6810150457,
+      "WebSite": "slashdot.org",
+      "Email": "avolett1z@quantcast.com",
+      "CreatedDate": "2018-09-03T06:13:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Euro Tech Holdings Company Limited",
+      "Industry": "Diversified Electronic Products",
+      "Sector": "Consumer Durables",
+      "TaxId": 4582339699,
+      "WebSite": "simplemachines.org",
+      "Email": "zbonhomme20@hc360.com",
+      "CreatedDate": "2018-05-17T06:08:45Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Marten Transport, Ltd.",
+      "Industry": "Trucking Freight/Courier Services",
+      "Sector": "Transportation",
+      "TaxId": 1804026664,
+      "WebSite": "ox.ac.uk",
+      "Email": "sabbate21@webs.com",
+      "CreatedDate": "2018-05-22T14:06:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Remark Holdings, Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Consumer Services",
+      "TaxId": 6505190932,
+      "WebSite": "google.co.jp",
+      "Email": "dniset22@prweb.com",
+      "CreatedDate": "2018-10-09T00:09:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Dorsey Wright Dynamic Focus 5 ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8363376384,
+      "WebSite": "boston.com",
+      "Email": "ifairbrass23@yale.edu",
+      "CreatedDate": "2018-08-04T20:49:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Hudson Global, Inc.",
+      "Industry": "Professional Services",
+      "Sector": "Technology",
+      "TaxId": 3081282543,
+      "WebSite": "free.fr",
+      "Email": "sbortolazzi24@mapy.cz",
+      "CreatedDate": "2018-10-23T06:09:00Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Global X Millennials Thematic ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 7606457008,
+      "WebSite": "nifty.com",
+      "Email": "htailby25@fastcompany.com",
+      "CreatedDate": "2019-01-02T09:36:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Financial Bancorp.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 6560567209,
+      "WebSite": "pcworld.com",
+      "Email": "fskule26@imgur.com",
+      "CreatedDate": "2018-12-11T12:13:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Pulse Biosciences, Inc",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 3269229093,
+      "WebSite": "hostgator.com",
+      "Email": "pfolder27@google.es",
+      "CreatedDate": "2018-05-17T09:38:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Numerex Corp.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Consumer Durables",
+      "TaxId": 7745294249,
+      "WebSite": "livejournal.com",
+      "Email": "kkilliner28@newsvine.com",
+      "CreatedDate": "2018-04-18T02:24:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Och-Ziff Capital Management Group LLC",
+      "Industry": "Investment Managers",
+      "Sector": "Finance",
+      "TaxId": 6918170540,
+      "WebSite": "rambler.ru",
+      "Email": "asawden29@nifty.com",
+      "CreatedDate": "2018-11-19T07:30:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Editas Medicine, Inc.",
+      "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+      "Sector": "Health Care",
+      "TaxId": 1891119407,
+      "WebSite": "ca.gov",
+      "Email": "haudritt2a@scientificamerican.com",
+      "CreatedDate": "2018-08-08T17:01:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "China Natural Resources, Inc.",
+      "Industry": "Precious Metals",
+      "Sector": "Basic Industries",
+      "TaxId": 3534925504,
+      "WebSite": "slashdot.org",
+      "Email": "fvandervlies2b@goodreads.com",
+      "CreatedDate": "2018-11-16T20:39:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First American Corporation (The)",
+      "Industry": "Specialty Insurers",
+      "Sector": "Finance",
+      "TaxId": 9352908917,
+      "WebSite": "dell.com",
+      "Email": "dvasse2c@edublogs.org",
+      "CreatedDate": "2018-11-11T10:48:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Capital One Financial Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4705287088,
+      "WebSite": "tuttocitta.it",
+      "Email": "smincher2d@acquirethisname.com",
+      "CreatedDate": "2018-12-22T12:06:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gencor Industries Inc.",
+      "Industry": "Construction/Ag Equipment/Trucks",
+      "Sector": "Capital Goods",
+      "TaxId": 6135777462,
+      "WebSite": "cnet.com",
+      "Email": "sdavy2e@booking.com",
+      "CreatedDate": "2019-02-20T06:19:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Saban Capital Acquisition Corp.",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 4643436786,
+      "WebSite": "baidu.com",
+      "Email": "cbrahms2f@tmall.com",
+      "CreatedDate": "2018-06-30T15:51:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PNC Financial Services Group, Inc. (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4716104223,
+      "WebSite": "live.com",
+      "Email": "seckersall2g@xinhuanet.com",
+      "CreatedDate": "2018-04-15T14:40:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "OGE Energy Corporation",
+      "Industry": "Electric Utilities: Central",
+      "Sector": "Public Utilities",
+      "TaxId": 2067080423,
+      "WebSite": "alibaba.com",
+      "Email": "gbrodeau2h@springer.com",
+      "CreatedDate": "2018-09-11T02:56:50Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Blackrock MuniYield Quality Fund, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4517696484,
+      "WebSite": "go.com",
+      "Email": "cladbrook2i@is.gd",
+      "CreatedDate": "2019-01-05T15:09:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Clipper Realty Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 9492079726,
+      "WebSite": "phpbb.com",
+      "Email": "ftreadgear2j@alexa.com",
+      "CreatedDate": "2018-08-10T03:45:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "American Capital Senior Floating, Ltd.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 5449874849,
+      "WebSite": "opensource.org",
+      "Email": "bsevitt2k@ucoz.ru",
+      "CreatedDate": "2018-07-07T08:00:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Consolidated Water Co. Ltd.",
+      "Industry": "Water Supply",
+      "Sector": "Public Utilities",
+      "TaxId": 9723835223,
+      "WebSite": "alexa.com",
+      "Email": "lprecious2l@quantcast.com",
+      "CreatedDate": "2018-08-30T10:46:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Star Bulk Carriers Corp.",
+      "Industry": "Marine Transportation",
+      "Sector": "Transportation",
+      "TaxId": 4111710289,
+      "WebSite": "addthis.com",
+      "Email": "gbichard2m@china.com.cn",
+      "CreatedDate": "2018-11-11T21:51:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Alexandria Real Estate Equities, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3083363496,
+      "WebSite": "army.mil",
+      "Email": "awoolliams2n@sakura.ne.jp",
+      "CreatedDate": "2018-10-18T11:10:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "NVE Corporation",
+      "Industry": "Semiconductors",
+      "Sector": "Technology",
+      "TaxId": 1593818992,
+      "WebSite": "comsenz.com",
+      "Email": "gbryce2o@cornell.edu",
+      "CreatedDate": "2018-10-16T20:26:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "XO Group, Inc.",
+      "Industry": "Other Consumer Services",
+      "Sector": "Consumer Services",
+      "TaxId": 4416583288,
+      "WebSite": "ycombinator.com",
+      "Email": "eklaggeman2p@sourceforge.net",
+      "CreatedDate": "2018-12-22T13:16:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Arlington Asset Investment Corp",
+      "Industry": "Finance/Investors Services",
+      "Sector": "Finance",
+      "TaxId": 6566976568,
+      "WebSite": "drupal.org",
+      "Email": "ddowne2q@facebook.com",
+      "CreatedDate": "2018-09-18T21:24:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Callon Petroleum Company",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 1760034847,
+      "WebSite": "unc.edu",
+      "Email": "byendall2r@jiathis.com",
+      "CreatedDate": "2018-03-19T14:42:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "RH",
+      "Industry": "Other Specialty Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 3044590403,
+      "WebSite": "bing.com",
+      "Email": "esircombe2s@disqus.com",
+      "CreatedDate": "2018-03-22T07:10:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ProShares Ultra Nasdaq Biotechnology",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 7706532261,
+      "WebSite": "mapquest.com",
+      "Email": "vdanzey2t@blogs.com",
+      "CreatedDate": "2018-12-04T21:07:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Voya Global Equity Dividend and Premium Opportunity Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8961168728,
+      "WebSite": "linkedin.com",
+      "Email": "fkinny2u@pbs.org",
+      "CreatedDate": "2018-07-11T07:13:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Host Hotels & Resorts, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 1869653081,
+      "WebSite": "mac.com",
+      "Email": "amckeggie2v@surveymonkey.com",
+      "CreatedDate": "2018-03-22T04:31:50Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ohr Pharmaceuticals, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 4307386554,
+      "WebSite": "ning.com",
+      "Email": "mcrosi2w@angelfire.com",
+      "CreatedDate": "2018-06-22T23:39:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Dynegy Inc.",
+      "Industry": "Electric Utilities: Central",
+      "Sector": "Public Utilities",
+      "TaxId": 9769267250,
+      "WebSite": "dot.gov",
+      "Email": "cguiso2x@clickbank.net",
+      "CreatedDate": "2018-06-16T16:22:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "MINDBODY, Inc.",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 4156606860,
+      "WebSite": "booking.com",
+      "Email": "efarnell2y@theglobeandmail.com",
+      "CreatedDate": "2018-05-01T12:39:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Applied Industrial Technologies, Inc.",
+      "Industry": "Industrial Specialties",
+      "Sector": "Consumer Durables",
+      "TaxId": 1944558146,
+      "WebSite": "dell.com",
+      "Email": "ealthorpe2z@weebly.com",
+      "CreatedDate": "2018-06-01T20:24:14Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Diageo plc",
+      "Industry": "Beverages (Production/Distribution)",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 8989448986,
+      "WebSite": "t.co",
+      "Email": "swickwarth30@vimeo.com",
+      "CreatedDate": "2019-01-29T06:26:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Douglas Dynamics, Inc.",
+      "Industry": "Construction/Ag Equipment/Trucks",
+      "Sector": "Capital Goods",
+      "TaxId": 2155310396,
+      "WebSite": "businesswire.com",
+      "Email": "tbutcher31@barnesandnoble.com",
+      "CreatedDate": "2018-06-26T01:31:55Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "SL Green Realty Corporation",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 7072092508,
+      "WebSite": "abc.net.au",
+      "Email": "bhouselee32@telegraph.co.uk",
+      "CreatedDate": "2018-05-02T14:11:38Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Banco Santander Chile",
+      "Industry": "Commercial Banks",
+      "Sector": "Finance",
+      "TaxId": 5010732094,
+      "WebSite": "privacy.gov.au",
+      "Email": "ppitkeathley33@angelfire.com",
+      "CreatedDate": "2019-01-17T20:33:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "China Southern Airlines Company Limited",
+      "Industry": "Air Freight/Delivery Services",
+      "Sector": "Transportation",
+      "TaxId": 2095915270,
+      "WebSite": "soup.io",
+      "Email": "cmacfie34@taobao.com",
+      "CreatedDate": "2018-05-02T18:35:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Dave & Buster&#39;s Entertainment, Inc.",
+      "Industry": "Restaurants",
+      "Sector": "Consumer Services",
+      "TaxId": 3734970899,
+      "WebSite": "nbcnews.com",
+      "Email": "ggirardet35@stanford.edu",
+      "CreatedDate": "2018-05-19T18:23:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "National Security Group, Inc.",
+      "Industry": "Life Insurance",
+      "Sector": "Finance",
+      "TaxId": 2990774972,
+      "WebSite": "ameblo.jp",
+      "Email": "bdoale36@quantcast.com",
+      "CreatedDate": "2018-06-08T00:05:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Oshkosh Corporation",
+      "Industry": "Auto Manufacturing",
+      "Sector": "Capital Goods",
+      "TaxId": 2151073473,
+      "WebSite": "linkedin.com",
+      "Email": "fservante37@webmd.com",
+      "CreatedDate": "2018-10-02T02:38:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Grupo Aval Acciones y Valores S.A.",
+      "Industry": "Commercial Banks",
+      "Sector": "Finance",
+      "TaxId": 2899151694,
+      "WebSite": "bluehost.com",
+      "Email": "rfeatenby38@mapy.cz",
+      "CreatedDate": "2018-08-07T08:52:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Visteon Corporation",
+      "Industry": "Auto Parts:O.E.M.",
+      "Sector": "Capital Goods",
+      "TaxId": 9972641230,
+      "WebSite": "sitemeter.com",
+      "Email": "lstubs39@digg.com",
+      "CreatedDate": "2018-10-18T19:17:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Kennedy-Wilson Holdings Inc.",
+      "Industry": "Real Estate",
+      "Sector": "Finance",
+      "TaxId": 3506334042,
+      "WebSite": "facebook.com",
+      "Email": "slamputt3a@ted.com",
+      "CreatedDate": "2018-08-11T10:35:54Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Nasdaq Food & Beverage ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1621323309,
+      "WebSite": "csmonitor.com",
+      "Email": "eharmar3b@imdb.com",
+      "CreatedDate": "2019-02-21T04:56:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "WideOpenWest, Inc.",
+      "Industry": "Television Services",
+      "Sector": "Consumer Services",
+      "TaxId": 9081155944,
+      "WebSite": "skyrock.com",
+      "Email": "bzanini3c@illinois.edu",
+      "CreatedDate": "2018-08-05T12:31:07Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "SunTrust Banks, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 4122081737,
+      "WebSite": "i2i.jp",
+      "Email": "cshaplin3d@soup.io",
+      "CreatedDate": "2018-06-27T03:08:38Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VelocityShares 3x Long Gold ETN",
+      "Industry": "Investment Bankers/Brokers/Service",
+      "Sector": "Finance",
+      "TaxId": 3532003568,
+      "WebSite": "sun.com",
+      "Email": "kmclemon3e@bbb.org",
+      "CreatedDate": "2018-04-06T04:22:01Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Flotek Industries, Inc.",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 9397180486,
+      "WebSite": "utexas.edu",
+      "Email": "ngroombridge3f@github.com",
+      "CreatedDate": "2018-09-07T12:57:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eaton Vance NextShares Trust",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4983899415,
+      "WebSite": "unblog.fr",
+      "Email": "amccreadie3g@msu.edu",
+      "CreatedDate": "2018-11-27T11:45:32Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Aldeyra Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 4497148158,
+      "WebSite": "webnode.com",
+      "Email": "ckilmurry3h@clickbank.net",
+      "CreatedDate": "2018-11-01T14:10:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Permian Basin Royalty Trust",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 4170561369,
+      "WebSite": "answers.com",
+      "Email": "cleipelt3i@mozilla.org",
+      "CreatedDate": "2019-01-16T14:26:31Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Callon Petroleum Company",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 8565713151,
+      "WebSite": "squidoo.com",
+      "Email": "wverheijden3j@ezinearticles.com",
+      "CreatedDate": "2018-10-22T18:04:31Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "DMC Global Inc.",
+      "Industry": "Industrial Specialties",
+      "Sector": "Capital Goods",
+      "TaxId": 8936613593,
+      "WebSite": "t.co",
+      "Email": "cschanke3k@blogtalkradio.com",
+      "CreatedDate": "2018-09-11T19:47:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nuveen Floating Rate Income Opportuntiy Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6249078163,
+      "WebSite": "sogou.com",
+      "Email": "mflint3l@desdev.cn",
+      "CreatedDate": "2018-06-19T13:55:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Tower Semiconductor Ltd.",
+      "Industry": "Semiconductors",
+      "Sector": "Technology",
+      "TaxId": 8157775166,
+      "WebSite": "intel.com",
+      "Email": "sallsepp3m@ning.com",
+      "CreatedDate": "2019-03-11T03:37:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Statoil ASA",
+      "Industry": "Integrated oil Companies",
+      "Sector": "Energy",
+      "TaxId": 5905876479,
+      "WebSite": "spotify.com",
+      "Email": "fskune3n@admin.ch",
+      "CreatedDate": "2018-11-27T15:35:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Mondelez International, Inc.",
+      "Industry": "Packaged Foods",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 7133506324,
+      "WebSite": "cbslocal.com",
+      "Email": "ihailey3o@dedecms.com",
+      "CreatedDate": "2018-04-25T21:53:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VelocityShares VIX Medium-Term ETN",
+      "Industry": "Investment Bankers/Brokers/Service",
+      "Sector": "Finance",
+      "TaxId": 8543964091,
+      "WebSite": "ihg.com",
+      "Email": "cgoldthorp3p@businessweek.com",
+      "CreatedDate": "2018-12-11T21:23:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First South Bancorp Inc",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 1359292076,
+      "WebSite": "google.com.au",
+      "Email": "gjoinson3q@apple.com",
+      "CreatedDate": "2018-12-30T18:23:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eaton Vance Tax Advantaged Dividend Income Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8244089013,
+      "WebSite": "cargocollective.com",
+      "Email": "klynas3r@apple.com",
+      "CreatedDate": "2018-11-21T18:46:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ares Capital Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4200889258,
+      "WebSite": "hibu.com",
+      "Email": "aheiden3s@example.com",
+      "CreatedDate": "2018-05-05T11:15:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Werner Enterprises, Inc.",
+      "Industry": "Trucking Freight/Courier Services",
+      "Sector": "Transportation",
+      "TaxId": 2511327661,
+      "WebSite": "myspace.com",
+      "Email": "cgrealy3t@si.edu",
+      "CreatedDate": "2018-09-02T14:15:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gladstone Investment Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3462589140,
+      "WebSite": "ihg.com",
+      "Email": "llettson3u@devhub.com",
+      "CreatedDate": "2019-01-18T19:19:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VSE Corporation",
+      "Industry": "Military/Government/Technical",
+      "Sector": "Consumer Services",
+      "TaxId": 6029833659,
+      "WebSite": "mapy.cz",
+      "Email": "rgiotto3v@phoca.cz",
+      "CreatedDate": "2018-11-19T04:03:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "South Jersey Industries, Inc.",
+      "Industry": "Oil/Gas Transmission",
+      "Sector": "Public Utilities",
+      "TaxId": 9313136333,
+      "WebSite": "youtube.com",
+      "Email": "dmiell3w@miibeian.gov.cn",
+      "CreatedDate": "2019-01-05T03:16:52Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "iShares iBoxx $ High Yield ex Oil & Gas Corporate Bond ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6447983581,
+      "WebSite": "aol.com",
+      "Email": "emclae3x@tinypic.com",
+      "CreatedDate": "2018-07-04T22:22:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ames National Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 2888004867,
+      "WebSite": "webmd.com",
+      "Email": "jleet3y@cbslocal.com",
+      "CreatedDate": "2018-04-08T08:38:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Neff Corporation",
+      "Industry": "Diversified Commercial Services",
+      "Sector": "Technology",
+      "TaxId": 9919468352,
+      "WebSite": "google.ca",
+      "Email": "pdockrey3z@ustream.tv",
+      "CreatedDate": "2019-02-26T12:42:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Costamare Inc.",
+      "Industry": "Marine Transportation",
+      "Sector": "Transportation",
+      "TaxId": 4927839074,
+      "WebSite": "samsung.com",
+      "Email": "mkasman40@wiley.com",
+      "CreatedDate": "2018-10-05T09:28:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Akebia Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 1863653452,
+      "WebSite": "weather.com",
+      "Email": "gmembry41@yellowbook.com",
+      "CreatedDate": "2019-01-23T08:30:32Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Calpine Corporation",
+      "Industry": "Electric Utilities: Central",
+      "Sector": "Public Utilities",
+      "TaxId": 5043664334,
+      "WebSite": "geocities.jp",
+      "Email": "kfolker42@github.com",
+      "CreatedDate": "2019-02-17T14:22:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Flexion Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 8224944370,
+      "WebSite": "mozilla.com",
+      "Email": "wgoodwins43@arizona.edu",
+      "CreatedDate": "2018-09-24T07:07:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Viacom Inc.",
+      "Industry": "Television Services",
+      "Sector": "Consumer Services",
+      "TaxId": 1043751321,
+      "WebSite": "furl.net",
+      "Email": "wreuter44@cyberchimps.com",
+      "CreatedDate": "2018-07-30T17:51:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Molson Coors Brewing  Company",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3738914332,
+      "WebSite": "independent.co.uk",
+      "Email": "asewart45@naver.com",
+      "CreatedDate": "2018-09-06T17:19:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Molson Coors Brewing  Company",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1560979275,
+      "WebSite": "squidoo.com",
+      "Email": "mcready46@go.com",
+      "CreatedDate": "2018-04-15T00:24:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Summit Financial Group, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 7634571685,
+      "WebSite": "soup.io",
+      "Email": "tdoward47@simplemachines.org",
+      "CreatedDate": "2018-11-11T06:50:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PLDT Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 8242409671,
+      "WebSite": "bloomberg.com",
+      "Email": "lluttger48@kickstarter.com",
+      "CreatedDate": "2018-08-09T23:21:00Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Arc Logistic Partners LP",
+      "Industry": "Oil Refining/Marketing",
+      "Sector": "Energy",
+      "TaxId": 9546647476,
+      "WebSite": "fotki.com",
+      "Email": "fdaniel49@cpanel.net",
+      "CreatedDate": "2018-03-21T15:09:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Assured Guaranty Ltd.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8795454177,
+      "WebSite": "feedburner.com",
+      "Email": "amullender4a@noaa.gov",
+      "CreatedDate": "2019-01-30T14:19:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Liberty Global plc",
+      "Industry": "Television Services",
+      "Sector": "Consumer Services",
+      "TaxId": 7124158872,
+      "WebSite": "pinterest.com",
+      "Email": "dsee4b@linkedin.com",
+      "CreatedDate": "2018-06-27T02:11:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Lombard Medical, Inc.",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 5746161112,
+      "WebSite": "japanpost.jp",
+      "Email": "bcomley4c@archive.org",
+      "CreatedDate": "2018-06-17T03:55:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Quality Care Properties, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 8788857753,
+      "WebSite": "desdev.cn",
+      "Email": "ashand4d@alibaba.com",
+      "CreatedDate": "2019-02-28T22:32:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Weibo Corporation",
+      "Industry": "Computer Software: Programming, Data Processing",
+      "Sector": "Technology",
+      "TaxId": 9535441059,
+      "WebSite": "va.gov",
+      "Email": "hbastable4e@bigcartel.com",
+      "CreatedDate": "2018-04-26T18:41:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Citizens, Inc.",
+      "Industry": "Life Insurance",
+      "Sector": "Finance",
+      "TaxId": 5977901587,
+      "WebSite": "soup.io",
+      "Email": "glimprecht4f@ca.gov",
+      "CreatedDate": "2018-11-26T07:16:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Installed Building Products, Inc.",
+      "Industry": "Homebuilding",
+      "Sector": "Basic Industries",
+      "TaxId": 3617109792,
+      "WebSite": "meetup.com",
+      "Email": "dcrutchley4g@google.it",
+      "CreatedDate": "2018-08-07T18:27:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "The Travelers Companies, Inc.",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 2464619371,
+      "WebSite": "unc.edu",
+      "Email": "cwakeham4h@rediff.com",
+      "CreatedDate": "2018-05-06T20:32:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Hawaiian, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 2867074818,
+      "WebSite": "blog.com",
+      "Email": "cmacknight4i@buzzfeed.com",
+      "CreatedDate": "2018-04-19T21:21:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ossen Innovation Co., Ltd.",
+      "Industry": "Steel/Iron Ore",
+      "Sector": "Basic Industries",
+      "TaxId": 3167022457,
+      "WebSite": "mayoclinic.com",
+      "Email": "tfeldhorn4j@un.org",
+      "CreatedDate": "2018-04-20T06:14:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Berry Global Group, Inc.",
+      "Industry": "Plastic Products",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 7002483771,
+      "WebSite": "wired.com",
+      "Email": "dambresin4k@alibaba.com",
+      "CreatedDate": "2018-12-05T17:13:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Public Storage",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 3269017217,
+      "WebSite": "google.nl",
+      "Email": "vbrandassi4l@slate.com",
+      "CreatedDate": "2018-09-23T05:09:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Aegon NV",
+      "Industry": "Life Insurance",
+      "Sector": "Finance",
+      "TaxId": 8545581420,
+      "WebSite": "themeforest.net",
+      "Email": "slembcke4m@oakley.com",
+      "CreatedDate": "2019-01-06T17:39:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Manhattan Bridge Capital, Inc",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 4608304816,
+      "WebSite": "com.com",
+      "Email": "dcodeman4n@fda.gov",
+      "CreatedDate": "2018-07-26T09:56:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Orrstown Financial Services Inc",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 9022079631,
+      "WebSite": "sourceforge.net",
+      "Email": "lstaniforth4o@ebay.co.uk",
+      "CreatedDate": "2018-04-13T14:30:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Neos Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 4341736584,
+      "WebSite": "spiegel.de",
+      "Email": "vsmitheman4p@slashdot.org",
+      "CreatedDate": "2019-02-19T23:46:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Platform Specialty Products Corporation",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 8173232719,
+      "WebSite": "twitter.com",
+      "Email": "gmertel4q@thetimes.co.uk",
+      "CreatedDate": "2018-05-12T16:48:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CIRCOR International, Inc.",
+      "Industry": "Metal Fabrications",
+      "Sector": "Capital Goods",
+      "TaxId": 8286625123,
+      "WebSite": "vkontakte.ru",
+      "Email": "fcrammy4r@wikimedia.org",
+      "CreatedDate": "2018-09-11T04:43:54Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "INC Research Holdings, Inc.",
+      "Industry": "Biotechnology: Commercial Physical & Biological Resarch",
+      "Sector": "Health Care",
+      "TaxId": 8248264041,
+      "WebSite": "netlog.com",
+      "Email": "tsiggery4s@chicagotribune.com",
+      "CreatedDate": "2018-07-13T13:36:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VALE S.A.",
+      "Industry": "Precious Metals",
+      "Sector": "Basic Industries",
+      "TaxId": 3053840286,
+      "WebSite": "nature.com",
+      "Email": "tannetts4t@umich.edu",
+      "CreatedDate": "2018-09-08T10:34:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Insight Enterprises, Inc.",
+      "Industry": "Catalog/Specialty Distribution",
+      "Sector": "Consumer Services",
+      "TaxId": 2111961737,
+      "WebSite": "wisc.edu",
+      "Email": "gkeinrat4u@multiply.com",
+      "CreatedDate": "2018-11-28T01:45:22Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Sprouts Farmers Market, Inc.",
+      "Industry": "Food Chains",
+      "Sector": "Consumer Services",
+      "TaxId": 7002231546,
+      "WebSite": "hugedomains.com",
+      "Email": "gbiaggioli4v@gnu.org",
+      "CreatedDate": "2018-11-16T07:56:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ENSCO plc",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 4995647461,
+      "WebSite": "ovh.net",
+      "Email": "twoodrup4w@businessweek.com",
+      "CreatedDate": "2018-09-03T02:18:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "United Fire Group, Inc",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 8862403863,
+      "WebSite": "miitbeian.gov.cn",
+      "Email": "pmccann4x@mediafire.com",
+      "CreatedDate": "2019-01-09T12:09:31Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nuveen S&P 500 Dynamic Overwrite Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 5880326018,
+      "WebSite": "foxnews.com",
+      "Email": "dwatchorn4y@umich.edu",
+      "CreatedDate": "2018-10-24T00:47:55Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Lantronix, Inc.",
+      "Industry": "Computer Communications Equipment",
+      "Sector": "Technology",
+      "TaxId": 5170910210,
+      "WebSite": "simplemachines.org",
+      "Email": "jickeringill4z@domainmarket.com",
+      "CreatedDate": "2018-05-13T18:13:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Famous Dave&#39;s of America, Inc.",
+      "Industry": "Restaurants",
+      "Sector": "Consumer Services",
+      "TaxId": 8257387633,
+      "WebSite": "com.com",
+      "Email": "fwearne50@newsvine.com",
+      "CreatedDate": "2018-07-25T05:20:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Turkcell Iletisim Hizmetleri AS",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 6621252656,
+      "WebSite": "amazon.de",
+      "Email": "aruste51@bloglines.com",
+      "CreatedDate": "2018-06-29T18:26:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Encore Wire Corporation",
+      "Industry": "Metal Fabrications",
+      "Sector": "Capital Goods",
+      "TaxId": 6557013671,
+      "WebSite": "tuttocitta.it",
+      "Email": "vkemetz52@biglobe.ne.jp",
+      "CreatedDate": "2019-03-08T07:18:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Weibo Corporation",
+      "Industry": "Computer Software: Programming, Data Processing",
+      "Sector": "Technology",
+      "TaxId": 3532900722,
+      "WebSite": "canalblog.com",
+      "Email": "ccanedo53@wisc.edu",
+      "CreatedDate": "2018-05-31T10:18:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "NCI, Inc.",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 7177781663,
+      "WebSite": "creativecommons.org",
+      "Email": "nmelly54@wikispaces.com",
+      "CreatedDate": "2018-05-04T04:39:50Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Good Times Restaurants Inc.",
+      "Industry": "Restaurants",
+      "Sector": "Consumer Services",
+      "TaxId": 4742961721,
+      "WebSite": "ow.ly",
+      "Email": "jcarncross55@themeforest.net",
+      "CreatedDate": "2018-11-22T16:39:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Annaly Capital Management Inc",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3906260238,
+      "WebSite": "nsw.gov.au",
+      "Email": "rgibard56@canalblog.com",
+      "CreatedDate": "2018-07-23T05:48:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "NCS Multistage Holdings, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3952528730,
+      "WebSite": "ow.ly",
+      "Email": "sbridat57@disqus.com",
+      "CreatedDate": "2018-03-28T16:44:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Tilly&#39;s, Inc.",
+      "Industry": "Clothing/Shoe/Accessory Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 5456101617,
+      "WebSite": "si.edu",
+      "Email": "dfilisov58@tmall.com",
+      "CreatedDate": "2018-10-09T02:55:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cross Timbers Royalty Trust",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 9648536431,
+      "WebSite": "imdb.com",
+      "Email": "griccioppo59@comsenz.com",
+      "CreatedDate": "2019-02-21T05:55:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Citigroup Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9766256060,
+      "WebSite": "vk.com",
+      "Email": "rhourigan5a@rakuten.co.jp",
+      "CreatedDate": "2019-02-09T08:12:00Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "RCI Hospitality Holdings, Inc.",
+      "Industry": "Restaurants",
+      "Sector": "Consumer Services",
+      "TaxId": 6713667311,
+      "WebSite": "irs.gov",
+      "Email": "jfidge5b@privacy.gov.au",
+      "CreatedDate": "2018-10-10T19:31:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Transportadora De Gas Sa Ord B",
+      "Industry": "Natural Gas Distribution",
+      "Sector": "Public Utilities",
+      "TaxId": 6412133087,
+      "WebSite": "domainmarket.com",
+      "Email": "ctubby5c@boston.com",
+      "CreatedDate": "2018-12-13T11:10:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Asbury Automotive Group Inc",
+      "Industry": "Automotive Aftermarket",
+      "Sector": "Consumer Durables",
+      "TaxId": 4375833742,
+      "WebSite": "behance.net",
+      "Email": "ageaney5d@example.com",
+      "CreatedDate": "2018-04-06T15:52:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "AMERIPRISE FINANCIAL SERVICES, INC.",
+      "Industry": "Investment Managers",
+      "Sector": "Finance",
+      "TaxId": 7516608143,
+      "WebSite": "bandcamp.com",
+      "Email": "pcaslett5e@purevolume.com",
+      "CreatedDate": "2019-02-22T07:48:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "American Public Education, Inc.",
+      "Industry": "Other Consumer Services",
+      "Sector": "Consumer Services",
+      "TaxId": 6359493916,
+      "WebSite": "answers.com",
+      "Email": "kbrimilcombe5f@taobao.com",
+      "CreatedDate": "2018-05-16T01:22:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Colony Starwood Homes",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 5553239597,
+      "WebSite": "netlog.com",
+      "Email": "voreilly5g@opensource.org",
+      "CreatedDate": "2018-04-29T17:01:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "National Health Investors, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 2926934275,
+      "WebSite": "drupal.org",
+      "Email": "tgentsch5h@devhub.com",
+      "CreatedDate": "2018-04-14T10:10:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Limbach Holdings, Inc.",
+      "Industry": "Engineering & Construction",
+      "Sector": "Basic Industries",
+      "TaxId": 1939524060,
+      "WebSite": "moonfruit.com",
+      "Email": "bsink5i@ft.com",
+      "CreatedDate": "2019-02-12T16:36:18Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Triumph Group, Inc.",
+      "Industry": "Aerospace",
+      "Sector": "Capital Goods",
+      "TaxId": 6662494848,
+      "WebSite": "msn.com",
+      "Email": "bstockle5j@prweb.com",
+      "CreatedDate": "2018-09-02T06:10:01Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Senomyx, Inc.",
+      "Industry": "Biotechnology: Commercial Physical & Biological Resarch",
+      "Sector": "Health Care",
+      "TaxId": 4400092914,
+      "WebSite": "istockphoto.com",
+      "Email": "kramel5k@mozilla.org",
+      "CreatedDate": "2018-07-11T16:00:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Trimble Inc.",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Capital Goods",
+      "TaxId": 2689969335,
+      "WebSite": "gmpg.org",
+      "Email": "ccraisford5l@bloglines.com",
+      "CreatedDate": "2019-01-01T00:49:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "The Hain Celestial Group, Inc.",
+      "Industry": "Packaged Foods",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 1268634542,
+      "WebSite": "arstechnica.com",
+      "Email": "devangelinos5m@tiny.cc",
+      "CreatedDate": "2018-07-08T00:16:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Primo Water Corporation",
+      "Industry": "Food Distributors",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 3297712117,
+      "WebSite": "google.ru",
+      "Email": "tmorshead5n@sphinn.com",
+      "CreatedDate": "2019-02-20T13:34:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Synthesis Energy Systems, Inc.",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 5808748436,
+      "WebSite": "pinterest.com",
+      "Email": "ksweedland5o@php.net",
+      "CreatedDate": "2019-01-02T14:52:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Highpower International Inc",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Miscellaneous",
+      "TaxId": 5411349722,
+      "WebSite": "wordpress.org",
+      "Email": "cwyllie5p@zimbio.com",
+      "CreatedDate": "2018-06-07T05:03:52Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BRF S.A.",
+      "Industry": "Meat/Poultry/Fish",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 1003664083,
+      "WebSite": "msn.com",
+      "Email": "kgofforth5q@dropbox.com",
+      "CreatedDate": "2018-12-17T13:09:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Bank of Hawaii Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 4135410789,
+      "WebSite": "istockphoto.com",
+      "Email": "nsteeden5r@amazon.com",
+      "CreatedDate": "2018-05-12T00:13:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Customers Bancorp, Inc",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2762459297,
+      "WebSite": "jugem.jp",
+      "Email": "vwindrum5s@cloudflare.com",
+      "CreatedDate": "2018-04-20T19:52:14Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Dell Technologies Inc.",
+      "Industry": "Computer Manufacturing",
+      "Sector": "Technology",
+      "TaxId": 6911727481,
+      "WebSite": "uol.com.br",
+      "Email": "nlammerts5t@msn.com",
+      "CreatedDate": "2019-02-20T21:34:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "TIER REIT, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 3476043212,
+      "WebSite": "phpbb.com",
+      "Email": "smitkin5u@nytimes.com",
+      "CreatedDate": "2018-09-25T13:42:45Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Jupai Holdings Limited",
+      "Industry": "Other Consumer Services",
+      "Sector": "Consumer Services",
+      "TaxId": 1654401078,
+      "WebSite": "redcross.org",
+      "Email": "lmcilhagga5v@last.fm",
+      "CreatedDate": "2018-11-21T05:21:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Navient Corporation",
+      "Industry": "Finance: Consumer Services",
+      "Sector": "Finance",
+      "TaxId": 4206916555,
+      "WebSite": "qq.com",
+      "Email": "ocrossland5w@sphinn.com",
+      "CreatedDate": "2018-08-19T18:10:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Student Transportation Inc",
+      "Industry": "Other Transportation",
+      "Sector": "Transportation",
+      "TaxId": 4762855049,
+      "WebSite": "360.cn",
+      "Email": "toubridge5x@dagondesign.com",
+      "CreatedDate": "2018-04-17T00:48:45Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Nasdaq Oil & Gas ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6272723917,
+      "WebSite": "stanford.edu",
+      "Email": "lschmuhl5y@so-net.ne.jp",
+      "CreatedDate": "2018-08-14T20:15:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust China AlphaDEX Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6216145775,
+      "WebSite": "hostgator.com",
+      "Email": "llorie5z@desdev.cn",
+      "CreatedDate": "2018-04-14T02:54:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PayPal Holdings, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 2838735174,
+      "WebSite": "lulu.com",
+      "Email": "voliphard60@clickbank.net",
+      "CreatedDate": "2018-12-24T04:48:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "EQT GP Holdings, LP",
+      "Industry": "Natural Gas Distribution",
+      "Sector": "Public Utilities",
+      "TaxId": 6298160414,
+      "WebSite": "kickstarter.com",
+      "Email": "hcleator61@artisteer.com",
+      "CreatedDate": "2018-11-22T05:35:45Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "EnLink Midstream Partners, LP",
+      "Industry": "Natural Gas Distribution",
+      "Sector": "Public Utilities",
+      "TaxId": 8233275208,
+      "WebSite": "printfriendly.com",
+      "Email": "gramlot62@friendfeed.com",
+      "CreatedDate": "2019-02-23T10:28:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gap, Inc. (The)",
+      "Industry": "Clothing/Shoe/Accessory Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 3422504446,
+      "WebSite": "cdbaby.com",
+      "Email": "ibarson63@patch.com",
+      "CreatedDate": "2018-06-03T03:16:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "The Bancorp, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 3928999006,
+      "WebSite": "sina.com.cn",
+      "Email": "jfetter64@goo.ne.jp",
+      "CreatedDate": "2018-08-15T10:31:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Rockwell Medical, Inc.",
+      "Industry": "Biotechnology: Electromedical & Electrotherapeutic Apparatus",
+      "Sector": "Health Care",
+      "TaxId": 4282798226,
+      "WebSite": "mysql.com",
+      "Email": "wwycherley65@cisco.com",
+      "CreatedDate": "2019-01-01T06:42:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eastman Kodak Company",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1410876508,
+      "WebSite": "dagondesign.com",
+      "Email": "lskoggins66@vimeo.com",
+      "CreatedDate": "2018-08-01T07:53:22Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nicolet Bankshares Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 4075109709,
+      "WebSite": "businessweek.com",
+      "Email": "bbussens67@homestead.com",
+      "CreatedDate": "2018-05-23T16:13:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Pluristem Therapeutics, Inc.",
+      "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+      "Sector": "Health Care",
+      "TaxId": 3882573197,
+      "WebSite": "freewebs.com",
+      "Email": "whaith68@adobe.com",
+      "CreatedDate": "2018-05-05T21:07:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Consolidated Water Co. Ltd.",
+      "Industry": "Water Supply",
+      "Sector": "Public Utilities",
+      "TaxId": 3404562689,
+      "WebSite": "studiopress.com",
+      "Email": "ljiggens69@paginegialle.it",
+      "CreatedDate": "2018-12-21T18:30:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "EV Energy Partners, L.P.",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 5237379524,
+      "WebSite": "dot.gov",
+      "Email": "ecowherd6a@jalbum.net",
+      "CreatedDate": "2018-06-29T03:03:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Protective Life Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6891422134,
+      "WebSite": "arizona.edu",
+      "Email": "fhenrys6b@msu.edu",
+      "CreatedDate": "2018-04-09T12:27:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Globus Medical, Inc.",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 9169823975,
+      "WebSite": "umn.edu",
+      "Email": "bmitcheson6c@uiuc.edu",
+      "CreatedDate": "2018-08-17T09:55:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Easterly Government Properties, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 9776573372,
+      "WebSite": "sphinn.com",
+      "Email": "dganter6d@marketwatch.com",
+      "CreatedDate": "2018-06-07T09:48:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "HFF, Inc.",
+      "Industry": "Real Estate",
+      "Sector": "Consumer Services",
+      "TaxId": 1958672319,
+      "WebSite": "cdbaby.com",
+      "Email": "nlayzell6e@apache.org",
+      "CreatedDate": "2018-10-17T16:50:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ross Stores, Inc.",
+      "Industry": "Clothing/Shoe/Accessory Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 2205378138,
+      "WebSite": "nhs.uk",
+      "Email": "nscothern6f@geocities.com",
+      "CreatedDate": "2018-07-04T02:45:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "LATAM Airlines Group S.A.",
+      "Industry": "Air Freight/Delivery Services",
+      "Sector": "Transportation",
+      "TaxId": 3676112222,
+      "WebSite": "army.mil",
+      "Email": "whaffner6g@hc360.com",
+      "CreatedDate": "2018-08-28T16:23:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Senior Housing Properties Trust",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 7983805203,
+      "WebSite": "yale.edu",
+      "Email": "eknoton6h@bbc.co.uk",
+      "CreatedDate": "2018-04-17T01:22:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "New Home Company Inc. (The)",
+      "Industry": "Homebuilding",
+      "Sector": "Capital Goods",
+      "TaxId": 4890432164,
+      "WebSite": "cafepress.com",
+      "Email": "rallcott6i@washingtonpost.com",
+      "CreatedDate": "2019-01-27T15:56:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "MFS Municipal Income Trust",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3261666085,
+      "WebSite": "sohu.com",
+      "Email": "ovarey6j@loc.gov",
+      "CreatedDate": "2018-09-24T16:12:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Government Properties Income Trust",
+      "Industry": "Real Estate",
+      "Sector": "Finance",
+      "TaxId": 4301205382,
+      "WebSite": "ted.com",
+      "Email": "fkarolovsky6k@boston.com",
+      "CreatedDate": "2018-12-23T16:09:01Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "KB Home",
+      "Industry": "Homebuilding",
+      "Sector": "Capital Goods",
+      "TaxId": 5096180104,
+      "WebSite": "phoca.cz",
+      "Email": "wpeaseman6l@qq.com",
+      "CreatedDate": "2018-08-31T03:38:07Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Stellus Capital Investment Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4869969407,
+      "WebSite": "prnewswire.com",
+      "Email": "bartus6m@themeforest.net",
+      "CreatedDate": "2018-05-22T06:17:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Grana y Montero S.A.A.",
+      "Industry": "Military/Government/Technical",
+      "Sector": "Basic Industries",
+      "TaxId": 9705369585,
+      "WebSite": "chronoengine.com",
+      "Email": "hhunnaball6n@google.com",
+      "CreatedDate": "2019-01-31T13:25:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "iRobot Corporation",
+      "Industry": "Consumer Electronics/Appliances",
+      "Sector": "Consumer Durables",
+      "TaxId": 1510934026,
+      "WebSite": "hhs.gov",
+      "Email": "ltrusler6o@fema.gov",
+      "CreatedDate": "2019-02-21T20:22:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Applied Optoelectronics, Inc.",
+      "Industry": "Semiconductors",
+      "Sector": "Technology",
+      "TaxId": 8547187764,
+      "WebSite": "furl.net",
+      "Email": "pnardrup6p@123-reg.co.uk",
+      "CreatedDate": "2018-12-02T00:09:07Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Anthem, Inc.",
+      "Industry": "Medical Specialities",
+      "Sector": "Health Care",
+      "TaxId": 3771341191,
+      "WebSite": "wordpress.org",
+      "Email": "fcraddy6q@google.com",
+      "CreatedDate": "2018-07-01T12:59:18Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Saul Centers, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 7311411897,
+      "WebSite": "mapquest.com",
+      "Email": "bvanderkruijs6r@bizjournals.com",
+      "CreatedDate": "2019-02-03T11:58:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ConocoPhillips",
+      "Industry": "Integrated oil Companies",
+      "Sector": "Energy",
+      "TaxId": 9815227023,
+      "WebSite": "dion.ne.jp",
+      "Email": "asparsholt6s@oakley.com",
+      "CreatedDate": "2018-04-22T15:26:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Industrial Services of America, Inc.",
+      "Industry": "Industrial Specialties",
+      "Sector": "Consumer Durables",
+      "TaxId": 6315739166,
+      "WebSite": "plala.or.jp",
+      "Email": "borneles6t@nature.com",
+      "CreatedDate": "2019-02-23T00:25:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PowerShares DWA Utilities Momentum Portfolio",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2832901280,
+      "WebSite": "army.mil",
+      "Email": "jsapsforde6u@mashable.com",
+      "CreatedDate": "2018-10-20T12:15:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "J. Jill, Inc.",
+      "Industry": "Apparel",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 9546825377,
+      "WebSite": "twitter.com",
+      "Email": "knaulty6v@huffingtonpost.com",
+      "CreatedDate": "2019-03-09T02:40:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "WESCO International, Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 4569389296,
+      "WebSite": "wikimedia.org",
+      "Email": "oofen6w@joomla.org",
+      "CreatedDate": "2018-07-11T19:37:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Onconova Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 6532651707,
+      "WebSite": "example.com",
+      "Email": "amackibbon6x@technorati.com",
+      "CreatedDate": "2018-11-03T06:58:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Spirit Realty Capital, Inc.",
+      "Industry": "Building operators",
+      "Sector": "Consumer Services",
+      "TaxId": 9162845092,
+      "WebSite": "paginegialle.it",
+      "Email": "jsaur6y@infoseek.co.jp",
+      "CreatedDate": "2018-05-01T23:33:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Citizens First Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 6232853694,
+      "WebSite": "t-online.de",
+      "Email": "ptethcote6z@wordpress.org",
+      "CreatedDate": "2018-12-06T01:21:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Asia Pacific Ex-Japan AlphaDEX Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2251492576,
+      "WebSite": "multiply.com",
+      "Email": "mpenketh70@so-net.ne.jp",
+      "CreatedDate": "2018-11-15T08:56:52Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Large Cap Core AlphaDEX Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8436862330,
+      "WebSite": "census.gov",
+      "Email": "anoteyoung71@boston.com",
+      "CreatedDate": "2019-02-12T17:34:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Andina Acquisition Corp. II",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 5719032686,
+      "WebSite": "economist.com",
+      "Email": "hjarman72@apple.com",
+      "CreatedDate": "2019-01-29T16:23:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CMS Energy Corporation",
+      "Industry": "Power Generation",
+      "Sector": "Public Utilities",
+      "TaxId": 4326691669,
+      "WebSite": "deliciousdays.com",
+      "Email": "kladdle73@yahoo.co.jp",
+      "CreatedDate": "2018-10-20T02:45:33Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Citigroup Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 3712205878,
+      "WebSite": "woothemes.com",
+      "Email": "bhards74@comsenz.com",
+      "CreatedDate": "2018-09-01T16:41:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vishay Intertechnology, Inc.",
+      "Industry": "Electrical Products",
+      "Sector": "Capital Goods",
+      "TaxId": 8310534706,
+      "WebSite": "howstuffworks.com",
+      "Email": "feggins75@rambler.ru",
+      "CreatedDate": "2018-05-31T09:15:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CBS Corporation",
+      "Industry": "Broadcasting",
+      "Sector": "Consumer Services",
+      "TaxId": 4967677680,
+      "WebSite": "sitemeter.com",
+      "Email": "gdetheridge76@google.com",
+      "CreatedDate": "2018-09-22T05:09:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Universal Stainless & Alloy Products, Inc.",
+      "Industry": "Steel/Iron Ore",
+      "Sector": "Basic Industries",
+      "TaxId": 6971936665,
+      "WebSite": "yellowbook.com",
+      "Email": "bhaquin77@foxnews.com",
+      "CreatedDate": "2018-05-24T02:37:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Community Health Systems, Inc.",
+      "Industry": "Hospital/Nursing Management",
+      "Sector": "Health Care",
+      "TaxId": 5881157207,
+      "WebSite": "aboutads.info",
+      "Email": "dsiddall78@oakley.com",
+      "CreatedDate": "2018-09-24T21:13:32Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Spherix Incorporated",
+      "Industry": "Multi-Sector Companies",
+      "Sector": "Miscellaneous",
+      "TaxId": 6799639958,
+      "WebSite": "ifeng.com",
+      "Email": "dbearward79@deviantart.com",
+      "CreatedDate": "2018-08-31T16:34:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ORBCOMM Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Consumer Services",
+      "TaxId": 2348729115,
+      "WebSite": "ihg.com",
+      "Email": "vferrierio7a@freewebs.com",
+      "CreatedDate": "2018-04-22T05:19:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "SeaSpine Holdings Corporation",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 6550724657,
+      "WebSite": "cargocollective.com",
+      "Email": "jmackey7b@upenn.edu",
+      "CreatedDate": "2018-12-19T04:15:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Tesla, Inc. ",
+      "Industry": "Auto Manufacturing",
+      "Sector": "Capital Goods",
+      "TaxId": 5321933512,
+      "WebSite": "bluehost.com",
+      "Email": "rurry7c@theatlantic.com",
+      "CreatedDate": "2018-07-16T13:13:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "U.S. Auto Parts Network, Inc.",
+      "Industry": "Other Specialty Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 4983946786,
+      "WebSite": "cocolog-nifty.com",
+      "Email": "jmaclaughlin7d@so-net.ne.jp",
+      "CreatedDate": "2019-01-15T13:32:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Forum Merger Corporation",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 8910538138,
+      "WebSite": "storify.com",
+      "Email": "gkohlert7e@toplist.cz",
+      "CreatedDate": "2018-07-16T20:58:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Qorvo, Inc.",
+      "Industry": "Semiconductors",
+      "Sector": "Technology",
+      "TaxId": 2933318586,
+      "WebSite": "tinyurl.com",
+      "Email": "rsibille7f@bloglovin.com",
+      "CreatedDate": "2019-03-07T05:11:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Wilhelmina International, Inc.",
+      "Industry": "Professional Services",
+      "Sector": "Consumer Services",
+      "TaxId": 4233696313,
+      "WebSite": "nydailynews.com",
+      "Email": "cjedrych7g@facebook.com",
+      "CreatedDate": "2018-06-23T22:47:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Fortinet, Inc.",
+      "Industry": "Computer peripheral equipment",
+      "Sector": "Technology",
+      "TaxId": 6438420687,
+      "WebSite": "yahoo.co.jp",
+      "Email": "meddolls7h@smugmug.com",
+      "CreatedDate": "2018-10-08T01:00:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Patrick Industries, Inc.",
+      "Industry": "Forest Products",
+      "Sector": "Basic Industries",
+      "TaxId": 8848689358,
+      "WebSite": "redcross.org",
+      "Email": "eguerreau7i@dailymail.co.uk",
+      "CreatedDate": "2018-09-12T06:03:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "American Homes 4 Rent",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1778408321,
+      "WebSite": "sourceforge.net",
+      "Email": "wmcelane7j@yandex.ru",
+      "CreatedDate": "2018-10-04T00:03:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Tantech Holdings Ltd.",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 6958151593,
+      "WebSite": "bing.com",
+      "Email": "fexer7k@google.de",
+      "CreatedDate": "2018-11-15T04:23:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "QIWI plc",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 1649182976,
+      "WebSite": "discovery.com",
+      "Email": "wwiggington7l@rediff.com",
+      "CreatedDate": "2018-09-15T17:49:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Loncar Cancer Immunotherapy ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8177831391,
+      "WebSite": "java.com",
+      "Email": "siacobassi7m@ftc.gov",
+      "CreatedDate": "2019-02-01T07:33:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vectrus, Inc.",
+      "Industry": "Diversified Commercial Services",
+      "Sector": "Consumer Services",
+      "TaxId": 6646714911,
+      "WebSite": "pen.io",
+      "Email": "cguerrin7n@slate.com",
+      "CreatedDate": "2019-02-27T09:22:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Corporate Office Properties Trust",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 5825685105,
+      "WebSite": "symantec.com",
+      "Email": "ldiamant7o@nyu.edu",
+      "CreatedDate": "2018-10-28T16:06:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VictoryShares Emerging Market Volatility Wtd ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 5607587925,
+      "WebSite": "sun.com",
+      "Email": "jdiemer7p@shutterfly.com",
+      "CreatedDate": "2018-12-26T17:38:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Marriott International",
+      "Industry": "Hotels/Resorts",
+      "Sector": "Consumer Services",
+      "TaxId": 7366323301,
+      "WebSite": "jalbum.net",
+      "Email": "mber7q@dell.com",
+      "CreatedDate": "2018-04-02T10:12:38Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Public Storage",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 6258775181,
+      "WebSite": "ca.gov",
+      "Email": "bkornacki7r@freewebs.com",
+      "CreatedDate": "2018-08-21T16:10:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ARCA biopharma, Inc.",
+      "Industry": "Biotechnology: In Vitro & In Vivo Diagnostic Substances",
+      "Sector": "Health Care",
+      "TaxId": 3580101677,
+      "WebSite": "goodreads.com",
+      "Email": "bstuchbury7s@360.cn",
+      "CreatedDate": "2018-03-22T10:19:20Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Republic Bancorp, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 4256193524,
+      "WebSite": "state.gov",
+      "Email": "wkydd7t@dyndns.org",
+      "CreatedDate": "2018-05-02T07:39:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "West Bancorporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 7919066677,
+      "WebSite": "adobe.com",
+      "Email": "ygayton7u@ehow.com",
+      "CreatedDate": "2019-03-13T10:35:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Banco Latinoamericano de Comercio Exterior, S.A.",
+      "Industry": "Commercial Banks",
+      "Sector": "Finance",
+      "TaxId": 5680162311,
+      "WebSite": "csmonitor.com",
+      "Email": "ayglesia7v@histats.com",
+      "CreatedDate": "2019-03-13T22:08:01Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nuveen Insured New York Select Tax-Free Income Portfolio",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6932023385,
+      "WebSite": "dion.ne.jp",
+      "Email": "sbotwright7w@hubpages.com",
+      "CreatedDate": "2019-01-08T06:50:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Woodward, Inc.",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Energy",
+      "TaxId": 3812930653,
+      "WebSite": "github.com",
+      "Email": "aocurran7x@blogs.com",
+      "CreatedDate": "2018-07-12T22:42:52Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Roka Bioscience, Inc.",
+      "Industry": "Biotechnology: Laboratory Analytical Instruments",
+      "Sector": "Capital Goods",
+      "TaxId": 9969255427,
+      "WebSite": "amazon.de",
+      "Email": "oluetkemeyers7y@techcrunch.com",
+      "CreatedDate": "2018-07-13T02:48:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ligand Pharmaceuticals Incorporated",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 9347026388,
+      "WebSite": "mit.edu",
+      "Email": "omearing7z@jigsy.com",
+      "CreatedDate": "2018-06-08T05:05:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "MSA Safety Incorporporated",
+      "Industry": "Industrial Specialties",
+      "Sector": "Health Care",
+      "TaxId": 8953402104,
+      "WebSite": "histats.com",
+      "Email": "ydugmore80@comcast.net",
+      "CreatedDate": "2018-10-12T23:51:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Brinker International, Inc.",
+      "Industry": "Restaurants",
+      "Sector": "Consumer Services",
+      "TaxId": 5156642356,
+      "WebSite": "163.com",
+      "Email": "atorres81@vkontakte.ru",
+      "CreatedDate": "2018-05-31T07:15:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Clear Channel Outdoor Holdings, Inc.",
+      "Industry": "Advertising",
+      "Sector": "Consumer Services",
+      "TaxId": 7757680938,
+      "WebSite": "deviantart.com",
+      "Email": "bcalabry82@loc.gov",
+      "CreatedDate": "2018-03-28T22:05:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Wheeler Real Estate Investment Trust, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 4518712667,
+      "WebSite": "dyndns.org",
+      "Email": "lmulmuray83@t.co",
+      "CreatedDate": "2018-08-12T00:37:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Spark Therapeutics, Inc.",
+      "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+      "Sector": "Health Care",
+      "TaxId": 2651833985,
+      "WebSite": "wsj.com",
+      "Email": "aschoenrock84@latimes.com",
+      "CreatedDate": "2018-10-15T16:08:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Embotelladora Andina S.A.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8410210999,
+      "WebSite": "uiuc.edu",
+      "Email": "elowthian85@telegraph.co.uk",
+      "CreatedDate": "2018-11-24T15:32:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gores Holdings II, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 6622808864,
+      "WebSite": "cafepress.com",
+      "Email": "apopplestone86@nyu.edu",
+      "CreatedDate": "2018-07-05T07:12:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ellington Financial LLC",
+      "Industry": "Real Estate",
+      "Sector": "Finance",
+      "TaxId": 1533358374,
+      "WebSite": "nbcnews.com",
+      "Email": "hgilmour87@rediff.com",
+      "CreatedDate": "2019-01-15T00:20:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Changyou.com Limited",
+      "Industry": "Computer Software: Prepackaged Software",
+      "Sector": "Technology",
+      "TaxId": 9552153384,
+      "WebSite": "yahoo.co.jp",
+      "Email": "hprestidge88@imgur.com",
+      "CreatedDate": "2018-10-03T19:01:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "MFC Bancorp Ltd.",
+      "Industry": "Commercial Banks",
+      "Sector": "Finance",
+      "TaxId": 1208433646,
+      "WebSite": "istockphoto.com",
+      "Email": "eblackborn89@artisteer.com",
+      "CreatedDate": "2018-09-22T07:47:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Barington/Hilco Acquisition Corp.",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 6449690877,
+      "WebSite": "discuz.net",
+      "Email": "smarshall8a@qq.com",
+      "CreatedDate": "2018-04-23T12:32:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "TELUS Corporation",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 9538195200,
+      "WebSite": "icq.com",
+      "Email": "tpond8b@miitbeian.gov.cn",
+      "CreatedDate": "2018-04-26T12:45:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Community Health Systems, Inc.",
+      "Industry": "Hospital/Nursing Management",
+      "Sector": "Health Care",
+      "TaxId": 4010865677,
+      "WebSite": "posterous.com",
+      "Email": "cforster8c@baidu.com",
+      "CreatedDate": "2018-05-21T15:21:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "VelocityShares 3x Inverse Gold ETN",
+      "Industry": "Investment Bankers/Brokers/Service",
+      "Sector": "Finance",
+      "TaxId": 2434095376,
+      "WebSite": "posterous.com",
+      "Email": "mmee8d@creativecommons.org",
+      "CreatedDate": "2018-09-30T08:38:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vanguard Russell 2000 ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3240701795,
+      "WebSite": "goodreads.com",
+      "Email": "eportail8e@w3.org",
+      "CreatedDate": "2018-06-08T17:52:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "American Homes 4 Rent",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1797284568,
+      "WebSite": "addtoany.com",
+      "Email": "iwhapples8f@usda.gov",
+      "CreatedDate": "2018-07-30T03:25:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ClearOne, Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 5706421057,
+      "WebSite": "imageshack.us",
+      "Email": "birwin8g@unesco.org",
+      "CreatedDate": "2018-07-20T01:28:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Banco Santander, S.A.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8407646804,
+      "WebSite": "ocn.ne.jp",
+      "Email": "tbeckles8h@moonfruit.com",
+      "CreatedDate": "2018-04-19T23:23:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Galena Biopharma, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 9642177884,
+      "WebSite": "soup.io",
+      "Email": "ceymor8i@bandcamp.com",
+      "CreatedDate": "2018-12-14T21:07:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Atwood Oceanics, Inc.",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 2624845915,
+      "WebSite": "amazon.com",
+      "Email": "hmcdermott8j@ucsd.edu",
+      "CreatedDate": "2019-02-11T03:13:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Blueknight Energy Partners L.P., L.L.C.",
+      "Industry": "Natural Gas Distribution",
+      "Sector": "Energy",
+      "TaxId": 9866678102,
+      "WebSite": "webeden.co.uk",
+      "Email": "rerbe8k@digg.com",
+      "CreatedDate": "2019-03-12T14:17:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Planet Payment, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 6172737125,
+      "WebSite": "liveinternet.ru",
+      "Email": "flucchi8l@imgur.com",
+      "CreatedDate": "2018-04-06T00:57:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BlackRock Income Trust Inc. (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1163151906,
+      "WebSite": "networksolutions.com",
+      "Email": "civanov8m@cam.ac.uk",
+      "CreatedDate": "2018-04-26T16:50:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Aratana Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 8602534699,
+      "WebSite": "google.es",
+      "Email": "bcostar8n@wisc.edu",
+      "CreatedDate": "2019-03-01T08:59:33Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Fidelity National Financial, Inc.",
+      "Industry": "Specialty Insurers",
+      "Sector": "Finance",
+      "TaxId": 3995872221,
+      "WebSite": "smh.com.au",
+      "Email": "jmanwell8o@t-online.de",
+      "CreatedDate": "2018-05-22T19:09:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BRT Apartments Corp.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 2172582290,
+      "WebSite": "bbc.co.uk",
+      "Email": "sniessen8p@fc2.com",
+      "CreatedDate": "2018-10-17T01:55:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CPI Card Group Inc.",
+      "Industry": "Finance Companies",
+      "Sector": "Finance",
+      "TaxId": 6339205387,
+      "WebSite": "ft.com",
+      "Email": "dumpleby8q@woothemes.com",
+      "CreatedDate": "2018-11-30T02:29:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Wynn Resorts, Limited",
+      "Industry": "Hotels/Resorts",
+      "Sector": "Consumer Services",
+      "TaxId": 4028487162,
+      "WebSite": "toplist.cz",
+      "Email": "fdigg8r@topsy.com",
+      "CreatedDate": "2018-06-19T19:14:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Valley National Bancorp",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 9265364655,
+      "WebSite": "bbc.co.uk",
+      "Email": "pmahy8s@sakura.ne.jp",
+      "CreatedDate": "2018-06-26T16:04:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Stanley Furniture Company, Inc.",
+      "Industry": "Home Furnishings",
+      "Sector": "Consumer Durables",
+      "TaxId": 3658302303,
+      "WebSite": "edublogs.org",
+      "Email": "gfelip8t@people.com.cn",
+      "CreatedDate": "2018-12-19T05:18:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cypress Energy Partners, L.P.",
+      "Industry": "Oilfield Services/Equipment",
+      "Sector": "Energy",
+      "TaxId": 9955082956,
+      "WebSite": "weibo.com",
+      "Email": "jcopozio8u@oaic.gov.au",
+      "CreatedDate": "2018-10-28T18:32:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Anworth Mortgage Asset  Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6089768831,
+      "WebSite": "mayoclinic.com",
+      "Email": "dodell8v@desdev.cn",
+      "CreatedDate": "2018-12-19T23:51:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "AGNC Investment Corp.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 2247987936,
+      "WebSite": "usgs.gov",
+      "Email": "rhandford8w@infoseek.co.jp",
+      "CreatedDate": "2018-05-29T14:06:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "DISH Network Corporation",
+      "Industry": "Television Services",
+      "Sector": "Consumer Services",
+      "TaxId": 5753983822,
+      "WebSite": "ow.ly",
+      "Email": "vmolan8x@studiopress.com",
+      "CreatedDate": "2018-11-01T04:27:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "National Commerce Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 8282965134,
+      "WebSite": "jugem.jp",
+      "Email": "vstruttman8y@blogspot.com",
+      "CreatedDate": "2018-04-22T01:46:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Destination Maternity Corporation",
+      "Industry": "Clothing/Shoe/Accessory Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 6939141116,
+      "WebSite": "sourceforge.net",
+      "Email": "fgillow8z@google.cn",
+      "CreatedDate": "2018-06-29T12:25:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eaton Vance Enhanced Equity Income Fund II",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4889524359,
+      "WebSite": "boston.com",
+      "Email": "rferns90@theglobeandmail.com",
+      "CreatedDate": "2018-09-30T23:55:00Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "West Corporation",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 9887648526,
+      "WebSite": "themeforest.net",
+      "Email": "bboness91@yolasite.com",
+      "CreatedDate": "2018-05-16T07:04:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "TCF Financial Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 7403922043,
+      "WebSite": "google.co.jp",
+      "Email": "bollerearnshaw92@google.com.br",
+      "CreatedDate": "2018-08-12T22:45:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Harte-Hanks, Inc.",
+      "Industry": "Advertising",
+      "Sector": "Technology",
+      "TaxId": 4496624946,
+      "WebSite": "networkadvertising.org",
+      "Email": "hwoodberry93@github.io",
+      "CreatedDate": "2018-07-24T21:49:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Viad Corp",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 7647390928,
+      "WebSite": "patch.com",
+      "Email": "amortimer94@mozilla.com",
+      "CreatedDate": "2019-03-09T20:22:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "U.S. Bancorp",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 5312884918,
+      "WebSite": "cnn.com",
+      "Email": "chebburn95@digg.com",
+      "CreatedDate": "2018-08-29T14:10:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Boston Scientific Corporation",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 1580999122,
+      "WebSite": "live.com",
+      "Email": "dmartinson96@telegraph.co.uk",
+      "CreatedDate": "2019-01-28T08:15:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ENDRA Life Sciences Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4922280435,
+      "WebSite": "macromedia.com",
+      "Email": "etomik97@symantec.com",
+      "CreatedDate": "2018-12-17T21:14:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Pure Storage, Inc. ",
+      "Industry": "Electronic Components",
+      "Sector": "Technology",
+      "TaxId": 8911335751,
+      "WebSite": "uiuc.edu",
+      "Email": "gpeotz98@cdc.gov",
+      "CreatedDate": "2018-11-25T05:24:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cypress Semiconductor Corporation",
+      "Industry": "Semiconductors",
+      "Sector": "Technology",
+      "TaxId": 1623370069,
+      "WebSite": "cpanel.net",
+      "Email": "cblackborn99@toplist.cz",
+      "CreatedDate": "2018-04-06T19:41:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Weingarten Realty Investors",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 8858128335,
+      "WebSite": "pcworld.com",
+      "Email": "ctassell9a@ustream.tv",
+      "CreatedDate": "2018-06-09T02:29:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Navios Maritime Holdings Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3984429377,
+      "WebSite": "mayoclinic.com",
+      "Email": "josherin9b@stumbleupon.com",
+      "CreatedDate": "2019-02-19T22:44:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Merck & Company, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 6820520305,
+      "WebSite": "indiatimes.com",
+      "Email": "dlambird9c@wisc.edu",
+      "CreatedDate": "2018-05-05T16:03:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Humana Inc.",
+      "Industry": "Medical Specialities",
+      "Sector": "Health Care",
+      "TaxId": 3218459844,
+      "WebSite": "sciencedirect.com",
+      "Email": "arich9d@who.int",
+      "CreatedDate": "2018-07-06T19:17:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Silicom Ltd",
+      "Industry": "Computer Communications Equipment",
+      "Sector": "Technology",
+      "TaxId": 9261896744,
+      "WebSite": "soup.io",
+      "Email": "cveschambes9e@drupal.org",
+      "CreatedDate": "2019-02-16T15:09:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BeiGene, Ltd.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 5262594203,
+      "WebSite": "yahoo.co.jp",
+      "Email": "mboom9f@netvibes.com",
+      "CreatedDate": "2018-08-28T18:42:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Partner Communications Company Ltd.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 3484916569,
+      "WebSite": "apple.com",
+      "Email": "bmccreagh9g@thetimes.co.uk",
+      "CreatedDate": "2018-08-08T13:46:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Targa Resources Partners LP",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4469210458,
+      "WebSite": "indiegogo.com",
+      "Email": "gragsdall9h@smh.com.au",
+      "CreatedDate": "2018-04-02T13:17:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Grupo Supervielle S.A.",
+      "Industry": "Commercial Banks",
+      "Sector": "Finance",
+      "TaxId": 7621948606,
+      "WebSite": "cbslocal.com",
+      "Email": "bgoulden9i@oakley.com",
+      "CreatedDate": "2019-02-19T19:00:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Universal Forest Products, Inc.",
+      "Industry": "Forest Products",
+      "Sector": "Basic Industries",
+      "TaxId": 6573236187,
+      "WebSite": "chronoengine.com",
+      "Email": "sswire9j@irs.gov",
+      "CreatedDate": "2018-06-15T02:26:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "GRAVITY Co., Ltd.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 6741451074,
+      "WebSite": "blogs.com",
+      "Email": "sstammirs9k@sina.com.cn",
+      "CreatedDate": "2019-02-11T20:04:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "United Financial Bancorp, Inc. ",
+      "Industry": "Banks",
+      "Sector": "Finance",
+      "TaxId": 9335096041,
+      "WebSite": "usnews.com",
+      "Email": "mgrevatt9l@slashdot.org",
+      "CreatedDate": "2019-02-28T09:19:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Overstock.com, Inc.",
+      "Industry": "Catalog/Specialty Distribution",
+      "Sector": "Consumer Services",
+      "TaxId": 7189427510,
+      "WebSite": "examiner.com",
+      "Email": "flernihan9m@unc.edu",
+      "CreatedDate": "2018-06-28T13:56:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Global Indemnity Limited",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 1910019463,
+      "WebSite": "reuters.com",
+      "Email": "mfussell9n@spiegel.de",
+      "CreatedDate": "2018-09-08T07:23:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Camden National Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 7019552377,
+      "WebSite": "guardian.co.uk",
+      "Email": "jandryushin9o@ow.ly",
+      "CreatedDate": "2018-12-30T08:01:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Beasley Broadcast Group, Inc.",
+      "Industry": "Broadcasting",
+      "Sector": "Consumer Services",
+      "TaxId": 4207258399,
+      "WebSite": "yellowpages.com",
+      "Email": "tsnodden9p@utexas.edu",
+      "CreatedDate": "2018-07-11T05:34:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Amazon.com, Inc.",
+      "Industry": "Catalog/Specialty Distribution",
+      "Sector": "Consumer Services",
+      "TaxId": 4996892713,
+      "WebSite": "comcast.net",
+      "Email": "vnuth9q@redcross.org",
+      "CreatedDate": "2019-02-20T11:45:21Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Spok Holdings, Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 7200670302,
+      "WebSite": "mayoclinic.com",
+      "Email": "acatterson9r@prlog.org",
+      "CreatedDate": "2018-03-25T08:03:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Teligent, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 2138839008,
+      "WebSite": "usatoday.com",
+      "Email": "slymbourne9s@icq.com",
+      "CreatedDate": "2018-03-17T14:43:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Varex Imaging Corporation",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Capital Goods",
+      "TaxId": 6951899553,
+      "WebSite": "accuweather.com",
+      "Email": "hwithinshaw9t@jimdo.com",
+      "CreatedDate": "2018-11-28T19:48:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "China HGS Real Estate, Inc.",
+      "Industry": "Real Estate",
+      "Sector": "Finance",
+      "TaxId": 9970630855,
+      "WebSite": "irs.gov",
+      "Email": "msambedge9u@boston.com",
+      "CreatedDate": "2018-06-29T19:39:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BlackRock, Inc.",
+      "Industry": "Investment Bankers/Brokers/Service",
+      "Sector": "Finance",
+      "TaxId": 9990073052,
+      "WebSite": "engadget.com",
+      "Email": "ncancott9v@pen.io",
+      "CreatedDate": "2018-05-08T19:13:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CIM Commercial Trust Corporation",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 8311433136,
+      "WebSite": "multiply.com",
+      "Email": "rseargeant9w@merriam-webster.com",
+      "CreatedDate": "2019-01-23T10:15:54Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CyrusOne Inc",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 6837766677,
+      "WebSite": "wufoo.com",
+      "Email": "lparlot9x@discuz.net",
+      "CreatedDate": "2018-09-02T11:36:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CoreCivic, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 1037638006,
+      "WebSite": "sogou.com",
+      "Email": "gantoniades9y@icio.us",
+      "CreatedDate": "2018-07-18T05:01:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "F.N.B. Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8161058165,
+      "WebSite": "usnews.com",
+      "Email": "rfessby9z@sciencedirect.com",
+      "CreatedDate": "2018-08-27T21:01:01Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Digital Realty Trust, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6176112655,
+      "WebSite": "bigcartel.com",
+      "Email": "marchbutta0@homestead.com",
+      "CreatedDate": "2018-07-02T06:24:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "argenx SE",
+      "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+      "Sector": "Health Care",
+      "TaxId": 9792169413,
+      "WebSite": "google.pl",
+      "Email": "byannonia1@weather.com",
+      "CreatedDate": "2018-07-01T15:35:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gaia, Inc.",
+      "Industry": "Movies/Entertainment",
+      "Sector": "Consumer Services",
+      "TaxId": 1936964963,
+      "WebSite": "joomla.org",
+      "Email": "jmaybeya2@ox.ac.uk",
+      "CreatedDate": "2018-09-14T16:50:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Regions Financial Corporation",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4887758587,
+      "WebSite": "time.com",
+      "Email": "bmontillaa3@shareasale.com",
+      "CreatedDate": "2019-02-22T04:40:55Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nektar Therapeutics",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 2088891830,
+      "WebSite": "sitemeter.com",
+      "Email": "tamiesa4@dailymail.co.uk",
+      "CreatedDate": "2018-06-03T02:32:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust NASDAQ Technology Dividend Index Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6520458746,
+      "WebSite": "symantec.com",
+      "Email": "sbynolda5@google.cn",
+      "CreatedDate": "2018-12-03T12:24:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Social Reality, Inc.",
+      "Industry": "Advertising",
+      "Sector": "Technology",
+      "TaxId": 2805551416,
+      "WebSite": "salon.com",
+      "Email": "ntattertona6@mapy.cz",
+      "CreatedDate": "2019-02-02T13:39:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Gabelli Equity Trust, Inc. (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6116973203,
+      "WebSite": "biblegateway.com",
+      "Email": "kderkesa7@last.fm",
+      "CreatedDate": "2019-02-01T02:36:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Quality Care Properties, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 4179933265,
+      "WebSite": "soup.io",
+      "Email": "npetrua8@blogtalkradio.com",
+      "CreatedDate": "2018-11-17T04:36:54Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "SandRidge Energy, Inc.",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 5256867041,
+      "WebSite": "cyberchimps.com",
+      "Email": "rslogrovea9@who.int",
+      "CreatedDate": "2019-02-03T08:16:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Ocwen Financial Corporation",
+      "Industry": "Finance: Consumer Services",
+      "Sector": "Finance",
+      "TaxId": 5913525292,
+      "WebSite": "nyu.edu",
+      "Email": "akoberaaa@mayoclinic.com",
+      "CreatedDate": "2018-10-07T13:51:03Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vista Outdoor Inc.",
+      "Industry": "Ordnance And Accessories",
+      "Sector": "Capital Goods",
+      "TaxId": 5861807950,
+      "WebSite": "chicagotribune.com",
+      "Email": "cpallentab@rakuten.co.jp",
+      "CreatedDate": "2019-01-26T23:55:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Continental Resources, Inc.",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 3064480646,
+      "WebSite": "weebly.com",
+      "Email": "jbettesworthac@geocities.jp",
+      "CreatedDate": "2019-02-11T13:17:03Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "E.I. du Pont de Nemours and Company",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 4816002089,
+      "WebSite": "nydailynews.com",
+      "Email": "eallibandad@thetimes.co.uk",
+      "CreatedDate": "2018-06-07T18:30:06Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "People&#39;s United Financial, Inc.",
+      "Industry": "Savings Institutions",
+      "Sector": "Finance",
+      "TaxId": 3954140050,
+      "WebSite": "list-manage.com",
+      "Email": "cgrimae@aol.com",
+      "CreatedDate": "2018-09-23T16:21:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Discover Financial Services",
+      "Industry": "Finance: Consumer Services",
+      "Sector": "Finance",
+      "TaxId": 8857786912,
+      "WebSite": "artisteer.com",
+      "Email": "lcastagnetaf@exblog.jp",
+      "CreatedDate": "2018-08-17T14:36:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cincinnati Financial Corporation",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 4177319970,
+      "WebSite": "w3.org",
+      "Email": "ezuanelliag@cargocollective.com",
+      "CreatedDate": "2019-01-20T19:13:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PowerShares Russell 1000 Low Beta Equal Weight Portfolio",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4239813676,
+      "WebSite": "samsung.com",
+      "Email": "csearsah@hp.com",
+      "CreatedDate": "2018-09-05T21:17:55Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Leju Holdings Limited",
+      "Industry": "Real Estate",
+      "Sector": "Finance",
+      "TaxId": 7261021811,
+      "WebSite": "usnews.com",
+      "Email": "mogavinai@youku.com",
+      "CreatedDate": "2018-04-05T14:52:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Skyline Medical Inc.",
+      "Industry": "Industrial Specialties",
+      "Sector": "Health Care",
+      "TaxId": 3564860014,
+      "WebSite": "mail.ru",
+      "Email": "rhaugheyaj@cbsnews.com",
+      "CreatedDate": "2018-07-27T12:16:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "FedEx Corporation",
+      "Industry": "Air Freight/Delivery Services",
+      "Sector": "Transportation",
+      "TaxId": 3569452802,
+      "WebSite": "tinyurl.com",
+      "Email": "pcicchettoak@themeforest.net",
+      "CreatedDate": "2018-06-06T18:22:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nuveen Insured New York Select Tax-Free Income Portfolio",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9881075290,
+      "WebSite": "psu.edu",
+      "Email": "keveringhamal@xrea.com",
+      "CreatedDate": "2018-07-29T12:33:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Blackrock MuniAssets Fund, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1100328838,
+      "WebSite": "ovh.net",
+      "Email": "ckyddeam@narod.ru",
+      "CreatedDate": "2018-05-03T09:28:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Malvern Bancorp, Inc.",
+      "Industry": "Banks",
+      "Sector": "Finance",
+      "TaxId": 8282731437,
+      "WebSite": "google.nl",
+      "Email": "ovairowan@gizmodo.com",
+      "CreatedDate": "2018-06-05T23:52:38Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Korea Equity Fund, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9426605692,
+      "WebSite": "harvard.edu",
+      "Email": "dstreatleyao@cloudflare.com",
+      "CreatedDate": "2018-12-03T04:58:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "GTY Technology Holdings, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 5932824359,
+      "WebSite": "github.com",
+      "Email": "ahawyesap@google.co.uk",
+      "CreatedDate": "2018-05-05T00:30:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cambrex Corporation",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 5700458286,
+      "WebSite": "newsvine.com",
+      "Email": "eseagoodaq@pagesperso-orange.fr",
+      "CreatedDate": "2018-06-25T20:13:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PowerShares S&P SmallCap Industrials Portfolio",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3702212084,
+      "WebSite": "ox.ac.uk",
+      "Email": "nsimnerar@marriott.com",
+      "CreatedDate": "2019-02-19T10:53:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Merit Medical Systems, Inc.",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 4541455711,
+      "WebSite": "jalbum.net",
+      "Email": "hhamshereas@netlog.com",
+      "CreatedDate": "2019-01-15T17:25:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Natural Gas Services Group, Inc.",
+      "Industry": "Oilfield Services/Equipment",
+      "Sector": "Energy",
+      "TaxId": 4062929024,
+      "WebSite": "ibm.com",
+      "Email": "psapsfordat@dailymail.co.uk",
+      "CreatedDate": "2018-11-21T02:19:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "E.I. du Pont de Nemours and Company",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 4754744961,
+      "WebSite": "wikispaces.com",
+      "Email": "fchaffinau@bluehost.com",
+      "CreatedDate": "2018-04-09T16:45:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Trust Specialty Finance and Financial Opportunities Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9688617249,
+      "WebSite": "free.fr",
+      "Email": "lslingerav@shinystat.com",
+      "CreatedDate": "2019-03-10T13:55:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "HC2 Holdings, Inc.",
+      "Industry": "Metal Fabrications",
+      "Sector": "Capital Goods",
+      "TaxId": 5564161751,
+      "WebSite": "chicagotribune.com",
+      "Email": "dandrusovaw@hp.com",
+      "CreatedDate": "2018-12-12T02:40:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PIMCO Income Strategy Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9566777654,
+      "WebSite": "dmoz.org",
+      "Email": "dpeelax@opera.com",
+      "CreatedDate": "2019-01-25T00:16:49Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Paragon Commercial Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 4605802971,
+      "WebSite": "scientificamerican.com",
+      "Email": "gteodoroay@slideshare.net",
+      "CreatedDate": "2018-10-07T20:09:07Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Hormel Foods Corporation",
+      "Industry": "Meat/Poultry/Fish",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 6189883601,
+      "WebSite": "newsvine.com",
+      "Email": "gsprulesaz@webeden.co.uk",
+      "CreatedDate": "2018-03-24T12:49:52Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Hilton Grand Vacations Inc.",
+      "Industry": "Hotels/Resorts",
+      "Sector": "Consumer Services",
+      "TaxId": 9970496152,
+      "WebSite": "fastcompany.com",
+      "Email": "woneilb0@php.net",
+      "CreatedDate": "2019-02-19T03:48:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "iRadimed Corporation",
+      "Industry": "Medical/Dental Instruments",
+      "Sector": "Health Care",
+      "TaxId": 9278362666,
+      "WebSite": "google.com",
+      "Email": "bgriffoenb1@e-recht24.de",
+      "CreatedDate": "2018-10-13T12:45:10Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Monster Beverage Corporation",
+      "Industry": "Beverages (Production/Distribution)",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 3549452292,
+      "WebSite": "com.com",
+      "Email": "kdelazenneb2@lulu.com",
+      "CreatedDate": "2018-05-14T00:46:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Neff Corporation",
+      "Industry": "Diversified Commercial Services",
+      "Sector": "Technology",
+      "TaxId": 9020281981,
+      "WebSite": "vimeo.com",
+      "Email": "estayteb3@wikia.com",
+      "CreatedDate": "2018-11-16T13:52:35Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Basic Energy Services, Inc.",
+      "Industry": "Oilfield Services/Equipment",
+      "Sector": "Energy",
+      "TaxId": 3045277379,
+      "WebSite": "cmu.edu",
+      "Email": "gizakofb4@printfriendly.com",
+      "CreatedDate": "2018-03-29T08:17:00Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "New Germany Fund, Inc. (The)",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 7903251661,
+      "WebSite": "theglobeandmail.com",
+      "Email": "mlampettb5@ihg.com",
+      "CreatedDate": "2018-11-26T06:19:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Eagle Point Credit Company Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8271639073,
+      "WebSite": "so-net.ne.jp",
+      "Email": "dfeitosab6@redcross.org",
+      "CreatedDate": "2018-09-13T16:15:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vident International Equity Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2330454824,
+      "WebSite": "ucsd.edu",
+      "Email": "mmcdowallb7@state.gov",
+      "CreatedDate": "2019-01-14T04:38:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Commerce Bancshares, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 8095057515,
+      "WebSite": "usatoday.com",
+      "Email": "rgrealyb8@sohu.com",
+      "CreatedDate": "2018-04-15T16:48:42Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Yintech Investment Holdings Limited",
+      "Industry": "Investment Bankers/Brokers/Service",
+      "Sector": "Finance",
+      "TaxId": 3915653189,
+      "WebSite": "xing.com",
+      "Email": "sduberyb9@eventbrite.com",
+      "CreatedDate": "2018-09-08T23:29:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Quality Care Properties, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 6575051026,
+      "WebSite": "go.com",
+      "Email": "aocarmodyba@constantcontact.com",
+      "CreatedDate": "2019-03-04T20:05:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ManpowerGroup",
+      "Industry": "Professional Services",
+      "Sector": "Technology",
+      "TaxId": 5378815539,
+      "WebSite": "businesswire.com",
+      "Email": "gdoylebb@dion.ne.jp",
+      "CreatedDate": "2018-10-16T05:10:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vmware, Inc.",
+      "Industry": "Computer Software: Prepackaged Software",
+      "Sector": "Technology",
+      "TaxId": 8665325378,
+      "WebSite": "zdnet.com",
+      "Email": "wdeibc@dell.com",
+      "CreatedDate": "2018-10-19T19:36:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "D/B/A Chubb Limited New",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 1340069796,
+      "WebSite": "fc2.com",
+      "Email": "etomaskovbd@slideshare.net",
+      "CreatedDate": "2018-06-02T13:28:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ENSCO plc",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 1502324551,
+      "WebSite": "histats.com",
+      "Email": "ctatumbe@nasa.gov",
+      "CreatedDate": "2018-12-03T16:37:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Palo Alto Networks, Inc.",
+      "Industry": "Computer peripheral equipment",
+      "Sector": "Technology",
+      "TaxId": 2380288746,
+      "WebSite": "sakura.ne.jp",
+      "Email": "agoodrickebf@biglobe.ne.jp",
+      "CreatedDate": "2018-06-29T11:52:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Enbridge Energy Management LLC",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 7908175198,
+      "WebSite": "technorati.com",
+      "Email": "styriebg@engadget.com",
+      "CreatedDate": "2018-08-14T04:12:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PayPal Holdings, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 6651807289,
+      "WebSite": "ezinearticles.com",
+      "Email": "jiskowitzbh@dyndns.org",
+      "CreatedDate": "2018-07-21T07:13:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Medley Management Inc.",
+      "Industry": "Investment Managers",
+      "Sector": "Finance",
+      "TaxId": 7368434255,
+      "WebSite": "npr.org",
+      "Email": "aambersonbi@ovh.net",
+      "CreatedDate": "2018-11-20T00:00:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Farmland Partners Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 8066924177,
+      "WebSite": "tinyurl.com",
+      "Email": "kbrunelleschibj@google.cn",
+      "CreatedDate": "2018-03-23T11:19:33Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Frontier Communications Corporation",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 4042776629,
+      "WebSite": "mozilla.org",
+      "Email": "kgreedingbk@hud.gov",
+      "CreatedDate": "2018-09-21T09:42:51Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "BeyondSpring, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 7987231025,
+      "WebSite": "accuweather.com",
+      "Email": "lsodabl@bluehost.com",
+      "CreatedDate": "2018-09-24T00:16:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "C&F Financial Corporation",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 6248154391,
+      "WebSite": "unc.edu",
+      "Email": "cfarendenbm@miibeian.gov.cn",
+      "CreatedDate": "2018-08-15T02:29:52Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Kinder Morgan, Inc.",
+      "Industry": "Natural Gas Distribution",
+      "Sector": "Public Utilities",
+      "TaxId": 2075178701,
+      "WebSite": "google.com",
+      "Email": "kvanderhoogbn@digg.com",
+      "CreatedDate": "2018-03-25T14:21:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Columbia Property Trust, Inc.",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 5920365501,
+      "WebSite": "google.co.uk",
+      "Email": "rjoslinbo@phpbb.com",
+      "CreatedDate": "2018-07-02T17:37:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Conifer Holdings, Inc.",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 5166617256,
+      "WebSite": "noaa.gov",
+      "Email": "cmccleodbp@earthlink.net",
+      "CreatedDate": "2018-10-04T18:32:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vanguard Short-Term Corporate Bond ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1875833445,
+      "WebSite": "cdc.gov",
+      "Email": "mswindlesbq@nifty.com",
+      "CreatedDate": "2018-08-08T14:20:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cerecor Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 7004408078,
+      "WebSite": "arstechnica.com",
+      "Email": "emcclunebr@hugedomains.com",
+      "CreatedDate": "2019-02-03T15:36:04Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ARMOUR Residential REIT, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4028682366,
+      "WebSite": "indiegogo.com",
+      "Email": "clockeybs@irs.gov",
+      "CreatedDate": "2018-11-07T00:34:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Torchmark Corporation",
+      "Industry": "Life Insurance",
+      "Sector": "Finance",
+      "TaxId": 2281415778,
+      "WebSite": "businessinsider.com",
+      "Email": "hmullinderbt@goodreads.com",
+      "CreatedDate": "2018-11-05T23:16:43Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Entergy Arkansas, Inc.",
+      "Industry": "Electric Utilities: Central",
+      "Sector": "Public Utilities",
+      "TaxId": 8175432243,
+      "WebSite": "apache.org",
+      "Email": "kmanharebu@mail.ru",
+      "CreatedDate": "2018-04-06T01:41:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Summer Infant, Inc.",
+      "Industry": "Miscellaneous manufacturing industries",
+      "Sector": "Consumer Durables",
+      "TaxId": 1078164208,
+      "WebSite": "ifeng.com",
+      "Email": "fbeltonbv@blinklist.com",
+      "CreatedDate": "2018-08-26T16:30:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Kingtone Wirelessinfo Solution Holding Ltd",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 2887059369,
+      "WebSite": "wsj.com",
+      "Email": "ljeschnerbw@accuweather.com",
+      "CreatedDate": "2018-05-24T02:58:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "SandRidge Permian Trust",
+      "Industry": "Oil & Gas Production",
+      "Sector": "Energy",
+      "TaxId": 5872874779,
+      "WebSite": "hao123.com",
+      "Email": "rrosewellbx@unc.edu",
+      "CreatedDate": "2018-04-24T21:57:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cooper Tire & Rubber Company",
+      "Industry": "Automotive Aftermarket",
+      "Sector": "Consumer Durables",
+      "TaxId": 1851162370,
+      "WebSite": "surveymonkey.com",
+      "Email": "nbinhamby@google.co.uk",
+      "CreatedDate": "2018-08-07T00:20:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Under Armour, Inc.",
+      "Industry": "Apparel",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 9665539096,
+      "WebSite": "devhub.com",
+      "Email": "bwawerbz@census.gov",
+      "CreatedDate": "2018-10-01T14:25:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Lantronix, Inc.",
+      "Industry": "Computer Communications Equipment",
+      "Sector": "Technology",
+      "TaxId": 4107246429,
+      "WebSite": "issuu.com",
+      "Email": "acloptonc0@lulu.com",
+      "CreatedDate": "2018-09-20T01:33:50Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nuveen Missouri Quality Municipal Income Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 3599615384,
+      "WebSite": "newyorker.com",
+      "Email": "bamburgyc1@addthis.com",
+      "CreatedDate": "2018-12-13T16:22:18Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Sensient Technologies Corporation",
+      "Industry": "Major Chemicals",
+      "Sector": "Basic Industries",
+      "TaxId": 2671612224,
+      "WebSite": "eepurl.com",
+      "Email": "jalbinc2@wunderground.com",
+      "CreatedDate": "2018-10-08T11:28:03Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Natera, Inc.",
+      "Industry": "Medical Specialities",
+      "Sector": "Health Care",
+      "TaxId": 5745338728,
+      "WebSite": "webs.com",
+      "Email": "cdunabiec3@mail.ru",
+      "CreatedDate": "2019-01-26T09:36:33Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CYS Investments, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9270678107,
+      "WebSite": "opera.com",
+      "Email": "ikilfoylec4@theatlantic.com",
+      "CreatedDate": "2019-01-11T18:55:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Copart, Inc.",
+      "Industry": "Automotive Aftermarket",
+      "Sector": "Consumer Durables",
+      "TaxId": 4438310230,
+      "WebSite": "pbs.org",
+      "Email": "lboschmannc5@rakuten.co.jp",
+      "CreatedDate": "2018-05-29T03:15:08Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "U.S. Auto Parts Network, Inc.",
+      "Industry": "Other Specialty Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 3410920931,
+      "WebSite": "intel.com",
+      "Email": "aposselowc6@cbslocal.com",
+      "CreatedDate": "2018-08-23T20:31:14Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Computer Task Group, Incorporated",
+      "Industry": "EDP Services",
+      "Sector": "Technology",
+      "TaxId": 6230261560,
+      "WebSite": "barnesandnoble.com",
+      "Email": "mmatasc7@wunderground.com",
+      "CreatedDate": "2018-08-27T01:06:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Sage Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 4533599627,
+      "WebSite": "google.co.jp",
+      "Email": "iebbenc8@simplemachines.org",
+      "CreatedDate": "2018-09-05T18:32:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Alliance World Dollar Government Fund II",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2670830054,
+      "WebSite": "arstechnica.com",
+      "Email": "fmomfordc9@goodreads.com",
+      "CreatedDate": "2019-02-04T00:05:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Legg Mason US Diversified Core ETF",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9593152360,
+      "WebSite": "last.fm",
+      "Email": "nbidmeadca@latimes.com",
+      "CreatedDate": "2018-11-26T03:13:15Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "RiceBran Technologies",
+      "Industry": "Packaged Foods",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 4469663363,
+      "WebSite": "google.it",
+      "Email": "emitchellcb@usda.gov",
+      "CreatedDate": "2018-09-02T15:10:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "NETGEAR, Inc.",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 3011507908,
+      "WebSite": "cyberchimps.com",
+      "Email": "rrichecc@webnode.com",
+      "CreatedDate": "2018-11-29T07:08:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Patriot National Bancorp Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 6373817365,
+      "WebSite": "desdev.cn",
+      "Email": "bfliegercd@stumbleupon.com",
+      "CreatedDate": "2018-04-21T00:46:19Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Transportadora De Gas Sa Ord B",
+      "Industry": "Natural Gas Distribution",
+      "Sector": "Public Utilities",
+      "TaxId": 7471882687,
+      "WebSite": "bluehost.com",
+      "Email": "sscaifece@earthlink.net",
+      "CreatedDate": "2019-01-29T18:41:40Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Pinnacle Financial Partners, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 1206599799,
+      "WebSite": "list-manage.com",
+      "Email": "ebleuecf@over-blog.com",
+      "CreatedDate": "2018-10-12T18:46:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Western Asset Municipal Partners Fund, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8646753671,
+      "WebSite": "purevolume.com",
+      "Email": "mwestoffcg@deviantart.com",
+      "CreatedDate": "2018-06-16T23:44:03Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Luxottica Group, S.p.A.",
+      "Industry": "Ophthalmic Goods",
+      "Sector": "Health Care",
+      "TaxId": 1536057958,
+      "WebSite": "scientificamerican.com",
+      "Email": "dohmsch@cmu.edu",
+      "CreatedDate": "2018-09-18T14:14:29Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Albany International Corporation",
+      "Industry": "Textiles",
+      "Sector": "Basic Industries",
+      "TaxId": 7570550354,
+      "WebSite": "nasa.gov",
+      "Email": "scarnachenci@biblegateway.com",
+      "CreatedDate": "2019-02-15T02:35:57Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Managed Duration Investment Grade Municipal Fund",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 4040521010,
+      "WebSite": "i2i.jp",
+      "Email": "adickcj@nytimes.com",
+      "CreatedDate": "2018-04-21T17:17:36Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Morgan Stanley China A Share Fund Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1470823863,
+      "WebSite": "newsvine.com",
+      "Email": "bdeperock@ftc.gov",
+      "CreatedDate": "2018-09-06T13:39:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "SunTrust Banks, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 8474138235,
+      "WebSite": "admin.ch",
+      "Email": "tmaliacl@dmoz.org",
+      "CreatedDate": "2018-12-08T01:54:12Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Trimble Inc.",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Capital Goods",
+      "TaxId": 8362447257,
+      "WebSite": "w3.org",
+      "Email": "kfarrentcm@digg.com",
+      "CreatedDate": "2018-11-19T08:47:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Jensyn Acquistion Corp.",
+      "Industry": "Business Services",
+      "Sector": "Finance",
+      "TaxId": 5468226920,
+      "WebSite": "apple.com",
+      "Email": "gchartecn@google.cn",
+      "CreatedDate": "2019-01-03T11:18:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Selective Insurance Group, Inc.",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 3282530013,
+      "WebSite": "ucla.edu",
+      "Email": "tmasicco@bing.com",
+      "CreatedDate": "2018-03-22T16:33:32Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PS Business Parks, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2986427398,
+      "WebSite": "ustream.tv",
+      "Email": "ogawencp@mit.edu",
+      "CreatedDate": "2018-08-18T04:24:47Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Global Partner Acquisition Corp.",
+      "Industry": "Hospital/Nursing Management",
+      "Sector": "Health Care",
+      "TaxId": 8672985386,
+      "WebSite": "twitter.com",
+      "Email": "pbyroncq@i2i.jp",
+      "CreatedDate": "2018-03-17T23:21:17Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Frontier Communications Corporation",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Public Utilities",
+      "TaxId": 7088176283,
+      "WebSite": "ifeng.com",
+      "Email": "kocosgracr@examiner.com",
+      "CreatedDate": "2018-08-01T09:04:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "HMS Holdings Corp",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 4980262864,
+      "WebSite": "youku.com",
+      "Email": "aoffordcs@baidu.com",
+      "CreatedDate": "2019-02-23T06:10:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Collectors Universe, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 8410389225,
+      "WebSite": "usgs.gov",
+      "Email": "santonsenct@jalbum.net",
+      "CreatedDate": "2018-07-18T18:55:56Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Westport Fuel Systems Inc",
+      "Industry": "Industrial Machinery/Components",
+      "Sector": "Energy",
+      "TaxId": 3314120185,
+      "WebSite": "washington.edu",
+      "Email": "lstoppecu@yahoo.com",
+      "CreatedDate": "2018-05-08T05:49:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "HTG Molecular Diagnostics, Inc.",
+      "Industry": "Biotechnology: Laboratory Analytical Instruments",
+      "Sector": "Capital Goods",
+      "TaxId": 4969664728,
+      "WebSite": "dedecms.com",
+      "Email": "ocoastcv@hostgator.com",
+      "CreatedDate": "2019-01-16T06:12:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Pluristem Therapeutics, Inc.",
+      "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+      "Sector": "Health Care",
+      "TaxId": 1739565277,
+      "WebSite": "joomla.org",
+      "Email": "npatterfieldcw@elegantthemes.com",
+      "CreatedDate": "2019-02-16T15:28:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Natuzzi, S.p.A.",
+      "Industry": "Home Furnishings",
+      "Sector": "Consumer Durables",
+      "TaxId": 6620001459,
+      "WebSite": "deliciousdays.com",
+      "Email": "isapircx@typepad.com",
+      "CreatedDate": "2019-02-23T02:08:46Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Southern California Edison Company",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 6693882238,
+      "WebSite": "independent.co.uk",
+      "Email": "sedgellercy@engadget.com",
+      "CreatedDate": "2018-12-25T02:30:48Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ADMA Biologics Inc",
+      "Industry": "Biotechnology: Biological Products (No Diagnostic Substances)",
+      "Sector": "Health Care",
+      "TaxId": 9689411193,
+      "WebSite": "artisteer.com",
+      "Email": "jsleathcz@mashable.com",
+      "CreatedDate": "2018-06-01T17:18:28Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PowerShares BuyBack Achievers Portfolio",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2066739242,
+      "WebSite": "ihg.com",
+      "Email": "iholdalld0@newyorker.com",
+      "CreatedDate": "2018-07-16T06:24:53Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "PayPal Holdings, Inc.",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 6911548444,
+      "WebSite": "drupal.org",
+      "Email": "bmunceyd1@etsy.com",
+      "CreatedDate": "2018-08-26T09:55:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "ContraVir Pharmaceuticals Inc",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 4380640770,
+      "WebSite": "omniture.com",
+      "Email": "ynewlind2@usa.gov",
+      "CreatedDate": "2019-02-05T16:30:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "First Cash, Inc.",
+      "Industry": "Other Specialty Stores",
+      "Sector": "Consumer Services",
+      "TaxId": 5260154336,
+      "WebSite": "telegraph.co.uk",
+      "Email": "lphythiand3@arstechnica.com",
+      "CreatedDate": "2018-10-14T12:05:37Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "John Hancock Investors Trust",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9634984254,
+      "WebSite": "disqus.com",
+      "Email": "binnotd4@typepad.com",
+      "CreatedDate": "2018-12-17T11:19:02Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Athersys, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 3257830980,
+      "WebSite": "theatlantic.com",
+      "Email": "skinnyd5@indiatimes.com",
+      "CreatedDate": "2018-06-24T02:37:25Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "R1 RCM Inc.",
+      "Industry": "Other Consumer Services",
+      "Sector": "Consumer Services",
+      "TaxId": 2372699617,
+      "WebSite": "yellowbook.com",
+      "Email": "cbelseyd6@cyberchimps.com",
+      "CreatedDate": "2018-05-08T19:59:58Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Northrim BanCorp Inc",
+      "Industry": "Savings Institutions",
+      "Sector": "Finance",
+      "TaxId": 1470263277,
+      "WebSite": "dion.ne.jp",
+      "Email": "grenakd7@home.pl",
+      "CreatedDate": "2018-07-07T03:51:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Great Elm Capital Group, Inc. ",
+      "Industry": "Computer Software: Prepackaged Software",
+      "Sector": "Technology",
+      "TaxId": 4290096836,
+      "WebSite": "instagram.com",
+      "Email": "bsniped8@etsy.com",
+      "CreatedDate": "2018-05-27T18:28:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Nokia Corporation",
+      "Industry": "Radio And Television Broadcasting And Communications Equipment",
+      "Sector": "Technology",
+      "TaxId": 8706739685,
+      "WebSite": "umn.edu",
+      "Email": "csuttilld9@who.int",
+      "CreatedDate": "2018-08-05T13:35:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Motif Bio plc",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 9504170295,
+      "WebSite": "washingtonpost.com",
+      "Email": "tkebellda@flavors.me",
+      "CreatedDate": "2018-11-30T19:08:30Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "GSI Technology, Inc.",
+      "Industry": "Semiconductors",
+      "Sector": "Technology",
+      "TaxId": 2702835469,
+      "WebSite": "dion.ne.jp",
+      "Email": "cleheudedb@opera.com",
+      "CreatedDate": "2018-07-17T09:03:16Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "The Bancorp, Inc.",
+      "Industry": "Major Banks",
+      "Sector": "Finance",
+      "TaxId": 3912485039,
+      "WebSite": "businessweek.com",
+      "Email": "rtollerdc@artisteer.com",
+      "CreatedDate": "2018-11-07T15:07:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Mirati Therapeutics, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 2189969521,
+      "WebSite": "oakley.com",
+      "Email": "jmundowdd@about.me",
+      "CreatedDate": "2018-10-25T17:18:32Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Core-Mark Holding Company, Inc.",
+      "Industry": "Food Distributors",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 4734054120,
+      "WebSite": "nytimes.com",
+      "Email": "sbrettonde@alibaba.com",
+      "CreatedDate": "2019-03-01T08:54:13Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Endocyte, Inc.",
+      "Industry": "Major Pharmaceuticals",
+      "Sector": "Health Care",
+      "TaxId": 1501197821,
+      "WebSite": "gizmodo.com",
+      "Email": "dwantdf@wp.com",
+      "CreatedDate": "2018-03-31T19:23:09Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "HSBC Holdings plc",
+      "Industry": "Savings Institutions",
+      "Sector": "Finance",
+      "TaxId": 1074735451,
+      "WebSite": "geocities.com",
+      "Email": "lsuermeierdg@typepad.com",
+      "CreatedDate": "2018-12-28T23:46:41Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Super Micro Computer, Inc.",
+      "Industry": "Computer Manufacturing",
+      "Sector": "Technology",
+      "TaxId": 7418864689,
+      "WebSite": "friendfeed.com",
+      "Email": "ptrusslerdh@moonfruit.com",
+      "CreatedDate": "2018-11-19T03:34:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Maiden Holdings, Ltd.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 2785666183,
+      "WebSite": "bigcartel.com",
+      "Email": "abereforddi@smugmug.com",
+      "CreatedDate": "2018-10-19T05:06:59Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "UNIVERSAL INSURANCE HOLDINGS INC",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 1304890806,
+      "WebSite": "mozilla.com",
+      "Email": "jwelldrakedj@springer.com",
+      "CreatedDate": "2018-11-02T20:22:44Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "CUI Global, Inc.",
+      "Industry": "Electronic Components",
+      "Sector": "Consumer Non-Durables",
+      "TaxId": 2266315717,
+      "WebSite": "feedburner.com",
+      "Email": "bcanavandk@devhub.com",
+      "CreatedDate": "2018-08-26T09:21:23Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Cedar Realty Trust, Inc.",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 9867270711,
+      "WebSite": "state.gov",
+      "Email": "krimmingtondl@liveinternet.ru",
+      "CreatedDate": "2018-10-15T12:35:24Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Continental Building Products, Inc.",
+      "Industry": "Building Materials",
+      "Sector": "Capital Goods",
+      "TaxId": 8502802747,
+      "WebSite": "theguardian.com",
+      "Email": "sluxondm@cocolog-nifty.com",
+      "CreatedDate": "2018-03-20T12:54:07Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "AVX Corporation",
+      "Industry": "Electrical Products",
+      "Sector": "Capital Goods",
+      "TaxId": 6407176226,
+      "WebSite": "shareasale.com",
+      "Email": "eshillomdn@trellian.com",
+      "CreatedDate": "2018-07-08T19:23:14Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Equity Residential",
+      "Industry": "Real Estate Investment Trusts",
+      "Sector": "Consumer Services",
+      "TaxId": 8444610299,
+      "WebSite": "mashable.com",
+      "Email": "fkaiserdo@pcworld.com",
+      "CreatedDate": "2018-05-02T23:04:34Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "DTE Energy Company",
+      "Industry": "Electric Utilities: Central",
+      "Sector": "Public Utilities",
+      "TaxId": 9943033544,
+      "WebSite": "tuttocitta.it",
+      "Email": "pbansaldp@is.gd",
+      "CreatedDate": "2018-07-04T16:48:26Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Belden Inc",
+      "Industry": "Telecommunications Equipment",
+      "Sector": "Basic Industries",
+      "TaxId": 3163906924,
+      "WebSite": "naver.com",
+      "Email": "vmoscodq@phpbb.com",
+      "CreatedDate": "2018-10-05T03:04:03Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "General Finance Corporation",
+      "Industry": "Diversified Commercial Services",
+      "Sector": "Technology",
+      "TaxId": 5764841753,
+      "WebSite": "bloglovin.com",
+      "Email": "wtedmandr@cnbc.com",
+      "CreatedDate": "2018-06-28T17:26:05Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Mastercard Incorporated",
+      "Industry": "Business Services",
+      "Sector": "Miscellaneous",
+      "TaxId": 1911779911,
+      "WebSite": "psu.edu",
+      "Email": "jmattheeuwds@imdb.com",
+      "CreatedDate": "2018-08-16T10:06:27Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Key Tronic Corporation",
+      "Industry": "Computer peripheral equipment",
+      "Sector": "Technology",
+      "TaxId": 2774024757,
+      "WebSite": "google.nl",
+      "Email": "dfenixdt@tamu.edu",
+      "CreatedDate": "2018-09-04T07:46:11Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "Vornado Realty Trust",
+      "Industry": "n/a",
+      "Sector": "n/a",
+      "TaxId": 1692702251,
+      "WebSite": "bing.com",
+      "Email": "thanscomedu@mail.ru",
+      "CreatedDate": "2018-10-28T04:03:39Z",
+      "CreatedUser": "System"
+    },
+    {
+      "Name": "MBIA, Inc.",
+      "Industry": "Property-Casualty Insurers",
+      "Sector": "Finance",
+      "TaxId": 5921473189,
+      "WebSite": "bloomberg.com",
+      "Email": "ksweetingdv@printfriendly.com",
+      "CreatedDate": "2018-05-18T09:10:12Z",
+      "CreatedUser": "System"
+    }
+  ]
+}
