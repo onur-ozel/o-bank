@@ -40,7 +40,6 @@ namespace Customer.API.Controllers {
         [ProducesResponseType (typeof (IEnumerable<RetailCustomerItem>), (int) HttpStatusCode.OK)]
         [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
         public async Task<IActionResult> ItemsAsync ([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0) {
-            throw new Exception("TYS");
             var totalItems = await _customerContext.RetailCustomerItems
                 .LongCountAsync ();
 
