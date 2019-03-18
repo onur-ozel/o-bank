@@ -23,10 +23,11 @@ public class SwaggerConfig {
 
     // Describe your apis
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Hotel Management Rest APIs")
-                .description("This page lists all the rest apis for Hotel Management App.").version("1.0-SNAPSHOT")
-
-                .build();
+        return new ApiInfoBuilder().title("o-bank - Deposit REST API").description(
+                "The Deposit Microservice REST API.\nThis is a Data-Driven/CRUD microservice is implemented in JAVA, Spring Boot")
+                .version("v1")
+                .contact(new Contact("Onur ÖZEL", "https://github.com/onur-ozel/o-bank", "onurozel41@gmail.com"))
+                .license("MIT License").licenseUrl("https://github.com/onur-ozel/o-bank/blob/master/LICENSE").build();
     }
 
     // Only select apis that matches the given Predicates.
