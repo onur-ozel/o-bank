@@ -2,10 +2,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var countryRouter = require('./routes/country');
 
 var app = express();
+
+var mongoDB = 'mongodb://localhost/parameter_db';
+mongoose
+  .connect(mongoDB, { useNewUrlParser: true })
+  .then(() => {
+    console.log('Connected to database!');
+  })
+  .catch(() => {
+    console.log('Connection failed!');
+  });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -28,9 +39,7 @@ let swaggerOptions = {
       contact: { name: '', url: '' }
     }
   },
-  apis: [
-    './routes/*.js'
-  ]
+  apis: ['./routes/*.js']
 };
 
 const specs = swaggerJsdoc(swaggerOptions);

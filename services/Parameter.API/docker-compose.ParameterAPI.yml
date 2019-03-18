@@ -1,0 +1,14 @@
+version: "3.4"
+services:  
+  parameter.data.mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+  parameter.data.mongo.seed:
+    build:
+        context: .
+        dockerfile: Docker.Parameter.Data.MongoDB.WithData.Dockerfile
+    links:
+      - parameter.data.mongo
+# -e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+# 	-e MONGO_INITDB_ROOT_PASSWORD=secret \
