@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  customer.data.mssql:
+    build:
+      context: .
+      dockerfile: Docker.Customer.Data.MSSql.WithData.Dockerfile
+    ports:
+      - '1433:1433'
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Strong_Passw0rd
+      - MSSQL_PID=Developer
