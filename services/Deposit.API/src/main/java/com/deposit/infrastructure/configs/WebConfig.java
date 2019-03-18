@@ -1,4 +1,4 @@
-package com.configs;
+package com.deposit.infrastructure.configs;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.AntPathMatcher;

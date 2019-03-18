@@ -1,4 +1,4 @@
-package com.controllers;
+package com.deposit.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
