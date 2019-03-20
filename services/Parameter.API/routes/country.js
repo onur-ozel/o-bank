@@ -1,119 +1,173 @@
 var express = require('express');
 var router = express.Router();
-
-
+var redis = require('redis');
 
 const Country = require('../models/country');
+let PaginatedItemsViewModel = require('../infrastructure/viewmodels/PaginatedItemsViewModel');
+
+var client = redis.createClient('6379', 'localhost')
+
+client.on('connect', function () {
+  console.log('Redis client connected');
+});
+
+client.on('error', function (err) {
+  console.log('Something went wrong ' + err);
+});
 
 /**
-   * @swagger
-   * /country/:
-   *   get:
-   *     description: gets countries
-   *     responses:
-   *       200:
-   *         description: countries
-   */
+ * @swagger
+ * /country:
+ *  get:
+ *    summary: gets countries
+ *    description: Gets country list with paging.
+ *    parameters:
+ *      - in: query
+ *        name: pageIndex
+ *        type: integer
+ *        required: false
+ *        default: 0
+ *      - in: query
+ *        name: pageSize
+ *        type: integer
+ *        required: false
+ *        default: 10
+ *    responses:
+ *      200:
+ *        description: countries
+ */
 router.get('/', function (req, res, next) {
-    Country.find().then(documents => {
+  var pageIndex = parseInt(req.query.pageIndex) || 0;
+  var pageSize = parseInt(req.query.pageSize) || 10;
+
+  client.get('countries' + pageIndex + pageSize, (error, result) => {
+    if (result === null) {
+      var promises = [
+        Country.find().skip(pageSize * pageIndex).limit(pageSize).exec(),
+        Country.estimatedDocumentCount().exec()
+      ];
+
+      Promise.all(promises).then(function (results) {
+        client.set
+        client.set('countries' + pageIndex + pageSize,
+          JSON.stringify({
+            PageIndex: pageIndex,
+            PageSize: pageSize,
+            Count: results[1],
+            Data: results[0]
+          }));
+
         res.status(200).json({
-            message: 'Posts fetched successfully!',
-            posts: documents
+          PageIndex: pageIndex,
+          PageSize: pageSize,
+          Count: results[1],
+          Data: results[0]
         });
-    });
+      });
+    } else {
+      res.status(200).json(JSON.parse(result));
+    }
+
+
+  });
+
+
+
+  // var promises = [
+  //   Country.find().skip(pageSize * pageIndex).limit(pageSize).exec(),
+  //   Country.estimatedDocumentCount().exec()
+  // ];
+
+  // Promise.all(promises).then(function (results) {
+  //   res.status(200).json({
+  //     PageIndex: pageIndex,
+  //     PageSize: pageSize,
+  //     Count: results[1],
+  //     Data: results[0]
+  //   });
+  // });
 });
 
 
-// router.get('/', function(req, res, next) {
-//   res.send('countries');
-// });
-
+/**
+ * @swagger
+ * /country:
+ *  post:
+ *    summary: post country
+ *    description: Adds country to database.
+ *    parameters:
+ *      - in: body
+ *        name: country
+ *        required: true
+ *    responses:
+ *      200:
+ *        description: successfully added.
+ */
 router.post('/', (req, res, next) => {
   const country = new Country({
-      name: 'Afghanistan',
-      alpha3Code: 'AFG',
-      numericCode: 004
+    ...req.body
   });
+
   country.save().then(createdCountry => {
-      res.status(201).json({
-          message: "Post added successfully",
-          post: createdCountry
-      });
+    res.status(201).json({
+      message: "Post added successfully",
+      post: createdCountry
+    });
   });
 });
 
 /**
- * This function comment is parsed by doctrine
- * @route GET /api
- * @group foo - Operations about user
- * @param {string} email.query.required - username or email - eg: user@domain
- * @param {string} password.query.required - user's password.
- * @returns {object} 200 - An array of user info
- * @returns {Error}  default - Unexpected error
+ * @swagger
+ * /country/{id}:
+ *  put:
+ *    summary: put country
+ *    description: Updates country to database.
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *      - in: body
+ *        name: country
+ *        required: true
+ *    responses:
+ *      200:
+ *        description: successfully added.
  */
-router.put('/', function(req, res, next) {
-  res.send('countries');
+router.put('/:id', function (req, res, next) {
+  Country.findOneAndUpdate({
+    _id: req.params.id
+  }, req.body).then((result) => {
+    res.status(200).json({
+      result: result
+    });
+  });
 });
 
-// /**
-//    * @swagger
-//    * definitions:
-//    *   Login:
-//    *     required:
-//    *       - username
-//    *       - password
-//    *     properties:
-//    *       username:
-//    *         type: string
-//    *       password:
-//    *         type: string
-//    *       path:
-//    *         type: string
-//    */
-
-//   /**
-//    * @swagger
-//    * tags:
-//    *   name: Users
-//    *   description: User management and login
-//    */
-
-//   /**
-//    * @swagger
-//    * tags:
-//    *   - name: Login
-//    *     description: Login
-//    *   - name: Accounts
-//    *     description: Accounts
-//    */
-
-//   /**
-//    * @swagger
-//    * /login:
-//    *   post:
-//    *     description: Login to the application
-//    *     tags: [Users, Login]
-//    *     produces:
-//    *       - application/json
-//    *     parameters:
-//    *       - $ref: '#/parameters/username'
-//    *       - name: password
-//    *         description: User's password.
-//    *         in: formData
-//    *         required: true
-//    *         type: string
-//    *     responses:
-//    *       200:
-//    *         description: login
-//    *         schema:
-//    *           type: object
-//    *           $ref: '#/definitions/Login'
-//    */
-router.delete('/:countryCode', function(req, res, next) {
-  res.send('countries');
+/**
+ * @swagger
+ * /country/{id}:
+ *  delete:
+ *    summary: delete country
+ *    description: Deletes country from database.
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *    responses:
+ *      200:
+ *        description: successfully added.
+ */
+router.delete('/:id', function (req, res, next) {
+  Country.findOneAndDelete({
+    _id: req.params.id
+  }).then((result) => {
+    res.status(200).json({
+      result: result
+    });
+  });
 });
 
-router.get('/:countryCode', function(req, res, next) {
+router.get('/:countryCode', function (req, res, next) {
   res.send('country' + req.params.countryCode);
 });
 
