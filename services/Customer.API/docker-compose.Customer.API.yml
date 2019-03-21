@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-  customer.data.mssql:
+  customer.data:
     build:
       context: .
       dockerfile: Docker.Customer.Data.MSSql.WithData.Dockerfile
@@ -10,7 +10,7 @@ services:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Strong_Passw0rd
       - MSSQL_PID=Developer
-  customer.data.mssql.seed:
+  customer.data.seed:
     build:
       context: .
       dockerfile: Docker.Customer.Data.MSSql.DataSeed.Dockerfile
@@ -18,4 +18,4 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_PID=Developer
     links:
-      - customer.data.mssql
+      - customer.data

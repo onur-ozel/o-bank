@@ -1,3 +1,4 @@
-services/Customer.API/bin
+services/Customer.API/bin/
+services/Customer.API/obj/
 services/Parameter.API/node_modules
 .vscode/
