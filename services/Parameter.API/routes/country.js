@@ -1,93 +1,68 @@
 var express = require('express');
 var router = express.Router();
-var redis = require('redis');
 
-const Country = require('../models/country');
-let PaginatedItemsViewModel = require('../infrastructure/viewmodels/PaginatedItemsViewModel');
+const CountryController = require('../controllers/country');
 
-var client = redis.createClient('6379', 'localhost')
+/**
+ * @swagger
+ * tags:
+ *   - name: country
+ *     description: country parameter service
+ */
 
-client.on('connect', function () {
-  console.log('Redis client connected');
-});
-
-client.on('error', function (err) {
-  console.log('Something went wrong ' + err);
-});
+/**
+ * @swagger
+ * definition:
+ *   country:
+ *     properties:
+ *       flag:
+ *         type: string
+ *       name:
+ *         type: string
+ *       alpha2Code:
+ *         type: integer
+ *       alpha3Code:
+ *         type: string
+ *       capital:
+ *         type: string
+ *       region:
+ *         type: string
+ *       subregion:
+ *         type: integer
+ *       demonym:
+ *         type: string
+ *       nativeName:
+ *         type: string
+ *       numericCode:
+ *         type: string
+ */
 
 /**
  * @swagger
  * /country:
  *  get:
  *    summary: gets countries
- *    description: Gets country list with paging.
+ *    description: Gets country list. Optionaly can use with paging
+ *    tags:
+ *      - country
  *    parameters:
  *      - in: query
  *        name: pageIndex
  *        type: integer
  *        required: false
- *        default: 0
  *      - in: query
  *        name: pageSize
  *        type: integer
  *        required: false
- *        default: 10
+ *    produces:
+ *      - application/json
  *    responses:
  *      200:
- *        description: countries
+ *        description: An array of countries
+ *        schema:
+ *          $ref: '#/definitions/country'
  */
-router.get('/', function (req, res, next) {
-  var pageIndex = parseInt(req.query.pageIndex) || 0;
-  var pageSize = parseInt(req.query.pageSize) || 10;
-
-  client.get('countries' + pageIndex + pageSize, (error, result) => {
-    if (result === null) {
-      var promises = [
-        Country.find().skip(pageSize * pageIndex).limit(pageSize).exec(),
-        Country.estimatedDocumentCount().exec()
-      ];
-
-      Promise.all(promises).then(function (results) {
-        client.set
-        client.set('countries' + pageIndex + pageSize,
-          JSON.stringify({
-            PageIndex: pageIndex,
-            PageSize: pageSize,
-            Count: results[1],
-            Data: results[0]
-          }));
-
-        res.status(200).json({
-          PageIndex: pageIndex,
-          PageSize: pageSize,
-          Count: results[1],
-          Data: results[0]
-        });
-      });
-    } else {
-      res.status(200).json(JSON.parse(result));
-    }
-
-
-  });
-
-
-
-  // var promises = [
-  //   Country.find().skip(pageSize * pageIndex).limit(pageSize).exec(),
-  //   Country.estimatedDocumentCount().exec()
-  // ];
-
-  // Promise.all(promises).then(function (results) {
-  //   res.status(200).json({
-  //     PageIndex: pageIndex,
-  //     PageSize: pageSize,
-  //     Count: results[1],
-  //     Data: results[0]
-  //   });
-  // });
-});
-
+router.get('/', CountryController.getCountries);
 
 /**
  * @swagger
@@ -95,6 +70,8 @@ router.get('/', function (req, res, next) {
  *  post:
  *    summary: post country
  *    description: Adds country to database.
+ *    tags:
+ *      - country
  *    parameters:
  *      - in: body
  *        name: country
@@ -103,18 +80,7 @@ router.get('/', function (req, res, next) {
  *      200:
  *        description: successfully added.
  */
-router.post('/', (req, res, next) => {
-  const country = new Country({
-    ...req.body
-  });
-
-  country.save().then(createdCountry => {
-    res.status(201).json({
-      message: "Post added successfully",
-      post: createdCountry
-    });
-  });
-});
+router.post('/', CountryController.createCountry);
 
 /**
  * @swagger
@@ -122,6 +88,8 @@ router.post('/', (req, res, next) => {
  *  put:
  *    summary: put country
  *    description: Updates country to database.
+ *    tags:
+ *      - country
  *    parameters:
  *      - in: path
  *        name: id
@@ -133,15 +101,7 @@ router.post('/', (req, res, next) => {
  *      200:
  *        description: successfully added.
  */
-router.put('/:id', function (req, res, next) {
-  Country.findOneAndUpdate({
-    _id: req.params.id
-  }, req.body).then((result) => {
-    res.status(200).json({
-      result: result
-    });
-  });
-});
+router.put('/:id', CountryController.updateCountry);
 
 /**
  * @swagger
@@ -149,6 +109,8 @@ router.put('/:id', function (req, res, next) {
  *  delete:
  *    summary: delete country
  *    description: Deletes country from database.
+ *    tags:
+ *      - country
  *    parameters:
  *      - in: path
  *        name: id
@@ -157,18 +119,10 @@ router.put('/:id', function (req, res, next) {
  *      200:
  *        description: successfully added.
  */
-router.delete('/:id', function (req, res, next) {
-  Country.findOneAndDelete({
-    _id: req.params.id
-  }).then((result) => {
-    res.status(200).json({
-      result: result
-    });
-  });
-});
+router.delete('/:id', CountryController.deleteCountry);
 
-router.get('/:countryCode', function (req, res, next) {
-  res.send('country' + req.params.countryCode);
-});
+// router.get('/:countryCode', function (req, res, next) {
+//   res.send('country' + req.params.countryCode);
+// });
 
 module.exports = router;

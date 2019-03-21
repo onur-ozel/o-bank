@@ -2,57 +2,31 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
 
-var countryRouter = require('./routes/country');
+//connect to mongo
+mongoConnection = require('./infrastructure/configuration/mongoDBConnection');
+mongoConnection.connect();
 
 var app = express();
 
-var mongoDB = 'mongodb://localhost/parameter_db';
-mongoose
-  .connect(mongoDB, { useNewUrlParser: true })
-  .then(() => {
-    console.log('Connected to database!');
-  })
-  .catch(() => {
-    console.log('Connection failed!');
-  });
-
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(
+  express.urlencoded({
+    extended: false
+  })
+);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/country', countryRouter);
-
-// swagger
-
-const swaggerJsdoc = require('swagger-jsdoc');
-
-let swaggerOptions = {
-  swaggerDefinition: {
-    swagger: '2.0',
-    info: {
-      title: 'API Explorer', // Title (required)
-      version: '1.0.0', // Version (required)
-      contact: { name: '', url: '' }
-    }
-  },
-  apis: ['./routes/*.js']
-};
-
-const specs = swaggerJsdoc(swaggerOptions);
-
-console.log('./routes/*.js');
-
+//swagger utilization
 const swaggerUi = require('swagger-ui-express');
-// const swaggerDocument = require('./swagger.json');
+const swaggerDoc = require('./infrastructure/configuration/swaggerConfig');
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(specs));
-
-// swagger
+//routers
+var countryRouter = require('./routes/country');
+app.use('/country', countryRouter);
 
 app.listen(8080, function() {
   console.log('Ready on port 8080');
