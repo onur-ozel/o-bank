@@ -1,12 +1,10 @@
 package com.deposit.controllers;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.deposit.infrastructure.viewmodels.PaginatedItemsViewModel;
 import com.deposit.models.TimeDeposit;
 
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
