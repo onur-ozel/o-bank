@@ -17,8 +17,10 @@ namespace Customer.API {
         public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
             WebHost.CreateDefaultBuilder (args)
             .ConfigureAppConfiguration ((hostingContext, config) => {
-                config.SetBasePath (Directory.GetCurrentDirectory ());
-                config.AddJsonFile ("appsettings." + hostingContext.HostingEnvironment.EnvironmentName + ".json", true);
+                string runningEnvironment = Environment.GetEnvironmentVariable("RUNNING_ENVIRONMENT") ?? "Development";
+
+                config.SetBasePath(Directory.GetCurrentDirectory());
+                config.AddJsonFile("appsettings." + runningEnvironment + ".json", true);
             })
             .UseStartup<Startup> ();
     }
