@@ -70,7 +70,7 @@ services:
     depends_on:
       - customer.data
     environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
+      - RUNNING_ENVIRONMENT=Docker
     networks:
       obank-network:
         ipv4_address: 10.20.30.151
