@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-  customer.data.mssql:
+  deposit.data.mysql:
     build:
       context: .
       dockerfile: Docker.Deposit.Data.MySql.WithData.Dockerfile
