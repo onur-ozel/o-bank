@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-  customer.data:
+  customer.data.mssql:
     build:
       context: .
       dockerfile: Docker.Customer.Data.MSSql.WithData.Dockerfile
