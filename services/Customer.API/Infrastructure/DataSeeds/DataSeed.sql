@@ -44,7 +44,7 @@ GO
 DECLARE @RetailCustomers VARCHAR(MAX)
 
 SELECT @RetailCustomers = BulkColumn
-FROM OPENROWSET(BULK'/opt/mssql-tools/bin/RetailCustomer.json', SINGLE_BLOB) JSON;
+FROM OPENROWSET(BULK'/RetailCustomer.json', SINGLE_BLOB) JSON;
 SELECT @RetailCustomers as SingleRow_Column
 
 IF (ISJSON(@RetailCustomers) = 1) 
@@ -97,7 +97,7 @@ GO
 DECLARE @CorporateCustomers VARCHAR(MAX)
 
 SELECT @CorporateCustomers = BulkColumn
-FROM OPENROWSET(BULK'/opt/mssql-tools/bin/CorporateCustomer.json', SINGLE_BLOB) JSON;
+FROM OPENROWSET(BULK'/CorporateCustomer.json', SINGLE_BLOB) JSON;
 SELECT @CorporateCustomers as SingleRow_Column
 
 IF (ISJSON(@CorporateCustomers) = 1) 
