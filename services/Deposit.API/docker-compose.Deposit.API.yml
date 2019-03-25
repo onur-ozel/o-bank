@@ -1,0 +1,8 @@
+version: "3.4"
+services:
+  customer.data.mssql:
+    build:
+      context: .
+      dockerfile: Docker.Deposit.Data.MySql.WithData.Dockerfile
+    ports:
+      - "3306:3306"
