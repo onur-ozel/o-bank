@@ -6,8 +6,9 @@
 3. [Docker Standards](#docker)   
 
 
+<a name="api-naming"></a>
 
-## 1. API Naming Standarts <a name="api-naming"></a>
+## 1. API Naming Standarts 
    * Use **api name** first as prefix.
        > **_customer_**/api/v1/retail-customers
    * Use **api** prefix.
@@ -19,7 +20,9 @@
    * Use **lower case** letters.
        > customer/api/v1/**_retail-customers_**
 
-## 2. API Functional Standarts <a name="api-functional"></a>
+<a name="api-functional"></a>
+
+## 2. API Functional Standarts 
    * Use swagger, all apis swagger links must be like {api-name}/swagger
        > customer/**_swagger_**
    * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this, use HTTP GET, POST, DELETE etc.
@@ -35,8 +38,10 @@
    * All get methods which return full data must be support paging and sorting. Don't create new apis for these functions. Naming also must be like offset,limit     and sort.
        > - &#x2612; customer/api/v1/retail-customers?**_pageIndex=3&pageSize=10&sorting=id_**
        > - &#x2611; customer/api/v1/retail-customers?**_offset=3&limit=10&sort=id_**
+       
+<a name="docker"></a>
 
-## 3. Docker Standards <a name="docker"></a>
+## 3. Docker Standards 
    * General docker-compose file which includes whole structure of ecosystem **with sample seed data** must be in project root folder with **_docker-compose.yml_** naming.
    * General docker-compose file which includes whole structure of ecosystem **without sample seed data** must be in project root folder with **_docker-compose.without.data.yml_** naming.
    * In general compose file
