@@ -38,7 +38,7 @@
    * All get methods which return full data must be support paging and sorting. Don't create new apis for these functions. Naming also must be like offset,limit     and sort.
        > - &#x2612; customer/api/v1/retail-customers?**_pageIndex=3&pageSize=10&sorting=id_**
        > - &#x2611; customer/api/v1/retail-customers?**_offset=3&limit=10&sort=id_**
-       
+
 <a name="docker"></a>
 
 ## 3. Docker Standards 
@@ -66,3 +66,9 @@
        > Inside docker-compose.**_Customer.API_**.yml   
        > > ports:  
        > > \- "1433:1433"
+
+<a name="folder"></a>
+
+## 4. Folder Structure Standards 
+   * In api projects, naming conventions can be different (Java use camelCase for method name but in .net PascalCase) but folder structure must includes these
+       * general utils like kafka, api gateways etc. ip's must be in 10.20.30.**51 - 100** range. ports must be in **5051 - 5100** range.     
