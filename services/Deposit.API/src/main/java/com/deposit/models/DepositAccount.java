@@ -1,11 +1,13 @@
 package com.deposit.models;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@Entity
+@MappedSuperclass
 public abstract class DepositAccount {
 
+    @Id
     @Column(name = "id")
     private String id;
     @Column(name = "customer_number")

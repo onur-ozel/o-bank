@@ -1,7 +1,5 @@
 package com.deposit;
 
-import com.deposit.repositories.DepositAccountRepository;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,5 +12,4 @@ public class DepositAPIApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DepositAPIApplication.class, args);
 	}
-
 }

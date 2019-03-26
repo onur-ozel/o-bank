@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "withdraw_deposit_account")
 public class WithdrawDepositAccount extends DepositAccount {
+    public WithdrawDepositAccount() {
+        super();
+    }
+
     @Column(name = "overdraft_limit")
     private Double overDraftLimit;
 
