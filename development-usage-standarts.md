@@ -1,13 +1,13 @@
 # Instructions for **o-bank** development and usage standarts.
 
-##### Table of Contents  
-[Headers](#headers)  
-[Emphasis](#emphasis)  
-...snip...    
+## Table of Contents
+1. [API Naming Standarts](#api-naming)
+2. [API Functional Standarts](#api-functional)
+3. [Docker Standards](#docker)   
 
 
 
-## 1. API Naming Standarts
+## 1. API Naming Standarts <a name="api-naming"></a>
    * Use **api name** first as prefix.
        > **_customer_**/api/v1/retail-customers
    * Use **api** prefix.
@@ -19,7 +19,7 @@
    * Use **lower case** letters.
        > customer/api/v1/**_retail-customers_**
 
-## 2. API Functional Standarts
+## 2. API Functional Standarts <a name="api-functional"></a>
    * Use swagger, all apis swagger links must be like {api-name}/swagger
        > customer/**_swagger_**
    * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this, use HTTP GET, POST, DELETE etc.
@@ -36,19 +36,19 @@
        > - &#x2612; customer/api/v1/retail-customers?**_pageIndex=3&pageSize=10&sorting=id_**
        > - &#x2611; customer/api/v1/retail-customers?**_offset=3&limit=10&sort=id_**
 
-## 3. Docker Standards
+## 3. Docker Standards <a name="docker"></a>
    * General docker-compose file which includes whole structure of ecosystem **with sample seed data** must be in project root folder with **_docker-compose.yml_** naming.
    * General docker-compose file which includes whole structure of ecosystem **without sample seed data** must be in project root folder with **_docker-compose.without.data.yml_** naming.
    * In general compose file
-       > general utils like kafka, api gateways etc. ip's must be in 10.20.30.51 - 100 range. ports must be in 5051 - 5099 range.  
-       > databases like mongo, mssql, mysql etc. ip's must be in 10.20.30.101 - 150 range. ports must be in 5101 - 5150 range.  
-       > backoffice apis like customer (.net core), deposit (spring boot), parameter (nodejs) etc. ip's must be in 10.20.30.151 - 200 range. ports must be in 5151 - 5200 range.  
-       > frontend like customer (angular), deposit (react) etc. ip's must be in 10.20.30.201 - 250 range. ports must be in 5201 - 5250 range.  
+       * general utils like kafka, api gateways etc. ip's must be in 10.20.30.**51 - 100** range. ports must be in **5051 - 5100** range.  
+       * databases like mongo, mssql, mysql etc. ip's must be in 10.20.30.**101 - 150** range. ports must be in **5101 - 5150** range.  
+       * backoffice apis like customer (.net core), deposit (spring boot), parameter (nodejs) etc. ip's must be in 10.20.30.**151 - 200** range. ports must be in **5151 - 5200** range.  
+       * frontend like customer (angular), deposit (react) etc. ip's must be in 10.20.30.**201 - 250** range. ports must be in **5201 - 5250** range.  
    * In general compose file
        > name of services must be in **_{module-name}.{type-name}.{technology}_** format.
-       > > **parameter.data.mongo**
-       > > **customer.api.dotnet**
-       > > **deposit.ui.react**
+       > > **parameter.data.mongo**  
+       > > **customer.api.dotnet**  
+       > > **deposit.ui.react**  
    * Api's folder must have a docker-compose file which includes database architecture used by api.
    These database architecture can be used for development, debugging etc.
        > +- **Customer.API**  
