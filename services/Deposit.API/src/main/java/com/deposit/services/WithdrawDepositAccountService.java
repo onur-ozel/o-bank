@@ -17,12 +17,16 @@ import com.deposit.repositories.WithdrawDepositAccountRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
 public class WithdrawDepositAccountService {
     @Autowired
     WithdrawDepositAccountRepository repository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     public void add(WithdrawDepositAccount account) {
         repository.save(account);
@@ -32,8 +36,13 @@ public class WithdrawDepositAccountService {
         repository.deleteById(id);
     }
 
-    @PersistenceContext
-    private EntityManager em;
+    public void update(WithdrawDepositAccount account) {
+        WithdrawDepositAccount originalAccount = repository.findById(account.getId()).get();
+
+        originalAccount = account;
+
+        repository.save(originalAccount);
+    }
 
     public String get(Integer offset, Integer limit, String sorts, String fields, String searches)
             throws JsonProcessingException {

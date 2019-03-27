@@ -1,0 +1,155 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "aaaaThe Deposit Microservice REST API.\nThis is a Data-Driven/CRUD microservice is implemented in JAVA, Spring Boot",
+    "version": "v1",
+    "title": "o-bank - Deposit REST API",
+    "contact": {
+      "name": "Onur ÖZEL",
+      "url": "https://github.com/onur-ozel/o-bank",
+      "email": "onurozel41@gmail.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://github.com/onur-ozel/o-bank/blob/master/LICENSE"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "withdraw-deposit-account-controller",
+      "description": "Withdraw Deposit Account Controller"
+    }
+  ],
+  "paths": {
+    "/deposit/api/v1/withdraw-deposit-accounts": {
+      "get": {
+        "tags": ["withdraw-deposit-account-controller"],
+        "summary": "get",
+        "operationId": "getUsingGET",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "fields",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "searches",
+            "in": "query",
+            "description": "searches",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sorts",
+            "in": "query",
+            "description": "sorts",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": ["withdraw-deposit-account-controller"],
+        "summary": "add",
+        "operationId": "addUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "account",
+            "description": "account",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WithdrawDepositAccount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "WithdrawDepositAccount": {
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "customerNumber": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "string"
+        },
+        "overDraftLimit": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "WithdrawDepositAccount"
+    }
+  }
+}
