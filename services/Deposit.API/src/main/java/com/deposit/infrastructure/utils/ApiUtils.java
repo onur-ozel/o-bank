@@ -3,8 +3,6 @@ package com.deposit.infrastructure.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -12,10 +10,10 @@ import javax.persistence.criteria.Root;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
-import org.springframework.data.domain.Sort.Order;
-import org.springframework.data.jpa.repository.query.QueryUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.jpa.repository.query.QueryUtils;
 
 public class ApiUtils {
 

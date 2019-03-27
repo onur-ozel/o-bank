@@ -26,7 +26,6 @@ public class Json {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         // Ignore null values when writing json.
-        mapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
         mapper.setSerializationInclusion(Include.NON_NULL);
 
         // Write times as a String instead of a Long so its human readable.
@@ -183,6 +182,8 @@ public class Json {
     }
 
     public static class JsonException extends RuntimeException {
+        private static final long serialVersionUID = 1L;
+
         private JsonException(Exception ex) {
             super(ex);
         }

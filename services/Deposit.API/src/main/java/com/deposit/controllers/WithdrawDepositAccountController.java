@@ -1,7 +1,5 @@
 package com.deposit.controllers;
 
-import java.util.List;
-
 import com.deposit.models.WithdrawDepositAccount;
 import com.deposit.services.WithdrawDepositAccountService;
 import com.fasterxml.jackson.core.JsonProcessingException;
