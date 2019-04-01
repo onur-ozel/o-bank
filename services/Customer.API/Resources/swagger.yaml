@@ -22,7 +22,6 @@ paths:
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
         - $ref: '#components/parameters/limit'
-          example: test
         - $ref: '#components/parameters/offset'
         - $ref: '#components/parameters/sorts'
         - $ref: '#components/parameters/fields'
