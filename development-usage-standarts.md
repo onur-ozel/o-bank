@@ -5,6 +5,7 @@
 2. [API Functional Standarts](#api-functional)
 3. [Docker Standards](#docker)   
 4. [Folder Structure Standards](#folder)   
+5. [Swagger Standards](#swagger)  
 
 
 <a name="api-naming"></a>
@@ -44,8 +45,8 @@
            > customer/api/v1/retail-customers?**_sorts=+age,-name_**           
        * Field filter format must be like **fields={fieldName1},{fieldName2}**.
            > customer/api/v1/retail-customers?**_fields=id,first_name,last_name_**
-       * Search filter format must be like **searches={fieldName1}[{operator}]:{value}**.
-           > customer/api/v1/retail-customers?**_searches=id[=]:5_**
+       * Search filter format must be like **searches={fieldName1}[{operator}]{value}**.
+           > customer/api/v1/retail-customers?**_searches=id[=]5_**
 
 <a name="docker"></a>
 
@@ -82,4 +83,137 @@
        > +- **Deposit.API**  
        > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- controllers  
        > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- models  
-       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- infrastructure
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- infrastructure  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- resources  
+       > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- swagger  
+       > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- swagger.yaml 
+
+<a name="swagger"></a>
+
+## 5. Swagger Standards 
+   * In api projects, use swagger for documentation and testing. Use standalone swagger ui with seperate swagger.yaml file.
+   <br>Yes, i know it breaks consistency between documentation and api, we have to synchronize swagger ui and api codes in this approach.
+   <br>But rest controller code like below is contains lots of swagger documentation and its hard to read.
+   <br>I think codes readability is much more important than docuementation consistency.
+   <br>I dont want to annotation crowd, i prefer simple, readable codes.
+      <details>
+       <summary>Sample Nodejs Controller</summary>  
+
+           **
+           * @swagger
+           * tags:
+           *   - name: country
+           *     description: country parameter service
+           *
+           
+           **
+           * @swagger
+           * definition:
+           *   country:
+           *     properties:
+           *       flag:
+           *         type: string
+           *       name:
+           *         type: string
+           *       alpha2Code:
+           *         type: integer
+           *       alpha3Code:
+           *         type: string
+           *       capital:
+           *         type: string
+           *       region:
+           *         type: string
+           *       subregion:
+           *         type: integer
+           *       demonym:
+           *         type: string
+           *       nativeName:
+           *         type: string
+           *       numericCode:
+           *         type: string
+           */
+           
+           **
+           * @swagger
+           * /country:
+           *  get:
+           *    summary: gets countries
+           *    description: Gets country list. Optionaly can use with paging
+           *    tags:
+           *      - country
+           *    parameters:
+           *      - in: query
+           *        name: pageIndex
+           *        type: integer
+           *        required: false
+           *      - in: query
+           *        name: pageSize
+           *        type: integer
+           *        required: false
+           *    produces:
+           *      - application/json
+           *    responses:
+           *      200:
+           *        description: An array of countries
+           *        schema:
+           *          $ref: '#/definitions/country'
+           */
+
+           //Controller code is only this!!!
+           router.get('/', (req, res, next) => {
+             const country = new Country({
+               ...req.body
+             });
+           
+             country.save().then(createdCountry => {
+               res.status(201).json({
+                 message: 'Post added successfully',
+                 post: createdCountry
+               });
+             });
+           
+             cacheManager.clearCache(cacheName);
+           };
+      </details>
+      <details>
+       <summary>Sample SpringBoot Controller</summary>  
+
+            import io.swagger.annotations.Api;
+            import io.swagger.annotations.ApiOperation;
+            import io.swagger.annotations.ApiParam;
+            import io.swagger.annotations.ApiResponse;
+            import io.swagger.annotations.ApiResponses;
+
+            @RestController
+            @RequestMapping("deposit/api/v1/withdraw-deposit-accounts")
+            @Api(value = "Withdraw Deposit Account Controller", description     =       "Withdraw Deposit Account Operations.")
+            public class WithdrawDepositAccountController {
+            
+                @Autowired
+                WithdrawDepositAccountService service;
+
+                @RequestMapping(value = "", method = RequestMethod.GET,     produces =      "application/json")
+                @ApiOperation(value = "View a list of available withdraw    deposit        accounts.
+                For paging send 'offset' and 'limit' othervise returns full     data.       For sorting
+                send 'sort' ")
+                @ApiResponses(value = {
+                @ApiResponse(code = 200, message = "Successfully retrieved  list",
+                responseContainer = "List", response =  WithdrawDepositAccount.class),
+                @ApiResponse(code = 404, message = "The resource you were   trying to         reach is
+                not found") })
+                public String get(@RequestParam("offset") Integer offset,          @RequestParam("limit") Integer limit,
+                        @RequestParam("sorts") String sorts, @RequestParam  ("fields")        String fields,
+                        @RequestParam("searches") String searches) throws          JsonProcessingException {
+                        
+                    return service.get(offset, limit, sorts, fields,    searches);
+                }
+
+                @ApiOperation(value = "Add new withdraw deposit account")
+                @RequestMapping(value = "", method = RequestMethod.POST,    produces =         "application/json")
+                public void add(@RequestBody WithdrawDepositAccount account)    {
+                    //Controller code is only this!!!
+                    service.add(account);
+                }
+            } 
+      </details>
+   * asd 
