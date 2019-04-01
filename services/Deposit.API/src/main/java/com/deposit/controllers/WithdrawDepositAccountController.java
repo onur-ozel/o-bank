@@ -1,10 +1,7 @@
 package com.deposit.controllers;
 
-import java.util.Optional;
-
 import com.deposit.models.WithdrawDepositAccount;
 import com.deposit.services.WithdrawDepositAccountService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +23,7 @@ public class WithdrawDepositAccountController {
             @RequestParam(name = "limit", required = false) Integer limit,
             @RequestParam(name = "sorts", required = false) String sorts,
             @RequestParam(name = "fields", required = false) String fields,
-            @RequestParam(name = "searches", required = false) String searches) throws JsonProcessingException {
+            @RequestParam(name = "searches", required = false) String searches) throws Exception {
 
         return service.get(offset, limit, sorts, fields, searches);
     }
@@ -47,7 +44,7 @@ public class WithdrawDepositAccountController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public Optional<WithdrawDepositAccount> getById(@PathVariable(name = "id", required = true) String id) {
+    public String getById(@PathVariable(name = "id", required = true) String id) {
         return service.getById(id);
     }
 }

@@ -17,13 +17,58 @@ import org.springframework.data.jpa.repository.query.QueryUtils;
 
 public class ApiUtils {
 
-    public static Predicate[] parseSearches(String searches, CriteriaBuilder cb, Root<?> root) {
+    public static Predicate[] parseSearches(String searches, CriteriaBuilder cb, Root<?> root) throws Exception {
         String[] splittedSearches = searches.split(",");
         List<Predicate> searchList = new ArrayList<>();
 
         for (String searchItem : splittedSearches) {
-            String[] item = searchItem.split(":");
-            searchList.add(cb.equal(root.get(item[0]), item[1]));
+            String fieldName = searchItem.split("\\[.*]")[0];
+            String searchValue = searchItem.split("\\[.*]")[1];
+            String operator = searchItem.substring(fieldName.length(), searchItem.indexOf(searchValue))
+                    .replaceAll("[\\[\\]]", "");
+            Predicate predicate = null;
+
+            switch (operator) {
+            case "=":
+                predicate = cb.equal(root.get(fieldName), searchValue);
+                break;
+            case "!=":
+                predicate = cb.notEqual(root.get(fieldName), searchValue);
+                break;
+            case ">=":
+                predicate = cb.greaterThanOrEqualTo(root.get(fieldName), searchValue);
+                break;
+            case "<=":
+                predicate = cb.lessThanOrEqualTo(root.get(fieldName), searchValue);
+                break;
+            case ">":
+                predicate = cb.greaterThan(root.get(fieldName), searchValue);
+                break;
+            case "<":
+                predicate = cb.lessThan(root.get(fieldName), searchValue);
+                break;
+            case "%":
+                predicate = cb.like(root.get(fieldName), "%" + searchValue + "%");
+                break;
+            case "!%":
+                predicate = cb.notLike(root.get(fieldName), "%" + searchValue + "%");
+                break;
+            case "^%":
+                predicate = cb.like(root.get(fieldName), searchValue + "%");
+                break;
+            case "%^":
+                predicate = cb.like(root.get(fieldName), "%" + searchValue);
+                break;
+            case "!^%":
+                predicate = cb.notLike(root.get(fieldName), searchValue + "%");
+                break;
+            case "!%^":
+                predicate = cb.notLike(root.get(fieldName), "%" + searchValue);
+                break;
+            default:
+                throw new Exception("Undefined search parameter");
+            }
+            searchList.add(predicate);
         }
 
         return searchList.toArray(new Predicate[] {});

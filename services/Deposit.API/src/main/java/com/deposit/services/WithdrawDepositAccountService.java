@@ -1,7 +1,6 @@
 package com.deposit.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,11 +13,9 @@ import com.deposit.infrastructure.utils.ApiUtils;
 import com.deposit.infrastructure.utils.Json;
 import com.deposit.models.WithdrawDepositAccount;
 import com.deposit.repositories.WithdrawDepositAccountRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class WithdrawDepositAccountService {
@@ -45,7 +42,7 @@ public class WithdrawDepositAccountService {
     }
 
     public String get(Integer offset, Integer limit, String sorts, String fields, String searches)
-            throws JsonProcessingException {
+            throws Exception {
         Boolean hasPaging = offset != null && limit != null;
         Boolean hasSort = sorts != null && !sorts.isEmpty();
         Boolean hasSearch = searches != null && !searches.isEmpty();
@@ -81,8 +78,10 @@ public class WithdrawDepositAccountService {
         return Json.serializer().toString(returnData);
     }
 
-    public Optional<WithdrawDepositAccount> getById(String id) {
-        return (Optional<WithdrawDepositAccount>) repository.findById(id);
+    public String getById(String id) {
+        Json.serializer().setFilterProvider(ApiUtils.parseFields("", "withdrawDepositFilter"));
+
+        return Json.serializer().toString( repository.findById(id).get());
     }
 
 }

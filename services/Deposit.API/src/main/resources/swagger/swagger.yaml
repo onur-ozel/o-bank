@@ -7,7 +7,7 @@ info:
     name: Onur ÖZEL
     url: https://github.com/onur-ozel/o-bank
     email: onurozel41@gmail.com
-  license: 
+  license:
     name: MIT License
     url: https://github.com/onur-ozel/o-bank/blob/master/LICENSE
 tags:
@@ -18,12 +18,15 @@ paths:
     get:
       tags:
         - Withdraw Deposit Account
-      summary: Gets Withdraw Deposit Accounts 
+      summary: Gets Withdraw Deposit Accounts
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
         - $ref: '#components/parameters/limit'
+          example: test
         - $ref: '#components/parameters/offset'
         - $ref: '#components/parameters/sorts'
+        - $ref: '#components/parameters/fields'
+        - $ref: '#components/parameters/searches'        
       responses:
         200:
           description: successful operation
@@ -36,7 +39,7 @@ paths:
         400:
           $ref: '#/components/responses/400InvalidRequest'
         404:
-          $ref: '#/components/responses/404NotFound'   
+          $ref: '#/components/responses/404NotFound'
     post:
       tags:
         - Withdraw Deposit Account
@@ -48,7 +51,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WithdrawDepositAccount'
-        required: true          
+        required: true
       responses:
         200:
           description: successful operation
@@ -59,10 +62,10 @@ paths:
         400:
           $ref: '#/components/responses/400InvalidRequest'
         404:
-          $ref: '#/components/responses/404NotFound'       
+          $ref: '#/components/responses/404NotFound'
     put:
       tags:
-        - Withdraw Deposit Account  
+        - Withdraw Deposit Account
       summary: Update an existing account.
       description: Id field must be filled. customerNumber and accountNumber cannot be modified.
       requestBody:
@@ -71,7 +74,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WithdrawDepositAccount'
-        required: true    
+        required: true
       responses:
         200:
           description: successful operation
@@ -79,36 +82,53 @@ paths:
         400:
           $ref: '#/components/responses/400InvalidRequest'
         404:
-          $ref: '#/components/responses/404NotFound'  
-  /deposit/api/v1/withdraw-deposit-accounts/{account_id}:        
+          $ref: '#/components/responses/404NotFound'
+  /deposit/api/v1/withdraw-deposit-accounts/{id}:
     delete:
       tags:
-        - Withdraw Deposit Account    
+        - Withdraw Deposit Account
       summary: Deletes an existing account by id.
       parameters:
         - $ref: '#components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'        
     get:
       tags:
-        - Withdraw Deposit Account    
+        - Withdraw Deposit Account
       summary: Get withdraw deposit account by id.
-      description:        
+      parameters:
+        - $ref: '#components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'        
 components:
   schemas:
     RequestError:
       type: object
       properties:
-        code: 
+        code:
           type: string
           description: Error code.
           example: 12345
-        message: 
+        message:
           type: string
           description: User friendly error message.
           example: Invalid field name used in searching.
         stackTrace:
           type: string
           description: Error stack trace. It can be null for securtiy reasons.
-        help: 
+        help:
           type: string
           description: Help url or instructions for taken error.
     DepositAccount:
@@ -127,22 +147,22 @@ components:
           type: integer
           format: int64
           description: Account number.
-          example: 123456789     
+          example: 123456789
         balance:
           type: number
           format: double
           description: Account balance.
-          example: 217.15     
+          example: 217.15
     WithdrawDepositAccount:
       allOf:
-      - $ref: '#/components/schemas/DepositAccount'
-      - type: object
-        properties:   
-          overDraftLimit:
-            type: number
-            format: double
-            description: Account overdraft credit limit.
-            example: 100.50                                
+        - $ref: '#/components/schemas/DepositAccount'
+        - type: object
+          properties:
+            overDraftLimit:
+              type: number
+              format: double
+              description: Account overdraft credit limit.
+              example: 100.50
   parameters:
     limit:
       name: limit
@@ -169,7 +189,7 @@ components:
       schema:
         type: integer
         format: int32
-        minimum: 0      
+        minimum: 0
     sorts:
       name: sorts
       in: query
@@ -178,12 +198,32 @@ components:
       allowEmptyValue: true
       style: form
       explode: true
-      example: +id,-overDraftLimit 
+      example: +id,-overDraftLimit
       schema:
-        type: string     
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Filters result data with given field names. Multiple column can be provided by comma seperated.
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: id,overDraftLimit
+      schema:
+        type: string
+    searches:
+      name: searches
+      in: query
+      description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=, % (like), !% (notlike), ^% (ends with), %^ (starts with), !^% (not ends with), !%^ (not starts with)
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: balance[>=]250,overDraftLimit[<]500
+      schema:
+        type: string        
     id:
       name: id
-      in: path        
+      in: path
       description: Unique account id.
       required: true
       schema:
@@ -193,10 +233,10 @@ components:
   responses:
     404NotFound:
       description: The specified resource was not found.
-      content: {}      
+      content: {}
     400InvalidRequest:
       description: Invalid request.
-      content: 
+      content:
         application/json:
           schema:
             $ref: '#/components/schemas/RequestError'
