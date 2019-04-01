@@ -19,12 +19,12 @@ public class SwaggerController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/v2/api-docs", produces = "application/yaml")
     public Resource apiDocs() {
-        return new ClassPathResource("/swagger/swagger.yaml");
+        return new ClassPathResource("../resources/swagger/swagger.yaml");
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/swagger-resources/configuration/ui", produces = "application/json")
     public Object uiConfig() {
-        return new ClassPathResource("/swagger/swagger-config-ui.json");
+        return new ClassPathResource("../resources/swagger/swagger-config-ui.json");
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/swagger-resources/configuration/security", produces = "application/json")
@@ -34,6 +34,6 @@ public class SwaggerController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/swagger-resources", produces = "application/json")
     public Object resources() {
-        return new ClassPathResource("/swagger/swagger-resources.json");
+        return new ClassPathResource("../resources/swagger/swagger-resources.json");
     }
 }

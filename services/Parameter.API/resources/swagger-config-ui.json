@@ -1,0 +1,26 @@
+{
+    "deepLinking": true,
+    "displayRequestDuration": true,
+    "defaultModelsExpandDepth": 1,
+    "defaultModelExpandDepth": 1,
+    "docExpansion": "list",
+    "defaultModelRendering": "example",
+    "filter": true,
+    "showExtensions": true,
+    "showCommonExtensions": true,
+    "jsonEditor": true,
+    "showRequestHeaders": true,
+    "operationsSorter": "alpha",
+    "tagsSorter": "alpha",
+    "apisSorter": "alpha",
+    "supportedSubmitMethods": [
+        "get",
+        "put",
+        "post",
+        "delete",
+        "options",
+        "head",
+        "patch",
+        "trace"
+    ]
+}

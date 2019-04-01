@@ -21,7 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //swagger utilization
 const swaggerUi = require('swagger-ui-express');
-const swaggerDoc = require('./infrastructure/configuration/swaggerConfig');
+const yaml = reqire('yamljs');
+const swaggerDoc = yaml.load('./resources/swagger/swagger.yaml');
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 //routers
