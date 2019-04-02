@@ -23,9 +23,15 @@ paths:
       parameters:
         - $ref: '#components/parameters/limit'
         - $ref: '#components/parameters/offset'
-        - $ref: '#components/parameters/sorts'
-        - $ref: '#components/parameters/fields'
-        - $ref: '#components/parameters/searches'        
+        - example: +id,-overDraftLimit
+          allOf:
+            - $ref: '#components/parameters/sorts'
+        - example: accountNumber,balance,overDraftLimit
+          allOf:
+            - $ref: '#components/parameters/fields'
+        - example: balance[>=]250,overDraftLimit[<]500
+          allOf:
+            - $ref: '#components/parameters/searches'                  
       responses:
         200:
           description: successful operation
@@ -197,7 +203,7 @@ components:
       allowEmptyValue: true
       style: form
       explode: true
-      example: +id,-overDraftLimit
+      example: +field_name1,-field_name2
       schema:
         type: string
     fields:
@@ -207,7 +213,7 @@ components:
       required: false
       allowEmptyValue: true
       style: form
-      example: id,overDraftLimit
+      example: field_name1,field_name2
       schema:
         type: string
     searches:
@@ -217,7 +223,7 @@ components:
       required: false
       allowEmptyValue: true
       style: form
-      example: balance[>=]250,overDraftLimit[<]500
+      example: field_name1[>=]250,field_name2[<]500
       schema:
         type: string        
     id:
