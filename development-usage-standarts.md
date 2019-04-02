@@ -1,56 +1,61 @@
 # Instructions for **o-bank** development and usage standarts.
 
 ## Table of Contents
-1. [API Naming Standarts](#api-naming)
-2. [API Functional Standarts](#api-functional)
-3. [Docker Standards](#docker)   
-4. [Folder Structure Standards](#folder)   
-5. [Swagger Standards](#swagger)  
+1. [API Standarts](#api)  
+   1.1. [Naming Standarts](#api-naming)  
+   1.2. [Functional Standarts](#api-functional)   
+2. [Docker Standards](#docker)   
+3. [Folder Structure Standards](#folder)   
+4. [Swagger Standards](#swagger)  
 
+
+<a name="api"></a>
+
+## 1. API Standarts  
 
 <a name="api-naming"></a>
 
-## 1. API Naming Standarts 
-   * Use **api name** first as prefix.
-       > **_customer_**/api/v1/retail-customers
-   * Use **api** prefix.
-       > customer/**_api_**/v1/retail-customers
-   * Use versioning. 
-       > customer/api/**_v1_**/retail-customers
-   * Use **plural** names, not singular.
-   * Use **hypen** between words.
-   * Use **lower case** letters.
-       > customer/api/v1/**_retail-customers_**
+   - ### 1.1 Naming Standarts
+        * Use **api name** first as prefix.
+            > **_customer_**/api/v1/retail-customers
+        * Use **api** prefix.
+            > customer/**_api_**/v1/retail-customers
+        * Use versioning. 
+            > customer/api/**_v1_**/retail-customers
+        * Use **plural** names, not singular.
+        * Use **hypen** between words.
+        * Use **lower case** letters.
+            > customer/api/v1/**_retail-customers_**
 
 <a name="api-functional"></a>
 
-## 2. API Functional Standarts 
-   * Use swagger, all apis swagger links must be like {api-name}/swagger
-       > customer/**_swagger_**
-   * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this, use HTTP GET, POST, DELETE etc.
-       > - &#x2612; customer/api/v1/get-retail-customers
-       > - &#x2611; customer/api/v1/retail-customers =>>  HTTP GET
-   * Don't use verb names like getById. Instead of this, use path parameter.
-       > customer/api/v1/retail-customers/**_{id}_**
-   * Use query parameter for paging, sorting, filtering etc. Excepts id. Use path parameter for id.  
-       > - &#x2612; customer/api/v1/retail-customers?**_id=5_**
-       > - &#x2611; customer/api/v1/retail-customers/**_5_**
-       > - &#x2612; customer/api/v1/retail-customers/**_offset/3/limit/10_**
-       > - &#x2611; customer/api/v1/retail-customers?**_offset=3&limit=10_**  
-   * All get methods which return full data must be sopport paging, sorting, searching and filtering.
-       * Paging format must be like **offset={offset}&limit={limit}**.
-           > customer/api/v1/retail-customers?**_offset=10&limit=10_**
-       * Sort format must be like **sorts={direction (+=asc,-=desc)}{fieldname}**.
-           > customer/api/v1/retail-customers?**_sorts=+id_**  
-           > customer/api/v1/retail-customers?**_sorts=+age,-name_**           
-       * Field filter format must be like **fields={fieldName1},{fieldName2}**.
-           > customer/api/v1/retail-customers?**_fields=id,first_name,last_name_**
-       * Search filter format must be like **searches={fieldName1}[{operator}]{value}**.
-           > customer/api/v1/retail-customers?**_searches=id[=]5_**
+   - ### 1.2 Functional Standarts
+        * Use swagger, all apis swagger links must be like {api-name}/      swagger
+            > customer/**_swagger_**
+        * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this,      use HTTP GET, POST, DELETE etc.
+            > - &#x2612; customer/api/v1/get-retail-customers
+            > - &#x2611; customer/api/v1/retail-customers =>>  HTTP GET
+        * Don't use verb names like getById. Instead of this, use path      parameter.
+            > customer/api/v1/retail-customers/**_{id}_**
+        * Use query parameter for paging, sorting, filtering etc. Excepts       id. Use path parameter for id.  
+            > - &#x2612; customer/api/v1/retail-customers?**_id=5_**
+            > - &#x2611; customer/api/v1/retail-customers/**_5_**
+            > - &#x2612; customer/api/v1/retail-customers/**_offset/3/      limit/10_**
+            > - &#x2611; customer/api/v1/retail-customers?**_offset=3&      limit=10_**  
+        * All get methods which return full data must be sopport paging,        sorting, searching and filtering.
+            * Paging format must be like **offset={offset}&limit={limit}**.
+                > customer/api/v1/retail-customers?**_offset=10&limit=10_**
+            * Sort format must be like **sorts={direction (+=asc,-=desc)}       {fieldname}**.
+                > customer/api/v1/retail-customers?**_sorts=+id_**  
+                > customer/api/v1/retail-customers?**_sorts=+age,-name_**                
+            * Field filter format must be like **fields={fieldName1},       {fieldName2}**.
+                > customer/api/v1/retail-customers?**_fields=id,first_name,     last_name_**
+            * Search filter format must be like **searches={fieldName1}[    {operator}]{value}**.
+                > customer/api/v1/retail-customers?**_searches=id[=]5_**
 
 <a name="docker"></a>
 
-## 3. Docker Standards 
+## 2. Docker Standards 
    * General docker-compose file which includes whole structure of ecosystem **with sample seed data** must be in project root folder with **_docker-compose.yml_** naming.
    * General docker-compose file which includes whole structure of ecosystem **without sample seed data** must be in project root folder with **_docker-compose.without.data.yml_** naming.
    * In general compose file
@@ -78,7 +83,7 @@
 
 <a name="folder"></a>
 
-## 4. Folder Structure Standards 
+## 3. Folder Structure Standards 
    * In api projects, naming conventions can be different (eg: Java use camelCase for method name but in .net PascalCase) but folder structure must includes these
        > +- **Deposit.API**  
        > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- controllers  
@@ -90,7 +95,7 @@
 
 <a name="swagger"></a>
 
-## 5. Swagger Standards 
+## 4. Swagger Standards 
    * In api projects, use swagger for documentation and testing. Use standalone swagger ui with seperate swagger.yaml file.
    <br>Yes, i know it breaks consistency between documentation and api, we have to synchronize swagger ui and api codes in this approach.
    <br>But rest controller code like below is contains lots of swagger documentation and its hard to read.
