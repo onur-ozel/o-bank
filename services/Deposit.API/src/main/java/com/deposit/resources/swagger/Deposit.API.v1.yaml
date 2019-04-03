@@ -1,0 +1,565 @@
+openapi: 3.0.0
+info:
+  title: o-bank Desposit API
+  description: Deposit REST API for o-bank. This API has whole operations about customers different typed deposit accounts.<br>Developed in Java (Spring Boot)
+  version: 1.0.0
+  contact:
+    name: Onur ÖZEL
+    url: https://github.com/onur-ozel/o-bank
+    email: onurozel41@gmail.com
+  license:
+    name: MIT License
+    url: https://github.com/onur-ozel/o-bank/blob/master/LICENSE
+tags:
+  - name: Demand Deposit Account
+    description: Operations about demand deposit account.
+  - name: Time Deposit Account
+    description: Operations about time deposit account.
+  - name: Saving Deposit Account
+    description: Operations about saving deposit account.        
+paths:
+  /deposit/api/v1/demand-deposit-accounts:
+    get:
+      tags:
+        - Demand Deposit Account
+      summary: Gets demand deposit accounts
+      description: Paging, sorting, searching and field filtering can be provided with query parameters.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - allOf:
+            - $ref: '#/components/parameters/sorts'
+          example: +id,-overDraftLimit
+        - allOf:
+            - $ref: '#/components/parameters/fields'
+          example: accountNumber,balance,overDraftLimit
+        - allOf:
+            - $ref: '#/components/parameters/searches'  
+          example: balance[>=]250,overDraftLimit[<]500
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DemandDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - Demand Deposit Account
+      summary: Creates new demand deposit account
+      description: Id and account number is generated in api.
+      requestBody:
+        description: Account object that will be created.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/DemandDepositAccount'
+                - properties:
+                    customerNumber:
+                      readOnly: false          
+                    currency:
+                      readOnly: false                                       
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemandDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Demand Deposit Account
+      summary: Update an existing account.
+      description: Id field must be filled.
+      requestBody:
+        description: Account object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/DemandDepositAccount'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /deposit/api/v1/demand-deposit-accounts/{id}:
+    delete:
+      tags:
+        - Demand Deposit Account
+      summary: Deletes an existing account by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    get:
+      tags:
+        - Demand Deposit Account
+      summary: Get demand deposit account by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemandDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+  
+  /deposit/api/v1/time-deposit-accounts:
+    get:
+      tags:
+        - Time Deposit Account
+      summary: Gets time deposit accounts
+      description: Paging, sorting, searching and field filtering can be provided with query parameters.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - allOf:
+            - $ref: '#/components/parameters/sorts'
+          example: +id,-interest
+        - allOf:
+            - $ref: '#/components/parameters/fields'
+          example: accountNumber,balance,maturity,interest
+        - allOf:
+            - $ref: '#/components/parameters/searches'  
+          example: balance[>=]250,interest[<]1.15
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TimeDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - Time Deposit Account
+      summary: Creates new time deposit account
+      description: Id and account number is generated in api.
+      requestBody:
+        description: Account object that will be created.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/TimeDepositAccount'
+                - properties:
+                    customerNumber:
+                      readOnly: false          
+                    currency:
+                      readOnly: false                                       
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemandDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Time Deposit Account
+      summary: Update an existing account.
+      description: Id field must be filled.
+      requestBody:
+        description: Account object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/TimeDepositAccount'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /deposit/api/v1/time-deposit-accounts/{id}:
+    delete:
+      tags:
+        - Time Deposit Account
+      summary: Deletes an existing account by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    get:
+      tags:
+        - Time Deposit Account
+      summary: Get time deposit account by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+
+  /deposit/api/v1/saving-deposit-accounts:
+    get:
+      tags:
+        - Saving Deposit Account
+      summary: Gets saving deposit accounts
+      description: Paging, sorting, searching and field filtering can be provided with query parameters.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - allOf:
+            - $ref: '#/components/parameters/sorts'
+          example: +id,-interest
+        - allOf:
+            - $ref: '#/components/parameters/fields'
+          example: accountNumber,balance,interest
+        - allOf:
+            - $ref: '#/components/parameters/searches'  
+          example: balance[>=]250,interest[<]1.15
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavingDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - Saving Deposit Account
+      summary: Creates new saving deposit account
+      description: Id and account number is generated in api.
+      requestBody:
+        description: Account object that will be created.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/SavingDepositAccount'
+                - properties:
+                    customerNumber:
+                      readOnly: false          
+                    currency:
+                      readOnly: false                                       
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavingDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Saving Deposit Account
+      summary: Update an existing account.
+      description: Id field must be filled.
+      requestBody:
+        description: Account object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/SavingDepositAccount'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /deposit/api/v1/saving-deposit-accounts/{id}:
+    delete:
+      tags:
+        - Saving Deposit Account
+      summary: Deletes an existing account by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    get:
+      tags:
+        - Saving Deposit Account
+      summary: Get saving deposit account by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavingDepositAccount'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'                
+components:
+  schemas:
+    ModelBase:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Guid id.
+          example: be5d9875-38d9-43be-86e7-9117ff3385d1 
+        state:
+          type: boolean
+          readOnly: true
+          description: Records valid or invalid state.
+          example: true    
+    Error:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'    
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Error type.
+              example: NullPointerException
+            code:
+              type: string
+              description: Error code.
+              example: 12345
+            level:
+              type: string
+              description: Error level.
+              enum: [Error, Fatal, Warning, Info, Debug]
+              example: Error          
+            message:
+              type: string
+              description: User friendly error message.
+              example: Invalid field name used in searching.
+            stackTrace:
+              type: string
+              description: Error stack trace. It can be null for securtiy reasons.
+            help:
+              type: string
+              description: Help url or instructions for taken error.
+    DepositAccount:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'    
+        - type: object    
+          properties:        
+            customerNumber:
+              type: integer
+              format: int64
+              readOnly: true
+              description: Accounts owner customer number.
+              example: 123456789
+            accountNumber:
+              type: integer
+              format: int64
+              readOnly: true
+              description: Account number.
+              example: 123456789
+            status:
+              type: string
+              description: Account status.
+              enum: [Active, Closed, Blocked]
+              example: Active       
+            currency:
+              type: string
+              readOnly: true
+              description: Account currency type.
+              enum: [TRY, USD, EUR]
+              example: USD                    
+            balance:
+              type: number
+              format: double
+              readOnly: true
+              description: Account balance.
+              example: 217.15
+    DemandDepositAccount:
+      description: Demand deposit is a basic checking account. Consumers deposit money which they can withdraw as desired on demand. 
+      allOf:
+        - $ref: '#/components/schemas/DepositAccount'
+        - type: object
+          properties:
+            overDraftLimit:
+              type: number
+              format: double
+              description: Account overdraft credit limit.
+              example: 100.50
+    TimeDepositAccount:
+      description: Like a savings account, a time deposit account is an investment vehicle for consumers. Also known as certificates of deposit (CD), time deposit accounts tend to offer a higher rate of return than traditional savings accounts, but the money must stay in the account for a set period of time              
+      allOf:
+        - $ref: '#/components/schemas/DepositAccount'
+        - type: object
+          properties:
+            maturity:
+              type: number
+              format: int32
+              description: Account maturity in day.
+              example: 30      
+            interest:
+              type: number
+              format: double
+              description: Interest rate.
+              example: 1.23                  
+    SavingDepositAccount:
+      description: Savings accounts offer account holders interest on their deposits.           
+      allOf:
+        - $ref: '#/components/schemas/DepositAccount'
+        - type: object
+          properties:
+            interest:
+              type: number
+              format: double
+              description: Daily interest rate.
+              example: 1.03  
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Limits return data count.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: 10
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+    offset:
+      name: offset
+      in: query
+      description: Offset data value.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: 0
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+    sorts:
+      name: sorts
+      in: query
+      description: Sort by columns. Multiple column can be provided by comma seperated. Use + for desc - for asc.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: +field_name1,-field_name2
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Filters result data with given field names. Multiple column can be provided by comma seperated.
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: field_name1,field_name2
+      schema:
+        type: string
+    searches:
+      name: searches
+      in: query
+      description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=, % (like), !% (notlike), ^% (ends with), %^ (starts with), !^% (not ends with), !%^ (not starts with)
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: field_name1[>=]250,field_name2[<]500
+      schema:
+        type: string        
+    id:
+      name: id
+      in: path
+      description: Unique id.
+      required: true
+      schema:
+        type: string
+        description: Guid id.
+        example: be5d9875-38d9-43be-86e7-9117ff3385d1
+  responses:
+    500ApiError:
+      description: API malfunction.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    400InvalidRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

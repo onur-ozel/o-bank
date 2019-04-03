@@ -17,9 +17,9 @@ public class SwaggerController {
         httpResponse.sendRedirect("/swagger-ui.html");
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/v2/api-docs", produces = "application/yaml")
+    @RequestMapping(method = RequestMethod.GET, path = "/v1/api-docs", produces = "application/yaml")
     public Resource apiDocs() {
-        return new ClassPathResource("../resources/swagger/swagger.yaml");
+        return new ClassPathResource("../resources/swagger/Deposit.API.v1.yaml");
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/swagger-resources/configuration/ui", produces = "application/json")

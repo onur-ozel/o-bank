@@ -1,6 +1,6 @@
 [{
-    "name": "default",
-    "url": "/v2/api-docs",
+    "name": "Deposit.API.v1",
+    "url": "/v1/api-docs",
     "swaggerVersion": "2.0",
-    "location": "/v2/api-docs"
+    "location": "/v1/api-docs"
 }]

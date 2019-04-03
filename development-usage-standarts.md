@@ -1,21 +1,23 @@
 # Instructions for **o-bank** development and usage standarts.
 
 ## Table of Contents
-1. [API Standarts](#api)  
-   1.1. [Naming Standarts](#api-naming)  
-   1.2. [Functional Standarts](#api-functional)   
-2. [Docker Standards](#docker)   
-3. [Folder Structure Standards](#folder)   
-4. [Swagger Standards](#swagger)  
+1. [API Standard](#api)  
+   1.1. [Naming](#api-naming)  
+   1.2. [Functional](#api-functional)   
+   1.3. [Http Response Code](#api-status)     
+2. [Docker Standard](#docker)   
+3. [Folder Structure Standard](#folder)   
+4. [Swagger Standard](#swagger)  
+5. [Data Model Standard](#data-model)  
 
 
 <a name="api"></a>
 
-## 1. API Standarts  
+## 1. API Standard  
 
 <a name="api-naming"></a>
 
-   - ### 1.1 Naming Standarts
+   - ### 1.1 Naming
         * Use **api name** first as prefix.
             > **_customer_**/api/v1/retail-customers
         * Use **api** prefix.
@@ -29,7 +31,7 @@
 
 <a name="api-functional"></a>
 
-   - ### 1.2 Functional Standarts
+   - ### 1.2 Functional
         * Use swagger, all apis swagger links must be like {api-name}/      swagger
             > customer/**_swagger_**
         * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this,      use HTTP GET, POST, DELETE etc.
@@ -53,9 +55,22 @@
             * Search filter format must be like **searches={fieldName1}[    {operator}]{value}**.
                 > customer/api/v1/retail-customers?**_searches=id[=]5_**
 
+
+<a name="api-status"></a>
+
+   - ### 1.3 Http Response Code
+        * Use 200 for valid and successful request.
+        * Use 400 for invalid consumer requests. Logically consumers fault.
+            > Invalid parameter semantics.
+            > Invalid parameter values.  
+            > Invalid parameter format.                       
+            > Invalid parameter logic.            
+        * Use 500 for api malfunction. Logically apis fault. 
+            > Unhandled exceptions.
+
 <a name="docker"></a>
 
-## 2. Docker Standards 
+## 2. Docker Standard 
    * General docker-compose file which includes whole structure of ecosystem **with sample seed data** must be in project root folder with **_docker-compose.yml_** naming.
    * General docker-compose file which includes whole structure of ecosystem **without sample seed data** must be in project root folder with **_docker-compose.without.data.yml_** naming.
    * In general compose file
@@ -83,7 +98,7 @@
 
 <a name="folder"></a>
 
-## 3. Folder Structure Standards 
+## 3. Folder Structure Standard 
    * In api projects, naming conventions can be different (eg: Java use camelCase for method name but in .net PascalCase) but folder structure must includes these
        > +- **Deposit.API**  
        > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- controllers  
@@ -91,11 +106,11 @@
        > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- infrastructure  
        > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- resources  
        > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- swagger  
-       > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- swagger.yaml 
+       > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- {api_name}.{version}.yaml 
 
 <a name="swagger"></a>
 
-## 4. Swagger Standards 
+## 4. Swagger Standard 
    * In api projects, use swagger for documentation and testing. Use standalone swagger ui with seperate swagger.yaml file.
    <br>Yes, i know it breaks consistency between documentation and api, we have to synchronize swagger ui and api codes in this approach.
    <br>But rest controller code like below is contains lots of swagger documentation and its hard to read.
@@ -221,4 +236,9 @@
                 }
             } 
       </details>
-   * asd 
+
+<a name="data-model"></a>
+
+## 5. Data Model Standard
+   * All models must have id column which is guid.
+   * All models must have state column which is boolean. This column represent record valid state. In o-bank ecosystem, no records must delete. For records that are invalid or to be deleted, the value must be set to false.

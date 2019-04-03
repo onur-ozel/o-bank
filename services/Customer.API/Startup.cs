@@ -47,7 +47,7 @@ namespace Customer.API {
             });
 
             app.UseSwaggerUI (c => {
-                c.SwaggerEndpoint ("/Resources/swagger/swagger.yaml", "Customer.API V1");
+                c.SwaggerEndpoint ("/Resources/swagger/Customer.API.v1.yaml", "Customer.API.v1");
             });
 
             app.UseCors ("CorsPolicy");

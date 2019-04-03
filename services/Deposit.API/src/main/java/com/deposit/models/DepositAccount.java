@@ -1,29 +1,32 @@
 package com.deposit.models;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 @MappedSuperclass
-public abstract class DepositAccount {
-
-    @Id
-    @Column(name = "id")
-    private String id;
+public abstract class DepositAccount extends ModelBase {
     @Column(name = "customer_number")
-    private Long customerNumber;
+    @JsonProperty("customerNumber")
+    private Long customerNumber = null;
+
     @Column(name = "account_number")
-    private Long accountNumber;
+    @JsonPropertyOrder("accountNumber")
+    private Long accountNumber = null;
+
+    @Column(name = "status")
+    @JsonProperty("status")
+    private Status status = null;
+
     @Column(name = "balance")
-    private Double balance;
+    @JsonProperty("balance")
+    private Double balance = null;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @Column(name = "currency")
+    @JsonProperty("currency")
+    private String currency = null;
 
     public Long getCustomerNumber() {
         return customerNumber;
@@ -41,11 +44,27 @@ public abstract class DepositAccount {
         this.accountNumber = accountNumber;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public Double getBalance() {
         return balance;
     }
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
