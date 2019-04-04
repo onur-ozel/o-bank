@@ -1,0 +1,97 @@
+{
+  "id": 162968,
+  "num_rows": 1000,
+  "file_format": "json",
+  "name": "retail_customer_address",
+  "array": true,
+  "columns": [
+    {
+      "name": "id",
+      "null_percentage": 0,
+      "type": "GUID",
+      "formula": ""
+    },
+    {
+      "name": "state",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "true",
+      "formula": ""
+    },
+    {
+      "name": "created_user",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "System",
+      "formula": ""
+    },
+    {
+      "name": "created_date",
+      "null_percentage": 0,
+      "type": "Blank",
+      "formula": ""
+    },
+    {
+      "name": "customer_number",
+      "null_percentage": 0,
+      "type": "Sequence",
+      "start": 100000,
+      "step": 1,
+      "repeat": 1,
+      "formula": ""
+    },
+    {
+      "name": "country_name",
+      "null_percentage": 0,
+      "type": "Country",
+      "countries": [
+        "Turkey",
+        "Germany",
+        "Netherlands",
+        "United States",
+        "United Kingdom",
+        "France",
+        "Switzerland",
+        "Spain",
+        "Belgium",
+        "Denmark",
+        "Sweden",
+        "Norway",
+        "Italy"
+      ],
+      "formula": ""
+    },
+    {
+      "name": "provience_name",
+      "null_percentage": 0,
+      "type": "State",
+      "onlyUSPlaces": false,
+      "formula": ""
+    },
+    {
+      "name": "district_name",
+      "null_percentage": 0,
+      "type": "City",
+      "formula": ""
+    },
+    {
+      "name": "address_line",
+      "null_percentage": 0,
+      "type": "Street Address",
+      "formula": ""
+    },
+    {
+      "name": "postal_code",
+      "null_percentage": 0,
+      "type": "Postal Code",
+      "formula": ""
+    },
+    {
+      "name": "address_type",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "Home",
+      "formula": ""
+    }
+  ]
+}

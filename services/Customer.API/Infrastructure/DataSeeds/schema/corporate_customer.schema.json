@@ -1,0 +1,82 @@
+{
+  "id": 162926,
+  "num_rows": 1000,
+  "file_format": "json",
+  "name": "corporate_customer",
+  "array": true,
+  "columns": [
+    {
+      "name": "id",
+      "null_percentage": 0,
+      "type": "GUID",
+      "formula": ""
+    },
+    {
+      "name": "state",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "true",
+      "formula": ""
+    },
+    {
+      "name": "created_user",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "System",
+      "formula": ""
+    },
+    {
+      "name": "created_date",
+      "null_percentage": 0,
+      "type": "Blank",
+      "formula": ""
+    },
+    {
+      "name": "customer_number",
+      "null_percentage": 0,
+      "type": "Sequence",
+      "start": 101000,
+      "step": 1,
+      "repeat": 1,
+      "formula": ""
+    },
+    {
+      "name": "status",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "Active",
+      "formula": ""
+    },
+    {
+      "name": "email",
+      "null_percentage": 0,
+      "type": "Email Address",
+      "formula": ""
+    },
+    {
+      "name": "tax_id",
+      "null_percentage": 0,
+      "type": "Regular Expression",
+      "value": "\\d{10}",
+      "formula": ""
+    },
+    {
+      "name": "name",
+      "null_percentage": 0,
+      "type": "Stock Name",
+      "formula": ""
+    },
+    {
+      "name": "industry",
+      "null_percentage": 0,
+      "type": "Stock Industry",
+      "formula": ""
+    },
+    {
+      "name": "sector",
+      "null_percentage": 0,
+      "type": "Stock Sector",
+      "formula": ""
+    }
+  ]
+}

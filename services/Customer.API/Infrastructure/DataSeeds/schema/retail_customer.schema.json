@@ -1,0 +1,121 @@
+{
+  "id": 162923,
+  "num_rows": 1000,
+  "file_format": "json",
+  "name": "retail_customer",
+  "array": true,
+  "columns": [
+    {
+      "name": "id",
+      "null_percentage": 0,
+      "type": "GUID",
+      "formula": ""
+    },
+    {
+      "name": "state",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "true",
+      "formula": ""
+    },
+    {
+      "name": "created_user",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "System",
+      "formula": ""
+    },
+    {
+      "name": "created_date",
+      "null_percentage": 0,
+      "type": "Blank",
+      "formula": ""
+    },
+    {
+      "name": "customer_number",
+      "null_percentage": 0,
+      "type": "Sequence",
+      "start": 100000,
+      "step": 1,
+      "repeat": 1,
+      "formula": ""
+    },
+    {
+      "name": "status",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "Active",
+      "formula": ""
+    },
+    {
+      "name": "email",
+      "null_percentage": 0,
+      "type": "Email Address",
+      "formula": ""
+    },
+    {
+      "name": "first_name",
+      "null_percentage": 0,
+      "type": "First Name",
+      "formula": ""
+    },
+    {
+      "name": "last_name",
+      "null_percentage": 0,
+      "type": "Last Name",
+      "formula": ""
+    },
+    {
+      "name": "nationality",
+      "null_percentage": 0,
+      "type": "Country Code",
+      "formula": ""
+    },
+    {
+      "name": "national_id",
+      "null_percentage": 0,
+      "type": "Regular Expression",
+      "value": "\\d{11}",
+      "formula": ""
+    },
+    {
+      "name": "gender",
+      "null_percentage": 0,
+      "type": "Gender",
+      "formula": ""
+    },
+    {
+      "name": "birth_place",
+      "null_percentage": 0,
+      "type": "City",
+      "formula": ""
+    },
+    {
+      "name": "birth_date",
+      "null_percentage": 0,
+      "type": "Date",
+      "min": "1/1/1970",
+      "max": "1/1/2000",
+      "format": "%-m/%-d/%Y",
+      "formula": ""
+    },
+    {
+      "name": "company_name",
+      "null_percentage": 0,
+      "type": "Company Name",
+      "formula": ""
+    },
+    {
+      "name": "department",
+      "null_percentage": 0,
+      "type": "Department (Corporate)",
+      "formula": ""
+    },
+    {
+      "name": "job_title",
+      "null_percentage": 0,
+      "type": "Job Title",
+      "formula": ""
+    }
+  ]
+}

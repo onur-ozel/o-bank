@@ -254,13 +254,13 @@ paths:
         - $ref: '#/components/parameters/offset'
         - allOf:
             - $ref: '#/components/parameters/sorts'
-          example: +id,-countryCode
+          example: +id,-country
         - allOf:
             - $ref: '#/components/parameters/fields'
           example: customerNumber,countryCode
         - allOf:
             - $ref: '#/components/parameters/searches'  
-          example: countryCode[=]TUR
+          example: country[=]Netherlands
       responses:
         200:
           description: successful operation
@@ -509,7 +509,18 @@ components:
           type: boolean
           readOnly: true
           description: Records valid or invalid state.
-          example: true      
+          example: true    
+        createdUser:
+          type: string
+          readOnly: true
+          description: Record created user.
+          example: T324651 
+        createdDate:
+          type: string
+          format: datetime
+          readOnly: true
+          description: Record creation date time.
+          example: '2018-08-17 02:44:22'                      
     Error:
       allOf:
         - $ref: '#/components/schemas/ModelBase'    
@@ -549,28 +560,27 @@ components:
               format: int64
               readOnly: true
               description: Customer number.
-              example: 123456789                     
-            countryCode:
+              example: 100000                     
+            countryName:
               type: string
-              description: Countries ISO 3166-1 Alpha-3 code.
-              example: TUR
+              description: Country name.
+              example: Netherlands
             provinceName:
               type: string
               description: City/Region name.
-              example: İstanbul
+              example: Provincie Noord-Holland
             districtName:
               type: string
               description: City's district name.
-              example: Kadıköy
+              example: Amsterdam-Oost
             addressLine:
               type: string
               description: Street address, unit, building, floor etc..
-              example: X street, Y apartment, floor:2, no:3
+              example: 41 Russell Trail
             postalCode:
-              type: number
-              format: int32
+              type: string
               description: Address zip/postal code.
-              example: 34744
+              example: 1094
             addressType:
               type: string
               description: Address type.
@@ -586,17 +596,12 @@ components:
               format: int64
               readOnly: true
               description: Customer number.
-              example: 123456789          
-            callCode:
-              type: number
-              format: int32
-              description: Country call code.
-              example: 90
+              example: 100000          
             phoneNumber:
               type: number
               format: int32
               description: Phone number
-              example: 1234567
+              example: +57 558 934 5079
             phoneNumberType:
               type: string
               description: Phone number type.
@@ -612,12 +617,16 @@ components:
               format: int64
               readOnly: true
               description: Customer number.
-              example: 123456789
+              example: 100000
             status:
               type: string
               description: Customer status.
               enum: [Active, Closed]
-              example: Active                          
+              example: Active   
+            email:
+              type: string
+              description: Customer email.
+              example: iphillcockx@nps.gov                                     
     RetailCustomer:
       description: Retail customer is as self representative as he/she will come up to use services for themselves, using their own money 
       allOf:
@@ -627,20 +636,20 @@ components:
             firstName:
               type: string
               description: Retail customer first name.
-              example: Arleta
+              example: Ileane
             lastName:
               type: string
               description: Retail customer last name.
-              example: Kleinhaut   
+              example: Phillcock   
             nationality:
               type: string
               description: Retail customer nationality.
-              example: TUR                            
+              example: NL                            
             nationalId:
               type: number
               format: int64
               description: Retail customer national id.
-              example: 12345678912
+              example: 56855175784
             gender:
               type: string
               description: Customer gender.
@@ -649,12 +658,24 @@ components:
             birthPlace:
               type: string
               description: Retail customer birth place.
-              example: İstanbul    
+              example: Apeldoorn    
             birthDate:
               type: string
               format: date
               description: Retail customer birth date.
-              example: 2017-07-21                              
+              example: 5/2/1970   
+            companyName:
+              type: string
+              description: Retail customer company name.
+              example: Mudo 
+            department:
+              type: string
+              description: Retail customer department.
+              example: Research and Development 
+            jobTitle:
+              type: string
+              description: Retail customer job title.
+              example: Office Assistant III                                                                      
     CorporateCustomer:
       description: Corporate customer is a company’s representative as he/she will come up to use services for the company, using the company’s money.                 
       allOf:
@@ -665,11 +686,19 @@ components:
               type: number
               format: int64
               description: Corporate customer tax id.
-              example: 1234567890      
+              example: 6750761289      
             name:
               type: string
               description: Corporate customer name.
-              example: Wordware              
+              example: Moxian, Inc.    
+            industry:
+              type: string
+              description: Corporate customer industry.
+              example: 'Computer Software: Programming, Data Processing'  
+            sector:
+              type: string
+              description: Corporate customer sector.
+              example: Technology                                        
   parameters:
     limit:
       name: limit
