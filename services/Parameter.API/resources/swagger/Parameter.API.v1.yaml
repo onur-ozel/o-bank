@@ -23,16 +23,16 @@ paths:
       summary: Gets country parameters
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
-        - $ref: '#components/parameters/limit'
-        - $ref: '#components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
         - allOf:
-            - $ref: '#components/parameters/sorts'
+            - $ref: '#/components/parameters/sorts'
           example: +id,-name
         - allOf:
-            - $ref: '#components/parameters/fields'
+            - $ref: '#/components/parameters/fields'
           example: name,alpha2Code,capital
         - allOf:
-            - $ref: '#components/parameters/searches'  
+            - $ref: '#/components/parameters/searches'  
           example: subregion[=]Asia
       responses:
         200:
@@ -100,7 +100,7 @@ paths:
         - Country
       summary: Deletes an existing country parameter by id.
       parameters:
-        - $ref: '#components/parameters/id'
+        - $ref: '#/components/parameters/id'
       responses:
         200:
           description: successful operation
@@ -114,7 +114,7 @@ paths:
         - Country
       summary: Get country parameter by id.
       parameters:
-        - $ref: '#components/parameters/id'      
+        - $ref: '#/components/parameters/id'      
       responses:
         200:
           description: successful operation
@@ -134,16 +134,16 @@ paths:
       summary: Gets currency parameters
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
-        - $ref: '#components/parameters/limit'
-        - $ref: '#components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
         - allOf:
-            - $ref: '#components/parameters/sorts'
+            - $ref: '#/components/parameters/sorts'
           example: +id,-interest
         - allOf:
-            - $ref: '#components/parameters/fields'
+            - $ref: '#/components/parameters/fields'
           example: accountNumber,balance,maturity,interest
         - allOf:
-            - $ref: '#components/parameters/searches'  
+            - $ref: '#/components/parameters/searches'  
           example: balance[>=]250,interest[<]1.15
       responses:
         200:
@@ -211,7 +211,7 @@ paths:
         - Currency
       summary: Deletes an existing currency parameter by id.
       parameters:
-        - $ref: '#components/parameters/id'
+        - $ref: '#/components/parameters/id'
       responses:
         200:
           description: successful operation
@@ -225,7 +225,7 @@ paths:
         - Currency
       summary: Get currency parameter by id.
       parameters:
-        - $ref: '#components/parameters/id'      
+        - $ref: '#/components/parameters/id'      
       responses:
         200:
           description: successful operation

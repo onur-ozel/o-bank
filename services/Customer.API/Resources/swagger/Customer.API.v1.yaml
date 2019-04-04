@@ -25,16 +25,16 @@ paths:
       summary: Gets retail customers
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
-        - $ref: '#components/parameters/limit'
-        - $ref: '#components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
         - allOf:
-            - $ref: '#components/parameters/sorts'
+            - $ref: '#/components/parameters/sorts'
           example: +id,-nationalId
         - allOf:
-            - $ref: '#components/parameters/fields'
+            - $ref: '#/components/parameters/fields'
           example: customerNumber,nationality,nationalId
         - allOf:
-            - $ref: '#components/parameters/searches'  
+            - $ref: '#/components/parameters/searches'  
           example: nationality[=]TUR,nationalId[%^]12345
       responses:
         200:
@@ -102,7 +102,7 @@ paths:
         - Retail Customer
       summary: Deletes an existing customer by id.
       parameters:
-        - $ref: '#components/parameters/id'
+        - $ref: '#/components/parameters/id'
       responses:
         200:
           description: successful operation
@@ -116,7 +116,7 @@ paths:
         - Retail Customer
       summary: Get customer by id.
       parameters:
-        - $ref: '#components/parameters/id'      
+        - $ref: '#/components/parameters/id'      
       responses:
         200:
           description: successful operation
@@ -136,16 +136,16 @@ paths:
       summary: Gets corporate customers
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
-        - $ref: '#components/parameters/limit'
-        - $ref: '#components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
         - allOf:
-            - $ref: '#components/parameters/sorts'
+            - $ref: '#/components/parameters/sorts'
           example: +id,-taxId
         - allOf:
-            - $ref: '#components/parameters/fields'
+            - $ref: '#/components/parameters/fields'
           example: customerNumber,taxId,name
         - allOf:
-            - $ref: '#components/parameters/searches'  
+            - $ref: '#/components/parameters/searches'  
           example: taxId[%^]12345
       responses:
         200:
@@ -213,7 +213,7 @@ paths:
         - Corporate Customer
       summary: Deletes an existing customer by id.
       parameters:
-        - $ref: '#components/parameters/id'
+        - $ref: '#/components/parameters/id'
       responses:
         200:
           description: successful operation
@@ -227,7 +227,7 @@ paths:
         - Corporate Customer
       summary: Get customer by id.
       parameters:
-        - $ref: '#components/parameters/id'      
+        - $ref: '#/components/parameters/id'      
       responses:
         200:
           description: successful operation
@@ -248,18 +248,18 @@ paths:
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId          
-        - $ref: '#components/parameters/limit'
-        - $ref: '#components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
         - allOf:
-            - $ref: '#components/parameters/sorts'
+            - $ref: '#/components/parameters/sorts'
           example: +id,-countryCode
         - allOf:
-            - $ref: '#components/parameters/fields'
+            - $ref: '#/components/parameters/fields'
           example: customerNumber,countryCode
         - allOf:
-            - $ref: '#components/parameters/searches'  
+            - $ref: '#/components/parameters/searches'  
           example: countryCode[=]TUR
       responses:
         200:
@@ -281,7 +281,7 @@ paths:
       description: Id is generated in api.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId         
       requestBody:
         description: Address object that will be created.
@@ -308,7 +308,7 @@ paths:
       description: Id field must be filled.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId         
       requestBody:
         description: Address object that needs to be updated.
@@ -336,9 +336,9 @@ paths:
       summary: Deletes an existing customer's address by id.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId      
-        - $ref: '#components/parameters/id'
+        - $ref: '#/components/parameters/id'
       responses:
         200:
           description: successful operation
@@ -353,9 +353,9 @@ paths:
       summary: Get customer's address by id.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId
-        - $ref: '#components/parameters/id'      
+        - $ref: '#/components/parameters/id'      
       responses:
         200:
           description: successful operation
@@ -376,18 +376,18 @@ paths:
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId          
-        - $ref: '#components/parameters/limit'
-        - $ref: '#components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
         - allOf:
-            - $ref: '#components/parameters/sorts'
+            - $ref: '#/components/parameters/sorts'
           example: +id,-phoneNumberType
         - allOf:
-            - $ref: '#components/parameters/fields'
+            - $ref: '#/components/parameters/fields'
           example: callCode,phoneNumber,phoneNumberType
         - allOf:
-            - $ref: '#components/parameters/searches'  
+            - $ref: '#/components/parameters/searches'  
           example: phoneNumberType[=]Home
       responses:
         200:
@@ -409,7 +409,7 @@ paths:
       description: Id is generated in api.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId         
       requestBody:
         description: Phone number object that will be created.
@@ -436,7 +436,7 @@ paths:
       description: Id field must be filled.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId         
       requestBody:
         description: Phone numbers object that needs to be updated.
@@ -464,9 +464,9 @@ paths:
       summary: Deletes an existing customer's phone numbers by id.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId      
-        - $ref: '#components/parameters/id'
+        - $ref: '#/components/parameters/id'
       responses:
         200:
           description: successful operation
@@ -481,9 +481,9 @@ paths:
       summary: Get customer's phone numbers by id.
       parameters:
         - allOf:
-            - $ref: '#components/parameters/id'
+            - $ref: '#/components/parameters/id'
           name: customerId
-        - $ref: '#components/parameters/id'      
+        - $ref: '#/components/parameters/id'      
       responses:
         200:
           description: successful operation
