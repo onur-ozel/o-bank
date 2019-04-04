@@ -679,7 +679,7 @@ components:
     CorporateCustomer:
       description: Corporate customer is a company’s representative as he/she will come up to use services for the company, using the company’s money.                 
       allOf:
-        - $ref: '#/components/schemas/DepositAccount'
+        - $ref: '#/components/schemas/Customer'
         - type: object
           properties:
             taxId:
