@@ -25,7 +25,7 @@ GO
 
 CREATE TABLE retail_customer
 (
-    id nvarchar(36) DEFAULT newid(),
+    id nvarchar(36) DEFAULT newid() NOT NULL PRIMARY KEY,
     state bit DEFAULT 1,
     created_user nvarchar(6),
     created_date datetime DEFAULT GETDATE(),
@@ -91,7 +91,7 @@ GO
 
 CREATE TABLE corporate_customer
 (
-    id nvarchar(36) DEFAULT newid(),
+    id nvarchar(36) DEFAULT newid() NOT NULL PRIMARY KEY,
     state bit DEFAULT 1,
     created_user nvarchar(6),
     created_date datetime DEFAULT GETDATE(),
@@ -145,7 +145,7 @@ GO
 
 CREATE TABLE customer_address
 (
-    id nvarchar(36) DEFAULT newid(),
+    id nvarchar(36) DEFAULT newid() NOT NULL PRIMARY KEY,
     state bit DEFAULT 1,
     created_user nvarchar(6),
     created_date datetime DEFAULT GETDATE(),
@@ -233,7 +233,7 @@ GO
 
 CREATE TABLE customer_phone
 (
-    id nvarchar(36) DEFAULT newid(),
+    id nvarchar(36) DEFAULT newid() NOT NULL PRIMARY KEY,
     state bit DEFAULT 1,
     created_user nvarchar(6),
     created_date datetime DEFAULT GETDATE(),
