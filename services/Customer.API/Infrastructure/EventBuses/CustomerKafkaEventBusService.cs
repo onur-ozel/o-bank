@@ -3,7 +3,7 @@ using System.Text;
 using Confluent.Kafka;
 using Confluent.Kafka.Serialization;
 
-namespace Customer.API.Infrastructure.EventBus {
+namespace Customer.API.Infrastructure.EventBuses {
     public class CustomerKafkaEventBusService : ICustomerEventBusService {
         private static Dictionary<string, object> producerConfig = new Dictionary<string, object> { { "bootstrap.servers", "localhost:9092" }
         };

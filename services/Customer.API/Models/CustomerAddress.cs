@@ -3,12 +3,8 @@ using System.Collections.Generic;
 
 namespace Customer.API.Models
 {
-    public partial class CustomerAddress
+    public partial class CustomerAddress:ModelBase
     {
-        public string Id { get; set; }
-        public bool? State { get; set; }
-        public string CreatedUser { get; set; }
-        public DateTime? CreatedDate { get; set; }
         public decimal? CustomerNumber { get; set; }
         public string CountryName { get; set; }
         public string ProvienceName { get; set; }

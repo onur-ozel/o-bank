@@ -2,14 +2,14 @@ using System;
 using System.IO;
 using System.Reflection;
 using Customer.API.Infrastructure.Contexts;
-using Customer.API.Infrastructure.EventBus;
+using Customer.API.Infrastructure.EventBuses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Customer.API {
+namespace Customer.API.Utils {
     public static class CustomExtensionMethods {
         public static IServiceCollection AddCustomMVC (this IServiceCollection services, IConfiguration configuration) {
             services.AddMvc ()

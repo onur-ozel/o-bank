@@ -4,20 +4,20 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Customer.API.Infrastructure.Contexts;
-using Customer.API.Infrastructure.EventBus;
+using Customer.API.Infrastructure.EventBuses;
 using Customer.API.Infrastructure.ViewModels;
 using Customer.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Customer.API.Controllers {
-    [Route ("api/v1/[controller]")]
+    [Route ("customer/api/v1/corporate-customers")]
     [ApiController]
     public class CorporateCustomerController : ControllerBase {
-        private readonly CustomerContext _customerContext;
+        private readonly Infrastructure.Contexts.CustomerContext _customerContext;
         private readonly ICustomerEventBusService _customerEventBusService;
 
-        public CorporateCustomerController (CustomerContext context, ICustomerEventBusService customerEventBusService) {
+        public CorporateCustomerController (Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService) {
             _customerContext = context ??
                 throw new ArgumentNullException (nameof (context));
             _customerEventBusService = customerEventBusService ??
@@ -26,121 +26,107 @@ namespace Customer.API.Controllers {
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        // GET api/v1/[controller]/items[?pageSize=3&pageIndex=10]
-        /// <summary>
-        /// Gets corporate customers.
-        /// </summary>
-        /// <param name="pageSize">Count of max item size in page.</param>
-        /// <param name="pageIndex">Current page index.</param>
-        /// <returns>Corporate customer list.</returns>
         [HttpGet]
-        [Route ("items")]
-        [ProducesResponseType (typeof (PaginatedItemsViewModel<CorporateCustomerItem>), (int) HttpStatusCode.OK)]
-        [ProducesResponseType (typeof (IEnumerable<CorporateCustomerItem>), (int) HttpStatusCode.OK)]
-        [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> ItemsAsync ([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0) {
-            var totalItems = await _customerContext.CorporateCustomerItems
-                .LongCountAsync ();
+        [ProducesResponseType (typeof (IEnumerable<CorporateCustomer>), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> ItemsAsync ([FromQuery] int limit, [FromQuery] int offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches) {
 
-            var itemsOnPage = await _customerContext.CorporateCustomerItems
-                .OrderBy (c => c.CustomerNo)
-                .Skip (pageSize * pageIndex)
-                .Take (pageSize)
+            IEnumerable<CorporateCustomer> items = await _customerContext.CorporateCustomer
+                .Select (x => { x.Email })
                 .ToListAsync ();
 
-            var model = new PaginatedItemsViewModel<CorporateCustomerItem> (pageIndex, pageSize, totalItems, itemsOnPage);
-
-            return Ok (model);
+            return Ok (items);
         }
 
-        // GET api/v1/[controller]/items/{id}
-        /// <summary>
-        /// Gets corporate customer by unique customer id.
-        /// </summary>
-        /// <param name="id">Corporate customer unique id.</param>
-        /// <returns>Corporate customer.</returns>
-        [HttpGet]
-        [Route ("items/{id}")]
-        [ProducesResponseType ((int) HttpStatusCode.NotFound)]
-        [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
-        [ProducesResponseType (typeof (CorporateCustomerItem), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<CorporateCustomerItem>> ItemByIdAsync (string id) {
-            if (string.IsNullOrWhiteSpace (id)) {
-                return BadRequest ();
-            }
+        // // GET api/v1/[controller]/items/{id}
+        // /// <summary>
+        // /// Gets corporate customer by unique customer id.
+        // /// </summary>
+        // /// <param name="id">Corporate customer unique id.</param>
+        // /// <returns>Corporate customer.</returns>
+        // [HttpGet]
+        // [Route ("items/{id}")]
+        // [ProducesResponseType ((int) HttpStatusCode.NotFound)]
+        // [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
+        // [ProducesResponseType (typeof (CorporateCustomerItem), (int) HttpStatusCode.OK)]
+        // public async Task<ActionResult<CorporateCustomerItem>> ItemByIdAsync (string id) {
+        //     if (string.IsNullOrWhiteSpace (id)) {
+        //         return BadRequest ();
+        //     }
 
-            var item = await _customerContext.CorporateCustomerItems.SingleOrDefaultAsync (ci => ci.Id == id);
+        //     var item = await _customerContext.CorporateCustomerItems.SingleOrDefaultAsync (ci => ci.Id == id);
 
-            if (item != null) {
-                return item;
-            }
+        //     if (item != null) {
+        //         return item;
+        //     }
 
-            return NotFound ();
-        }
+        //     return NotFound ();
+        // }
 
-        //POST api/v1/[controller]/items
-        /// <summary>
-        /// Adds new corporate customer.
-        /// </summary>
-        /// <param name="customer">Corporate customer object.</param>
-        /// <returns>Added corporate customer id.</returns>
-        [Route ("items")]
-        [HttpPost]
-        [ProducesResponseType ((int) HttpStatusCode.Created)]
-        public async Task<ActionResult> CreateItemAsync ([FromBody] CorporateCustomerItem customer) {
-            _customerContext.CorporateCustomerItems.Add (customer);
+        // //POST api/v1/[controller]/items
+        // /// <summary>
+        // /// Adds new corporate customer.
+        // /// </summary>
+        // /// <param name="customer">Corporate customer object.</param>
+        // /// <returns>Added corporate customer id.</returns>
+        // [Route ("items")]
+        // [HttpPost]
+        // [ProducesResponseType ((int) HttpStatusCode.Created)]
+        // public async Task<ActionResult> CreateItemAsync ([FromBody] CorporateCustomerItem customer) {
+        //     _customerContext.CorporateCustomerItems.Add (customer);
 
-            await _customerContext.SaveChangesAsync ();
+        //     await _customerContext.SaveChangesAsync ();
 
-            return CreatedAtAction (nameof (ItemByIdAsync), new { id = customer.Id }, null);
-        }
+        //     return CreatedAtAction (nameof (ItemByIdAsync), new { id = customer.Id }, null);
+        // }
 
-        //PUT api/v1/[controller]/items
-        /// <summary>
-        /// Updates corporate customer
-        /// </summary>
-        /// <param name="customerToUpdate">Corporate customer object.</param>
-        /// <returns>Updated corporate customer id.</returns>
-        [Route ("items")]
-        [HttpPut]
-        [ProducesResponseType ((int) HttpStatusCode.NotFound)]
-        [ProducesResponseType ((int) HttpStatusCode.Created)]
-        public async Task<ActionResult> UpdateItemAsync ([FromBody] CorporateCustomerItem customerToUpdate) {
-            var customerItem = await _customerContext.CorporateCustomerItems.SingleOrDefaultAsync (i => i.Id == customerToUpdate.Id);
+        // //PUT api/v1/[controller]/items
+        // /// <summary>
+        // /// Updates corporate customer
+        // /// </summary>
+        // /// <param name="customerToUpdate">Corporate customer object.</param>
+        // /// <returns>Updated corporate customer id.</returns>
+        // [Route ("items")]
+        // [HttpPut]
+        // [ProducesResponseType ((int) HttpStatusCode.NotFound)]
+        // [ProducesResponseType ((int) HttpStatusCode.Created)]
+        // public async Task<ActionResult> UpdateItemAsync ([FromBody] CorporateCustomerItem customerToUpdate) {
+        //     var customerItem = await _customerContext.CorporateCustomerItems.SingleOrDefaultAsync (i => i.Id == customerToUpdate.Id);
 
-            if (customerItem == null) {
-                return NotFound (new { Message = $"Item with id {customerToUpdate.Id} not found." });
-            }
+        //     if (customerItem == null) {
+        //         return NotFound (new { Message = $"Item with id {customerToUpdate.Id} not found." });
+        //     }
 
-            _customerContext.CorporateCustomerItems.Update (customerToUpdate);
+        //     _customerContext.CorporateCustomerItems.Update (customerToUpdate);
 
-            await _customerContext.SaveChangesAsync ();
+        //     await _customerContext.SaveChangesAsync ();
 
-            return CreatedAtAction (nameof (ItemByIdAsync), new { id = customerToUpdate.Id }, null);
-        }
+        //     return CreatedAtAction (nameof (ItemByIdAsync), new { id = customerToUpdate.Id }, null);
+        // }
 
-        // DELETE api/v1/items/{id}
-        /// <summary>
-        /// Deletes corporate customer.
-        /// </summary>
-        /// <param name="id">Corporate customer unique id.</param>
-        /// <returns>Action result.</returns>
-        [Route ("items/{id}")]
-        [HttpDelete]
-        [ProducesResponseType ((int) HttpStatusCode.NoContent)]
-        [ProducesResponseType ((int) HttpStatusCode.NotFound)]
-        public async Task<ActionResult> DeleteItemAsync (string id) {
-            var customer = _customerContext.CorporateCustomerItems.SingleOrDefault (x => x.Id == id);
+        // // DELETE api/v1/items/{id}
+        // /// <summary>
+        // /// Deletes corporate customer.
+        // /// </summary>
+        // /// <param name="id">Corporate customer unique id.</param>
+        // /// <returns>Action result.</returns>
+        // [Route ("items/{id}")]
+        // [HttpDelete]
+        // [ProducesResponseType ((int) HttpStatusCode.NoContent)]
+        // [ProducesResponseType ((int) HttpStatusCode.NotFound)]
+        // public async Task<ActionResult> DeleteItemAsync (string id) {
+        //     var customer = _customerContext.CorporateCustomerItems.SingleOrDefault (x => x.Id == id);
 
-            if (customer == null) {
-                return NotFound ();
-            }
+        //     if (customer == null) {
+        //         return NotFound ();
+        //     }
 
-            _customerContext.CorporateCustomerItems.Remove (customer);
+        //     _customerContext.CorporateCustomerItems.Remove (customer);
 
-            await _customerContext.SaveChangesAsync ();
+        //     await _customerContext.SaveChangesAsync ();
 
-            return NoContent ();
-        }
+        //     return NoContent ();
+        // }
     }
 }

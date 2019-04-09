@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Customer.API.Models
-{
-    public partial class CorporateCustomer
-    {
-        public string Id { get; set; }
-        public bool? State { get; set; }
-        public string CreatedUser { get; set; }
-        public DateTime? CreatedDate { get; set; }
+namespace Customer.API.Models {
+    public partial class CorporateCustomer : ModelBase {
         public decimal? CustomerNumber { get; set; }
         public string Status { get; set; }
         public string Email { get; set; }
