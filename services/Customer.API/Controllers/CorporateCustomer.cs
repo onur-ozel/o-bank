@@ -11,37 +11,36 @@ using Customer.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Customer.API.Controllers
-{
-    [Route("customer/api/v1/corporate-customers")]
+namespace Customer.API.Controllers {
+    [Route ("customer/api/v1/corporate-customers")]
     [ApiController]
-    public class CorporateCustomerController : ControllerBase
-    {
+    public class CorporateCustomerController : ControllerBase {
         private readonly Infrastructure.Contexts.CustomerContext _customerContext;
         private readonly ICustomerEventBusService _customerEventBusService;
 
-        public CorporateCustomerController(Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService)
-        {
+        public CorporateCustomerController (Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService) {
             _customerContext = context ??
-                throw new ArgumentNullException(nameof(context));
+                throw new ArgumentNullException (nameof (context));
             _customerEventBusService = customerEventBusService ??
-                throw new ArgumentNullException(nameof(context));
+                throw new ArgumentNullException (nameof (context));
 
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<CorporateCustomer>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> ItemsAsync([FromQuery] int limit, [FromQuery] int offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches)
-        {
-            IEnumerable<CorporateCustomer> items = await _customerContext.CorporateCustomer.AsQueryable<CorporateCustomer>()
-                .ParseSearches(searches)
-                .ParseSort(sorts)
-                .ToListAsync();
+        [ProducesResponseType (typeof (IEnumerable<CorporateCustomer>), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> ItemsAsync ([FromQuery] int limit, [FromQuery] int offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches) {
 
-            return Ok(items);
+            var a = _customerContext.CorporateCustomer.Select (x => new { x.CreatedDate, x.CreatedUser }).Expression;
+            var b = _customerContext.CorporateCustomer.Select (x => x.Id);
+            var items = await _customerContext.CorporateCustomer.AsQueryable<CorporateCustomer> ()
+                .ParseSearches (searches)
+                .ParseSort (sorts)
+                .ToListAsync ();
+
+            return Ok (items);
         }
 
         // // GET api/v1/[controller]/items/{id}
