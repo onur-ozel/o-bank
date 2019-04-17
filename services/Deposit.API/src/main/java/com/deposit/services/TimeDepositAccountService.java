@@ -11,21 +11,21 @@ import javax.persistence.criteria.Root;
 
 import com.deposit.infrastructure.utils.ApiUtils;
 import com.deposit.infrastructure.utils.Json;
-import com.deposit.models.WithdrawDepositAccount;
-import com.deposit.repositories.WithdrawDepositAccountRepository;
+import com.deposit.models.TimeDepositAccount;
+import com.deposit.repositories.TimeDepositAccountRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WithdrawDepositAccountService {
+public class TimeDepositAccountService {
     @Autowired
-    WithdrawDepositAccountRepository repository;
+    TimeDepositAccountRepository repository;
 
     @PersistenceContext
     private EntityManager em;
 
-    public void add(WithdrawDepositAccount account) {
+    public void add(TimeDepositAccount account) {
         repository.save(account);
     }
 
@@ -33,26 +33,25 @@ public class WithdrawDepositAccountService {
         repository.deleteById(id);
     }
 
-    public void update(WithdrawDepositAccount account) {
-        WithdrawDepositAccount originalAccount = repository.findById(account.getId()).get();
+    public void update(TimeDepositAccount account) {
+        TimeDepositAccount originalAccount = repository.findById(account.getId()).get();
 
         originalAccount = account;
 
         repository.save(originalAccount);
     }
 
-    public String get(Integer offset, Integer limit, String sorts, String fields, String searches)
-            throws Exception {
+    public String get(Integer offset, Integer limit, String sorts, String fields, String searches) throws Exception {
         Boolean hasPaging = offset != null && limit != null;
         Boolean hasSort = sorts != null && !sorts.isEmpty();
         Boolean hasSearch = searches != null && !searches.isEmpty();
 
-        List<WithdrawDepositAccount> returnData;
+        List<TimeDepositAccount> returnData;
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        CriteriaQuery<WithdrawDepositAccount> cq = cb.createQuery(WithdrawDepositAccount.class);
-        Root<WithdrawDepositAccount> account = cq.from(WithdrawDepositAccount.class);
+        CriteriaQuery<TimeDepositAccount> cq = cb.createQuery(TimeDepositAccount.class);
+        Root<TimeDepositAccount> account = cq.from(TimeDepositAccount.class);
 
         cq.select(account);
 
@@ -64,7 +63,7 @@ public class WithdrawDepositAccountService {
             cq.where(ApiUtils.parseSearches(searches, cb, account));
         }
 
-        TypedQuery<WithdrawDepositAccount> typedQuery = em.createQuery(cq);
+        TypedQuery<TimeDepositAccount> typedQuery = em.createQuery(cq);
 
         if (hasPaging) {
             typedQuery.setFirstResult(offset);
@@ -73,15 +72,14 @@ public class WithdrawDepositAccountService {
 
         returnData = typedQuery.getResultList();
 
-        Json.serializer().setFilterProvider(ApiUtils.parseFields(fields, "withdrawDepositFilter"));
+        Json.serializer().setFilterProvider(ApiUtils.parseFields(fields, "timeDepositFilter"));
 
         return Json.serializer().toString(returnData);
     }
 
     public String getById(String id) {
-        Json.serializer().setFilterProvider(ApiUtils.parseFields("", "withdrawDepositFilter"));
+        Json.serializer().setFilterProvider(ApiUtils.parseFields("", "timeDepositFilter"));
 
-        return Json.serializer().toString( repository.findById(id).get());
+        return Json.serializer().toString(repository.findById(id).get());
     }
-
 }

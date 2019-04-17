@@ -1,7 +1,7 @@
 package com.deposit.controllers;
 
-import com.deposit.models.WithdrawDepositAccount;
-import com.deposit.services.WithdrawDepositAccountService;
+import com.deposit.models.SavingDepositAccount;
+import com.deposit.services.SavingDepositAccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("deposit/api/v1/withdraw-deposit-accounts")
-public class WithdrawDepositAccountController {
+@RequestMapping("deposit/api/v1/saving-deposit-accounts")
+public class SavingDepositAccountController {
 
     @Autowired
-    WithdrawDepositAccountService service;
+    SavingDepositAccountService service;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public String get(@RequestParam(name = "offset", required = false) Integer offset,
@@ -29,12 +29,12 @@ public class WithdrawDepositAccountController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
-    public void add(@RequestBody WithdrawDepositAccount account) {
+    public void add(@RequestBody SavingDepositAccount account) {
         service.add(account);
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT, produces = "application/json")
-    public void update(@RequestBody WithdrawDepositAccount account) {
+    public void update(@RequestBody SavingDepositAccount account) {
         service.update(account);
     }
 

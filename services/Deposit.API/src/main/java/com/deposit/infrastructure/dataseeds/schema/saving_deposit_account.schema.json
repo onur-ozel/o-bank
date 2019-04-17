@@ -1,0 +1,95 @@
+{
+  "id": 162941,
+  "num_rows": 500,
+  "file_format": "json",
+  "name": "saving_deposit_account",
+  "array": true,
+  "columns": [
+    {
+      "name": "id",
+      "null_percentage": 0,
+      "type": "GUID",
+      "formula": ""
+    },
+    {
+      "name": "state",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "true",
+      "formula": ""
+    },
+    {
+      "name": "created_user",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "System",
+      "formula": ""
+    },
+    {
+      "name": "created_date",
+      "null_percentage": 0,
+      "type": "Blank",
+      "formula": ""
+    },
+    {
+      "name": "customer_number",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 100000,
+      "max": 102000,
+      "decimals": 0,
+      "formula": ""
+    },
+    {
+      "name": "account_number",
+      "null_percentage": 0,
+      "type": "Sequence",
+      "start": 102000,
+      "step": 1,
+      "repeat": 1,
+      "formula": ""
+    },
+    {
+      "name": "status",
+      "null_percentage": 0,
+      "type": "Digit Sequence",
+      "format": "Active",
+      "formula": ""
+    },
+    {
+      "name": "currency",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "USD",
+        "EUR",
+        "GBP",
+        "CHF",
+        "TRY",
+        "CNY",
+        "JPY"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": ""
+    },
+    {
+      "name": "balance",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1,
+      "max": 1000000,
+      "decimals": 2,
+      "formula": "this - overdraft_limit"
+    },
+    {
+      "name": "interest",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0.09,
+      "max": 0.15,
+      "decimals": 2,
+      "formula": ""
+    }
+  ]
+}
