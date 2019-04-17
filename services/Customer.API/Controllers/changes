@@ -1,0 +1,894 @@
+startup.cs
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Customer.API.Utils;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+
+namespace Customer.API
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddCustomMVC(Configuration)
+                .AddEventBus(Configuration)
+                .AddCustomDbContext(Configuration);
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ServeUnknownFileTypes = true,
+                FileProvider = new PhysicalFileProvider(
+                        Path.Combine(Directory.GetCurrentDirectory(), "Resources")
+                    ),
+                RequestPath = "/Resources"
+            });
+
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "customer/swagger";
+                c.EnableFilter();
+                c.SwaggerEndpoint("/Resources/swagger/Customer.API.v1.yaml", "Customer.API.v1");
+            });
+
+            app.UseCors("CorsPolicy");
+            app.UseMvc();
+        }
+    }
+}
+
+------------------------------------------------
+CorporateCustomer.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBuses;
+using Customer.API.Infrastructure.Utils;
+using Customer.API.Infrastructure.ViewModels;
+using Customer.API.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+
+namespace Customer.API.Controllers
+{
+    [Route("customer/api/v1/corporate-customers")]
+    [ApiController]
+    public class CorporateCustomerController : ControllerBase
+    {
+        private readonly Infrastructure.Contexts.CustomerContext _customerContext;
+        private readonly ICustomerEventBusService _customerEventBusService;
+
+        public CorporateCustomerController(Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService)
+        {
+            _customerContext = context ??
+                throw new ArgumentNullException(nameof(context));
+            _customerEventBusService = customerEventBusService ??
+                throw new ArgumentNullException(nameof(context));
+
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<CorporateCustomer>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAsync([FromQuery] int? limit, [FromQuery] int? offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches)
+        {
+            var items = await _customerContext.CorporateCustomer.AsQueryable<CorporateCustomer>()
+                .DynamicWhere(searches)
+                .DynamicOrder(sorts)
+                .DynamicSelect(fields)
+                .DynamicTake(limit)
+                .DynamicSkip(offset)
+                .ToListAsync();
+
+            return Ok(items);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(CorporateCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> AddAsync([FromBody] CorporateCustomer newCustomer)
+        {
+            _customerContext.CorporateCustomer.Add(newCustomer);
+            await _customerContext.SaveChangesAsync();
+
+            return Ok(newCustomer);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(CorporateCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> UpdateAsync([FromBody] CorporateCustomer customerToUpdate)
+        {
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
+
+            //TODO return not found error
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            _customerContext.CorporateCustomer.Update(customerToUpdate);
+
+            await _customerContext.SaveChangesAsync();
+            return Ok(customerToUpdate);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> DeleteAsync([FromRoute] string id)
+        {
+            //TODO return not found error
+            var customerItem = await _customerContext.CorporateCustomer.SingleOrDefaultAsync(i => i.Id == id);
+
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            _customerContext.CorporateCustomer.Remove(customerItem);
+
+            await _customerContext.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(CorporateCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetbyIdAsync([FromRoute] string id)
+        {
+            //TODO return not found error
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
+
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            CorporateCustomer customer = await _customerContext.CorporateCustomer.Where(x => x.Id == id).SingleOrDefaultAsync();
+
+            return Ok(customer);
+        }
+    }
+}
+
+
+------------------------------------------------
+
+CustomerAdress.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBuses;
+using Customer.API.Infrastructure.Utils;
+using Customer.API.Infrastructure.ViewModels;
+using Customer.API.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+
+namespace Customer.API.Controllers
+{
+    [Route("customer/api/v1/customers/{customerId}/addresses")]
+    [ApiController]
+    public class CustomerAddressesController : ControllerBase
+    {
+        private readonly Infrastructure.Contexts.CustomerContext _customerContext;
+        private readonly ICustomerEventBusService _customerEventBusService;
+
+        public CustomerAddressesController(Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService)
+        {
+            _customerContext = context ??
+                throw new ArgumentNullException(nameof(context));
+            _customerEventBusService = customerEventBusService ??
+                throw new ArgumentNullException(nameof(context));
+
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<CustomerAddress>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAsync([FromRoute] string customerId, [FromQuery] int? limit, [FromQuery] int? offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches)
+        {
+            searches += ",customerNumber[=]" + customerId;
+
+            var items = await _customerContext.CustomerAddress.AsQueryable<CustomerAddress>()
+                // .Where(x => x.CustomerNumber == Convert.ToInt32(customerId))
+                .DynamicWhere(searches)
+                .DynamicOrder(sorts)
+                .DynamicSelect(fields)
+                .DynamicTake(limit)
+                .DynamicSkip(offset)
+                .ToListAsync();
+
+            return Ok(items);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(CorporateCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> AddAsync([FromBody] CorporateCustomer newCustomer)
+        {
+            _customerContext.CorporateCustomer.Add(newCustomer);
+            await _customerContext.SaveChangesAsync();
+
+            return Ok(newCustomer);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(CorporateCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> UpdateAsync([FromBody] CorporateCustomer customerToUpdate)
+        {
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
+
+            //TODO return not found error
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            _customerContext.CorporateCustomer.Update(customerToUpdate);
+
+            await _customerContext.SaveChangesAsync();
+            return Ok(customerToUpdate);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> DeleteAsync([FromRoute] string id)
+        {
+            //TODO return not found error
+            var customerItem = await _customerContext.CorporateCustomer.SingleOrDefaultAsync(i => i.Id == id);
+
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            _customerContext.CorporateCustomer.Remove(customerItem);
+
+            await _customerContext.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(CorporateCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetbyIdAsync([FromRoute] string id)
+        {
+            //TODO return not found error
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
+
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            CorporateCustomer customer = await _customerContext.CorporateCustomer.Where(x => x.Id == id).SingleOrDefaultAsync();
+
+            return Ok(customer);
+        }
+    }
+}
+
+------------------------------------------------
+
+RetailCustomer.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBuses;
+using Customer.API.Infrastructure.Utils;
+using Customer.API.Infrastructure.ViewModels;
+using Customer.API.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace Customer.API.Controllers
+{
+    [Route("customer/api/v1/retail-customers")]
+    [ApiController]
+    public class RetailCustomerController : ControllerBase
+    {
+        private readonly Infrastructure.Contexts.CustomerContext _customerContext;
+        private readonly ICustomerEventBusService _customerEventBusService;
+
+        public RetailCustomerController(Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService)
+        {
+            _customerContext = context ??
+                throw new ArgumentNullException(nameof(context));
+            _customerEventBusService = customerEventBusService ??
+                throw new ArgumentNullException(nameof(context));
+
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<RetailCustomer>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAsync([FromQuery] int? limit, [FromQuery] int? offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches)
+        {
+            var items = await _customerContext.RetailCustomer.AsQueryable<RetailCustomer>()
+                .DynamicWhere(searches)
+                .DynamicOrder(sorts)
+                .DynamicSelect(fields)
+                .DynamicTake(limit)
+                .DynamicSkip(offset)
+                .ToListAsync();
+
+            return Ok(items);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(RetailCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> AddAsync([FromBody] RetailCustomer newCustomer)
+        {
+            _customerContext.RetailCustomer.Add(newCustomer);
+            await _customerContext.SaveChangesAsync();
+
+            return Ok(newCustomer);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(RetailCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> UpdateAsync([FromBody] RetailCustomer customerToUpdate)
+        {
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
+
+            //TODO return not found error
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            _customerContext.RetailCustomer.Update(customerToUpdate);
+
+            await _customerContext.SaveChangesAsync();
+            return Ok(customerToUpdate);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> DeleteAsync([FromRoute] string id)
+        {
+            //TODO return not found error
+            var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == id);
+
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            _customerContext.RetailCustomer.Remove(customerItem);
+
+            await _customerContext.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(RetailCustomer), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetbyIdAsync([FromRoute] string id)
+        {
+            //TODO return not found error
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
+
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
+
+            RetailCustomer customer = await _customerContext.RetailCustomer.Where(x => x.Id == id).SingleOrDefaultAsync();
+
+            return Ok(customer);
+        }
+    }
+}
+
+
+------------------------------------------------
+
+APIUtils.cs
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Customer.API.Infrastructure.Contexts;
+using Customer.API.Models;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
+namespace Customer.API.Infrastructure.Utils
+{
+    public class TestA
+    {
+        public string Foo { get; set; }
+    }
+
+    public class PropertyIgnoreSerializerContractResolver : DefaultContractResolver
+    {
+        private readonly Dictionary<Type, HashSet<string>> _ignores;
+        public PropertyIgnoreSerializerContractResolver()
+        {
+            _ignores = new Dictionary<Type, HashSet<string>>();
+        }
+
+        public void IgnoreProperty(Type type, params string[] jsonPropertyNames)
+        {
+            if (!_ignores.ContainsKey(type))
+                _ignores[type] = new HashSet<string>();
+
+            foreach (var prop in jsonPropertyNames)
+                _ignores[type].Add(prop);
+        }
+
+        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+        {
+            var property = base.CreateProperty(member, memberSerialization);
+
+            if (IsIgnored(property.DeclaringType, property.PropertyName))
+            {
+                property.ShouldSerialize = i => false;
+                property.Ignored = true;
+            }
+
+            return property;
+        }
+
+        private bool IsIgnored(Type type, string jsonPropertyName)
+        {
+            if (!_ignores.ContainsKey(type))
+                return false;
+
+            return _ignores[type].Contains(jsonPropertyName);
+        }
+    }
+    public static class APIUtils
+    {
+        public static string UpperFirstLetter(this string value)
+        {
+            return value[0].ToString().ToUpperInvariant() + value.Substring(1, value.Length - 1);
+        }
+
+        public static string LowerFirstLetter(this string value)
+        {
+            return value[0].ToString().ToLowerInvariant() + value.Substring(1, value.Length - 1);
+        }
+
+        private static MethodInfo GetMethodInfo<T1, T2>(Func<T1, T2> f, T1 unused1)
+        {
+            return f.Method;
+        }
+
+        private static MethodInfo GetMethodInfo<T1, T2, T3>(Func<T1, T2, T3> f, T1 unused1, T2 unused2)
+        {
+            return f.Method;
+        }
+
+        private static MethodInfo GetMethodInfo<T1, T2, T3, T4>(Func<T1, T2, T3, T4> f, T1 unused1, T2 unused2, T3 unused3)
+        {
+            return f.Method;
+        }
+
+        private static MethodInfo GetMethodInfo<T1, T2, T3, T4, T5>(Func<T1, T2, T3, T4, T5> f, T1 unused1, T2 unused2, T3 unused3, T4 unused4)
+        {
+            return f.Method;
+        }
+
+        private static MethodInfo GetMethodInfo<T1, T2, T3, T4, T5, T6>(Func<T1, T2, T3, T4, T5, T6> f, T1 unused1, T2 unused2, T3 unused3, T4 unused4, T5 unused5)
+        {
+            return f.Method;
+        }
+
+        private static MethodInfo GetMethodInfo<T1, T2, T3, T4, T5, T6, T7>(Func<T1, T2, T3, T4, T5, T6, T7> f, T1 unused1, T2 unused2, T3 unused3, T4 unused4, T5 unused5, T6 unused6)
+        {
+            return f.Method;
+        }
+
+        public static IQueryable<TEntity> DynamicTake<TEntity>(this IQueryable<TEntity> query, int? limit)
+        {
+            if (limit == null)
+            {
+                return query;
+            }
+
+            Expression queryExpr = query.Expression;
+
+            queryExpr = Expression.Call(
+                    null,
+                    GetMethodInfo(Queryable.Take, query, limit.Value),
+                    new Expression[] { query.Expression, Expression.Constant(limit.Value) }
+                    );
+
+            return query.Provider.CreateQuery<TEntity>(queryExpr);
+        }
+
+        public static IQueryable<TEntity> DynamicSkip<TEntity>(this IQueryable<TEntity> query, int? offset)
+        {
+            if (offset == null)
+            {
+                return query;
+            }
+
+
+            Expression queryExpr = query.Expression;
+
+            queryExpr = Expression.Call(
+                    null,
+                    GetMethodInfo(Queryable.Skip, query, offset.Value),
+                    new Expression[] { query.Expression, Expression.Constant(offset.Value) }
+                    );
+
+            return query.Provider.CreateQuery<TEntity>(queryExpr);
+        }
+
+        public static IQueryable<dynamic> DynamicSelect<TEntity>(this IQueryable<TEntity> query, String fields)
+        {
+            if (string.IsNullOrWhiteSpace(fields))
+            {
+                return (IQueryable<dynamic>)query;
+            }
+
+            string[] fieldArray = fields.Split(",");
+
+            Expression queryExpr = query.Expression;
+
+            Func<TEntity, dynamic> selectorFunc = (element) =>
+            {
+                dynamic filteredObject = new System.Dynamic.ExpandoObject();
+                for (int i = 0; i < fieldArray.Length; i++)
+                {
+                    ((IDictionary<String, Object>)filteredObject)[fieldArray[i].LowerFirstLetter()]
+                        = query.ElementType.GetProperty(fieldArray[i].UpperFirstLetter()).GetValue(element, null);
+                }
+
+                return filteredObject;
+            };
+
+            Expression<Func<TEntity, dynamic>> selector = x => selectorFunc(x);
+
+            queryExpr = Expression.Call(
+                                null,
+                                GetMethodInfo(Queryable.Select, query, selector),
+                                new Expression[] { query.Expression, Expression.Quote(selector) }
+                                );
+
+            return query.Provider.CreateQuery<dynamic>(queryExpr);
+        }
+
+        public static IQueryable<TEntity> DynamicWhere<TEntity>(this IQueryable<TEntity> query, String searches)
+        {
+            if (string.IsNullOrWhiteSpace(searches))
+            {
+                return query;
+            }
+
+            string[] searchArray = searches.Split(",");
+
+            Expression queryExpr = query.Expression;
+            ParameterExpression parameter = Expression.Parameter(query.ElementType, "p");
+            Expression predicateBody = null;
+
+            for (int i = 0; i < searchArray.Length; i++)
+            {
+                string searchValue = string.Empty;
+                string searchField = string.Empty;
+                string searchExpression = string.Empty;
+
+                searchField = Regex.Split(searchArray[i], "\\[.*]")[0].UpperFirstLetter();
+                searchValue = Regex.Split(searchArray[i], "\\[.*]")[1];
+                searchExpression = Regex.Replace(searchArray[i].Substring(searchField.Length, searchArray[i].IndexOf(searchValue) - searchField.Length), "[\\[\\]]", "");
+
+
+                PropertyInfo property = query.ElementType.GetProperty(searchField);
+
+
+                Expression left = Expression.Property(parameter, property);
+
+                TypeConverter typeConverter = TypeDescriptor.GetConverter(property.PropertyType);
+                object searchValueTyped = typeConverter.ConvertFromString(searchValue);
+
+                Expression right = Expression.Constant(searchValueTyped, property.PropertyType);
+
+                Expression expression = null;
+                switch (searchExpression)
+                {
+                    case "=":
+                        expression = Expression.Equal(left, right);
+                        break;
+                    case "!=":
+                        expression = Expression.NotEqual(left, right);
+                        break;
+                    case ">=":
+                        expression = Expression.GreaterThanOrEqual(left, right);
+                        break;
+                    case "<=":
+                        expression = Expression.LessThanOrEqual(left, right);
+                        break;
+                    case ">":
+                        expression = Expression.GreaterThan(left, right);
+                        break;
+                    case "<":
+                        expression = Expression.LessThan(left, right);
+                        break;
+                    case "%":
+                    case "!%":
+                    case "^%":
+                    case "%^":
+                    case "!^%":
+                    case "!%^":
+                        expression = GetLikeExpressions(parameter, property, searchValue, searchExpression);
+                        break;
+                    default:
+                        throw new Exception("Undefined search parameter");
+                }
+
+                if (predicateBody == null)
+                {
+                    predicateBody = expression;
+                }
+                else
+                {
+                    predicateBody = Expression.And(predicateBody, expression);
+                }
+            }
+
+            queryExpr = Expression.Call(
+                typeof(Queryable),
+                "Where",
+                new Type[] { query.ElementType },
+                queryExpr, Expression.Quote(Expression.Lambda(predicateBody, parameter))
+            );
+
+            return query.Provider.CreateQuery<TEntity>(queryExpr);
+        }
+
+        private static Expression GetLikeExpressions(ParameterExpression parameter, PropertyInfo property, string searchValue, string searchExpression)
+        {
+            Expression expression = null;
+            MemberExpression memberExpression = Expression.MakeMemberAccess(parameter, property);
+            ConstantExpression c = Expression.Constant(searchValue, typeof(string));
+            MethodInfo mi = null;
+            var toString = typeof(Object).GetMethod("ToString");
+            var toStringValue = Expression.Call(memberExpression, toString);
+
+            switch (searchExpression)
+            {
+                case "%":
+                    mi = typeof(string).GetMethod("Contains", new Type[] { typeof(string) });
+                    expression = Expression.Call(toStringValue, mi, c);
+
+                    break;
+                case "!%":
+                    mi = typeof(string).GetMethod("Contains", new Type[] { typeof(string) });
+                    expression = Expression.Call(toStringValue, mi, c);
+                    expression = Expression.Not(expression);
+
+                    break;
+                case "^%":
+                    mi = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
+                    expression = Expression.Call(toStringValue, mi, c);
+                    break;
+                case "%^":
+                    mi = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
+                    expression = Expression.Call(toStringValue, mi, c);
+                    break;
+                case "!^%":
+                    mi = typeof(string).GetMethod("StartsWith", new Type[] { typeof(string) });
+                    expression = Expression.Call(toStringValue, mi, c);
+                    expression = Expression.Not(expression);
+                    break;
+                case "!%^":
+                    mi = typeof(string).GetMethod("EndsWith", new Type[] { typeof(string) });
+                    expression = Expression.Call(toStringValue, mi, c);
+                    expression = Expression.Not(expression);
+                    break;
+            }
+
+            return expression;
+        }
+
+        public static IQueryable<TEntity> DynamicOrder<TEntity>(this IQueryable<TEntity> query, String sorts)
+        {
+            if (string.IsNullOrWhiteSpace(sorts))
+            {
+                return query;
+            }
+
+            string[] sortArray = sorts.Split(",");
+
+            Expression queryExpr = query.Expression;
+
+            for (int i = 0; i < sortArray.Length; i++)
+            {
+                string sortDirection = string.Empty;
+                string sortField = string.Empty;
+
+                if (sortArray[i][0] == '+')
+                {
+                    sortDirection = i == 0 ? "OrderBy" : "ThenBy";
+
+                }
+                else if (sortArray[i][0] == '-')
+                {
+                    sortDirection = i == 0 ? "OrderByDescending" : "ThenByDescending";
+                }
+                else
+                {
+                    //TODO throw undefined order error;
+                }
+
+                //TODO check validation
+                sortField = sortArray[i].Substring(1, sortArray[i].Length - 1).UpperFirstLetter();
+
+                ParameterExpression parameter = Expression.Parameter(query.ElementType, "p");
+
+                PropertyInfo property = query.ElementType.GetProperty(sortField);
+                MemberExpression propertyAccess = Expression.MakeMemberAccess(parameter, property);
+
+                queryExpr = Expression.Call(
+                    typeof(Queryable),
+                    sortDirection,
+                    new Type[] { query.ElementType, property.PropertyType },
+                    queryExpr, Expression.Quote(Expression.Lambda(propertyAccess, parameter))
+                );
+            }
+
+            return query.Provider.CreateQuery<TEntity>(queryExpr);
+        }
+    }
+}
+
+------------------------------------------------
+
+CustomExtensionMethods.cs
+
+using System;
+using System.IO;
+using System.Reflection;
+using Customer.API.Infrastructure.Contexts;
+using Customer.API.Infrastructure.EventBuses;
+using Customer.API.Infrastructure.Utils;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+
+namespace Customer.API.Utils
+{
+    public static class CustomExtensionMethods
+    {
+        public static IServiceCollection AddCustomMVC(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddControllersAsServices();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+
+
+            services.AddDbContext<CustomerContext>(options =>
+            {
+                options.UseSqlServer(configuration["ConnectionString"],
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                    });
+
+                // options.ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
+            }, ServiceLifetime.Transient);
+
+            return services;
+        }
+
+        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<ICustomerEventBusService, CustomerKafkaEventBusService>(sp =>
+            {
+                return new CustomerKafkaEventBusService();
+            });
+
+            return services;
+        }
+    }
+}
