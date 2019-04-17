@@ -240,7 +240,7 @@ paths:
         500:
           $ref: '#/components/responses/500ApiError' 
 
-  /customer/api/v1/customers/{customerId}/addresses:
+  /customer/api/v1/customers/{customerNumber}/addresses:
     get:
       tags:
         - Customer
@@ -248,8 +248,8 @@ paths:
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId          
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber          
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
         - allOf:
@@ -281,8 +281,8 @@ paths:
       description: Id is generated in api.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId         
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber         
       requestBody:
         description: Address object that will be created.
         content:
@@ -308,8 +308,8 @@ paths:
       description: Id field must be filled.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId         
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber         
       requestBody:
         description: Address object that needs to be updated.
         content:
@@ -329,15 +329,15 @@ paths:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError' 
-  /customer/api/v1/customers/{customerId}/addresses/{id}:
+  /customer/api/v1/customers/{customerNumber}/addresses/{id}:
     delete:
       tags:
         - Customer
       summary: Deletes an existing customer's address by id.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId      
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber      
         - $ref: '#/components/parameters/id'
       responses:
         200:
@@ -353,8 +353,8 @@ paths:
       summary: Get customer's address by id.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber
         - $ref: '#/components/parameters/id'      
       responses:
         200:
@@ -368,7 +368,7 @@ paths:
         500:
           $ref: '#/components/responses/500ApiError' 
 
-  /customer/api/v1/customers/{customerId}/phone-numbers:
+  /customer/api/v1/customers/{customerNumber}/phone-numbers:
     get:
       tags:
         - Customer
@@ -376,8 +376,8 @@ paths:
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId          
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber          
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
         - allOf:
@@ -409,8 +409,8 @@ paths:
       description: Id is generated in api.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId         
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber         
       requestBody:
         description: Phone number object that will be created.
         content:
@@ -436,8 +436,8 @@ paths:
       description: Id field must be filled.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId         
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber         
       requestBody:
         description: Phone numbers object that needs to be updated.
         content:
@@ -457,15 +457,15 @@ paths:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError' 
-  /customer/api/v1/customers/{customerId}/phone-numbers/{id}:
+  /customer/api/v1/customers/{customerNumber}/phone-numbers/{id}:
     delete:
       tags:
         - Customer
       summary: Deletes an existing customer's phone numbers by id.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId      
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber      
         - $ref: '#/components/parameters/id'
       responses:
         200:
@@ -481,8 +481,8 @@ paths:
       summary: Get customer's phone numbers by id.
       parameters:
         - allOf:
-            - $ref: '#/components/parameters/id'
-          name: customerId
+            - $ref: '#/components/parameters/customerNumber'
+          name: customerNumber
         - $ref: '#/components/parameters/id'      
       responses:
         200:
@@ -766,6 +766,15 @@ components:
         type: string
         description: Guid id.
         example: be5d9875-38d9-43be-86e7-9117ff3385d1
+    customerNumber:
+      name: customerNumber
+      in: path
+      description: Unique customer number.
+      required: true
+      schema:
+        type: number
+        description: Customer number.
+        example: 100000
   responses:
     500ApiError:
       description: API malfunction.

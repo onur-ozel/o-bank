@@ -48,6 +48,8 @@ namespace Customer.API {
             });
 
             app.UseSwaggerUI (c => {
+                c.RoutePrefix = "customer/swagger";
+                c.EnableFilter ();
                 c.SwaggerEndpoint ("/Resources/swagger/Customer.API.v1.yaml", "Customer.API.v1");
             });
 

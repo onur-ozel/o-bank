@@ -5,146 +5,112 @@ using System.Net;
 using System.Threading.Tasks;
 using Customer.API.Infrastructure.Contexts;
 using Customer.API.Infrastructure.EventBuses;
+using Customer.API.Infrastructure.Utils;
 using Customer.API.Infrastructure.ViewModels;
+using Customer.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-// namespace Customer.API.Controllers {
-//     [Route ("api/v1/[controller]")]
-//     [ApiController]
-//     public class RetailCustomerController : ControllerBase {
+namespace Customer.API.Controllers {
+    [Route ("customer/api/v1/retail-customers")]
+    [ApiController]
+    public class RetailCustomerController : ControllerBase {
+        private readonly Infrastructure.Contexts.CustomerContext _customerContext;
+        private readonly ICustomerEventBusService _customerEventBusService;
 
-//         private CustomerContext _customerContext;
-//         private readonly ICustomerEventBusService _customerEventBusService;
+        public RetailCustomerController (Infrastructure.Contexts.CustomerContext context, ICustomerEventBusService customerEventBusService) {
+            _customerContext = context ??
+                throw new ArgumentNullException (nameof (context));
+            _customerEventBusService = customerEventBusService ??
+                throw new ArgumentNullException (nameof (context));
 
-//         public RetailCustomerController (CustomerContext context, ICustomerEventBusService customerEventBusService) {
-//             _customerContext = context ??
-//                 throw new ArgumentNullException (nameof (context));
-//             _customerEventBusService = customerEventBusService ??
-//                 throw new ArgumentNullException (nameof (context));
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
 
-//             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-//         }
+        [HttpGet]
+        [ProducesResponseType (typeof (IEnumerable<RetailCustomer>), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (string), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAsync ([FromQuery] int? limit, [FromQuery] int? offset, [FromQuery] string sorts, [FromQuery] string fields, [FromQuery] string searches) {
+            var items = await _customerContext.RetailCustomer.AsQueryable<RetailCustomer> ()
+                .DynamicWhere (searches)
+                .DynamicOrder (sorts)
+                .DynamicSelect (fields)
+                .DynamicTake (limit)
+                .DynamicSkip (offset)
+                .ToListAsync ();
 
-//         /// GET api/v1/[controller]/items[?pageSize=3 pageIndex=10]
-//         /// <summary>
-//         /// Gets retail customers.
-//         /// </summary>
-//         /// <param name="pageSize">Count of max item size in page.</param>
-//         /// <param name="pageIndex">Current page index.</param>
-//         /// <returns>Retail customer list.</returns>
-//         [HttpGet]
-//         [Route ("items")]
-//         [ProducesResponseType (typeof (PaginatedItemsViewModel<RetailCustomerItem>), (int) HttpStatusCode.OK)]
-//         [ProducesResponseType (typeof (IEnumerable<RetailCustomerItem>), (int) HttpStatusCode.OK)]
-//         [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
-//         public async Task<IActionResult> ItemsAsync ([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0) {
-//             var totalItems = await _customerContext.RetailCustomerItems
-//                 .LongCountAsync ();
+            return Ok (items);
+        }
 
-//             var itemsOnPage = await _customerContext.RetailCustomerItems
-//                 .OrderBy (c => c.CustomerNo)
-//                 .Skip (pageSize * pageIndex)
-//                 .Take (pageSize)
-//                 .ToListAsync ();
+        [HttpPost]
+        [ProducesResponseType (typeof (RetailCustomer), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> AddAsync ([FromBody] RetailCustomer newCustomer) {
+            _customerContext.RetailCustomer.Add (newCustomer);
+            await _customerContext.SaveChangesAsync ();
 
-//             var model = new PaginatedItemsViewModel<RetailCustomerItem> (pageIndex, pageSize, totalItems, itemsOnPage);
+            return Ok (newCustomer);
+        }
 
-//             return Ok (model);
-//         }
+        [HttpPut]
+        [ProducesResponseType (typeof (RetailCustomer), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> UpdateAsync ([FromBody] RetailCustomer customerToUpdate) {
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
 
-//         // GET api/v1/[controller]/items/{id}
-//         /// <summary>
-//         /// Gets retail customer by unique customer id.
-//         /// </summary>
-//         /// <param name="id">Retail customer unique id.</param>
-//         /// <returns>Retail customer.</returns>
-//         [HttpGet]
-//         [Route ("items/{id}")]
-//         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
-//         [ProducesResponseType ((int) HttpStatusCode.BadRequest)]
-//         [ProducesResponseType (typeof (RetailCustomerItem), (int) HttpStatusCode.OK)]
-//         public async Task<ActionResult<RetailCustomerItem>> ItemByIdAsync (string id) {
-//             if (string.IsNullOrWhiteSpace (id)) {
-//                 return BadRequest ();
-//             }
+            //TODO return not found error
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
 
-//             var item = await _customerContext.RetailCustomerItems.SingleOrDefaultAsync (ci => ci.Id == id);
+            _customerContext.RetailCustomer.Update (customerToUpdate);
 
-//             if (item != null) {
-//                 return item;
-//             }
+            await _customerContext.SaveChangesAsync ();
+            return Ok (customerToUpdate);
+        }
 
-//             return NotFound ();
-//         }
+        [HttpDelete]
+        [Route ("{id}")]
+        [ProducesResponseType ((int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> DeleteAsync ([FromRoute] string id) {
+            //TODO return not found error
+            var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync (i => i.Id == id);
 
-//         //POST api/v1/[controller]/items
-//         /// <summary>
-//         /// Adds new retail customer.
-//         /// </summary>
-//         /// <param name="customer">Retail customer object.</param>
-//         /// <returns>Added retail customer id.</returns>
-//         [HttpPost]
-//         [Route ("items")]
-//         [ProducesResponseType ((int) HttpStatusCode.Created)]
-//         public async Task<ActionResult> CreateItemAsync ([FromBody] RetailCustomerItem customer) {
-//             customer.CustomerNo = null;
-//             customer.Id = null;
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
 
+            _customerContext.RetailCustomer.Remove (customerItem);
 
-//             _customerContext.RetailCustomerItems.Add (customer);
+            await _customerContext.SaveChangesAsync ();
+            return Ok ();
+        }
 
-//             await _customerContext.SaveChangesAsync ();
+        [HttpGet]
+        [Route ("{id}")]
+        [ProducesResponseType (typeof (RetailCustomer), (int) HttpStatusCode.OK)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
+        [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetbyIdAsync ([FromRoute] string id) {
+            //TODO return not found error
+            // var customerItem = await _customerContext.RetailCustomer.SingleOrDefaultAsync(i => i.Id == customerToUpdate.Id);
 
-//             return CreatedAtAction (nameof (ItemByIdAsync), new { id = customer.Id }, null);
-//         }
+            // if (customerItem == null)
+            // {
+            //     return NotFound(new { Message = $"Item with id {customerToUpdate.Id} not found." });
+            // }
 
-//         //PUT api/v1/[controller]/items
-//         /// <summary>
-//         /// Updates retail customer
-//         /// </summary>
-//         /// <param name="customerToUpdate">Retail customer object.</param>
-//         /// <returns>Updated retail customer id.</returns>
-//         [HttpPut]
-//         [Route ("items")]
-//         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
-//         [ProducesResponseType ((int) HttpStatusCode.Created)]
-//         public async Task<ActionResult> UpdateItemAsync ([FromBody] RetailCustomerItem customerToUpdate) {
-//             var customerItem = await _customerContext.RetailCustomerItems.SingleOrDefaultAsync (i => i.Id == customerToUpdate.Id);
+            RetailCustomer customer = await _customerContext.RetailCustomer.Where (x => x.Id == id).SingleOrDefaultAsync ();
 
-//             if (customerItem == null) {
-//                 return NotFound (new { Message = $"Item with id {customerToUpdate.Id} not found." });
-//             }
-
-//             _customerContext.RetailCustomerItems.Update (customerToUpdate);
-
-//             await _customerContext.SaveChangesAsync ();
-
-//             return CreatedAtAction (nameof (ItemByIdAsync), new { id = customerToUpdate.Id }, null);
-//         }
-
-//         // DELETE api/v1/items/{id}
-//         /// <summary>
-//         /// Deletes retail customer.
-//         /// </summary>
-//         /// <param name="id">Retail customer unique id.</param>
-//         /// <returns>Action result.</returns>
-//         [HttpDelete]
-//         [Route ("items/{id}")]
-//         [ProducesResponseType ((int) HttpStatusCode.NoContent)]
-//         [ProducesResponseType ((int) HttpStatusCode.NotFound)]
-//         public async Task<ActionResult> DeleteItemAsync (string id) {
-//             var customer = _customerContext.RetailCustomerItems.SingleOrDefault (x => x.Id == id);
-
-//             if (customer == null) {
-//                 return NotFound ();
-//             }
-
-//             _customerContext.RetailCustomerItems.Remove (customer);
-
-//             await _customerContext.SaveChangesAsync ();
-
-//             return NoContent ();
-//         }
-//     }
-// }
+            return Ok (customer);
+        }
+    }
+}

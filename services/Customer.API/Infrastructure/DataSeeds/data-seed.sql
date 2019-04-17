@@ -13,7 +13,7 @@ USE Customer
 GO
 
 CREATE SEQUENCE CustomerNoSequence
-    START WITH 100000  
+    START WITH 102000  
     INCREMENT BY 1 ;  
 GO  
 
