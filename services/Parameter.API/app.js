@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //swagger utilization
 const swaggerUi = require('swagger-ui-express');
-const yaml = reqire('yamljs');
+const yaml = require('yamljs');
 const swaggerDoc = yaml.load('./resources/swagger/Parameter.API.v1.yaml');
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
