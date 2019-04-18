@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Customer.API.Utils;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +29,7 @@ namespace Customer.API {
             services.AddCustomMVC (Configuration)
                 .AddEventBus (Configuration)
                 .AddCustomDbContext (Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +55,8 @@ namespace Customer.API {
                 c.EnableFilter ();
                 c.SwaggerEndpoint ("/Resources/swagger/Customer.API.v1.yaml", "Customer.API.v1");
             });
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseCors ("CorsPolicy");
             app.UseMvc ();

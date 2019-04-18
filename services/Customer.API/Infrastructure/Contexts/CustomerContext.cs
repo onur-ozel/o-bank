@@ -25,12 +25,12 @@ namespace Customer.API.Infrastructure.Contexts {
                     .HasMaxLength (36)
                     .HasDefaultValueSql ("(newid())");
 
-                entity.Property (e => e.CreatedDate)
+                entity.Property (e => e.LastModifiedDate)
                     .HasColumnName ("created_date")
                     .HasColumnType ("datetime")
                     .HasDefaultValueSql ("(getdate())");
 
-                entity.Property (e => e.CreatedUser)
+                entity.Property (e => e.LastModifiedDate)
                     .HasColumnName ("created_user")
                     .HasMaxLength (6);
 
@@ -88,12 +88,12 @@ namespace Customer.API.Infrastructure.Contexts {
                     .HasColumnName ("country_name")
                     .HasMaxLength (100);
 
-                entity.Property (e => e.CreatedDate)
+                entity.Property (e => e.LastModifiedDate)
                     .HasColumnName ("created_date")
                     .HasColumnType ("datetime")
                     .HasDefaultValueSql ("(getdate())");
 
-                entity.Property (e => e.CreatedUser)
+                entity.Property (e => e.LastModifiedUser)
                     .HasColumnName ("created_user")
                     .HasMaxLength (6);
 
@@ -126,12 +126,12 @@ namespace Customer.API.Infrastructure.Contexts {
                     .HasMaxLength (36)
                     .HasDefaultValueSql ("(newid())");
 
-                entity.Property (e => e.CreatedDate)
+                entity.Property (e => e.LastModifiedDate)
                     .HasColumnName ("created_date")
                     .HasColumnType ("datetime")
                     .HasDefaultValueSql ("(getdate())");
 
-                entity.Property (e => e.CreatedUser)
+                entity.Property (e => e.LastModifiedUser)
                     .HasColumnName ("created_user")
                     .HasMaxLength (6);
 
@@ -172,12 +172,12 @@ namespace Customer.API.Infrastructure.Contexts {
                     .HasColumnName ("company_name")
                     .HasMaxLength (100);
 
-                entity.Property (e => e.CreatedDate)
+                entity.Property (e => e.LastModifiedDate)
                     .HasColumnName ("created_date")
                     .HasColumnType ("datetime")
                     .HasDefaultValueSql ("(getdate())");
 
-                entity.Property (e => e.CreatedUser)
+                entity.Property (e => e.LastModifiedUser)
                     .HasColumnName ("created_user")
                     .HasMaxLength (6);
 

@@ -1,0 +1,8 @@
+version: "3.4"
+services:
+  logger.data.cassandra:
+    build:
+      context: .
+      dockerfile: Docker.Parameter.Data.MongoDB.WithData.Dockerfile
+    ports:
+      - "27017:27017"

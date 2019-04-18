@@ -1,0 +1,429 @@
+openapi: 3.0.0
+info:
+  title: o-bank Logger API
+  description: Logger REST API for o-bank. This API has whole operations about logs which be consume by ui.<br>Developed in NodeJS (Express)
+  version: 1.0.0
+  contact:
+    name: Onur ÖZEL
+    url: https://github.com/onur-ozel/o-bank
+    email: onurozel41@gmail.com
+  license:
+    name: MIT License
+    url: https://github.com/onur-ozel/o-bank/blob/master/LICENSE
+tags:
+  - name: Country
+    description: Operations about country parameters.
+  - name: Currency
+    description: Operations about currency parameters.
+paths:
+  /parameter/api/v1/countries:
+    get:
+      tags:
+        - Country
+      summary: Gets country parameters
+      description: Paging, sorting, searching and field filtering can be provided with query parameters.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - allOf:
+            - $ref: '#/components/parameters/sorts'
+          example: +id,-name
+        - allOf:
+            - $ref: '#/components/parameters/fields'
+          example: name,alpha2Code,capital
+        - allOf:
+            - $ref: '#/components/parameters/searches'  
+          example: subregion[=]Asia
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - Country
+      summary: Creates new country parameter
+      description: Id generated in api.
+      requestBody:
+        description: Parameter object that will be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Country
+      summary: Update an existing parameter.
+      description: Id field must be filled.
+      requestBody:
+        description: Parameter object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Country'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /parameter/api/v1/countries/{id}:
+    delete:
+      tags:
+        - Country
+      summary: Deletes an existing country parameter by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    get:
+      tags:
+        - Country
+      summary: Get country parameter by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+  
+  /parameter/api/v1/currencies:
+    get:
+      tags:
+        - Currency
+      summary: Gets currency parameters
+      description: Paging, sorting, searching and field filtering can be provided with query parameters.
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - allOf:
+            - $ref: '#/components/parameters/sorts'
+          example: +id,-interest
+        - allOf:
+            - $ref: '#/components/parameters/fields'
+          example: accountNumber,balance,maturity,interest
+        - allOf:
+            - $ref: '#/components/parameters/searches'  
+          example: balance[>=]250,interest[<]1.15
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Currency'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    post:
+      tags:
+        - Currency
+      summary: Creates new currency parameter
+      description: Id generated in api.
+      requestBody:
+        description: Parameter object that will be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Currency'                                     
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Currency
+      summary: Update an existing currency parameter.
+      description: Id field must be filled.
+      requestBody:
+        description: Parameter object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Currency'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /parameter/api/v1/currencies/{id}:
+    delete:
+      tags:
+        - Currency
+      summary: Deletes an existing currency parameter by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    get:
+      tags:
+        - Currency
+      summary: Get currency parameter by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+components:
+  schemas:
+    ModelBase:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Guid id.
+          example: be5d9875-38d9-43be-86e7-9117ff3385d1 
+        state:
+          type: boolean
+          readOnly: true
+          description: Records valid or invalid state.
+          example: true    
+    Error:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'    
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Error type.
+              example: NullPointerException
+            code:
+              type: string
+              description: Error code.
+              example: 12345
+            level:
+              type: string
+              description: Error level.
+              enum: [Error, Fatal, Warning, Info, Debug]
+              example: Error          
+            message:
+              type: string
+              description: User friendly error message.
+              example: Invalid field name used in searching.
+            stackTrace:
+              type: string
+              description: Error stack trace. It can be null for securtiy reasons.
+            help:
+              type: string
+              description: Help url or instructions for taken error.
+    Country:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'    
+        - type: object    
+          properties:        
+            flag:
+              type: string
+              description: Flag url.
+              example: https://restcountries.eu/data/deu.svg 
+            name:
+              type: string
+              description: Country name.
+              example: Germany 
+            alpha2Code:
+              type: string
+              description: Alpha2 code.
+              example: DE       
+            alpha3Code:
+              type: string
+              description: Alpha3 code.
+              example: DEU                   
+            capital:
+              type: string
+              description: Capital city.
+              example: Berlin 
+            region:
+              type: string
+              description: Country region.
+              example: Europe 
+            subregion:
+              type: string
+              description: Country subregion.
+              example: Western Europe 
+            demonym:
+              type: string
+              description: Country demonym.
+              example: German 
+            nativeName:
+              type: string
+              description: Country native name.
+              example: Deutschland       
+            numericCode:
+              type: integer
+              format: int32
+              description: Parameter status.
+              example: 276                                                                  
+    Currency:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'    
+        - type: object    
+          properties:        
+            name:
+              type: string
+              description: Flag url.
+              example: https://restcountries.eu/data/deu.svg 
+            code:
+              type: string
+              description: Country name.
+              example: Germany 
+            numericCode:
+              type: string
+              description: Country name.
+              example: Germany 
+            symbol:
+              type: string
+              description: Alpha2 code.
+              example: DE                                                                                         
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Limits return data count.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: 10
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+    offset:
+      name: offset
+      in: query
+      description: Offset data value.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: 0
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+    sorts:
+      name: sorts
+      in: query
+      description: Sort by columns. Multiple column can be provided by comma seperated. Use + for desc - for asc.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: +field_name1,-field_name2
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Filters result data with given field names. Multiple column can be provided by comma seperated.
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: field_name1,field_name2
+      schema:
+        type: string
+    searches:
+      name: searches
+      in: query
+      description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=, % (like), !% (notlike), ^% (ends with), %^ (starts with), !^% (not ends with), !%^ (not starts with)
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: field_name1[>=]250,field_name2[<]500
+      schema:
+        type: string        
+    id:
+      name: id
+      in: path
+      description: Unique id.
+      required: true
+      schema:
+        type: string
+        description: Guid id.
+        example: be5d9875-38d9-43be-86e7-9117ff3385d1
+  responses:
+    500ApiError:
+      description: API malfunction.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    400InvalidRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

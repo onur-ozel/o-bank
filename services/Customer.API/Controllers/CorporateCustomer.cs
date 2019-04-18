@@ -50,6 +50,17 @@ namespace Customer.API.Controllers {
         [ProducesResponseType (typeof (Error), (int) HttpStatusCode.BadRequest)]
         [ProducesResponseType (typeof (Error), (int) HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> AddAsync ([FromBody] CorporateCustomer newCustomer) {
+            string validationResult = newCustomer.ValidateAndPrepeareForInsert ();
+
+            if (!string.IsNullOrEmpty (validationResult)) {
+                Error a = new Error ();
+
+                a.Title = "Invalid fields";
+                a.Message = validationResult;
+
+                return BadRequest (a);
+            }
+
             _customerContext.CorporateCustomer.Add (newCustomer);
             await _customerContext.SaveChangesAsync ();
 

@@ -1,5 +1,7 @@
 services/Customer.API/bin
 services/Customer.API/obj
+services/Logger.API/node_modules
+services/Logger.API/bin
 services/Parameter.API/node_modules
 services/Parameter.API/bin
 .vscode/

@@ -1,9 +1,13 @@
 using System;
 using System.IO;
+using System.Net;
 using System.Reflection;
+using System.Threading.Tasks;
 using Customer.API.Infrastructure.Contexts;
 using Customer.API.Infrastructure.EventBuses;
 using Customer.API.Infrastructure.Utils;
+using Customer.API.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -49,6 +53,40 @@ namespace Customer.API.Utils {
             });
 
             return services;
+        }
+    }
+
+    public class ErrorHandlingMiddleware {
+        private readonly RequestDelegate next;
+        public ErrorHandlingMiddleware (RequestDelegate next) {
+            this.next = next;
+        }
+
+        public async Task Invoke (HttpContext context /* other dependencies */ ) {
+            try {
+                await next (context);
+            } catch (Exception ex) {
+                await HandleExceptionAsync (context, ex);
+            }
+        }
+
+        private static Task HandleExceptionAsync (HttpContext context, Exception ex) {
+            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
+
+            Error a = new Error ();
+
+            a.Title = "Server error";
+            a.Message = ex.Message;
+            a.StackTrace = ex.StackTrace;
+
+            // if (ex is MyNotFoundException) code = HttpStatusCode.NotFound;
+            // else if (ex is MyUnauthorizedException) code = HttpStatusCode.Unauthorized;
+            // else if (ex is MyException) code = HttpStatusCode.BadRequest;
+
+            var result = JsonConvert.SerializeObject (a);
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int) code;
+            return context.Response.WriteAsync (result);
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Customer.API.Models {
         public string Type { get; set; }
         public string Code { get; set; }
         public string Level { get; set; }
+        public string Title { get; set; }
         public string Message { get; set; }
         public string StackTrace { get; set; }
         public string Help { get; set; }

@@ -522,33 +522,47 @@ components:
           description: Record creation date time.
           example: '2018-08-17 02:44:22'                      
     Error:
-      allOf:
-        - $ref: '#/components/schemas/ModelBase'    
-        - type: object
-          properties:
-            type:
-              type: string
-              description: Error type.
-              example: NullPointerException
-            code:
-              type: string
-              description: Error code.
-              example: 12345
-            level:
-              type: string
-              description: Error level.
-              enum: [Error, Fatal, Warning, Info, Debug]
-              example: Error          
-            message:
-              type: string
-              description: User friendly error message.
-              example: Invalid field name used in searching.
-            stackTrace:
-              type: string
-              description: Error stack trace. It can be null for securtiy reasons.
-            help:
-              type: string
-              description: Help url or instructions for taken error.
+      type: object
+      properties:
+        type:
+          type: string
+          description: Error type.
+          example: NullPointerException
+        code:
+          type: string
+          description: Error code.
+          example: 12345
+        level:
+          type: string
+          description: Error level.
+          enum: [Error, Fatal, Warning, Info, Debug]
+          example: Error          
+        message:
+          type: string
+          description: User friendly error message.
+          example: Invalid field name used in searching.
+        stackTrace:
+          type: string
+          description: Error stack trace. It can be null for securtiy reasons.
+        help:
+          type: string
+          description: Help url or instructions for taken error.
+    Log:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Log type.
+          enum: [Error, CRUDProcess, Info]
+          example: Error
+        environment:
+          type: string
+          description: Log environment.
+          enum: [Client, Server]
+          example: Server   
+        logObject:
+          type: object
+          description: Log object.
     Address:
       description: 
       allOf:
