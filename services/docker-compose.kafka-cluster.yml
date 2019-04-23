@@ -337,6 +337,7 @@ services:
 # "name": "cassandratopic1",
 # "connector.class": "io.confluent.connect.cassandra.CassandraSinkConnector",
 # "cassandra.contact.points": "cassandra",
+# "cassandra.keyspace.replication.factor":1,
 # "topics": "jsontopicwithkey",
 # "cassandra.keyspace": "test_keyspace",
 # "key.converter.schemas.enable": "false",
