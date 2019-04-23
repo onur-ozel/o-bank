@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: o-bank Logger API
-  description: Logger REST API for o-bank. This API has whole operations about logs which be consume by ui.<br>Developed in NodeJS (Express)
+  description: Logger REST API for o-bank. This API has whole operations about logs which be consume by ui.<br>Developed in NodeJS (Express), Cassandra
   version: 1.0.0
   contact:
     name: Onur ÖZEL
@@ -11,29 +11,30 @@ info:
     name: MIT License
     url: https://github.com/onur-ozel/o-bank/blob/master/LICENSE
 tags:
-  - name: Country
-    description: Operations about country parameters.
-  - name: Currency
-    description: Operations about currency parameters.
+  - name: Error
+    description: Operations about error logs.
+  - name: Performance
+    description: Operations about performance logs.
 paths:
-  /parameter/api/v1/countries:
+  /logger/api/v1/error/{environment}:
     get:
       tags:
-        - Country
-      summary: Gets country parameters
+        - Error
+      summary: Gets error logs
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
+        - $ref: '#/components/parameters/environment'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
         - allOf:
             - $ref: '#/components/parameters/sorts'
-          example: +id,-name
+          example: +id,-lastModifiedDate
         - allOf:
             - $ref: '#/components/parameters/fields'
-          example: name,alpha2Code,capital
+          example: sessionId,type,message
         - allOf:
             - $ref: '#/components/parameters/searches'  
-          example: subregion[=]Asia
+          example: level[=]Error
       responses:
         200:
           description: successful operation
@@ -42,77 +43,16 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Country'
+                  $ref: '#/components/schemas/ErrorLog'
         400:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'
-    post:
-      tags:
-        - Country
-      summary: Creates new country parameter
-      description: Id generated in api.
-      requestBody:
-        description: Parameter object that will be created.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Country'
-        required: true
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Country'
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'
-    put:
-      tags:
-        - Country
-      summary: Update an existing parameter.
-      description: Id field must be filled.
-      requestBody:
-        description: Parameter object that needs to be updated.
-        content:
-          application/json:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/Country'
-                - properties:
-                    id:
-                      readOnly: false
-        required: true
-      responses:
-        200:
-          description: successful operation
-          content: {}
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'
-  /parameter/api/v1/countries/{id}:
-    delete:
-      tags:
-        - Country
-      summary: Deletes an existing country parameter by id.
-      parameters:
-        - $ref: '#/components/parameters/id'
-      responses:
-        200:
-          description: successful operation
-          content: {}
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'      
+  /logger/api/v1/error/{id}:
     get:
       tags:
-        - Country
-      summary: Get country parameter by id.
+        - Error
+      summary: Get error log by id.
       parameters:
         - $ref: '#/components/parameters/id'      
       responses:
@@ -121,30 +61,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Country'
+                $ref: '#/components/schemas/ErrorLog'
         400:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'      
   
-  /parameter/api/v1/currencies:
+  /logger/api/v1/performance/{environment}:
     get:
       tags:
-        - Currency
-      summary: Gets currency parameters
+        - Performance
+      summary: Gets performance logs
       description: Paging, sorting, searching and field filtering can be provided with query parameters.
       parameters:
+        - $ref: '#/components/parameters/environment'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
         - allOf:
             - $ref: '#/components/parameters/sorts'
-          example: +id,-interest
+          example: +id,-lastModifiedDate
         - allOf:
             - $ref: '#/components/parameters/fields'
-          example: accountNumber,balance,maturity,interest
+          example: sessionId,type,message
         - allOf:
             - $ref: '#/components/parameters/searches'  
-          example: balance[>=]250,interest[<]1.15
+          example: type[=]APIResponse
       responses:
         200:
           description: successful operation
@@ -153,77 +94,16 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Currency'
+                  $ref: '#/components/schemas/PerformanceLog'
         400:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'
-    post:
-      tags:
-        - Currency
-      summary: Creates new currency parameter
-      description: Id generated in api.
-      requestBody:
-        description: Parameter object that will be created.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Currency'                                     
-        required: true
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Currency'
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'
-    put:
-      tags:
-        - Currency
-      summary: Update an existing currency parameter.
-      description: Id field must be filled.
-      requestBody:
-        description: Parameter object that needs to be updated.
-        content:
-          application/json:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/Currency'
-                - properties:
-                    id:
-                      readOnly: false
-        required: true
-      responses:
-        200:
-          description: successful operation
-          content: {}
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'
-  /parameter/api/v1/currencies/{id}:
-    delete:
-      tags:
-        - Currency
-      summary: Deletes an existing currency parameter by id.
-      parameters:
-        - $ref: '#/components/parameters/id'
-      responses:
-        200:
-          description: successful operation
-          content: {}
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'      
+  /logger/api/v1/performance/{id}:
     get:
       tags:
-        - Currency
-      summary: Get currency parameter by id.
+        - Performance
+      summary: Get performance log by id.
       parameters:
         - $ref: '#/components/parameters/id'      
       responses:
@@ -232,11 +112,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Currency'
+                $ref: '#/components/schemas/PerformanceLog'
         400:
           $ref: '#/components/responses/400InvalidRequest'
         500:
-          $ref: '#/components/responses/500ApiError'      
+          $ref: '#/components/responses/500ApiError'    
 components:
   schemas:
     ModelBase:
@@ -252,9 +132,51 @@ components:
           readOnly: true
           description: Records valid or invalid state.
           example: true    
+        sessionId:
+          type: string
+          readOnly: true
+          description: Record created user session id.
+          example: MVG9lKcPoNINVBIPJjdw1J9LLJbP_pqwoJYyuis 
+        lastModifiedDate:
+          type: string
+          format: datetime
+          readOnly: true
+          description: Record last modification date time.
+          example: '2018-08-17 02:44:22'      
+    LogBase:
+      type: object
+      properties:
+        logType:
+          type: string
+          description: Log type.
+          enum: [Error, Performance]
+          example: Error
+        environment:
+          type: string
+          description: Log environment.
+          enum: [Client, Server]
+          example: Server   
+    Log:
+      allOf:
+        - $ref: '#/components/schemas/LogBase'    
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Log type.
+              enum: [Error, Performance]
+              example: Error
+            environment:
+              type: string
+              description: Log environment.
+              enum: [Client, Server]
+              example: Server   
+            logObject:
+              type: object
+              description: Log object.
     Error:
       allOf:
-        - $ref: '#/components/schemas/ModelBase'    
+        - $ref: '#/components/schemas/ModelBase'
         - type: object
           properties:
             type:
@@ -269,7 +191,44 @@ components:
               type: string
               description: Error level.
               enum: [Error, Fatal, Warning, Info, Debug]
-              example: Error          
+              example: Error   
+            title:
+              type: string
+              description: User friendly error message title.
+              example: Invalid Fields!.                     
+            message:
+              type: string
+              description: User friendly error message.
+              example: Invalid field name used in searching.
+            stackTrace:
+              type: string
+              description: Error stack trace. It can be null for securtiy reasons.
+            help:
+              type: string
+              description: Help url or instructions for taken error.    
+    ErrorLog:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'
+        - $ref: '#/components/schemas/LogBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Error type.
+              example: NullPointerException
+            code:
+              type: string
+              description: Error code.
+              example: 12345
+            level:
+              type: string
+              description: Error level.
+              enum: [Error, Fatal, Warning, Info, Debug]
+              example: Error   
+            title:
+              type: string
+              description: User friendly error message title.
+              example: Invalid Fields!.                     
             message:
               type: string
               description: User friendly error message.
@@ -280,73 +239,39 @@ components:
             help:
               type: string
               description: Help url or instructions for taken error.
-    Country:
+    PerformanceLog:
       allOf:
-        - $ref: '#/components/schemas/ModelBase'    
-        - type: object    
-          properties:        
-            flag:
+        - $ref: '#/components/schemas/ModelBase'
+        - $ref: '#/components/schemas/LogBase'
+        - type: object
+          properties:
+            type:
               type: string
-              description: Flag url.
-              example: https://restcountries.eu/data/deu.svg 
-            name:
+              description: Error type.
+              example: APIResponse                   
+            message:
               type: string
-              description: Country name.
-              example: Germany 
-            alpha2Code:
+              description: User friendly message.
+              example: Invalid field name used in searching.
+            stackTrace:
               type: string
-              description: Alpha2 code.
-              example: DE       
-            alpha3Code:
+              description: Trace, name of method, code block which performance measurement is made.
+              example: Invalid field name used in searching. 
+            startTime:
               type: string
-              description: Alpha3 code.
-              example: DEU                   
-            capital:
+              format: datetime
+              description: Measurement start time.
+              example: '2018-08-17 02:44:22'   
+            endTime:
               type: string
-              description: Capital city.
-              example: Berlin 
-            region:
-              type: string
-              description: Country region.
-              example: Europe 
-            subregion:
-              type: string
-              description: Country subregion.
-              example: Western Europe 
-            demonym:
-              type: string
-              description: Country demonym.
-              example: German 
-            nativeName:
-              type: string
-              description: Country native name.
-              example: Deutschland       
-            numericCode:
-              type: integer
-              format: int32
-              description: Parameter status.
-              example: 276                                                                  
-    Currency:
-      allOf:
-        - $ref: '#/components/schemas/ModelBase'    
-        - type: object    
-          properties:        
-            name:
-              type: string
-              description: Flag url.
-              example: https://restcountries.eu/data/deu.svg 
-            code:
-              type: string
-              description: Country name.
-              example: Germany 
-            numericCode:
-              type: string
-              description: Country name.
-              example: Germany 
-            symbol:
-              type: string
-              description: Alpha2 code.
-              example: DE                                                                                         
+              format: datetime
+              description: Measurement end time.
+              example: '2018-08-17 02:44:22'   
+            elapsedMiliSecond:
+              type: int
+              format: Int64
+              description: Elapsed time in milisecond.
+              example: 192939                                                                                                                               
   parameters:
     limit:
       name: limit
@@ -414,6 +339,16 @@ components:
         type: string
         description: Guid id.
         example: be5d9875-38d9-43be-86e7-9117ff3385d1
+    environment:
+      name: environment
+      in: path
+      description: Log environment.
+      required: true
+      schema:
+        type: string
+        description: Log environment.
+        enum: [Client, Server]
+        example: Server      
   responses:
     500ApiError:
       description: API malfunction.
