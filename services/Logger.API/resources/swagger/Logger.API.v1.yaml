@@ -146,34 +146,14 @@ components:
     LogBase:
       type: object
       properties:
-        logType:
+        environmentName:
           type: string
-          description: Log type.
-          enum: [Error, Performance]
-          example: Error
-        environment:
+          description: Log environment. Customer.API, Mobile.Client etc.
+          example: Customer.API   
+        topic:
           type: string
-          description: Log environment.
-          enum: [Client, Server]
-          example: Server   
-    Log:
-      allOf:
-        - $ref: '#/components/schemas/LogBase'    
-        - type: object
-          properties:
-            type:
-              type: string
-              description: Log type.
-              enum: [Error, Performance]
-              example: Error
-            environment:
-              type: string
-              description: Log environment.
-              enum: [Client, Server]
-              example: Server   
-            logObject:
-              type: object
-              description: Log object.
+          description: Log topic. Meaningful and trackable for handled logs. InvalidCustomerNumberException, AccountCreateTimeMeasurement, JavascriptError etc.
+          example: AccountCreateTimeMeasurement           
     Error:
       allOf:
         - $ref: '#/components/schemas/ModelBase'
@@ -244,11 +224,7 @@ components:
         - $ref: '#/components/schemas/ModelBase'
         - $ref: '#/components/schemas/LogBase'
         - type: object
-          properties:
-            type:
-              type: string
-              description: Error type.
-              example: APIResponse                   
+          properties:                  
             message:
               type: string
               description: User friendly message.

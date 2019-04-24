@@ -8,7 +8,11 @@
 2. [Docker Standard](#docker)   
 3. [Folder Structure Standard](#folder)   
 4. [Swagger Standard](#swagger)  
-5. [Data Model Standard](#data-model)  
+5. [Database Naming Conventions](#database-naming-conventions)  
+   5.1. [Table](#database-table-naming)  
+   1.2. [Functional](#api-functional)   
+   1.3. [Http Response Code](#api-status)    
+6. [Data Model Standard](#data-model)  
 
 
 <a name="api"></a>
@@ -237,8 +241,25 @@
             } 
       </details>
 
+<a name="database-naming-conventions"></a>
+
+## 5. Database Naming Conventions
+
+<a name="database-table-naming"></a>
+
+   - ### 5.1 Table
+        * Use **plural** name. 
+            > Customers
+        * Use PascalCase
+            > CustomerAddresses
+   - ### 5.2 Column
+        * Use **singular** name. 
+            > age
+        * Use camelCase
+            > firstName
+
 <a name="data-model"></a>
 
-## 5. Data Model Standard
+## 6. Data Model Standard
    * All models must have id column which is guid.
    * All models must have state column which is boolean. This column represent record valid state. In o-bank ecosystem, no records must delete. For records that are invalid or to be deleted, the value must be set to false.

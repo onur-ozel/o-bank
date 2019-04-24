@@ -332,18 +332,22 @@ services:
 # curl -X POST \
 #   -H "Content-Type: application/json" \
 #   --data '{
-#   "name" : "cassandratopic1",
+#   "name" : "cassandratopic2",
 #   "config" : {
-# "name": "cassandratopic1",
-# "connector.class": "io.confluent.connect.cassandra.CassandraSinkConnector",
-# "cassandra.contact.points": "cassandra",
-# "cassandra.keyspace.replication.factor":1,
-# "topics": "jsontopicwithkey",
-# "cassandra.keyspace": "test_keyspace",
-# "key.converter.schemas.enable": "false",
-# "value.converter.schemas.enable": "false",
-# "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-# "key.converter": "org.apache.kafka.connect.json.JsonConverter"
+# 		"name": "cassandratopic2",
+# 		"connector.class": "io.confluent.connect.cassandra.CassandraSinkConnector",
+# 		"cassandra.contact.points": "cassandra",
+# 		"cassandra.keyspace.replication.factor":1,
+# 		"topics": "jsontopic2",
+# 		"cassandra.keyspace": "test_keyspace",
+# 		"value.converter.schemas.enable": "false",
+# 		"value.converter": "org.apache.kafka.connect.json.JsonConverter",
+# 		"transforms": "insertKey, sanitizeTopic",
+#         "transforms.insertKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+#         "transforms.insertKey.fields": "ip",
+#         "transforms.sanitizeTopic.type": "org.apache.kafka.connect.transforms.RegexRouter",
+#         "transforms.sanitizeTopic.regex": "jsontopic2",
+#         "transforms.sanitizeTopic.replacement": "jsontopic_table"
 # }}
 #   ' \
 #   http://localhost:8083/connectors 

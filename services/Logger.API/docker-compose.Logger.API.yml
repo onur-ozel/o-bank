@@ -1,6 +1,8 @@
 version: '3.4'
 services:
   logger.data.cassandra:
-    image: cassandra:latest
+    build:
+      context: .
+      dockerfile: Docker.Logger.Data.Cassandra.WithData.Dockerfile
     ports:
       - '9042:9042'
