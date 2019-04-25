@@ -3,11 +3,11 @@ var ExpressCassandra = require('express-cassandra');
 var ErrorLog = require("../../models/ErrorLog");
 var PerformanceLog = require("../../models/PerformanceLog");
 
-var models = ExpressCassandra.createClient({
+var cassandra = ExpressCassandra.createClient({
     clientOptions: {
-        contactPoints: ['127.0.0.1'],
+        contactPoints: ['localhost'],
         protocolOptions: { port: 9042 },
-        keyspace: 'mykeyspace',
+        keyspace: 'log',
         queryOptions: { consistency: ExpressCassandra.consistencies.one }
     },
     ormOptions: {
@@ -16,16 +16,16 @@ var models = ExpressCassandra.createClient({
             replication_factor: 1
         },
         disableTTYConfirmation: true,
-        migration: 'alter',
+        migration: 'safe'
     }
 });
 
-models.loadSchema('ErrorLog', ErrorLog).syncDB(function (err, result) {
+cassandra.loadSchema('ErrorLog', ErrorLog).syncDB(function (err, result) {
     if (err) throw err;
 });
 
-models.loadSchema('PerformanceLog', PerformanceLog).syncDB(function (err, result) {
+cassandra.loadSchema('PerformanceLog', PerformanceLog).syncDB(function (err, result) {
     if (err) throw err;
 });
 
-module.exports = models;
+module.exports = cassandra;

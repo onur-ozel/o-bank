@@ -11,47 +11,15 @@ info:
     name: MIT License
     url: https://github.com/onur-ozel/o-bank/blob/master/LICENSE
 tags:
-  - name: Error
+  - name: Error Log
     description: Operations about error logs.
-  - name: Performance
+  - name: Performance Log
     description: Operations about performance logs.
 paths:
-  /logger/api/v1/error/{environment}:
+  /logger/api/v1/error-log:
     get:
       tags:
-        - Error
-      summary: Gets error logs
-      description: Paging, sorting, searching and field filtering can be provided with query parameters.
-      parameters:
-        - $ref: '#/components/parameters/environment'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - allOf:
-            - $ref: '#/components/parameters/sorts'
-          example: +id,-lastModifiedDate
-        - allOf:
-            - $ref: '#/components/parameters/fields'
-          example: sessionId,type,message
-        - allOf:
-            - $ref: '#/components/parameters/searches'  
-          example: level[=]Error
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ErrorLog'
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'
-  /logger/api/v1/error/{id}:
-    get:
-      tags:
-        - Error
+        - Error Log
       summary: Get error log by id.
       parameters:
         - $ref: '#/components/parameters/id'      
@@ -66,40 +34,86 @@ paths:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'      
-  
-  /logger/api/v1/performance/{environment}:
-    get:
+    post:
       tags:
-        - Performance
-      summary: Gets performance logs
-      description: Paging, sorting, searching and field filtering can be provided with query parameters.
-      parameters:
-        - $ref: '#/components/parameters/environment'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - allOf:
-            - $ref: '#/components/parameters/sorts'
-          example: +id,-lastModifiedDate
-        - allOf:
-            - $ref: '#/components/parameters/fields'
-          example: sessionId,type,message
-        - allOf:
-            - $ref: '#/components/parameters/searches'  
-          example: type[=]APIResponse
+        - Error Log
+      summary: Creates new error log
+      requestBody:
+        description: Parameter object that will be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorLog'
+        required: true
       responses:
         200:
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PerformanceLog'
+                $ref: '#/components/schemas/ErrorLog'
         400:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'
-  /logger/api/v1/performance/{id}:
+    put:
+      tags:
+        - Error Log
+      summary: Update an existing error log.
+      description: Id field must be filled.
+      requestBody:
+        description: Error log object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/ErrorLog'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /logger/api/v1/error-log/{id}:
+    get:
+      tags:
+        - Error Log
+      summary: Get error log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    delete:
+      tags:
+        - Error Log
+      summary: Deletes an existing error log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'     
+    
+  /logger/api/v1/performance-log/{id}:
     get:
       tags:
         - Performance

@@ -4,15 +4,16 @@ module.exports = {
         state: "boolean",
         sessionId: "text",
         lastModifiedDate: "timestamp",
-        logType: "text",
         environment: "text",
+        topic: "text",
         type: "text",
-        code: "int",
+        code: "text",
         level: "text",
         title: "text",
         message: "text",
         stackTrace: "text",
         help: "text"
     },
-    key: ["id"]
+    key: ["id"],
+    table_name: "ErrorLogs"
 };

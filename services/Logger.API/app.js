@@ -72,9 +72,9 @@ app.use('/logger/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // routers
 var errorLoggerRouter = require('./routes/errorLogger');
-app.use('/logger/api/v1/error', errorLoggerRouter);
+app.use('/logger/api/v1/error-log', errorLoggerRouter);
 var performanceLoggerRouter = require('./routes/performanceLogger');
-app.use('/logger/api/v1/performance', performanceLoggerRouter);
+app.use('/logger/api/v1/performance-log', performanceLoggerRouter);
 
 app.listen(8080, function () {
     console.log('Ready on port 8080');

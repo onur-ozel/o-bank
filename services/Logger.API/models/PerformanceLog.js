@@ -4,14 +4,14 @@ module.exports = {
         state: "boolean",
         sessionId: "text",
         lastModifiedDate: "timestamp",
-        logType: "text",
         environment: "text",
-        type: "text",
+        topic: "text",
         message: "text",
         stackTrace: "text",
         startTime: "timestamp",
         endTime: "timestamp",
-        elapsedMiliSecond: "int"
+        elapsedMiliSecond: "bigint"
     },
-    key: ["id"]
+    key: ["id"],
+    table_name: "PerformanceLogs"
 };
