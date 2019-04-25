@@ -20,9 +20,19 @@ paths:
     get:
       tags:
         - Error Log
-      summary: Get error log by id.
+      summary: Get error logs.
       parameters:
-        - $ref: '#/components/parameters/id'      
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - allOf:
+            - $ref: '#/components/parameters/sorts'
+          example: +id,-name
+        - allOf:
+            - $ref: '#/components/parameters/fields'
+          example: name,alpha2Code,capital
+        - allOf:
+            - $ref: '#/components/parameters/searches'  
+          example: subregion[=]Asia    
       responses:
         200:
           description: successful operation
@@ -160,7 +170,7 @@ components:
     LogBase:
       type: object
       properties:
-        environmentName:
+        environment:
           type: string
           description: Log environment. Customer.API, Mobile.Client etc.
           example: Customer.API   
@@ -180,7 +190,7 @@ components:
             code:
               type: string
               description: Error code.
-              example: 12345
+              example: "12345"
             level:
               type: string
               description: Error level.
@@ -213,7 +223,7 @@ components:
             code:
               type: string
               description: Error code.
-              example: 12345
+              example: "12345"
             level:
               type: string
               description: Error level.

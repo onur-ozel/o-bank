@@ -56,7 +56,7 @@ exports.deleteErrorLog = (req, res, next) => {
                 return;
             }
             console.log('deleted!');
-            res.status(200);
+            res.status(200).send();
         });
     });
 };
