@@ -26,13 +26,14 @@ paths:
         - $ref: '#/components/parameters/offset'
         - allOf:
             - $ref: '#/components/parameters/sorts'
-          example: +id,-name
+          example: +id,-lastModifiedDate
         - allOf:
             - $ref: '#/components/parameters/fields'
-          example: name,alpha2Code,capital
+          example: id,environment,message,topic
         - allOf:
             - $ref: '#/components/parameters/searches'  
-          example: subregion[=]Asia    
+          example: level[=]Error
+          description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=.<br>Note!!! Logger.API doesnt provide like queries for performance improvement.
       responses:
         200:
           description: successful operation

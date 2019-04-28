@@ -2,7 +2,7 @@ CREATE KEYSPACE IF NOT EXISTS log WITH replication =
 {'class':'SimpleStrategy','replication_factor':'1'};
 
 CREATE TABLE log."ErrorLogs" ( 
-    "id" text PRIMARY KEY,
+    "id" text,
     "state" boolean,
     "sessionId" text,
     "lastModifiedDate" timestamp,
@@ -14,11 +14,12 @@ CREATE TABLE log."ErrorLogs" (
     "title" text,
     "message" text,
     "stackTrace" text,
-    "help" text
-);
+    "help" text,
+    PRIMARY KEY ("environment","topic","sessionId","id","lastModifiedDate") 
+) WITH CLUSTERING ORDER BY ("topic" ASC,"sessionId" ASC,"id" ASC,"lastModifiedDate" DESC);
 
 CREATE TABLE log."PerformanceLogs" ( 
-    "id" text PRIMARY KEY,
+    "id" text,
     "state" boolean,
     "sessionId" text,
     "lastModifiedDate" timestamp,
@@ -28,5 +29,8 @@ CREATE TABLE log."PerformanceLogs" (
     "stackTrace" text,
     "startTime" timestamp,
     "endTime" timestamp,
-    "elapsedMiliSecond" bigint
-);
+    "elapsedMiliSecond" bigint,
+    PRIMARY KEY ("environment","topic","sessionId","id","lastModifiedDate") 
+) WITH CLUSTERING ORDER BY ("topic" ASC,"sessionId" ASC,"id" ASC,"lastModifiedDate" DESC);
+
+https://www.datastax.com/dev/blog/new-in-cassandra-3-0-materialized-views

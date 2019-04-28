@@ -1,7 +1,37 @@
 var cassandra = require("../infrastructure/configuration/cassandraConnection");
+var apiUtils = require("../infrastructure/utils/apiUtils");
 
 exports.getErrorLogs = (req, res, next) => {
-    cassandra.instance.ErrorLog.find({}, function (err, errorLogs) {
+    // var query = {
+    //     // equal query stays for name='john', also could be written as name: { $eq: 'John' }
+    //     environment: 'Customer.API',
+    //     id: '4',
+    //     // range query stays for age>10 and age<=20. You can use $gt (>), $gte (>=), $lt (<), $lte (<=)
+    //     // age : { '$gt':10, '$lte':20 },
+    //     // // IN clause, means surname should either be Doe or Smith
+    //     // surname : { '$in': ['Doe','Smith'] },
+    //     // // like query supported by sasi indexes, complete_name must have an SASI index defined in custom_indexes
+    //     // complete_name: { '$like': 'J%' },
+    //     // // order results by age in ascending order.
+    //     // // also allowed $desc and complex order like $orderby: {'$asc' : ['k1','k2'] }
+    //     // $orderby: { '$asc' :'age' },
+    //     // // group results by a certain field or list of fields
+    //     // $groupby: [ 'age' ],
+    //     //limit the result set to 10 rows
+    //     $select: { select: ['id'], distinct: true },
+    //     $limit: 10
+    // }
+
+    var query = {};
+    var queryOptions = { raw: true };
+
+    query = apiUtils.dynamicWhere(req.query.searches, query);
+
+    queryOptions = apiUtils.dynamicSelect(req.query.fields, queryOptions);
+
+
+    // apiUtils.dynamicTake(req.query.fields, queryOptions);
+    cassandra.instance.ErrorLog.find(query, queryOptions, function (err, errorLogs) {
         if (err) {
             console.log(err);
             res.status(200).json(123);;

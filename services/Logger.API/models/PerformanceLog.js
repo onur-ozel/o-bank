@@ -12,6 +12,7 @@ module.exports = {
         endTime: "timestamp",
         elapsedMiliSecond: "bigint"
     },
-    key: ["id"],
+    key: ["environment", "topic", "sessionId", "id", "lastModifiedDate"],
+    clustering_order: { "topic": "asc", "sessionId": "asc", "id": "asc", "lastModifiedDate": "desc" },
     table_name: "PerformanceLogs"
 };
