@@ -12,7 +12,19 @@ module.exports = {
         endTime: "timestamp",
         elapsedMiliSecond: "bigint"
     },
-    key: ["environment", "topic", "sessionId", "id", "lastModifiedDate"],
-    clustering_order: { "topic": "asc", "sessionId": "asc", "id": "asc", "lastModifiedDate": "desc" },
+    key: [["id"], "lastModifiedDate"],
+    clustering_order: { "lastModifiedDate": "DESC" },
+    materialized_views: {
+        "PerformanceLogsByTopic": {
+            select: ["topic", "lastModifiedDate", "id", "elapsedMiliSecond", "endTime", "environment", "message", "sessionId", "stackTrace", "startTime", "state"],
+            key: [["topic"], "lastModifiedDate", "id"],
+            clustering_order: { "lastModifiedDate": "DESC", "id": "ASC" },
+            filters: {
+                "topic": { $isnt: null },
+                "lastModifiedDate": { $isnt: null },
+                "id": { $isnt: null }
+            }
+        }
+    },
     table_name: "PerformanceLogs"
 };

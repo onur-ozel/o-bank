@@ -41,9 +41,9 @@
         * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this,      use HTTP GET, POST, DELETE etc.
             > - &#x2612; customer/api/v1/get-retail-customers
             > - &#x2611; customer/api/v1/retail-customers =>>  HTTP GET
-        * Don't use verb names like getById. Instead of this, use path      parameter.
+        * Don't use verb names like getById. Instead of this, use path parameter. (Some databases has restirictions about searching like e.g cassandra. Cases like these valid to use names like findByEnvironment)
             > customer/api/v1/retail-customers/**_{id}_**
-        * Use query parameter for paging, sorting, filtering etc. Excepts       id. Use path parameter for id.  
+        * Use query parameter for paging, sorting, filtering etc. Excepts id. Use path parameter for id.  
             > - &#x2612; customer/api/v1/retail-customers?**_id=5_**
             > - &#x2611; customer/api/v1/retail-customers/**_5_**
             > - &#x2612; customer/api/v1/retail-customers/**_offset/3/      limit/10_**

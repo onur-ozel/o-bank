@@ -15,8 +15,16 @@ CREATE TABLE log."ErrorLogs" (
     "message" text,
     "stackTrace" text,
     "help" text,
-    PRIMARY KEY ("environment","topic","sessionId","id","lastModifiedDate") 
-) WITH CLUSTERING ORDER BY ("topic" ASC,"sessionId" ASC,"id" ASC,"lastModifiedDate" DESC);
+    PRIMARY KEY ("id", "lastModifiedDate") 
+)
+WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC);
+
+CREATE MATERIALIZED VIEW log."ErrorLogsByEnvironment" AS
+       SELECT "id","state","sessionId","sessionId","lastModifiedDate","environment","topic","type","code","level","title","message","stackTrace","help" 
+       FROM log."ErrorLogs"
+       WHERE "environment" IS NOT NULL AND "lastModifiedDate" IS NOT NULL AND "id" IS NOT NULL
+       PRIMARY KEY ("environment", "lastModifiedDate", "id")
+       WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC, "id" ASC);
 
 CREATE TABLE log."PerformanceLogs" ( 
     "id" text,
@@ -30,7 +38,13 @@ CREATE TABLE log."PerformanceLogs" (
     "startTime" timestamp,
     "endTime" timestamp,
     "elapsedMiliSecond" bigint,
-    PRIMARY KEY ("environment","topic","sessionId","id","lastModifiedDate") 
-) WITH CLUSTERING ORDER BY ("topic" ASC,"sessionId" ASC,"id" ASC,"lastModifiedDate" DESC);
+    PRIMARY KEY ("id","lastModifiedDate")  
+)
+WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC);
 
-https://www.datastax.com/dev/blog/new-in-cassandra-3-0-materialized-views
+CREATE MATERIALIZED VIEW log."PerformanceLogsByTopic" AS
+       SELECT "id","state","sessionId","sessionId","lastModifiedDate","environment","topic","message","stackTrace","startTime","endTime","elapsedMiliSecond" 
+       FROM log."PerformanceLogs"
+       WHERE "topic" IS NOT NULL AND "lastModifiedDate" IS NOT NULL AND "id" IS NOT NULL
+       PRIMARY KEY ("topic", "lastModifiedDate", "id")
+       WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC, "id" ASC);       

@@ -16,7 +16,7 @@ var cassandra = ExpressCassandra.createClient({
             replication_factor: 1
         },
         disableTTYConfirmation: true,
-        migration: 'safe'
+        migration: 'alter'
     }
 });
 

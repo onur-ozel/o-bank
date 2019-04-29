@@ -17,34 +17,6 @@ tags:
     description: Operations about performance logs.
 paths:
   /logger/api/v1/error-log:
-    get:
-      tags:
-        - Error Log
-      summary: Get error logs.
-      parameters:
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/offset'
-        - allOf:
-            - $ref: '#/components/parameters/sorts'
-          example: +id,-lastModifiedDate
-        - allOf:
-            - $ref: '#/components/parameters/fields'
-          example: id,environment,message,topic
-        - allOf:
-            - $ref: '#/components/parameters/searches'  
-          example: level[=]Error
-          description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=.<br>Note!!! Logger.API doesnt provide like queries for performance improvement.
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorLog'
-        400:
-          $ref: '#/components/responses/400InvalidRequest'
-        500:
-          $ref: '#/components/responses/500ApiError'      
     post:
       tags:
         - Error Log
@@ -123,7 +95,33 @@ paths:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'     
-    
+  /logger/api/v1/error-log/findByEnvironment/{environment}:
+    get:
+      tags:
+        - Error Log
+      summary: Get error log by environment.
+      parameters:
+        - environment:
+          name: environment
+          in: path
+          description: Environment name.
+          required: true
+          schema:
+            type: string
+            example: Customer.API    
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
   /logger/api/v1/performance-log/{id}:
     get:
       tags:
@@ -149,7 +147,6 @@ components:
       properties:
         id:
           type: string
-          readOnly: true
           description: Guid id.
           example: be5d9875-38d9-43be-86e7-9117ff3385d1 
         state:
@@ -159,13 +156,11 @@ components:
           example: true    
         sessionId:
           type: string
-          readOnly: true
           description: Record created user session id.
           example: MVG9lKcPoNINVBIPJjdw1J9LLJbP_pqwoJYyuis 
         lastModifiedDate:
           type: string
           format: datetime
-          readOnly: true
           description: Record last modification date time.
           example: '2018-08-17 02:44:22'      
     LogBase:

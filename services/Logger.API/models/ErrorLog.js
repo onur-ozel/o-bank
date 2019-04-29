@@ -14,7 +14,19 @@ module.exports = {
         stackTrace: "text",
         help: "text"
     },
-    key : ["environment","topic","sessionId","id","lastModifiedDate"],
-    clustering_order: {"topic":"asc","sessionId":"asc","id":"asc","lastModifiedDate": "desc"},
+    key: [["id"], "lastModifiedDate"],
+    clustering_order: { "lastModifiedDate": "desc" },
+    materialized_views: {
+        "ErrorLogsByEnvironment": {
+            select: ["environment", "lastModifiedDate", "id", "code", "help", "level", "message", "sessionId", "stackTrace", "state", "title", "topic", "type"],
+            key: [["environment"], "lastModifiedDate", "id"],
+            clustering_order: { "lastModifiedDate": "DESC", "id": "ASC" },
+            filters: {
+                "environment": { $isnt: null },
+                "lastModifiedDate": { $isnt: null },
+                "id": { $isnt: null }
+            }
+        }
+    },
     table_name: "ErrorLogs"
 };
