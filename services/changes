@@ -1,0 +1,1204 @@
+errorLogger.js
+
+var cassandra = require("../infrastructure/configuration/cassandraConnection");
+var apiUtils = require("../infrastructure/utils/apiUtils");
+
+exports.addErrorLog = (req, res, next) => {
+    const errorLog = new cassandra.instance.ErrorLog({
+        ...req.body
+    });
+    // next(new Error('managed'));
+    throw new Error('un managed');
+    errorLog.save(function (err) {
+        throw new Error('un managed');
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log('inserted!');
+
+        res.status(200).json(errorLog);
+    });
+};
+
+exports.updateErrorLog = (req, res, next) => {
+    cassandra.instance.ErrorLog.findOne({ id: req.body.id }, function (err, errorLog) {
+        const updatedLog = new cassandra.instance.ErrorLog({
+            ...req.body
+        });
+
+        errorLog = updatedLog;
+
+        errorLog.save(function (err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('updated!');
+            res.status(200).json(updatedLog);
+        });
+    });
+};
+
+exports.deleteErrorLog = (req, res, next) => {
+    cassandra.instance.ErrorLog.findOne({ id: req.params.id }, function (err, errorLog) {
+        errorLog.delete(function (err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('deleted!');
+            res.status(200).send();
+        });
+    });
+};
+
+exports.getErrorLogById = (req, res, next) => {
+    console.log("by id");
+
+    cassandra.instance.ErrorLog.findOne({ id: req.params.id }, function (err, errorLog) {
+        res.status(200).json(errorLog);
+    });
+};
+
+exports.getErrorLogByEnvironment = (req, res, next) => {
+    //TODO add paging
+    //https://express-cassandra.readthedocs.io/en/stable/find/
+
+    cassandra.instance.ErrorLog.find({ environment: req.params.environment }, { materialized_view: 'ErrorLogsByEnvironment', raw: true }, function (err, errorLogs) {
+        res.status(200).json(errorLogs);
+    });
+};
+
+
+---------------------
+
+performanceLogger.js
+
+var cassandra = require("../infrastructure/configuration/cassandraConnection");
+
+exports.addPerformanceLog = (req, res, next) => {
+    const performanceLog = new cassandra.instance.PerformanceLog({
+        ...req.body, ...{ elapsedMiliSecond: cassandra.datatypes.Long.fromString(req.body.elapsedMiliSecond.toString()) }
+    });
+
+    performanceLog.save(function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log('inserted!');
+
+        res.status(200).json(performanceLog);
+    });
+};
+
+exports.updatePerformanceLog = (req, res, next) => {
+    cassandra.instance.PerformanceLog.findOne({ id: req.body.id }, function (err, performanceLog) {
+        const updatedLog = new cassandra.instance.PerformanceLog({
+            ...req.body, ...{ elapsedMiliSecond: cassandra.datatypes.Long.fromString(req.body.elapsedMiliSecond.toString()) }
+        });
+
+        performanceLog = updatedLog;
+
+        performanceLog.save(function (err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('updated!');
+            res.status(200).json(updatedLog);
+        });
+    });
+};
+
+exports.deletePerformanceLog = (req, res, next) => {
+    cassandra.instance.PerformanceLog.findOne({ id: req.params.id }, function (err, performanceLog) {
+        performanceLog.delete(function (err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('deleted!');
+            res.status(200).send();
+        });
+    });
+};
+
+exports.getPerformanceLogById = (req, res, next) => {
+    console.log("by id");
+
+    cassandra.instance.PerformanceLog.findOne({ id: req.params.id }, function (err, performanceLog) {
+        res.status(200).json(performanceLog);
+    });
+};
+
+exports.getPerformanceLogByTopic = (req, res, next) => {
+    //TODO add paging
+    //https://express-cassandra.readthedocs.io/en/stable/find/
+
+    cassandra.instance.PerformanceLog.find({ topic: req.params.topic }, { materialized_view: 'PerformanceLogsByTopic', raw: true }, function (err, performanceLogs) {
+        res.status(200).json(performanceLogs);
+    });
+};
+
+
+---------------------
+
+cassandraConnection.js
+
+var ExpressCassandra = require('express-cassandra');
+
+var ErrorLog = require("../../models/ErrorLog");
+var PerformanceLog = require("../../models/PerformanceLog");
+
+const config = require('./configurationManager');
+
+console.log(config);
+
+var cassandra = ExpressCassandra.createClient({
+    clientOptions: {
+        contactPoints: [config.cassandraUrl],
+        protocolOptions: { port: config.cassandraPort },
+        keyspace: 'log',
+        queryOptions: { consistency: ExpressCassandra.consistencies.one }
+    },
+    ormOptions: {
+        defaultReplicationStrategy: {
+            class: 'SimpleStrategy',
+            replication_factor: 1
+        },
+        disableTTYConfirmation: true,
+        migration: 'alter'
+    }
+});
+
+cassandra.loadSchema('ErrorLog', ErrorLog).syncDB(function (err, result) {
+    if (err) throw err;
+});
+
+cassandra.loadSchema('PerformanceLog', PerformanceLog).syncDB(function (err, result) {
+    if (err) throw err;
+});
+
+module.exports = cassandra;
+
+
+-------------------
+
+
+configurationManager.js
+
+const currentEnvironment = process.env.RUNNING_ENVIRONMENT || 'Development';
+
+var appConfig = require('../../resources/configFiles/appSettings.' +
+  currentEnvironment +
+  '.json');
+
+module.exports = appConfig;
+
+
+-----------------------
+
+appSettings.Development.json
+
+{
+  "cassandraPort": 5102,
+  "cassandraUrl": "localhost"
+}
+
+
+-----------------------------
+
+appSettings.Docker.json
+
+{
+  "cassandraPort": 9042,
+  "cassandraUrl": "logger.data"
+}
+
+-------------------------------
+
+Logger.API.v1.yaml
+
+
+openapi: 3.0.0
+info:
+  title: o-bank Logger API
+  description: Logger REST API for o-bank. This API has whole operations about logs which be consume by ui.<br>Developed in NodeJS (Express), Cassandra
+  version: 1.0.0
+  contact:
+    name: Onur ÖZEL
+    url: https://github.com/onur-ozel/o-bank
+    email: onurozel41@gmail.com
+  license:
+    name: MIT License
+    url: https://github.com/onur-ozel/o-bank/blob/master/LICENSE
+tags:
+  - name: Error Log
+    description: Operations about error logs.
+  - name: Performance Log
+    description: Operations about performance logs.
+paths:
+  /logger/api/v1/error-log:
+    post:
+      tags:
+        - Error Log
+      summary: Creates new error log
+      requestBody:
+        description: Parameter object that will be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorLog'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Error Log
+      summary: Update an existing error log.
+      description: Id field must be filled.
+      requestBody:
+        description: Error log object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/ErrorLog'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /logger/api/v1/error-log/{id}:
+    get:
+      tags:
+        - Error Log
+      summary: Get error log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    delete:
+      tags:
+        - Error Log
+      summary: Deletes an existing error log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'     
+  /logger/api/v1/error-log/findByEnvironment/{environment}:
+    get:
+      tags:
+        - Error Log
+      summary: Get error log by environment.
+      parameters:
+        - environment:
+          name: environment
+          in: path
+          description: Environment name.
+          required: true
+          schema:
+            type: string
+            example: Customer.API    
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+
+  /logger/api/v1/performance-log:
+    post:
+      tags:
+        - Performance Log
+      summary: Creates new performance log
+      requestBody:
+        description: Log object that will be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerformanceLog'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Performance Log
+      summary: Update an existing performance log.
+      description: Id field must be filled.
+      requestBody:
+        description: Performance log object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/PerformanceLog'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+  /logger/api/v1/performance-log/{id}:
+    get:
+      tags:
+        - Performance Log
+      summary: Get performance log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'      
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'      
+    delete:
+      tags:
+        - Performance Log
+      summary: Deletes an existing error log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'     
+  /logger/api/v1/performance-log/findByTopic/{topic}:
+    get:
+      tags:
+        - Performance Log
+      summary: Get performance log by topic.
+      parameters:
+        - topic:
+          name: topic
+          in: path
+          description: Topic name.
+          required: true
+          schema:
+            type: string
+            example: AccountCreateTimeMeasurement    
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformanceLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'  
+components:
+  schemas:
+    ModelBase:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Guid id.
+          example: be5d9875-38d9-43be-86e7-9117ff3385d1 
+        state:
+          type: boolean
+          readOnly: true
+          description: Records valid or invalid state.
+          example: true    
+        sessionId:
+          type: string
+          description: Record created user session id.
+          example: MVG9lKcPoNINVBIPJjdw1J9LLJbP_pqwoJYyuis 
+        lastModifiedDate:
+          type: string
+          format: datetime
+          description: Record last modification date time.
+          example: '2018-08-17 02:44:22'      
+    LogBase:
+      type: object
+      properties:
+        environment:
+          type: string
+          description: Log environment. Customer.API, Mobile.Client etc.
+          example: Customer.API   
+        topic:
+          type: string
+          description: Log topic. Meaningful and trackable for handled logs. InvalidCustomerNumberException, AccountCreateTimeMeasurement, JavascriptError etc.
+          example: AccountCreateTimeMeasurement           
+    Error:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Error type.
+              example: NullPointerException
+            code:
+              type: string
+              description: Error code.
+              example: "12345"
+            level:
+              type: string
+              description: Error level.
+              enum: [Error, Fatal, Warning, Info, Debug]
+              example: Error   
+            title:
+              type: string
+              description: User friendly error message title.
+              example: Invalid Fields!.                     
+            message:
+              type: string
+              description: User friendly error message.
+              example: Invalid field name used in searching.
+            stackTrace:
+              type: string
+              description: Error stack trace. It can be null for securtiy reasons.
+            help:
+              type: string
+              description: Help url or instructions for taken error.    
+    ErrorLog:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'
+        - $ref: '#/components/schemas/LogBase'
+        - type: object
+          properties:
+            type:
+              type: string
+              description: Error type.
+              example: NullPointerException
+            code:
+              type: string
+              description: Error code.
+              example: "12345"
+            level:
+              type: string
+              description: Error level.
+              enum: [Error, Fatal, Warning, Info, Debug]
+              example: Error   
+            title:
+              type: string
+              description: User friendly error message title.
+              example: Invalid Fields!.                     
+            message:
+              type: string
+              description: User friendly error message.
+              example: Invalid field name used in searching.
+            stackTrace:
+              type: string
+              description: Error stack trace. It can be null for securtiy reasons.
+            help:
+              type: string
+              description: Help url or instructions for taken error.
+    PerformanceLog:
+      allOf:
+        - $ref: '#/components/schemas/ModelBase'
+        - $ref: '#/components/schemas/LogBase'
+        - type: object
+          properties:                  
+            message:
+              type: string
+              description: User friendly message.
+              example: Invalid field name used in searching.
+            stackTrace:
+              type: string
+              description: Trace, name of method, code block which performance measurement is made.
+              example: Invalid field name used in searching. 
+            startTime:
+              type: string
+              format: datetime
+              description: Measurement start time.
+              example: '2018-08-17 02:44:22'   
+            endTime:
+              type: string
+              format: datetime
+              description: Measurement end time.
+              example: '2018-08-17 02:44:22'   
+            elapsedMiliSecond:
+              type: int
+              format: Int64
+              description: Elapsed time in milisecond.
+              example: 192939                                                                                                                               
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Limits return data count.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: 10
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+    offset:
+      name: offset
+      in: query
+      description: Offset data value.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: 0
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+    sorts:
+      name: sorts
+      in: query
+      description: Sort by columns. Multiple column can be provided by comma seperated. Use + for desc - for asc.
+      required: false
+      allowEmptyValue: true
+      style: form
+      explode: true
+      example: +field_name1,-field_name2
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Filters result data with given field names. Multiple column can be provided by comma seperated.
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: field_name1,field_name2
+      schema:
+        type: string
+    searches:
+      name: searches
+      in: query
+      description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=, % (like), !% (notlike), ^% (ends with), %^ (starts with), !^% (not ends with), !%^ (not starts with)
+      required: false
+      allowEmptyValue: true
+      style: form
+      example: field_name1[>=]250,field_name2[<]500
+      schema:
+        type: string        
+    id:
+      name: id
+      in: path
+      description: Unique id.
+      required: true
+      schema:
+        type: string
+        description: Guid id.
+        example: be5d9875-38d9-43be-86e7-9117ff3385d1
+    environment:
+      name: environment
+      in: path
+      description: Log environment.
+      required: true
+      schema:
+        type: string
+        description: Log environment.
+        enum: [Client, Server]
+        example: Server      
+  responses:
+    500ApiError:
+      description: API malfunction.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    400InvalidRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+
+----------------------
+
+.dockerignore
+
+node_modules
+
+-----------------------------
+
+app.js
+
+
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+// var uuidv1 = require('uuid/v1');
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//swagger utilization
+const swaggerUi = require('swagger-ui-express');
+const yaml = require('yamljs');
+const swaggerDoc = yaml.load('./resources/swagger/Logger.API.v1.yaml');
+app.use('/logger/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+
+// routers
+var errorLoggerRouter = require('./routes/errorLogger');
+app.use('/logger/api/v1/error-log', errorLoggerRouter);
+var performanceLoggerRouter = require('./routes/performanceLogger');
+app.use('/logger/api/v1/performance-log', performanceLoggerRouter);
+
+app.use((err, req, res, next) => {
+    console.log('hata');
+    console.log(err);
+})
+
+process.on('uncaughtException', function (error) {
+    console.log('uncaughtException');
+    console.log(error);
+    errorManagement.handler.handleError(error);
+    if (!errorManagement.handler.isTrustedError(error))
+        process.exit(1)
+});
+
+app.listen(8080, function () {
+    console.log('Ready on port 8080');
+});
+
+module.exports = app;
+
+
+---------------------------------
+
+docker-compose.Logger.API.yml
+
+version: '3.4'
+# networks:
+#   obank-logger-network:
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 11.20.30.0/16
+services:
+  logger.data:
+    build:
+      context: .
+      dockerfile: Docker.Logger.Data.Cassandra.WithData.Dockerfile
+    ports:
+      - '5102:9042'
+    # networks:
+    #   obank-logger-network:
+    #     ipv4_address: 11.20.30.102
+  # logger.api:
+  #   build:
+  #     context: .
+  #     dockerfile: Docker.Logger.API.NodeJS.Express.Dockerfile
+  #   # command: /wait-for-it.sh logger.data:9042 --timeout=0 --strict -- echo "cassandra is up"
+  #   # command: ["/wait-for-it.sh", "logger.data:9042","-t 0","--strict", "--", "echo","cassandra is up"]
+  #   ports:
+  #     - '5152:8080'
+  #   depends_on:
+  #     - logger.data
+  #   environment:
+  #     - RUNNING_ENVIRONMENT=Docker
+  #   restart: always     
+  #   networks:
+  #     obank-logger-network:
+  #       ipv4_address: 11.20.30.152 
+
+
+---------------------
+
+Docker.Logger.API.NodeJS.Express.Dockerfile
+
+
+FROM node:latest
+
+ENV http_proxy http://FINANS%5CT32465:14onOZ05!@10.81.105.12:8080
+ENV https_proxy http://FINANS%5CT32465:14onOZ04!@10.81.105.12:8080
+
+COPY ./infrastructure/dataseeds/wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+COPY . .
+
+EXPOSE 8080
+CMD [ "npm", "start" ]
+
+
+---------------------------
+
+package.json
+
+{
+  "name": "logger.api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-cassandra": "^2.3.0",
+    "morgan": "~1.9.0",
+    "swagger-ui-express": "^4.0.2",
+    "uuid": "^3.3.2",
+    "yamljs": "^0.3.0"
+  }
+}
+
+
+
+
+---------------
+
+
+development-usage-standarts.md
+
+
+# Instructions for **o-bank** development and usage standarts.
+
+## Table of Contents
+1. [API Standard](#api)  
+   1.1. [Naming](#api-naming)  
+   1.2. [Functional](#api-functional)   
+   1.3. [Http Response Code](#api-status)     
+2. [Docker Standard](#docker)   
+3. [Folder Structure Standard](#folder)   
+4. [Swagger Standard](#swagger)  
+5. [Database Naming Conventions](#database-naming-conventions)  
+   5.1. [Table](#database-table-naming)  
+   1.2. [Functional](#api-functional)   
+   1.3. [Http Response Code](#api-status)    
+6. [Data Model Standard](#data-model)  
+
+
+<a name="api"></a>
+
+## 1. API Standard  
+
+<a name="api-naming"></a>
+
+   - ### 1.1 Naming
+        * Use **api name** first as prefix.
+            > **_customer_**/api/v1/retail-customers
+        * Use **api** prefix.
+            > customer/**_api_**/v1/retail-customers
+        * Use versioning. 
+            > customer/api/**_v1_**/retail-customers
+        * Use **plural** names, not singular.
+        * Use **hypen** between words.
+        * Use **lower case** letters.
+            > customer/api/v1/**_retail-customers_**
+
+<a name="api-functional"></a>
+
+   - ### 1.2 Functional
+        * Use swagger, all apis swagger links must be like {api-name}/      swagger
+            > customer/**_swagger_**
+        * Don't use crud prefixes like getX,saveY,deleteZ. Instead of this,      use HTTP GET, POST, DELETE etc.
+            > - &#x2612; customer/api/v1/get-retail-customers
+            > - &#x2611; customer/api/v1/retail-customers =>>  HTTP GET
+        * Don't use verb names like getById. Instead of this, use path parameter. (Some databases has restirictions about searching like e.g cassandra. Cases like these valid to use names like findByEnvironment)
+            > customer/api/v1/retail-customers/**_{id}_**
+        * Use query parameter for paging, sorting, filtering etc. Excepts id. Use path parameter for id.  
+            > - &#x2612; customer/api/v1/retail-customers?**_id=5_**
+            > - &#x2611; customer/api/v1/retail-customers/**_5_**
+            > - &#x2612; customer/api/v1/retail-customers/**_offset/3/      limit/10_**
+            > - &#x2611; customer/api/v1/retail-customers?**_offset=3&      limit=10_**  
+        * All get methods which return full data must be sopport paging,        sorting, searching and filtering.
+            * Paging format must be like **offset={offset}&limit={limit}**.
+                > customer/api/v1/retail-customers?**_offset=10&limit=10_**
+            * Sort format must be like **sorts={direction (+=asc,-=desc)}       {fieldname}**.
+                > customer/api/v1/retail-customers?**_sorts=+id_**  
+                > customer/api/v1/retail-customers?**_sorts=+age,-name_**                
+            * Field filter format must be like **fields={fieldName1},       {fieldName2}**.
+                > customer/api/v1/retail-customers?**_fields=id,first_name,     last_name_**
+            * Search filter format must be like **searches={fieldName1}[    {operator}]{value}**.
+                > customer/api/v1/retail-customers?**_searches=id[=]5_**
+
+
+<a name="api-status"></a>
+
+   - ### 1.3 Http Response Code
+        * Use 200 for valid and successful request.
+        * Use 400 for invalid consumer requests. Logically consumers fault.
+            > Invalid parameter semantics.
+            > Invalid parameter values.  
+            > Invalid parameter format.                       
+            > Invalid parameter logic.            
+        * Use 500 for api malfunction. Logically apis fault. 
+            > Unhandled exceptions.
+
+<a name="docker"></a>
+
+## 2. Docker Standard 
+   * General docker-compose file which includes whole structure of ecosystem **with sample seed data** must be in project root folder with **_docker-compose.yml_** naming.
+   * General docker-compose file which includes whole structure of ecosystem **without sample seed data** must be in project root folder with **_docker-compose.without.data.yml_** naming.
+   * In general compose file
+       * general utils like kafka, api gateways etc. ip's must be in 10.20.30.**51 - 100** range. ports must be in **5051 - 5100** range.  
+       * databases like mongo, mssql, mysql etc. ip's must be in 10.20.30.**101 - 150** range. ports must be in **5101 - 5150** range.  
+       * backoffice apis like customer (.net core), deposit (spring boot), parameter (nodejs) etc. ip's must be in 10.20.30.**151 - 200** range. ports must be in **5151 - 5200** range.  
+       * frontend like customer (angular), deposit (react) etc. ip's must be in 10.20.30.**201 - 250** range. ports must be in **5201 - 5250** range.  
+   * In general compose file
+       > name of services must be in **_{module-name}.{type-name}_** format.
+       > > **parameter.data**  
+       > > **customer.api**  
+       > > **deposit.ui**  
+   * Api's folder must have a docker-compose file which includes database architecture used by api.
+   These database architecture can be used for development, debugging etc.
+       > +- **Customer.API**  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- docker-compose.**_Customer.API_**.yml  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- Docker.**_Customer.Data.MSSql.WithData_**.Dockerfile
+   * Api must have a database docker file with seed data. This dockerfile must be in apis docker-compose file.
+       > Inside docker-compose.**_Customer.API_**.yml  
+       > > dockerfile: Docker.**_Customer.Data.MSSql.WithData_**.Dockerfile  
+   * In local docker compose file which holds database architecture with seeded data, port mapping must be same as default port, url must be localhost. 
+       > Inside docker-compose.**_Customer.API_**.yml   
+       > > ports:  
+       > > \- "1433:1433"
+
+<a name="folder"></a>
+
+## 3. Folder Structure Standard 
+   * In api projects, naming conventions can be different (eg: Java use camelCase for method name but in .net PascalCase) but folder structure must includes these
+       > +- **Deposit.API**  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- controllers  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- models  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- infrastructure  
+       > |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- resources  
+       > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- swagger  
+       > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+- {api_name}.{version}.yaml 
+
+<a name="swagger"></a>
+
+## 4. Swagger Standard 
+   * In api projects, use swagger for documentation and testing. Use standalone swagger ui with seperate swagger.yaml file.
+   <br>Yes, i know it breaks consistency between documentation and api, we have to synchronize swagger ui and api codes in this approach.
+   <br>But rest controller code like below is contains lots of swagger documentation and its hard to read.
+   <br>I think codes readability is much more important than docuementation consistency.
+   <br>I dont want to annotation crowd, i prefer simple, readable codes.
+      <details>
+       <summary>Sample Nodejs Controller</summary>  
+
+           **
+           * @swagger
+           * tags:
+           *   - name: country
+           *     description: country parameter service
+           *
+           
+           **
+           * @swagger
+           * definition:
+           *   country:
+           *     properties:
+           *       flag:
+           *         type: string
+           *       name:
+           *         type: string
+           *       alpha2Code:
+           *         type: integer
+           *       alpha3Code:
+           *         type: string
+           *       capital:
+           *         type: string
+           *       region:
+           *         type: string
+           *       subregion:
+           *         type: integer
+           *       demonym:
+           *         type: string
+           *       nativeName:
+           *         type: string
+           *       numericCode:
+           *         type: string
+           */
+           
+           **
+           * @swagger
+           * /country:
+           *  get:
+           *    summary: gets countries
+           *    description: Gets country list. Optionaly can use with paging
+           *    tags:
+           *      - country
+           *    parameters:
+           *      - in: query
+           *        name: pageIndex
+           *        type: integer
+           *        required: false
+           *      - in: query
+           *        name: pageSize
+           *        type: integer
+           *        required: false
+           *    produces:
+           *      - application/json
+           *    responses:
+           *      200:
+           *        description: An array of countries
+           *        schema:
+           *          $ref: '#/definitions/country'
+           */
+
+           //Controller code is only this!!!
+           router.get('/', (req, res, next) => {
+             const country = new Country({
+               ...req.body
+             });
+           
+             country.save().then(createdCountry => {
+               res.status(201).json({
+                 message: 'Post added successfully',
+                 post: createdCountry
+               });
+             });
+           
+             cacheManager.clearCache(cacheName);
+           };
+      </details>
+      <details>
+       <summary>Sample SpringBoot Controller</summary>  
+
+            import io.swagger.annotations.Api;
+            import io.swagger.annotations.ApiOperation;
+            import io.swagger.annotations.ApiParam;
+            import io.swagger.annotations.ApiResponse;
+            import io.swagger.annotations.ApiResponses;
+
+            @RestController
+            @RequestMapping("deposit/api/v1/withdraw-deposit-accounts")
+            @Api(value = "Withdraw Deposit Account Controller", description     =       "Withdraw Deposit Account Operations.")
+            public class WithdrawDepositAccountController {
+            
+                @Autowired
+                WithdrawDepositAccountService service;
+
+                @RequestMapping(value = "", method = RequestMethod.GET,     produces =      "application/json")
+                @ApiOperation(value = "View a list of available withdraw    deposit        accounts.
+                For paging send 'offset' and 'limit' othervise returns full     data.       For sorting
+                send 'sort' ")
+                @ApiResponses(value = {
+                @ApiResponse(code = 200, message = "Successfully retrieved  list",
+                responseContainer = "List", response =  WithdrawDepositAccount.class),
+                @ApiResponse(code = 404, message = "The resource you were   trying to         reach is
+                not found") })
+                public String get(@RequestParam("offset") Integer offset,          @RequestParam("limit") Integer limit,
+                        @RequestParam("sorts") String sorts, @RequestParam  ("fields")        String fields,
+                        @RequestParam("searches") String searches) throws          JsonProcessingException {
+                        
+                    return service.get(offset, limit, sorts, fields,    searches);
+                }
+
+                @ApiOperation(value = "Add new withdraw deposit account")
+                @RequestMapping(value = "", method = RequestMethod.POST,    produces =         "application/json")
+                public void add(@RequestBody WithdrawDepositAccount account)    {
+                    //Controller code is only this!!!
+                    service.add(account);
+                }
+            } 
+      </details>
+
+<a name="database-naming-conventions"></a>
+
+## 5. Database Naming Conventions
+
+<a name="database-table-naming"></a>
+
+   - ### 5.1 Table
+        * Use **plural** name. 
+            > Customers
+        * Use PascalCase
+            > CustomerAddresses
+   - ### 5.2 Column
+        * Use **singular** name. 
+            > age
+        * Use camelCase
+            > firstName
+
+<a name="data-model"></a>
+
+## 6. Data Model Standard
+   * All models must have id column which is guid.
+   * All models must have state column which is boolean. This column represent record valid state. In o-bank ecosystem, no records must delete. For records that are invalid or to be deleted, the value must be set to false.
+
+
+-------------------------------
+
+docker-compose.yml
+
+
+version: '3.4'
+networks:
+  obank-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.20.30.0/16
+
+services:
+  # Kafka
+  # zookeeper:
+  #   image: confluentinc/cp-zookeeper:5.1.2
+  #   hostname: zookeeper
+  #   container_name: zookeeper
+  #   ports:
+  #     - "2181:2181"
+  #   environment:
+  #     ZOOKEEPER_CLIENT_PORT: 2181
+  #     ZOOKEEPER_TICK_TIME: 2000
+  # broker:
+  #   image: confluentinc/cp-enterprise-kafka:5.1.2
+  #   hostname: broker
+  #   container_name: broker
+  #   depends_on:
+  #     - zookeeper
+  #   ports:
+  #     - "9092:9092"
+  #     - "29092:29092"
+  #   environment:
+  #     KAFKA_BROKER_ID: 1
+  #     KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+  #     KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092,PLAINTEXT_HOST://localhost:29092
+  #     KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+  #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  #     KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+  #     CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker:9092
+  #     CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+  #     CONFLUENT_METRICS_ENABLE: 'true'
+  #     CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
+  # schema-registry:
+  #   image: confluentinc/cp-schema-registry:5.1.2
+  #   hostname: schema-registry
+  #   container_name: schema-registry
+  #   depends_on:
+  #     - zookeeper
+  #     - broker
+  #   ports:
+  #     - "8081:8081"
+  #   environment:
+  #     SCHEMA_REGISTRY_HOST_NAME: schema-registry
+  #     SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
+  # Customer
+  # customer.data:
+  #   build:
+  #     context: services/Customer.API/.
+  #     dockerfile: Docker.Customer.Data.MSSql.WithData.Dockerfile
+  #   ports:
+  #     - '5101:1433'
+  #   networks:
+  #     obank-network:
+  #       ipv4_address: 10.20.30.101
+  # customer.api:
+  #   build:
+  #     context: services/Customer.API/.
+  #     dockerfile: Docker.Customer.API.DotNetCore.WebAPI.Dockerfile
+  #   ports:
+  #     - '5151:80'
+  #   depends_on:
+  #     - customer.data
+  #   environment:
+  #     - RUNNING_ENVIRONMENT=Docker
+  #   networks:
+  #     obank-network:
+  #       ipv4_address: 10.20.30.151
+  # Logger
+  logger.data:
+    build:
+      context: services/Logger.API/.
+      dockerfile: Docker.Logger.Data.Cassandra.WithData.Dockerfile
+    ports:
+      - '5102:9042'
+    networks:
+      obank-network:
+        ipv4_address: 10.20.30.102
+  logger.api:
+    build:
+      context: services/Logger.API/.
+      dockerfile: Docker.Logger.API.NodeJS.Express.Dockerfile
+    command: ["/wait-for-it.sh", "logger.data:9042", "--", "echo","cassandra is up"]
+    ports:
+      - '5152:8080'
+    depends_on:
+      - logger.data
+    environment:
+      - RUNNING_ENVIRONMENT=Docker
+    restart: unless-stopped      
+    networks:
+      obank-network:
+        ipv4_address: 10.20.30.152        
