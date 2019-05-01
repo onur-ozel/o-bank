@@ -30,6 +30,20 @@ app.use('/logger/api/v1/error-log', errorLoggerRouter);
 var performanceLoggerRouter = require('./routes/performanceLogger');
 app.use('/logger/api/v1/performance-log', performanceLoggerRouter);
 
+//kafka
+
+var kafka = require('kafka-node'),
+    Producer = kafka.Producer,
+    client = new kafka.KafkaClient({ kafkaHost: 'localhost:9092' }),
+    producer = new Producer(client);
+
+
+// producer.on('ready', function () {
+//     producer.send(kafkaMessage, function (err, data) {
+//         console.log(data);
+//     });
+// });
+
 //global exception handlers
 app.use((err, req, res, next) => {
     var errorLog = {};
@@ -71,7 +85,20 @@ process
     });
 
 function handleError(errorLog) {
-    console.log(errorLog);
+
+    // KeyedMessage = kafka.KeyedMessage;
+    // km = new KeyedMessage('id', JSON.stringify({ id: '3asd' }));
+    var kafkaMessage = {
+        topic: 'log5',
+        messages: JSON.stringify(errorLog), // multi messages should be a array, single message can be just a string or a KeyedMessage instance
+        // key: 'id' // string or buffer, only needed when using keyed partitioner
+    };
+
+    var kafkaMessages = [kafkaMessage];
+
+    producer.send(kafkaMessages, function (err, data) {
+        console.log(data);
+    });
 }
 
 app.listen(8080, function () {
