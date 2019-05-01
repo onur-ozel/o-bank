@@ -2,22 +2,30 @@ var cassandra = require("../infrastructure/configuration/cassandraConnection");
 var apiUtils = require("../infrastructure/utils/apiUtils");
 
 exports.addErrorLog = (req, res, next) => {
-    console.log('add');
+    if (!req.body.id) {
+        var error = new apiUtils.ManagedError();
+        error.topic = 'ErrorLogCRUD';
+        error.type = 'ArgumentNullException';
+        error.level = 'Error';
+        error.title = 'Undefined required fields!';
+        error.message = 'Id field is required';
+
+        throw error;
+    }
+
     const errorLog = new cassandra.instance.ErrorLog({
         ...req.body
     });
 
     errorLog.save(function (err) {
         if (err) {
-            console.log(err);
-            return;
+            throw err;
         }
         console.log('inserted!');
 
         res.status(200).json(errorLog);
     });
 };
-
 
 exports.updateErrorLog = (req, res, next) => {
     cassandra.instance.ErrorLog.findOne({ id: req.body.id }, function (err, errorLog) {
@@ -60,21 +68,10 @@ exports.getErrorLogById = (req, res, next) => {
 };
 
 exports.getErrorLogByEnvironment = (req, res, next) => {
-    console.log("by environment");
+    //TODO add paging
+    //https://express-cassandra.readthedocs.io/en/stable/find/
 
-
-    cassandra.instance.ErrorLog.eachRow({ environment: req.params.environment }, { materialized_view: 'ErrorLogsByEnvironment', raw: true, fetchSize: 5 }, function (n, row) {
-        // invoked per each row in all the pages
-    }, function (err, errorLogs) {
-        // called once the page has been retrieved.
-        if (err) throw err;
-        if (errorLogs.nextPage) {
-            res.status(200).json(errorLogs);
-            errorLogs.nextPage();
-        }
+    cassandra.instance.ErrorLog.find({ environment: req.params.environment }, { materialized_view: 'ErrorLogsByEnvironment', raw: true }, function (err, errorLogs) {
+        res.status(200).json(errorLogs);
     });
-
-    // cassandra.instance.ErrorLog.find({ environment: req.params.environment }, { materialized_view: 'ErrorLogsByEnvironment', raw: true }, function (err, errorLogs) {
-    //     res.status(200).json(errorLogs);
-    // });
 };

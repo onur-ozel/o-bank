@@ -83,10 +83,10 @@
        * backoffice apis like customer (.net core), deposit (spring boot), parameter (nodejs) etc. ip's must be in 10.20.30.**151 - 200** range. ports must be in **5151 - 5200** range.  
        * frontend like customer (angular), deposit (react) etc. ip's must be in 10.20.30.**201 - 250** range. ports must be in **5201 - 5250** range.  
    * In general compose file
-       > name of services must be in **_{module-name}.{type-name}.{technology}_** format.
-       > > **parameter.data.mongo**  
-       > > **customer.api.dotnet**  
-       > > **deposit.ui.react**  
+       > name of services must be in **_{module-name}.{type-name}_** format.
+       > > **parameter.data**  
+       > > **customer.api**  
+       > > **deposit.ui**  
    * Api's folder must have a docker-compose file which includes database architecture used by api.
    These database architecture can be used for development, debugging etc.
        > +- **Customer.API**  

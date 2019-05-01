@@ -122,10 +122,58 @@ paths:
           $ref: '#/components/responses/400InvalidRequest'
         500:
           $ref: '#/components/responses/500ApiError'      
+
+  /logger/api/v1/performance-log:
+    post:
+      tags:
+        - Performance Log
+      summary: Creates new performance log
+      requestBody:
+        description: Log object that will be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerformanceLog'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
+    put:
+      tags:
+        - Performance Log
+      summary: Update an existing performance log.
+      description: Id field must be filled.
+      requestBody:
+        description: Performance log object that needs to be updated.
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/PerformanceLog'
+                - properties:
+                    id:
+                      readOnly: false
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'
   /logger/api/v1/performance-log/{id}:
     get:
       tags:
-        - Performance
+        - Performance Log
       summary: Get performance log by id.
       parameters:
         - $ref: '#/components/parameters/id'      
@@ -139,7 +187,48 @@ paths:
         400:
           $ref: '#/components/responses/400InvalidRequest'
         500:
-          $ref: '#/components/responses/500ApiError'    
+          $ref: '#/components/responses/500ApiError'      
+    delete:
+      tags:
+        - Performance Log
+      summary: Deletes an existing error log by id.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'     
+  /logger/api/v1/performance-log/findByTopic/{topic}:
+    get:
+      tags:
+        - Performance Log
+      summary: Get performance log by topic.
+      parameters:
+        - topic:
+          name: topic
+          in: path
+          description: Topic name.
+          required: true
+          schema:
+            type: string
+            example: AccountCreateTimeMeasurement    
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerformanceLog'
+        400:
+          $ref: '#/components/responses/400InvalidRequest'
+        500:
+          $ref: '#/components/responses/500ApiError'  
 components:
   schemas:
     ModelBase:
@@ -174,38 +263,6 @@ components:
           type: string
           description: Log topic. Meaningful and trackable for handled logs. InvalidCustomerNumberException, AccountCreateTimeMeasurement, JavascriptError etc.
           example: AccountCreateTimeMeasurement           
-    Error:
-      allOf:
-        - $ref: '#/components/schemas/ModelBase'
-        - type: object
-          properties:
-            type:
-              type: string
-              description: Error type.
-              example: NullPointerException
-            code:
-              type: string
-              description: Error code.
-              example: "12345"
-            level:
-              type: string
-              description: Error level.
-              enum: [Error, Fatal, Warning, Info, Debug]
-              example: Error   
-            title:
-              type: string
-              description: User friendly error message title.
-              example: Invalid Fields!.                     
-            message:
-              type: string
-              description: User friendly error message.
-              example: Invalid field name used in searching.
-            stackTrace:
-              type: string
-              description: Error stack trace. It can be null for securtiy reasons.
-            help:
-              type: string
-              description: Help url or instructions for taken error.    
     ErrorLog:
       allOf:
         - $ref: '#/components/schemas/ModelBase'
@@ -269,63 +326,6 @@ components:
               description: Elapsed time in milisecond.
               example: 192939                                                                                                                               
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: Limits return data count.
-      required: false
-      allowEmptyValue: true
-      style: form
-      explode: true
-      example: 10
-      schema:
-        type: integer
-        format: int32
-        minimum: 1
-    offset:
-      name: offset
-      in: query
-      description: Offset data value.
-      required: false
-      allowEmptyValue: true
-      style: form
-      explode: true
-      example: 0
-      schema:
-        type: integer
-        format: int32
-        minimum: 0
-    sorts:
-      name: sorts
-      in: query
-      description: Sort by columns. Multiple column can be provided by comma seperated. Use + for desc - for asc.
-      required: false
-      allowEmptyValue: true
-      style: form
-      explode: true
-      example: +field_name1,-field_name2
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Filters result data with given field names. Multiple column can be provided by comma seperated.
-      required: false
-      allowEmptyValue: true
-      style: form
-      example: field_name1,field_name2
-      schema:
-        type: string
-    searches:
-      name: searches
-      in: query
-      description: Searches data with given conditions. Multiple column can be provided by comma seperated.<br>Operators can be used =, !=, >, <, >=, <=, % (like), !% (notlike), ^% (ends with), %^ (starts with), !^% (not ends with), !%^ (not starts with)
-      required: false
-      allowEmptyValue: true
-      style: form
-      example: field_name1[>=]250,field_name2[<]500
-      schema:
-        type: string        
     id:
       name: id
       in: path
@@ -335,26 +335,16 @@ components:
         type: string
         description: Guid id.
         example: be5d9875-38d9-43be-86e7-9117ff3385d1
-    environment:
-      name: environment
-      in: path
-      description: Log environment.
-      required: true
-      schema:
-        type: string
-        description: Log environment.
-        enum: [Client, Server]
-        example: Server      
   responses:
     500ApiError:
       description: API malfunction.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/ErrorLog'
     400InvalidRequest:
       description: Invalid request.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/ErrorLog'

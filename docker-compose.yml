@@ -7,7 +7,7 @@ networks:
         - subnet: 10.20.30.0/16
 
 services:
-  #Kafka
+  # Kafka
   # zookeeper:
   #   image: confluentinc/cp-zookeeper:5.1.2
   #   hostname: zookeeper
@@ -51,32 +51,51 @@ services:
   #   environment:
   #     SCHEMA_REGISTRY_HOST_NAME: schema-registry
   #     SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
-  #Customer
-  customer.data:
+  # Customer
+  # customer.data:
+  #   build:
+  #     context: services/Customer.API/.
+  #     dockerfile: Docker.Customer.Data.MSSql.WithData.Dockerfile
+  #   ports:
+  #     - '5101:1433'
+  #   networks:
+  #     obank-network:
+  #       ipv4_address: 10.20.30.101
+  # customer.api:
+  #   build:
+  #     context: services/Customer.API/.
+  #     dockerfile: Docker.Customer.API.DotNetCore.WebAPI.Dockerfile
+  #   ports:
+  #     - '5151:80'
+  #   depends_on:
+  #     - customer.data
+  #   environment:
+  #     - RUNNING_ENVIRONMENT=Docker
+  #   networks:
+  #     obank-network:
+  #       ipv4_address: 10.20.30.151
+  # Logger
+  logger.data:
     build:
-      context: services/Customer.API/.
-      dockerfile: Docker.Customer.Data.MSSql.WithData.Dockerfile
+      context: services/Logger.API/.
+      dockerfile: Docker.Logger.Data.Cassandra.WithData.Dockerfile
     ports:
-      - '5101:1433'
+      - '5102:9042'
     networks:
       obank-network:
-        ipv4_address: 10.20.30.101
-  customer.api:
+        ipv4_address: 10.20.30.102
+  logger.api:
     build:
-      context: services/Customer.API/.
-      dockerfile: Docker.Customer.API.DotNetCore.WebAPI.Dockerfile
+      context: services/Logger.API/.
+      dockerfile: Docker.Logger.API.NodeJS.Express.Dockerfile
+    command: ["/wait-for-it.sh", "logger.data:9042", "--", "echo","cassandra is up"]
     ports:
-      - '5151:80'
+      - '5152:8080'
     depends_on:
-      - customer.data
+      - logger.data
     environment:
       - RUNNING_ENVIRONMENT=Docker
+    restart: unless-stopped      
     networks:
       obank-network:
-        ipv4_address: 10.20.30.151
-
-
-
-
-
-  
+        ipv4_address: 10.20.30.152      

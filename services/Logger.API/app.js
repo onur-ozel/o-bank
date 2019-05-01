@@ -2,7 +2,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// var uuidv1 = require('uuid/v1');
+var apiUtils = require('./infrastructure/utils/apiUtils');
+var ErrorLog = require('./models/ErrorLog');
+
 
 var app = express();
 
@@ -16,54 +18,6 @@ app.use(
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// var models = require("./infrastructure/configuration/cassandraConnection");
-
-// var performance = new models.instance.PerformanceLog({
-//     id: uuidv1(),
-//     state: true,
-//     sessionId: "MVG9lKcPoNINVBIPJjdw1J9LLJbP_pqwoJYyuis",
-//     lastModifiedDate: new Date(),
-//     logType: "Performance",
-//     environment: "Server",
-//     type: "APIResponse",
-//     message: "performance message",
-//     stackTrace: "trace",
-//     startTime: new Date((new Date()).getTime() - 1233),
-//     endTime: new Date((new Date()).getTime() + 1233),
-//     elapsedMiliSecond: 123123
-// });
-// performance.save(function (err) {
-//     if (err) {
-//         console.log(err);
-//         return;
-//     }
-//     console.log('saved performance!');
-// });
-
-
-// var error = new models.instance.ErrorLog({
-//     id: uuidv1(),
-//     state: true,
-//     sessionId: "MVG9lKcPoNINVBIPJjdw1J9LLJbP_pqwoJYyuis",
-//     lastModifiedDate: new Date(),
-//     logType: "Error",
-//     environment: "Server",
-//     type: "NullPointerException",
-//     code: 123323,
-//     level: "Fatal",
-//     title: "title",
-//     message: "error message",
-//     stackTrace: "trace",
-//     help: "hrlp"
-// });
-// error.save(function (err) {
-//     if (err) {
-//         console.log(err);
-//         return;
-//     }
-//     console.log('saved error!');
-// });
-
 //swagger utilization
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('yamljs');
@@ -75,6 +29,50 @@ var errorLoggerRouter = require('./routes/errorLogger');
 app.use('/logger/api/v1/error-log', errorLoggerRouter);
 var performanceLoggerRouter = require('./routes/performanceLogger');
 app.use('/logger/api/v1/performance-log', performanceLoggerRouter);
+
+//global exception handlers
+app.use((err, req, res, next) => {
+    var errorLog = {};
+    if (err instanceof apiUtils.ManagedError) {
+        errorLog = {
+            ...new ErrorLog(),
+            ...err,
+            ...{ stackTrace: err.stack }
+        };
+
+        res.status(400).json(errorLog);
+    }
+    else {
+        errorLog = {
+            ...new ErrorLog(),
+            ...{
+                message: err.message,
+                type: err.name,
+                stackTrace: err.stack,
+                topic: 'UnhandledException',
+                level: 'Error',
+                title: 'An unexpected error occured'
+            }
+        };
+
+        res.status(500).json(errorLog);
+    }
+
+    handleError(errorLog);
+})
+
+process
+    .on('unhandledRejection', (reason, p) => {
+        console.error(reason, 'Unhandled Rejection at Promise', p);
+    })
+    .on('uncaughtException', err => {
+        console.error(err, 'Uncaught Exception thrown');
+        process.exit(1);
+    });
+
+function handleError(errorLog) {
+    console.log(errorLog);
+}
 
 app.listen(8080, function () {
     console.log('Ready on port 8080');

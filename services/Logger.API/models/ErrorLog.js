@@ -1,32 +1,19 @@
-module.exports = {
-    fields: {
-        id: "text",
-        state: "boolean",
-        sessionId: "text",
-        lastModifiedDate: "timestamp",
-        environment: "text",
-        topic: "text",
-        type: "text",
-        code: "text",
-        level: "text",
-        title: "text",
-        message: "text",
-        stackTrace: "text",
-        help: "text"
-    },
-    key: [["id"], "lastModifiedDate"],
-    clustering_order: { "lastModifiedDate": "desc" },
-    materialized_views: {
-        "ErrorLogsByEnvironment": {
-            select: ["environment", "lastModifiedDate", "id", "code", "help", "level", "message", "sessionId", "stackTrace", "state", "title", "topic", "type"],
-            key: [["environment"], "lastModifiedDate", "id"],
-            clustering_order: { "lastModifiedDate": "DESC", "id": "ASC" },
-            filters: {
-                "environment": { $isnt: null },
-                "lastModifiedDate": { $isnt: null },
-                "id": { $isnt: null }
-            }
-        }
-    },
-    table_name: "ErrorLogs"
-};
+var uuidv1 = require('uuid/v1');
+
+function ErrorLog() {       // Accept name and age in the constructor
+    this.id = uuidv1();
+    this.state = true;
+    this.sessionId = 'sessionId';
+    this.lastModifiedDate = (new Date());
+    this.environment = 'Logger.API';
+    this.topic = null;
+    this.type = null;
+    this.code = null;
+    this.level = null;
+    this.title = null;
+    this.message = null;
+    this.stackTrace = null;
+    this.help = null;
+}
+
+module.exports = ErrorLog;     // Export the Cat function as it is
