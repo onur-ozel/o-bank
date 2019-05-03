@@ -1,3 +1,16 @@
+- C:\\Users\\t32465\\Desktop\\kafka-connect\\kafka_cassandra_connect\\target\\kafka_cassandra_connect-1.0-package\\share\\java\\kafka_cassandra_connect:/opt/landoop/connectors/third-party/kafka-connect-file
+http://localhost:3030/logs/connect-distributed.log
+http://localhost:3030/kafka-connect-ui/#/cluster/fast-data-dev/connector/cassandraSinktest1
+connector.class=com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector
+cassandra.url=cassandra
+value.converter.schema.registry.url=http://kafka-cluster:8081
+topics=test_topic
+cassandra.table=test_table
+value.converter.schemas.enable=false
+cassandra.port=9042
+cassandra.keyspace=test_keyspace
+value.converter=io.confluent.connect.avro.AvroConverter
+
 package com.obank.kafka.connect.cassandra.services;
 
 import java.io.IOException;
