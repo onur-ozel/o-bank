@@ -30,17 +30,27 @@ public class CassandraServiceImpl implements CassandraService {
 
     @Override
     public void process(Collection<SinkRecord> records) {
-        String id = UUID.randomUUID().toString();
+        StringBuilder baseQuery = new StringBuilder("INSERT INTO ").append(config.getCassandraKeyspace()).append(".")
+                .append(config.getCassandraTable());
 
-        StringBuilder sb = new StringBuilder("INSERT INTO ").append(config.getCassandraKeyspace()).append(".")
-                .append(config.getCassandraTable()).append(" (id,onur) VALUES (?, ?)");
+        SinkRecord firstRecord = records.iterator().next();
+        HashMap<String, Object> firstRecordValue = (HashMap<String, Object>) firstRecord.value();
 
-        String query = sb.toString();
+        String fields = String.join(",", firstRecordValue.keySet());
+        String fieldBinds = String.join(",", Collections.nCopies(firstRecordValue.keySet().size(), "?"));
+
+        baseQuery.append(" (").append(fields).append(")");
+
+        baseQuery.append(" VALUES (").append(fieldBinds).append(")");
+
+        PreparedStatement prepared = client.getSession().prepare(baseQuery.toString());
 
         for (SinkRecord record : records) {
-            client.getSession().execute(query, id, record.value());
-        }
+            HashMap<String, Object> recordValue = (HashMap<String, Object>) record.value();
 
+            client.getSession()
+                    .execute(prepared.bind(recordValue.values().toArray(new Object[recordValue.values().size()])));
+        }
     }
 
     @Override
