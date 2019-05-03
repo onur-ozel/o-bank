@@ -1,21 +1,19 @@
 package com.obank.kafka.connect.cassandra.services;
 
-import java.io.IOException;
 import java.util.Collection;
-import java.util.UUID;
+import java.util.Collections;
+import java.util.HashMap;
 
+import com.datastax.driver.core.PreparedStatement;
 import com.obank.kafka.connect.cassandra.OBankCassandraSinkConnectorConfig;
 
 import org.apache.kafka.connect.sink.SinkRecord;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * CassandraServiceImpl
  */
 public class CassandraServiceImpl implements CassandraService {
 
-    private static Logger log = LoggerFactory.getLogger(CassandraServiceImpl.class);
     private final CassandraConnector client = new CassandraConnector();
     private OBankCassandraSinkConnectorConfig config;
 

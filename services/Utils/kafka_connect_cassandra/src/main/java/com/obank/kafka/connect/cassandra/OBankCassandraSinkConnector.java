@@ -7,14 +7,9 @@ import java.util.Map;
 
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
-import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.sink.SinkConnector;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class OBankCassandraSinkConnector extends SinkConnector {
-  private static Logger log = LoggerFactory.getLogger(OBankCassandraSinkConnector.class);
-  private OBankCassandraSinkConnectorConfig config;
   private Map<String, String> configProperties;
 
   @Override
@@ -24,7 +19,7 @@ public class OBankCassandraSinkConnector extends SinkConnector {
 
   @Override
   public void start(Map<String, String> map) {
-    config = new OBankCassandraSinkConnectorConfig(map);
+    new OBankCassandraSinkConnectorConfig(map);
     configProperties = map;
     // TODO: Add things you need to do to setup your connector.
 

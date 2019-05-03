@@ -1,6 +1,5 @@
 package com.obank.kafka.connect.cassandra.services;
 
-import java.io.IOException;
 import java.util.Collection;
 
 import org.apache.kafka.connect.sink.SinkRecord;

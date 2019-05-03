@@ -4,4 +4,5 @@ services/Logger.API/node_modules
 services/Logger.API/bin
 services/Parameter.API/node_modules
 services/Parameter.API/bin
+services/Utils/kafka_connect_cassandra/target
 .vscode/

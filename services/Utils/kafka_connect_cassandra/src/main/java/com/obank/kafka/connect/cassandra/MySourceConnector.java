@@ -5,15 +5,9 @@ import java.util.Map;
 
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
-import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.source.SourceConnector;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MySourceConnector extends SourceConnector {
-  private static Logger log = LoggerFactory.getLogger(MySourceConnector.class);
-  private MySourceConnectorConfig config;
-
   @Override
   public String version() {
     return VersionUtil.getVersion();
@@ -21,7 +15,7 @@ public class MySourceConnector extends SourceConnector {
 
   @Override
   public void start(Map<String, String> map) {
-    config = new MySourceConnectorConfig(map);
+    new MySourceConnectorConfig(map);
 
     //TODO: Add things you need to do to setup your connector.
   }

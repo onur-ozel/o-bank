@@ -1,17 +1,12 @@
 package com.obank.kafka.connect.cassandra;
 
-import org.apache.kafka.connect.data.Field;
-import org.apache.kafka.connect.data.Schema;
-import org.apache.kafka.connect.data.SchemaBuilder;
-import org.apache.kafka.connect.data.Struct;
-import org.apache.kafka.connect.errors.ConnectException;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.kafka.connect.source.SourceRecord;
 import org.apache.kafka.connect.source.SourceTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
-import java.util.Map;
 
 public class MySourceTask extends SourceTask {
   static final Logger log = LoggerFactory.getLogger(MySourceTask.class);
