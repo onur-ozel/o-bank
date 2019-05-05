@@ -22,14 +22,11 @@ public class OBankCassandraSinkTask extends SinkTask {
   @Override
   public void start(Map<String, String> map) {
     cassandraService = new CassandraServiceImpl(new OBankCassandraSinkConnectorConfig(map));
-    // TODO: Create resources like database or api connections here.
   }
 
   @Override
   public void put(Collection<SinkRecord> collection) {
-
     cassandraService.process(collection);
-
   }
 
   @Override
@@ -41,5 +38,4 @@ public class OBankCassandraSinkTask extends SinkTask {
   public void stop() {
     cassandraService.closeClient();
   }
-
 }

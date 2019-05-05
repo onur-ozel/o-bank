@@ -12,8 +12,8 @@ services:
       - 8081-8083:8081-8083       # REST Proxy, Schema Registry, Kafka Connect ports
       - 9581-9585:9581-9585       # JMX Ports
       - 9092:9092                 # Kafka Broker
-    # volumes:
-    #   - /home/anilselim/skynyrd/kafka-connect-elastic-sink/target/kafka-connect-project-1.0-SNAPSHOT-package/share/java/kafka-connect-project:/connectors 
+    volumes:
+      - C:\\Users\\Onur\\Desktop\\Projects\\o-bank\\services\\Utils\\kafka_connect_cassandra\\target\\kafka_connect_cassandra-1.0-package\\share\\java\\kafka_connect_cassandra:/opt/landoop/connectors/third-party/kafka-connect-file
     links:
       - cassandra
 
@@ -21,3 +21,18 @@ services:
     image: cassandra:latest
     ports:
       - '5102:9042'
+
+
+
+# 
+# http://localhost:3030/logs/connect-distributed.log
+# http://localhost:3030/kafka-connect-ui/#/cluster/fast-data-dev/connector/cassandraSinktest1
+# connector.class=com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector
+# cassandra.url=cassandra
+# value.converter.schema.registry.url=http://kafka-cluster:8081
+# topics=test_topic
+# cassandra.table=test_table
+# value.converter.schemas.enable=false
+# cassandra.port=9042
+# cassandra.keyspace=test_keyspace
+# value.converter=io.confluent.connect.avro.AvroConverter      
