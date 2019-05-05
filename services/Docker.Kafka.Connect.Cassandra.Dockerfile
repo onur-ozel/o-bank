@@ -16,7 +16,14 @@
 FROM confluentinc/cp-kafka-connect-base:5.2.1
 
 ENV CONNECT_PLUGIN_PATH="/usr/share/java,/usr/share/confluent-hub-components"
-RUN confluent-hub install --no-prompt confluentinc/kafka-connect-cassandra:latest
+COPY /Utils/kafka_connect_cassandra/target/kafka_connect_cassandra-1.0-package/share/java/kafka_connect_cassandra/. /usr/share/java
+
+# RUN curl -X POST -H "Content-Type: application/json" --data '{"name": "local-file-sink", "config": {"connector.class":"FileStreamSinkConnector", "tasks.max":"1", "file":"test.sink.txt", "topics":"connect-test" }}' http://localhost:8083/connectors
+# Or, to use a file containing the JSON-formatted configuration
+# curl -X POST -H "Content-Type: application/json" --data @config.json http://localhost:8083/connectors
+
+
+# RUN confluent-hub install --no-prompt confluentinc/kafka-connect-cassandra:latest
 
 
 
