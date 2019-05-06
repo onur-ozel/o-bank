@@ -84,21 +84,71 @@ process
         process.exit(1);
     });
 
+
+const registry = require('avro-schema-registry')('http://localhost:8081');
+
+
 function handleError(errorLog) {
 
-    // KeyedMessage = kafka.KeyedMessage;
-    // km = new KeyedMessage('id', JSON.stringify({ id: '3asd' }));
-    var kafkaMessage = {
-        topic: 'log5',
-        messages: JSON.stringify(errorLog), // multi messages should be a array, single message can be just a string or a KeyedMessage instance
-        // key: 'id' // string or buffer, only needed when using keyed partitioner
+    console.log(errorLog);
+    const schema = {
+        "type": "record",
+        "name": "Log",
+        "fields": [
+            {
+                "name": "id",
+                "type": "string"
+            },
+            {
+                "name": "age",
+                "type": "int"
+            },
+            {
+                "name": "name",
+                "type": "string"
+            }
+        ]
     };
+    const message = { "id": "2", "age": 5, "name": "onur" };
 
-    var kafkaMessages = [kafkaMessage];
+    var encodedMessage;
 
-    producer.send(kafkaMessages, function (err, data) {
-        console.log(data);
-    });
+    registry.encodeMessage('test_topic', schema, message)
+        .then((msg) => {
+            console.log(msg);   // <Buffer 00 00 00 00 01 18 74 65 73 74 20 6d 65 73 73 61 67 65>
+
+
+            var kafkaMessage = {
+                topic: 'test_topic',
+                messages: msg, // multi messages should be a array, single message can be just a string or a KeyedMessage instance
+                // key: 'id' // string or buffer, only needed when using keyed partitioner
+            };
+
+            var kafkaMessages = [kafkaMessage];
+
+            producer.send(kafkaMessages, function (err, data) {
+                console.log(data);
+            });
+
+            return registry.decode(msg);
+        })
+        .then((msg) => {
+            console.log(msg);  // test message
+        });
+
+    console.log(decodedMessage);
+
+    // var kafkaMessage = {
+    //     topic: 'log5',
+    //     messages: JSON.stringify(errorLog), // multi messages should be a array, single message can be just a string or a KeyedMessage instance
+    //     // key: 'id' // string or buffer, only needed when using keyed partitioner
+    // };
+
+    // var kafkaMessages = [kafkaMessage];
+
+    // producer.send(kafkaMessages, function (err, data) {
+    //     console.log(data);
+    // });
 }
 
 app.listen(8080, function () {

@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.mapping.*;
 import com.obank.kafka.connect.cassandra.OBankCassandraSinkConnectorConfig;
 
 import org.apache.kafka.connect.data.Field;
