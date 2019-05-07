@@ -9,5 +9,6 @@ import org.apache.kafka.connect.sink.SinkRecord;
  */
 public interface CassandraService {
     void process(Collection<SinkRecord> records);
+    void connect();
     void closeClient();
 }

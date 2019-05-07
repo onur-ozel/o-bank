@@ -1,5 +1,6 @@
-var cassandra = require("../infrastructure/configuration/cassandraConnection");
-var apiUtils = require("../infrastructure/utils/apiUtils");
+var cassandra = require('../infrastructure/configuration/cassandraConnection');
+var apiUtils = require('../infrastructure/utils/apiUtils');
+var ErrorLog = require('../models/ErrorLog');
 
 exports.addErrorLog = (req, res, next) => {
     if (!req.body.id) {
@@ -13,18 +14,14 @@ exports.addErrorLog = (req, res, next) => {
         throw error;
     }
 
-    const errorLog = new cassandra.instance.ErrorLog({
+    var errorLog = {
+        ...new ErrorLog(),
         ...req.body
-    });
+    };
 
-    errorLog.save(function (err) {
-        if (err) {
-            throw err;
-        }
-        console.log('inserted!');
+    apiUtils.LogManagement.putErrorLogToQueue(errorLog);
 
-        res.status(200).json(errorLog);
-    });
+    res.status(200).json(errorLog);
 };
 
 exports.updateErrorLog = (req, res, next) => {

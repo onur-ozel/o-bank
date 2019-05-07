@@ -1,19 +1,16 @@
 var cassandra = require("../infrastructure/configuration/cassandraConnection");
+var apiUtils = require('../infrastructure/utils/apiUtils');
+var PerformaceLog = require('../models/PerformanceLog');
 
 exports.addPerformanceLog = (req, res, next) => {
-    const performanceLog = new cassandra.instance.PerformanceLog({
-        ...req.body, ...{ elapsedMiliSecond: cassandra.datatypes.Long.fromString(req.body.elapsedMiliSecond.toString()) }
-    });
+    var performanceLog = {
+        ...new PerformaceLog(),
+        ...req.body
+    };
 
-    performanceLog.save(function (err) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        console.log('inserted!');
+    apiUtils.LogManagement.putPerformanceLogToQueue(performanceLog);
 
-        res.status(200).json(performanceLog);
-    });
+    res.status(200).json(performanceLog);
 };
 
 exports.updatePerformanceLog = (req, res, next) => {

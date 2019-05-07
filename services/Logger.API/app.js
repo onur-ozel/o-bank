@@ -30,19 +30,6 @@ app.use('/logger/api/v1/error-log', errorLoggerRouter);
 var performanceLoggerRouter = require('./routes/performanceLogger');
 app.use('/logger/api/v1/performance-log', performanceLoggerRouter);
 
-//kafka
-
-var kafka = require('kafka-node'),
-    Producer = kafka.Producer,
-    client = new kafka.KafkaClient({ kafkaHost: 'localhost:9092' }),
-    producer = new Producer(client);
-
-
-// producer.on('ready', function () {
-//     producer.send(kafkaMessage, function (err, data) {
-//         console.log(data);
-//     });
-// });
 
 //global exception handlers
 app.use((err, req, res, next) => {
@@ -72,84 +59,25 @@ app.use((err, req, res, next) => {
         res.status(500).json(errorLog);
     }
 
-    handleError(errorLog);
+    apiUtils.LogManagement.putErrorLogToQueue(errorLog);
 })
 
 process
-    .on('unhandledRejection', (reason, p) => {
-        console.error(reason, 'Unhandled Rejection at Promise', p);
-    })
     .on('uncaughtException', err => {
-        console.error(err, 'Uncaught Exception thrown');
-        process.exit(1);
-    });
-
-
-const registry = require('avro-schema-registry')('http://localhost:8081');
-
-
-function handleError(errorLog) {
-
-    console.log(errorLog);
-    const schema = {
-        "type": "record",
-        "name": "Log",
-        "fields": [
-            {
-                "name": "id",
-                "type": "string"
-            },
-            {
-                "name": "age",
-                "type": "int"
-            },
-            {
-                "name": "name",
-                "type": "string"
+        errorLog = {
+            ...new ErrorLog(),
+            ...{
+                message: err.message,
+                type: err.name,
+                stackTrace: err.stack,
+                topic: 'UncaughtException',
+                level: 'Error',
+                title: 'An uncaught error occured'
             }
-        ]
-    };
-    const message = { "id": "2", "age": 5, "name": "onur" };
+        };
 
-    var encodedMessage;
-
-    registry.encodeMessage('test_topic', schema, message)
-        .then((msg) => {
-            console.log(msg);   // <Buffer 00 00 00 00 01 18 74 65 73 74 20 6d 65 73 73 61 67 65>
-
-
-            var kafkaMessage = {
-                topic: 'test_topic',
-                messages: msg, // multi messages should be a array, single message can be just a string or a KeyedMessage instance
-                // key: 'id' // string or buffer, only needed when using keyed partitioner
-            };
-
-            var kafkaMessages = [kafkaMessage];
-
-            producer.send(kafkaMessages, function (err, data) {
-                console.log(data);
-            });
-
-            return registry.decode(msg);
-        })
-        .then((msg) => {
-            console.log(msg);  // test message
-        });
-
-    console.log(decodedMessage);
-
-    // var kafkaMessage = {
-    //     topic: 'log5',
-    //     messages: JSON.stringify(errorLog), // multi messages should be a array, single message can be just a string or a KeyedMessage instance
-    //     // key: 'id' // string or buffer, only needed when using keyed partitioner
-    // };
-
-    // var kafkaMessages = [kafkaMessage];
-
-    // producer.send(kafkaMessages, function (err, data) {
-    //     console.log(data);
-    // });
-}
+        apiUtils.LogManagement.putErrorLogToQueue(errorLog);
+    });
 
 app.listen(8080, function () {
     console.log('Ready on port 8080');

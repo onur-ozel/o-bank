@@ -1,10 +1,10 @@
 var uuidv1 = require('uuid/v1');
 
-function PerformanceLog() {       // Accept name and age in the constructor
+function PerformanceLog() {
     this.id = uuidv1();
     this.state = true;
     this.sessionId = 'sessionId';
-    this.lastModifiedDate = (new Date());
+    this.lastModifiedDate = (new Date()).getTime();
     this.environment = 'Logger.API';
     this.topic = null;
     this.message = null;
@@ -14,4 +14,4 @@ function PerformanceLog() {       // Accept name and age in the constructor
     this.elapsedMiliSecond = null;
 }
 
-module.exports = PerformanceLog;     // Export the Cat function as it is
+module.exports = PerformanceLog;   

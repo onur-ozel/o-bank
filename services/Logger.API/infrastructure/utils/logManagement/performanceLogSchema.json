@@ -1,0 +1,69 @@
+{
+    "namespace": "Obank.Kafka.Schema",
+    "name": "PerformanceLog",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "state",
+            "type": "boolean"
+        },
+        {
+            "name": "sessionId",
+            "type": "string"
+        },
+        {
+            "name": "lastModifiedDate",
+            "type": "long"
+        },
+        {
+            "name": "environment",
+            "type": "string"
+        },
+        {
+            "name": "topic",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "message",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "stackTrace",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "startTime",
+            "type": [
+                "null",
+                "long"
+            ]
+        },
+        {
+            "name": "endTime",
+            "type": [
+                "null",
+                "long"
+            ]
+        },
+        {
+            "name": "elapsedMiliSecond",
+            "type": [
+                "null",
+                "long"
+            ]
+        }
+    ]
+}

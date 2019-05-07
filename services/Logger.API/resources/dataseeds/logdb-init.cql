@@ -1,11 +1,11 @@
-CREATE KEYSPACE IF NOT EXISTS log WITH replication = 
+CREATE KEYSPACE IF NOT EXISTS "Log" WITH replication = 
 {'class':'SimpleStrategy','replication_factor':'1'};
 
-CREATE TABLE log."ErrorLogs" ( 
+CREATE TABLE "Log"."ErrorLogs" ( 
     "id" text,
     "state" boolean,
     "sessionId" text,
-    "lastModifiedDate" timestamp,
+    "lastModifiedDate" bigint,
     "environment" text,
     "topic" text,
     "type" text,
@@ -19,32 +19,32 @@ CREATE TABLE log."ErrorLogs" (
 )
 WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC);
 
-CREATE MATERIALIZED VIEW log."ErrorLogsByEnvironment" AS
+CREATE MATERIALIZED VIEW "Log"."ErrorLogsByEnvironment" AS
        SELECT "id","state","sessionId","sessionId","lastModifiedDate","environment","topic","type","code","level","title","message","stackTrace","help" 
-       FROM log."ErrorLogs"
+       FROM "Log"."ErrorLogs"
        WHERE "environment" IS NOT NULL AND "lastModifiedDate" IS NOT NULL AND "id" IS NOT NULL
        PRIMARY KEY ("environment", "lastModifiedDate", "id")
        WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC, "id" ASC);
 
-CREATE TABLE log."PerformanceLogs" ( 
+CREATE TABLE "Log"."PerformanceLogs" ( 
     "id" text,
     "state" boolean,
     "sessionId" text,
-    "lastModifiedDate" timestamp,
+    "lastModifiedDate" bigint,
     "environment" text,
     "topic" text,
     "message" text,
     "stackTrace" text,
-    "startTime" timestamp,
-    "endTime" timestamp,
+    "startTime" bigint,
+    "endTime" bigint,
     "elapsedMiliSecond" bigint,
     PRIMARY KEY ("id","lastModifiedDate")  
 )
 WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC);
 
-CREATE MATERIALIZED VIEW log."PerformanceLogsByTopic" AS
+CREATE MATERIALIZED VIEW "Log"."PerformanceLogsByTopic" AS
        SELECT "id","state","sessionId","sessionId","lastModifiedDate","environment","topic","message","stackTrace","startTime","endTime","elapsedMiliSecond" 
-       FROM log."PerformanceLogs"
+       FROM "Log"."PerformanceLogs"
        WHERE "topic" IS NOT NULL AND "lastModifiedDate" IS NOT NULL AND "id" IS NOT NULL
        PRIMARY KEY ("topic", "lastModifiedDate", "id")
        WITH CLUSTERING ORDER BY ("lastModifiedDate" DESC, "id" ASC);       

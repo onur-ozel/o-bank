@@ -9,7 +9,7 @@ var cassandra = ExpressCassandra.createClient({
     clientOptions: {
         contactPoints: [config.cassandraUrl],
         protocolOptions: { port: config.cassandraPort },
-        keyspace: 'log',
+        keyspace: 'Log',
         queryOptions: { consistency: ExpressCassandra.consistencies.one }
     },
     ormOptions: {

@@ -126,29 +126,27 @@ services:
 
 
 
-curl -X POST -H "Content-Type: application/vnd.kafka.avro.v1+json" \
-      --data '{"value_schema": "{\"type\": \"record\", \"name\": \"Log\", \"fields\": [{\"name\": \"id\", \"type\": \"string\"},{\"name\": \"age\", \"type\": \"int\"},{\"name\": \"name\", \"type\": \"string\"}]}", "records": [{"value": {"id": "1","age": 5,"name": "onur"}}]}' \
-      "http://localhost:8082/topics/test_topic"
+# curl -X POST -H "Content-Type: application/vnd.kafka.avro.v1+json" \
+#       --data '{"value_schema": "{\"type\": \"record\", \"name\": \"Log\", \"fields\": [{\"name\": \"id\", \"type\": \"string\"},{\"name\": \"age\", \"type\": \"int\"},{\"name\": \"name\", \"type\": \"string\"}]}", "records": [{"value": {"id": "1","age": 5,"name": "onur"}}]}' \
+#       "http://localhost:8082/topics/test_topic"
 
 
-curl -X POST \
-  -H "Content-Type: application/json" \
-  --data '{
-  "name" : "cassandra_connect_test",
-  "config": {
-"connector.class": "com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector",
-"cassandra.host": "logger.data",
-"topics": "test_topic",
-"cassandra.table": "test_table",
-"name": "cassandra_connect_test",
-"cassandra.port": "9042",
-"cassandra.keyspace": "test_keyspace",
-"value.converter": "io.confluent.connect.avro.AvroConverter",
-"key.converter": "org.apache.kafka.connect.storage.StringConverter",
-"key.converter.schema.registry.url":"http://schema-registry:8081",
-"value.converter.schema.registry.url":"http://schema-registry:8081"
-}}
-  ' \
-  http://localhost:8083/connectors
-
-
+# curl -X POST \
+#   -H "Content-Type: application/json" \
+#   --data '{
+#   "name" : "PerformanceLoggerCassandraSink",
+#   "config": {
+# "connector.class": "com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector",
+# "cassandra.host": "logger.data",
+# "topics": "PerformanceLog",
+# "cassandra.table": "PerformanceLogs",
+# "name": "PerformanceLoggerCassandraSink",
+# "cassandra.port": "9042",
+# "cassandra.keyspace": "Log",
+# "value.converter": "io.confluent.connect.avro.AvroConverter",
+# "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+# "key.converter.schema.registry.url":"http://schema-registry:8081",
+# "value.converter.schema.registry.url":"http://schema-registry:8081"
+# }}
+#   ' \
+#   http://localhost:8083/connectors

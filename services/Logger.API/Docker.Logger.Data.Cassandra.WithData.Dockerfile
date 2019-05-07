@@ -1,6 +1,6 @@
 FROM cassandra:latest
 
-COPY [ "./infrastructure/dataseeds/", "/" ]
+COPY [ "./resources/dataseeds/", "/" ]
 
 ENTRYPOINT ["/bootstrap.sh"]
 

@@ -26,18 +26,24 @@ public class CassandraServiceImpl implements CassandraService {
     static final Logger log = LoggerFactory.getLogger(CassandraServiceImpl.class);
     static HashMap<String, PreparedStatement> preparedStatements = new HashMap<String, PreparedStatement>();
 
+    private String host;
+    private Integer port;
+
     public CassandraServiceImpl(OBankCassandraSinkConnectorConfig config) {
         this.config = config;
 
-        final String host = config.getCassandraHost();
-        final Integer port = config.getCassandraPort();
+        host = config.getCassandraHost();
+        port = config.getCassandraPort();
 
+    }
+
+    @Override
+    public void connect() {
         client.connect(host, port);
     }
 
     @Override
     public void process(Collection<SinkRecord> records) {
-        
 
         SinkRecord firstRecord;
         try {
@@ -65,11 +71,21 @@ public class CassandraServiceImpl implements CassandraService {
             values.add(value);
         }
 
+        if (!client.isConnected()) {
+            try {
+                connect();
+                preparedStatements.clear();
+            } catch (Exception e) {
+                log.error(e.toString());
+                return;
+            }
+        }
+
         if (preparedStatements.get(firstRecord.valueSchema().name()) != null) {
             preparedStatement = preparedStatements.get(firstRecord.valueSchema().name());
         } else {
             StringBuilder baseQuery = new StringBuilder("INSERT INTO \"").append(config.getCassandraKeyspace())
-            .append("\".\"").append(config.getCassandraTable()).append("\"");
+                    .append("\".\"").append(config.getCassandraTable()).append("\"");
 
             String fieldsNames = String.join(",",
                     fields.stream().map(x -> new StringBuilder().append("\"").append(x.name()).append("\"").toString())

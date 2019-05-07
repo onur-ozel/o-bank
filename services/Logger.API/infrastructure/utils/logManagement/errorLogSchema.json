@@ -1,0 +1,83 @@
+{
+    "namespace": "Obank.Kafka.Schema",
+    "name": "ErrorLog",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "state",
+            "type": "boolean"
+        },
+        {
+            "name": "sessionId",
+            "type": "string"
+        },
+        {
+            "name": "lastModifiedDate",
+            "type": "long"
+        },
+        {
+            "name": "environment",
+            "type": "string"
+        },
+        {
+            "name": "topic",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "type",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "code",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "level",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "title",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "message",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "stackTrace",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "help",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}

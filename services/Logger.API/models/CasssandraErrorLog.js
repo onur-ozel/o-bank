@@ -3,7 +3,7 @@ module.exports = {
         id: "text",
         state: "boolean",
         sessionId: "text",
-        lastModifiedDate: "timestamp",
+        lastModifiedDate: "bigint",
         environment: "text",
         topic: "text",
         type: "text",
@@ -13,7 +13,7 @@ module.exports = {
         message: "text",
         stackTrace: "text",
         help: "text"
-        
+
     },
     key: [["id"], "lastModifiedDate"],
     clustering_order: { "lastModifiedDate": "desc" },

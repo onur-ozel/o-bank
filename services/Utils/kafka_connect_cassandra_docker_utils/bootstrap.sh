@@ -18,6 +18,46 @@ if [ "$1" = '/etc/confluent/docker/run' ]; then
     /wait-for-it.sh -t 240 127.0.0.1:8083
     echo '=> Cassandra is available'
 
+    curl -X POST \
+         -H "Content-Type: application/json" \
+         --data '{
+         "name" : "ErrorLoggerCassandraSink",
+         "config": {
+          "connector.class": "com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector",
+          "cassandra.host": "logger.data",
+          "topics": "ErrorLog",
+          "cassandra.table": "ErrorLogs",
+          "name": "ErrorLoggerCassandraSink",
+          "cassandra.port": "9042",
+          "cassandra.keyspace": "Log",
+          "value.converter": "io.confluent.connect.avro.AvroConverter",
+          "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+          "key.converter.schema.registry.url":"http://schema-registry:8081",
+          "value.converter.schema.registry.url":"http://schema-registry:8081"
+        }}
+    ' \
+    http://localhost:8083/connectors
+
+    curl -X POST \
+         -H "Content-Type: application/json" \
+         --data '{
+         "name" : "PerformanceLoggerCassandraSink",
+         "config": {
+          "connector.class": "com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector",
+          "cassandra.host": "logger.data",
+          "topics": "PerformanceLog",
+          "cassandra.table": "PerformanceLogs",
+          "name": "PerformanceLoggerCassandraSink",
+          "cassandra.port": "9042",
+          "cassandra.keyspace": "Log",
+          "value.converter": "io.confluent.connect.avro.AvroConverter",
+          "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+          "key.converter.schema.registry.url":"http://schema-registry:8081",
+          "value.converter.schema.registry.url":"http://schema-registry:8081"
+        }}
+    ' \
+    http://localhost:8083/connectors    
+
     # Shutdown Cassandra after bootstrapping to allow the entrypoint script to start normally
     echo '=> Shutting down Casssandra after bootstrapping'
     kill -s TERM "$cassandra_pid"
