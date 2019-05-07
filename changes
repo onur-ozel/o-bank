@@ -1,0 +1,698 @@
+cassandraConnection.js
+
+var ExpressCassandra = require('express-cassandra');
+
+var CasssandraErrorLog = require("../../models/CasssandraErrorLog");
+var CassandraPerformanceLog = require("../../models/CassandraPerformanceLog");
+
+const config = require('./configurationManager');
+
+var cassandra = ExpressCassandra.createClient({
+    clientOptions: {
+        contactPoints: [config.cassandraUrl],
+        protocolOptions: { port: config.cassandraPort },
+        keyspace: 'Log',
+        queryOptions: { consistency: ExpressCassandra.consistencies.one }
+    },
+    ormOptions: {
+        defaultReplicationStrategy: {
+            class: 'SimpleStrategy',
+            replication_factor: 1
+        },
+        disableTTYConfirmation: true,
+        migration: 'alter'
+    }
+});
+
+cassandra.loadSchema('ErrorLog', CasssandraErrorLog).syncDB(function (err, result) {
+    if (err) throw err;
+});
+
+cassandra.loadSchema('PerformanceLog', CassandraPerformanceLog).syncDB(function (err, result) {
+    if (err) throw err;
+});
+
+module.exports = cassandra;
+
+
+-----------------------------
+
+kafkaConnection.js
+
+const kafka = require('kafka-node');
+const schemaRegister = require('avro-schema-registry');
+let kafkaServiceInstance = null;
+
+class KafkaService {
+
+    constructor() {
+        this.client = new kafka.KafkaClient({ kafkaHost: 'localhost:9092' })
+        this.schemaRegistry = schemaRegister('http://localhost:8091');
+        this.producer = new kafka.Producer(this.client)
+        this.producer.on('ready', () => {
+            console.log('Kafka Producer is connected and ready.')
+            this.isReady = true
+        })
+        this.isReady = false
+
+        this.producer.on('error', (error) => {
+            console.error(error)
+        })
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
+    async sendRecord(topic, record, schema, callback) {
+        let retries = 0
+
+        while (!this.isReady && retries < 3) {
+            retries += 1
+            await this.sleep(100)
+        }
+
+        if (!this.isReady) {
+            console.log('Kafka producer is not ready.  Try again later.')
+            return false
+        }
+
+        this.schemaRegistry.encodeMessage(topic, schema, record)
+            .then((msg) => {
+                const payloads = [{
+                    topic: topic,
+                    key: record.id,
+                    messages: msg,
+                }]
+                this.producer.send(payloads, callback)
+            })
+
+        return true
+    }
+}
+
+function getKafkaServiceInstance() {
+    if (!kafkaServiceInstance) {
+        kafkaServiceInstance = new KafkaService()
+    }
+    return kafkaServiceInstance;
+}
+
+module.exports = getKafkaServiceInstance();
+
+---------------------
+
+utils/logManagement/errorLogSchema.json
+
+{
+    "namespace": "Obank.Kafka.Schema",
+    "name": "ErrorLog",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "state",
+            "type": "boolean"
+        },
+        {
+            "name": "sessionId",
+            "type": "string"
+        },
+        {
+            "name": "lastModifiedDate",
+            "type": "long"
+        },
+        {
+            "name": "environment",
+            "type": "string"
+        },
+        {
+            "name": "topic",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "type",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "code",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "level",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "title",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "message",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "stackTrace",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "help",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}
+
+
+------------------------
+
+""logManagement.js
+
+
+var kafkaConnection = require('../../configuration/kafkaConnection');
+var errorSchema = require('./errorLogSchema');
+
+exports.putErrorLog = (errorLog) => {
+
+    console.log(errorSchema);
+
+    var schema = {
+        "namespace": "Obank.Kafka.Schema",
+        "name": "ErrorLog",
+        "type": "record",
+        "fields": [
+            {
+                "name": "id",
+                "type": "string"
+            },
+            {
+                "name": "state",
+                "type": "boolean"
+            },
+            {
+                "name": "sessionId",
+                "type": "string"
+            },
+            {
+                "name": "lastModifiedDate",
+                "type": "long"
+            },
+            {
+                "name": "environment",
+                "type": "string"
+            },
+            {
+                "name": "topic",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "type",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "code",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "level",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "title",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "message",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "stackTrace",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            },
+            {
+                "name": "help",
+                "type": [
+                    "null",
+                    "string"
+                ]
+            }
+        ]
+    };
+
+    kafkaConnection.sendRecord('ErrorLog', errorLog, schema, (err, data) => {
+        if (err) {
+            console.log(err);
+        }
+
+        console.log(data);
+    });
+}
+
+------------------
+
+apiUtils.js
+
+exports.ManagedError = require("./managedError");
+
+exports.LogManagement = require('./logManagement/logManagement');
+
+---------------------
+
+managedError.js
+
+module.exports = function ManagedError() {
+    Error.captureStackTrace(this, this.constructor);
+};
+
+require('util').inherits(module.exports, Error);
+
+---------------------
+
+CassandraPerformanceLog.js
+
+
+module.exports = {
+    fields: {
+        id: "text",
+        state: "boolean",
+        sessionId: "text",
+        lastModifiedDate: "bigint",
+        environment: "text",
+        topic: "text",
+        message: "text",
+        stackTrace: "text",
+        startTime: "bigint",
+        endTime: "bigint",
+        elapsedMiliSecond: "bigint"
+    },
+    key: [["id"], "lastModifiedDate"],
+    clustering_order: { "lastModifiedDate": "DESC" },
+    materialized_views: {
+        "PerformanceLogsByTopic": {
+            select: ["topic", "lastModifiedDate", "id", "elapsedMiliSecond", "endTime", "environment", "message", "sessionId", "stackTrace", "startTime", "state"],
+            key: [["topic"], "lastModifiedDate", "id"],
+            clustering_order: { "lastModifiedDate": "DESC", "id": "ASC" },
+            filters: {
+                "topic": { $isnt: null },
+                "lastModifiedDate": { $isnt: null },
+                "id": { $isnt: null }
+            }
+        }
+    },
+    table_name: "PerformanceLogs"
+};
+
+--------------------
+
+CasssandraErrorLog.js
+
+module.exports = {
+    fields: {
+        id: "text",
+        state: "boolean",
+        sessionId: "text",
+        lastModifiedDate: "bigint",
+        environment: "text",
+        topic: "text",
+        type: "text",
+        code: "text",
+        level: "text",
+        title: "text",
+        message: "text",
+        stackTrace: "text",
+        help: "text"
+
+    },
+    key: [["id"], "lastModifiedDate"],
+    clustering_order: { "lastModifiedDate": "desc" },
+    materialized_views: {
+        "ErrorLogsByEnvironment": {
+            select: ["environment", "lastModifiedDate", "id", "code", "help", "level", "message", "sessionId", "stackTrace", "state", "title", "topic", "type"],
+            key: [["environment"], "lastModifiedDate", "id"],
+            clustering_order: { "lastModifiedDate": "DESC", "id": "ASC" },
+            filters: {
+                "environment": { $isnt: null },
+                "lastModifiedDate": { $isnt: null },
+                "id": { $isnt: null }
+            }
+        }
+    },
+    table_name: "ErrorLogs"
+};
+
+---------------------
+
+ErrorLog.js
+
+var uuidv1 = require('uuid/v1');
+
+function ErrorLog() {       // Accept name and age in the constructor
+    this.id = uuidv1();
+    this.state = true;
+    this.sessionId = 'sessionId';
+    this.lastModifiedDate = (new Date()).getTime();
+    this.environment = 'Logger.API';
+    this.topic = null;
+    this.type = null;
+    this.code = null;
+    this.level = null;
+    this.title = null;
+    this.message = null;
+    this.stackTrace = null;
+    this.help = null;
+}
+
+module.exports = ErrorLog;     // Export the Cat function as it is
+
+---------------------
+
+PerformanceLog.js
+
+var uuidv1 = require('uuid/v1');
+
+function PerformanceLog() {
+    this.id = uuidv1();
+    this.state = true;
+    this.sessionId = 'sessionId';
+    this.lastModifiedDate = (new Date()).getTime();
+    this.environment = 'Logger.API';
+    this.topic = null;
+    this.message = null;
+    this.stackTrace = null;
+    this.startTime = null;
+    this.endTime = null;
+    this.elapsedMiliSecond = null;
+}
+
+module.exports = PerformanceLog;    
+
+
+
+--------------------
+
+app.js
+
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var apiUtils = require('./infrastructure/utils/apiUtils');
+var ErrorLog = require('./models/ErrorLog');
+
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//swagger utilization
+const swaggerUi = require('swagger-ui-express');
+const yaml = require('yamljs');
+const swaggerDoc = yaml.load('./resources/swagger/Logger.API.v1.yaml');
+app.use('/logger/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+
+// routers
+var errorLoggerRouter = require('./routes/errorLogger');
+app.use('/logger/api/v1/error-log', errorLoggerRouter);
+var performanceLoggerRouter = require('./routes/performanceLogger');
+app.use('/logger/api/v1/performance-log', performanceLoggerRouter);
+
+
+//global exception handlers
+app.use((err, req, res, next) => {
+    var errorLog = {};
+    if (err instanceof apiUtils.ManagedError) {
+        errorLog = {
+            ...new ErrorLog(),
+            ...err,
+            ...{ stackTrace: err.stack }
+        };
+
+        res.status(400).json(errorLog);
+    }
+    else {
+        errorLog = {
+            ...new ErrorLog(),
+            ...{
+                message: err.message,
+                type: err.name,
+                stackTrace: err.stack,
+                topic: 'UnhandledException',
+                level: 'Error',
+                title: 'An unexpected error occured'
+            }
+        };
+
+        res.status(500).json(errorLog);
+    }
+
+    apiUtils.LogManagement.putErrorLog(errorLog);
+})
+
+process
+    .on('uncaughtException', err => {
+        errorLog = {
+            ...new ErrorLog(),
+            ...{
+                message: err.message,
+                type: err.name,
+                stackTrace: err.stack,
+                topic: 'UncaughtException',
+                level: 'Error',
+                title: 'An uncaught error occured'
+            }
+        };
+
+        apiUtils.LogManagement.putErrorLog(errorLog);
+    });
+
+app.listen(8080, function () {
+    console.log('Ready on port 8080');
+});
+
+module.exports = app;
+
+------------------------
+
+Docker.Logger.Data.Cassandra.WithData.Dockerfile
+
+FROM cassandra:latest
+
+COPY [ "./resources/dataseeds/", "/" ]
+
+ENTRYPOINT ["/bootstrap.sh"]
+
+CMD ["cassandra", "-f"]
+
+
+-------------------------
+
+docker-compose.kafka-cluster.yml
+
+version: '3.4'
+networks:
+  obank.network:
+    driver: bridge
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    ports:
+      - 2181:2181
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+    networks:
+      - obank.network      
+  schema-registry:
+    image: confluentinc/cp-schema-registry:latest
+    depends_on:
+      - zookeeper
+      - kafka-broker
+    ports:
+      - "8091:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
+    networks:
+      - obank.network         
+  kafka-broker:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+      - 9092:9092
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka-broker:29092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+    networks:
+      - obank.network         
+  connect:
+    image: confluentinc/kafka-connect-datagen:latest
+    build:
+      context: Utils/.
+      dockerfile: kafka_connect_cassandra_docker_utils/Docker.Kafka.Connect.Cassandra.Dockerfile
+    hostname: connect
+    container_name: connect
+    depends_on:
+      - zookeeper
+      - kafka-broker
+      - schema-registry
+    ports:
+      - "8083:8083"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: 'kafka-broker:29092'
+      CONNECT_REST_ADVERTISED_HOST_NAME: connect
+      CONNECT_REST_PORT: 8083
+      CONNECT_GROUP_ID: compose-connect-group
+      CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_FLUSH_INTERVAL_MS: 10000
+      CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+      CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      # Assumes image is based on confluentinc/kafka-connect-datagen:latest which is pulling 5.1.1 Connect image
+      CLASSPATH: /usr/share/java/monitoring-interceptors/monitoring-interceptors-5.2.1.jar
+      CONNECT_PRODUCER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor"
+      CONNECT_CONSUMER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor"
+      CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
+      CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
+    networks:
+      - obank.network         
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:5.2.1
+    hostname: control-center
+    container_name: control-center
+    depends_on:
+      - zookeeper
+      - kafka-broker
+      - schema-registry
+      - connect
+    ports:
+      - "9021:9021"
+    environment:
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka-broker:29092'
+      CONTROL_CENTER_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      CONTROL_CENTER_CONNECT_CLUSTER: 'connect:8083'
+      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
+      PORT: 9021
+    networks:
+      - obank.network         
+
+  rest-proxy:
+    image: confluentinc/cp-kafka-rest:5.2.1
+    depends_on:
+      - zookeeper
+      - kafka-broker
+      - schema-registry
+    ports:
+      - 8082:8082
+    hostname: rest-proxy
+    container_name: rest-proxy
+    environment:
+      KAFKA_REST_HOST_NAME: rest-proxy
+      KAFKA_REST_BOOTSTRAP_SERVERS: 'kafka-broker:29092'
+      KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
+      KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'      
+    networks:
+      - obank.network         
+
+
+
+
+
+
+# curl -X POST -H "Content-Type: application/vnd.kafka.avro.v1+json" \
+#       --data '{"value_schema": "{\"type\": \"record\", \"name\": \"Log\", \"fields\": [{\"name\": \"id\", \"type\": \"string\"},{\"name\": \"age\", \"type\": \"int\"},{\"name\": \"name\", \"type\": \"string\"}]}", "records": [{"value": {"id": "1","age": 5,"name": "onur"}}]}' \
+#       "http://localhost:8082/topics/test_topic"
+
+
+# curl -X POST \
+#   -H "Content-Type: application/json" \
+#   --data '{
+#   "name" : "ErrorLoggerCassandraSink",
+#   "config": {
+# "connector.class": "com.obank.kafka.connect.cassandra.OBankCassandraSinkConnector",
+# "cassandra.host": "logger.data",
+# "topics": "ErrorLog",
+# "cassandra.table": "ErrorLogs",
+# "name": "ErrorLoggerCassandraSink",
+# "cassandra.port": "9042",
+# "cassandra.keyspace": "Log",
+# "value.converter": "io.confluent.connect.avro.AvroConverter",
+# "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+# "key.converter.schema.registry.url":"http://schema-registry:8081",
+# "value.converter.schema.registry.url":"http://schema-registry:8081"
+# }}
+#   ' \
+#   http://localhost:8083/connectors
+
+
